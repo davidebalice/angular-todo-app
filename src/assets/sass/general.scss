@@ -1,0 +1,874 @@
+/*---------------------------------------
+#. General
+---------------------------------------*/
+
+@import "mixins/mixins";
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--poppins);
+    font-weight: 500;
+    color: var(--body-color);
+    margin-bottom: 0;
+}
+h1 {
+    font-size: 32px;
+    font-weight: 600;
+}
+h2 {
+    font-size: 24px;
+}
+h3 {
+    font-size: 21px;
+}
+h4 {
+    font-size: 18px;
+}
+h5 {
+    font-size: 15px;
+    line-height: 24px;
+}
+h6 {
+    font-size: 14px;
+    line-height: 23px;
+}
+
+p {
+    font-family: var(--poppins);
+    font-weight: 400;
+    margin-bottom: 0;
+}
+a {
+    color: var(--body-color);
+    transition: all 0.3s ease;
+    &:hover {
+        color: var(--primary-color);
+    }
+}
+
+img {
+    max-width: 100%;
+}
+
+.bold {
+    font-weight: 700;
+}
+.semii-bold {
+    font-weight: 600;
+}
+.medium {
+    font-weight: 500;
+}
+.regular {
+    font-weight: 400;
+}
+.italic {
+    font-style: italic;
+}
+.underline {
+    text-decoration: underline;
+}
+.line-through {
+    text-decoration: line-through;
+}
+
+.font-regular {
+    font-style: 16px;
+}
+.font-sm {
+    font-style: 14px;
+}
+.font-xs {
+    font-style: 12px;
+}
+
+
+ul {
+    padding: 0;
+    margin: 0;
+}
+li {
+    list-style: none;
+}
+
+body {
+    font-family: var(--poppins);
+    background-color: var(--section-color);
+    @include laptop {
+        font-size: 15px;
+    }
+}
+
+.gutter-40 {
+    margin: 0 -20px;
+    &> [class*='col-'] {
+        padding-right: 20px;
+        padding-left: 20px; 
+    }
+}
+
+.mb-30 {
+    margin-bottom: 30px;
+}
+.mb-40 {
+    margin-bottom: 40px;
+}
+.md-mb-40 {
+    @include md {
+        margin-bottom: 40px;
+    }
+}
+.lg-mb-40 {
+    @include lg {
+        margin-bottom: 40px;
+    }
+}
+.ssm-mb-40 {
+    @include ssm {
+        margin-bottom: 40px;
+    }
+}
+.success-color {
+    color: var(--success-color) !important;
+}
+.success-bg {
+    background: var(--success-color) !important;
+}
+.warning-color {
+    color: var(--warning-color) !important;
+}
+.warning-bg {
+    background: var(--warning-color) !important;
+}
+.danger-color {
+    color: var(--danger-color) !important;
+}
+.danger-bg {
+    background: var(--danger-color) !important;
+}
+.pink-color {
+    color: var(--pink-color) !important;
+}
+.pink-bg {
+    background: var(--pink-color) !important;
+}
+.quatinery-color {
+    color: var(--quatinery-color) !important;
+}
+.quatinery-bg {
+    background: var(--quatinery-color) !important;
+}
+.tertiary-color {
+    color: var(--tertiary-color) !important;
+}
+.tertiary-bg {
+    background: var(--tertiary-color) !important;
+}
+.primary-color {
+    color: var(--primary-color) !important;
+}
+.primary-bg {
+    background: var(--primary-color) !important;
+}
+.secondary-color {
+    color: var(--secondary-color) !important;
+}
+.secondary-bg {
+    background: var(--secondary-color) !important;
+}
+.white-color {
+    color: var(--white-color) !important;
+}
+.white-bg {
+    background: var(--white-color) !important;
+}
+.info-color {
+    color: var(--info-color) !important;
+}
+.info-bg {
+    background: var(--info-color) !important;
+}
+.dark-color {
+    color: var(--dark-color) !important;
+}
+.dark-bg {
+    background: var(--dark-color) !important;
+}
+.body-color {
+    color: var(--body-color) !important;
+}
+.body-bg {
+    background: var(--body-color) !important;
+}
+.sec-color {
+    color: var(--sec-color) !important;
+}
+.sec-bg {
+    background: var(--sec-color) !important;
+}
+.section-color {
+    color: var(--section-color) !important;
+}
+.section-bg {
+    background: var(--section-color) !important;
+}
+.grayThree-color {
+    color: var(--grayThree-color) !important;
+}
+.grayThree-bg {
+    background: var(--grayThree-color) !important;
+}
+.grayTwo-color {
+    color: var(--grayTwo-color) !important;
+}
+.grayTwo-bg {
+    background: var(--grayTwo-color) !important;
+}
+.sectionThree-color {
+    color: var(--sectionThree-color) !important;
+}
+.sectionThree-bg {
+    background: var(--sectionThree-color) !important;
+}
+
+// Display Fonts 
+.display-1 {
+    font-size: 84px;
+    font-weight: 400;
+    @include laptop {
+        font-size: 75px;
+    }
+    @include xl {
+        font-size: 65px;
+    }
+    @include md {
+        font-size: 60px;
+    }
+    @include ssm {
+        font-size: 55px;
+    }
+    @include sm {
+        font-size: 52px;
+    }
+    @include xs {
+        font-size: 50px;
+    }
+}
+.display-2 {
+    font-size: 77px;
+    font-weight: 400;
+    @include laptop {
+        font-size: 67px;
+    }
+    @include xl {
+        font-size: 62px;
+    }
+    @include md {
+        font-size: 57px;
+    }
+    @include ssm {
+        font-size: 52px;
+    }
+    @include sm {
+        font-size: 48px;
+    }
+    @include xs {
+        font-size: 45px;
+    }
+}
+.display-3 {
+    font-size: 63px;
+    font-weight: 400;
+    @include laptop {
+        font-size: 57px;
+    }
+    @include xl {
+        font-size: 52px;
+    }
+    @include md {
+        font-size: 48px;
+    }
+    @include ssm {
+        font-size: 45px;
+    }
+    @include sm {
+        font-size: 42px;
+    }
+    @include xs {
+        font-size: 40px;
+    }
+}
+.display-4 {
+    font-size: 49px;
+    font-weight: 400;
+    @include laptop {
+        font-size: 47px;
+    }
+    @include xl {
+        font-size: 45px;
+    }
+    @include md {
+        font-size: 42px;
+    }
+    @include ssm {
+        font-size: 40px;
+    }
+    @include sm {
+        font-size: 38px;
+    }
+    @include xs {
+        font-size: 35px;
+    }
+}
+
+// Testimonial Container
+.testi-container {
+    overflow: hidden;
+    margin: 0 auto;
+    max-width: 600px !important;
+    @include sm {
+        max-width: 500px !important;
+    }
+    @include ssm {
+        max-width: 400px !important;
+    }
+    @include xs {
+        max-width: 270px !important;
+    }
+    
+}
+
+// Slider
+.swiper-container {
+    margin: 0 -20px;
+    max-width: 1250px !important;
+    overflow: hidden;
+    .swiper-slide {
+        padding: 0 20px;
+    }
+    @include desktop {
+        max-width: 1050px !important;
+    }
+    @include xxl {
+        max-width: 810px !important;
+    }
+    @include laptop {
+        max-width: 730px !important;
+    }
+    @include cMq(1366px, 1439px) {
+        max-width: 660px !important;
+    }
+    @include xl {
+       max-width: 630px !important;
+    }
+    @include lg {
+        max-width: 992px !important;
+    }
+    @include md {
+        max-width: 768px !important;
+    }
+    @include sm {
+        max-width: 576px !important;
+    }
+    @include ssm {
+        max-width: 480px !important;
+    }
+    @include xs {
+        max-width: 375px !important;
+    }
+    @include xxs {
+        max-width: 315px !important;
+    }
+}
+.swiper-wrapper{
+  padding-left: initial;
+  margin: 0;
+}
+.swiper-pagination {
+    display: flex;
+    gap: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    i {
+        font-size: 30px;
+        cursor: pointer;
+        &:hover {
+            color: var(--primary-color);
+        }
+    }
+}
+
+// Blockquote
+blockquote {
+    position: relative;
+    margin: 30px 0;
+    border-left: 0;
+    font-size: 16px;
+    padding: 38px 58px 30px 40px;
+    background: var(--white-color);
+    @include ssm {
+        padding: 30px 15px 15px 25px;
+    }
+    &:before {
+        content: "";
+        position: absolute;
+        height: 100%;
+        width: 8px;
+        left: 0;
+        top: 0;
+        background: var(--primary-color);
+    }
+    span {
+        display: flex;
+        justify-content: flex-end;
+        font-weight: 500;
+        color: var(--dark-color);
+        margin: 20px 0 0;
+        position: relative;
+        &:before {
+            content: "";
+            position: absolute;
+            height: 1px;
+            width: 80px;
+            top: 50%;
+            transform: translateY(-50%);
+            inset-inline-end: 115px;
+            background: var(--primary-color);
+        }
+    }
+}
+
+// Badge  
+.badge {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 700;
+    padding: 10px 16px;
+    border-radius: 14px;
+    color: var(--white-color);
+    @include m ('sm') {
+        font-size: 12px;
+        line-height: 18px;
+        font-weight: 500;
+    }
+    @include m ('mini') {
+        width: 37px;
+        height: 37px;
+        padding: 7px 0;
+        border-radius: 9px;
+        border: 3px solid var(--section-color);
+    }
+    @include m ('icon') {
+        width: 54px;
+        height: 54px;
+        padding: 15px;
+        font-size: 24px;
+        border-radius: 18px;
+    }
+    @include m ('transaction-icon') {
+        width: 68px;
+        height: 68px;
+        font-size: 35px;
+        border-radius: 24px;
+    }
+    @include m ('label-icon') {
+        gap: 14px;
+        padding: 8px 26px 8px 16px;
+        border-radius: 14px;
+        i {
+            font-size: 24px;
+        }
+    }
+    @include m ('primary') {
+        background-color: var(--primary-color);
+    }
+    @include m ('primary-transparent') {
+        color: var(--primary-color);
+        background-color: var(--primary-color-transparent);
+    }
+    @include m ('success') {
+        background-color: var(--success-color);
+    }
+    @include m ('success-transparent') {
+        color: var(--success-color);
+        background-color: var(--success-color-transparent);
+    }
+    @include m ('warning') {
+        background-color: var(--warning-color);
+    }
+    @include m ('warning-transparent') {
+        color: var(--warning-color);
+        background-color: var(--warning-color-transparent);
+    }
+    @include m ('danger') {
+        background-color: var(--danger-color);
+    }
+    @include m ('danger-transparent') {
+        color: var(--danger-color);
+        background-color: var(--danger-color-transparent);
+    }
+    @include m ('pink') {
+        background-color: var(--pink-color);
+    }
+    @include m ('info') {
+        background-color: var(--info-color);
+    }
+    @include m ('info-transparent') {
+        color: var(--info-color);
+        background-color: var(--info-color-transparent);
+    }
+    @include m ('tertiary') {
+        background-color: var(--tertiary-color);
+    }
+    @include m ('dark') {
+        background-color: var(--dark-color);
+    }
+    @include m ('white') {
+        color: var(--body-color);
+        background-color: var(--white-color);
+        box-shadow: 0 0 10px var(--section-color);
+    }
+}
+
+// Label
+.label {
+    position: relative;
+    padding-inline-start: 20px;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--body-color);
+    &:before {
+        content: '';
+        position: absolute;
+        top: 3px;
+        inset-inline-start: 0;
+        width: 12px;
+        height: 12px;
+        border-radius: 4px;
+        background-color: var(--body-color);
+    }
+    @include m ('primary') {
+        &:before {
+            background-color: var(--primary-color);
+        }
+    }
+    @include m ('success') {
+        &:before {
+            background-color: var(--success-color);
+        }
+    }
+}
+
+// Tooltip  
+.tooltip {
+    position: relative;
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    padding: 12px 20px;
+    border-radius: 10px;
+    color: var(--white-color);
+    background-color: var(--body-color);
+    &::after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        inset-inline-end: 50%;
+        transform: translateX(50%);
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 10px solid var(--body-color);
+    }
+    @include e ('title') {
+        font-size: 16px;
+        font-weight: 400;
+        color: var(--white-color);
+    }
+    @include e ('text') {
+        font-size: 10px;
+        font-weight: 400;
+        color: var(--secondary-color);
+    }
+
+    @include m ('white') {
+        padding: 15px 52px 15px 18px;
+        background-color: var(--white-color);
+        box-shadow: 0 0 10px var(--section-color);
+        .tooltip__title {
+            color: var(--body-color);
+        }
+        .tooltip__text {
+            color: var(--success-color);
+        }
+        &::after {
+            inset-inline-end: 40px;
+            border-top-color: var(--white-color);
+            box-shadow: 0 5px 10px var(--section-color);
+        }
+    }
+
+}
+
+.pagination {
+    display: flex;
+    gap: 10px;
+    @include e('link') {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 46px;
+        height: 46px;
+        border-radius: 18px;
+        color: var(--white-color);
+        background-color: var(--primary-color);
+        transition: all 0.3s ease;
+        &:hover,
+        &.active {
+            color: var(--primary-color);
+            background-color: var(--primary-color-transparent);
+        }
+    }
+}
+
+// Button
+.btn {
+    display: inline-flex;
+    gap: 10px;
+    align-items: center;
+    padding: 15px 25px;
+    color: var(--body-color);
+    background-color: var(--gray-color);
+    border: none;
+    border-radius: 18px;
+    transition: all 0.3s ease;
+    &.active,
+    &:hover {
+        color: var(--white-color);
+        background-color: var(--primary-color);
+    }
+    @include laptop {
+        font-size: 14px;
+    }
+    @include xs {
+        padding: 10px 20px;
+        &.btn__customizer,
+        &.btn__toggle-sidebar {
+            padding: 10px 15px;
+            border-radius: 12px;
+        }
+    }
+    @include e('customizer') {
+        @include ssm {
+            span {
+                display: none;
+            }
+        }
+    }
+    @include m('sm') {
+        padding: 12px 22px;
+        font-size: 13px;
+    }
+    @include m('transparent') {
+        color: var(--dark-color);
+        background-color: transparent !important;
+        border: 2px solid var(--dark-color);
+        i {
+            color: var(--dark-color);
+        }
+        &.active,
+        &:hover {
+            color: var(--white-color);
+            background-color: var(--dark-color) !important;
+            i {
+                color: var(--white-color);
+            }
+        }
+    }
+    @include m('dark') {
+        color: var(--white-color);
+        background-color: var(--dark-color);
+    }
+    @include m('dark-transparent') {
+        color: var(--body-color);
+        border: 2px solid var(--dark-color);
+        background-color: var(--dark-color-transparent) !important;
+        i {
+            color: var(--dark-color);
+        }
+        &.active,
+        &:hover {
+            color: var(--white-color);
+            background-color: var(--dark-color) !important;
+            i {
+                color: var(--white-color);
+            }
+        }
+    }
+    @include m('primary') {
+        color: var(--white-color);
+        background-color: var(--primary-color) !important;
+    }
+    @include m('primary-transparent') {
+        color: var(--body-color);
+        border: 2px solid var(--primary-color);
+        background-color: var(--primary-color-transparent) !important;
+        i {
+            color: var(--primary-color);
+        }
+        &.active,
+        &:hover {
+            color: var(--white-color);
+            background-color: var(--primary-color) !important;
+            i {
+                color: var(--white-color);
+            }
+        }
+    }
+    @include m('danger') {
+        color: var(--white-color);
+        background-color: var(--danger-color) !important;
+    }
+    @include m('danger-transparent') {
+        color: var(--body-color);
+        border: 2px solid var(--danger-color);
+        background-color: var(--danger-color-transparent) !important;
+        i {
+            color: var(--danger-color);
+        }
+        &.active,
+        &:hover {
+            color: var(--white-color);
+            background-color: var(--danger-color) !important;
+            i {
+                color: var(--white-color);
+            }
+        }
+    }
+    @include m('success') {
+        color: var(--white-color);
+        background-color: var(--success-color) !important;
+    }
+    @include m('success-transparent') {
+        color: var(--body-color);
+        border: 2px solid var(--success-color);
+        background-color: var(--success-color-transparent) !important;
+        i {
+            color: var(--success-color);
+        }
+        &.active,
+        &:hover {
+            color: var(--white-color);
+            background-color: var(--success-color) !important;
+            i {
+                color: var(--white-color);
+            }
+        }
+    }
+    &.nav-link {
+        background-color: var(--gray-color);
+        border-radius: 18px;
+        &.active,
+        &:hover {
+            color: var(--white-color);
+            background-color: var(--primary-color);
+        }
+    }
+}
+
+.logo-dark {
+    display: none;
+}
+
+.btn__toggle-task {
+    position: absolute;
+    right: 20px;
+    top: 0;
+    display: none;
+    z-index: 9;
+    @include ssm {
+        display: block;
+    }
+}
+
+.load-more-btn {
+    display: inline-flex;
+    gap: 10px;
+    padding: 8px 18px 8px 25px;
+    border-radius: 18px;
+    color: var(--white-color);
+    background-color: var(--body-color);
+    i {
+        font-size: 28px;
+        line-height: 1;
+        margin-inline-start: -8px;
+    }
+    &:hover {
+        color: var(--white-color);
+        background-color: var(--primary-color);
+    }
+}
+
+.footer {
+    @include e(wrap) {
+        display: flex;
+        gap: 20px;
+        padding: 20px;
+        padding-inline-end: 65px;
+        justify-content: space-between;
+        @include xxl {
+            padding-inline-end: 20px;
+        }
+
+        @include xs {
+            gap: 20px;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+    @include e(menu) {
+        display: flex;
+        gap: 30px;
+        justify-content: flex-end;
+        @include e(item) {
+            a {
+                color: var(--body-color);
+                padding: 10px 15px;
+                &:hover {
+                    color: var(--primary-color);
+                }
+            }
+        }
+    }
+}
+
+.main-content {
+    display: flex;
+    gap: 70px;
+    justify-content: space-between;
+    padding: 22px;
+    padding-inline-start: 400px;
+    @include desktop {
+        gap: 50px;
+        padding-inline-start: 380px;
+    }
+    @include xxl {
+        gap: 40px;
+        padding-inline-start: 370px;
+    }
+    @include laptop {
+        padding-inline-start: 340px;
+    }
+    @include lg {
+        padding-inline-start: 22px;
+    }
+}

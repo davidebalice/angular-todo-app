@@ -1,0 +1,67 @@
+<a
+  href="javascript:void(0);"
+  class="sidebar__close"
+  (click)="closeModel('show')"
+>
+  <i class="uil uil-times"></i>
+</a>
+<div class="sidebar__wrapper">
+  <div class="sidebar__header">
+    <a [routerLink]="['/']" class="sidebar__logo">
+      <img class="logo-lite" src="assets/img/logoDb.png" alt="logo" />
+      <img class="logo-dark" src="assets/img/logoDbWhite.png" alt="logo" />
+    </a>
+  </div>
+  <nav class="sidebar__menu-wrapper">
+    <ul class="sidebar__menu">
+      <li
+        class="sidebar__menu__item has-children"
+        *ngFor="let item of menuItems"
+      >
+        <a
+          href="javascript:void(0);"
+          class="sidebar__menu__link"
+          *ngIf="item.link"
+          [routerLink]="item.link"
+          (click)="toggleItem($event)"
+        >
+          <mat-icon>{{ item.icon }}</mat-icon>
+          <span>{{ item.label }}</span>
+        </a>
+        <ul class="sidebar__submenu collapse">
+          <li class="sidebar__menu__item" *ngFor="let subitem of item.subItems">
+            <a
+              [routerLink]="subitem.link"
+              routerLinkActive="active"
+              class="sidebar__menu__link"
+              *ngIf="subitem.link"
+              (click)="updateActive($event)"
+              >{{ subitem.label }}</a
+            >
+            <a
+              *ngIf="!subitem.link"
+              class="sidebar__menu__link"
+              (click)="subitem.onclick(eventService)"
+              >{{ subitem.label }}</a
+            >
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+  <div class="sidebar__footer">
+    <p class="sidebar__footer__copyright">©2024 All Rights Reserved</p>
+    <p class="sidebar__footer__author">
+      <a href="https://www.davidebalice.dev" target="_blank"
+        >www.davidebalice.dev</a
+      >
+    </p>
+    <script>
+      const currentYear = new Date().getFullYear();
+      const copyrightElement = document.querySelector(
+        ".sidebar__footer__copyright"
+      );
+      copyrightElement.innerHTML = `©${currentYear} All Rights Reserved`;
+    </script>
+  </div>
+</div>

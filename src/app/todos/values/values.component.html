@@ -1,0 +1,94 @@
+<h5>Products > Values</h5>
+<hr />
+
+<mat-card class="pageCard">
+  <mat-card-content>
+    <div class="buttonContainer">
+      <button (click)="onNewValue()" class="buttonBase buttonHeight">
+        <mat-icon>add_circle</mat-icon>
+        New value
+      </button>
+    </div>
+
+    <hr />
+
+    <div class="inputContainer subCatSelect">
+      <label for="idAttribute" class="labelText">Attribute</label>
+      <form
+        *ngIf="attributeForm"
+        [formGroup]="attributeForm"
+        class="formContainer"
+      >
+        <select
+          type="text"
+          id="idAttribute"
+          formControlName="idAttribute"
+          class="inputField subCatSelect"
+          (change)="onAttributeChange($event.target.value)"
+          *ngIf="selectedIdAttribute >= 1 && attributes$"
+        >
+          <option
+            *ngFor="let attribute of attributes$ | async"
+            [value]="attribute.id"
+            [selected]="attribute.id === selectedIdAttribute"
+          >
+            {{ attribute.name }}
+          </option>
+        </select>
+      </form>
+    </div>
+
+    <hr />
+    <div class="rowTitle">
+      <div>Value</div>
+      <div>Manage</div>
+    </div>
+
+    <div class="row">
+      <ng-container *ngIf="isLoading; else loadedContent">
+        <div class="loadingContainer">
+          <img src="../../../assets/images/loading.svg" />
+        </div>
+      </ng-container>
+
+      <ng-template #loadedContent>
+        <ng-container *ngIf="values.length > 0; else noValue">
+          <div class="col-12" *ngFor="let value of values">
+            <div class="listRow">
+              <div class="listBody">
+                <h5 class="listTitle">{{ value.value }}</h5>
+              </div>
+
+              <div class="cardButtonContainer">
+                <button
+                  class="cardButton"
+                  (click)="onEditValue(value.id)"
+                  matTooltipPosition="above"
+                  matTooltipShowDelay="100"
+                  matTooltipHideDelay="100"
+                  matTooltip="Edit"
+                >
+                  <mat-icon class="editButton">edit</mat-icon>
+                </button>
+
+                <button
+                  class="cardButton cardButtonDelete"
+                  (click)="onDelete(value.id, value.name)"
+                  matTooltipPosition="above"
+                  matTooltipShowDelay="100"
+                  matTooltipHideDelay="100"
+                  matTooltip="Delete"
+                >
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </ng-template>
+      <ng-template #noValue>
+        <div class="noData">No value available.</div>
+      </ng-template>
+    </div>
+  </mat-card-content>
+</mat-card>

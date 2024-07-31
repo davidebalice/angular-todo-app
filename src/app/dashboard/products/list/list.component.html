@@ -1,0 +1,24 @@
+<div class="rowTitle">
+  <div>Photo</div>
+  <div>Name</div>
+  <div>Category</div>
+  <div>Price</div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <ng-container *ngIf="loadedProducts.length > 0; else noProducts">
+      <div class="col-12" *ngFor="let product of loadedProducts">
+        <app-row [product]="product"></app-row>
+      </div>
+    </ng-container>
+
+    <ng-template #noProducts>
+      <div class="noProducts">No products available.</div>
+    </ng-template>
+
+    <div *ngIf="isLoading" class="loadingContainer">
+      <img src="../../../assets/images/loading.svg" />
+    </div>
+  </div>
+</div>

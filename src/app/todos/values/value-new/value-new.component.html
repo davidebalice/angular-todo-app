@@ -1,0 +1,65 @@
+<h5>Products > Values > New</h5>
+<hr />
+
+<mat-card class="pageCard">
+  <mat-card-content>
+    <button type="button" class="buttonBase buttonBack" (click)="onBack()">
+      <mat-icon> chevron_left</mat-icon>
+      Back
+    </button>
+    <div formGroupName="attribute">
+      <form
+        [formGroup]="valueForm"
+        (ngSubmit)="onSubmit()"
+        class="formContainer"
+      >
+        <div class="inputContainer inputContainerFull">
+          <label for="value" class="labelText">Value</label>
+          <input
+            type="text"
+            id="value"
+            formControlName="value"
+            class="inputField"
+          />
+        </div>
+        <div class="inputContainer inputContainerFull">
+          <label for="name" class="labelText">Attribute</label>
+          <select
+            id="idAttribute"
+            formControlName="id"
+            class="inputField subCatSelect"
+            (change)="onAttributeChange($event.target.value)"
+            *ngIf="selectedIdAttribute >= 1 && attributes$"
+          >
+            <option
+              *ngFor="let attribute of attributes$ | async"
+              [value]="attribute.id"
+              [selected]="attribute.id === selectedIdAttribute"
+            >
+              {{ attribute.name }}
+            </option>
+          </select>
+        </div>
+
+        <div class="submitContainer">
+          <button
+            type="button"
+            class="buttonBase buttonCancel"
+            (click)="onCancel()"
+          >
+            <mat-icon>cancel</mat-icon>
+            Cancel
+          </button>
+          <button
+            type="submit"
+            class="buttonBase"
+            [disabled]="!valueForm.valid"
+          >
+            <mat-icon>add_circle</mat-icon>
+            Add value
+          </button>
+        </div>
+      </form>
+    </div>
+  </mat-card-content>
+</mat-card>

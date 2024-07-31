@@ -1,0 +1,148 @@
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.dropdown-toggle::after {
+  display: none;
+}
+a {
+  text-decoration: none;
+}
+.dropdown-menu {
+  border: none;
+}
+.dropdown {
+  display: contents;
+}
+.form-control:focus {
+  box-shadow: none;
+}
+.modal-content {
+  border: none;
+}
+.nav-tabs .nav-link {
+  border: none;
+}
+.nav-tabs .nav-link:focus,
+.nav-tabs .nav-link:hover {
+  border: none;
+}
+.content__todo__header__filter,
+.nav-tabs {
+  border: none;
+}
+.nav-tabs .nav-link.active {
+  background-color: #ab54db26;
+  color: #ab54db;
+}
+.offcanvas.offcanvas-end {
+  width: auto;
+}
+.content__widget__single__content:last-child {
+  margin-bottom: 0;
+}
+.mb-20 {
+  margin-bottom: 20px;
+}
+.content__faq__accordion__item {
+  border-radius: 16px !important;
+  border: none;
+}
+.accordion-button:focus {
+  box-shadow: none !important;
+}
+
+// accordion
+.accordion-body {
+  padding: 0;
+}
+.accordion-button {
+  border-radius: 10px !important;
+}
+.accordion-button:not(.collapsed) {
+  color: var(--body-color);
+  background-color: transparent;
+  box-shadow: none;
+}
+
+// Calendar
+.fc-daygrid-event-dot {
+  display: none;
+}
+.fc-button-group {
+  gap: 12px;
+}
+.fc-button.fc-button-primary {
+  height: auto;
+  margin: 0;
+  padding: 10px 26px;
+  border-radius: 10px !important;
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: capitalize;
+  border: 1px solid var(--section-color);
+  color: var(--body-color) !important;
+  background-color: var(--section-color) !important;
+}
+.fc-button.fc-button-primary:hover,
+.fc-button.fc-button-primary.fc-button-active {
+  border-color: var(--primary-color) !important;
+  background: var(--primary-color-transparent) !important;
+}
+.fc-button.fc-button-primary:focus,
+.fc-button.fc-button-primary.fc-button-active:focus {
+  box-shadow: none !important;
+}
+.fc .fc-button-group > .fc-prevYear-button.fc-button,
+.fc .fc-button-group > .fc-nextYear-button.fc-button,
+.content__calendar__content .calendar .fc-header-toolbar .fc-prev-button:before,
+.content__calendar__content
+  .calendar
+  .fc-header-toolbar
+  .fc-next-button:before {
+  display: none;
+}
+.sidebar__header {
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+  padding-bottom: 30px;
+  display: flex;
+  justify-content: center;
+}
+.sidebar__menu__link {
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+  padding-bottom: 30px;
+  display: flex;
+  justify-content: start;
+  border-radius: 6px !important;
+}
+.sidebar__menu__link.active {
+  background: var(--primary-color) !important;
+  color: #ffffff !important;
+}
+.sidebar__menu__link.active span {
+  background: var(--primary-color) !important;
+  color: #ffffff !important;
+}
+.sidebar__menu__link:hover {
+  background: var(--secondary-color) !important;
+  color: #ffffff !important;
+}
+.sidebar__menu__link:hover span {
+  background: var(--secondary-color) !important;
+  color: #ffffff !important;
+}
+
+.sidebar__menu__link.active .mat-icon {
+  color: #fff !important;
+}
+
+.sidebar__menu__link:hover .mat-icon {
+  color: #fff !important;
+}

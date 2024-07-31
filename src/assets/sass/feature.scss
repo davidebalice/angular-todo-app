@@ -1,0 +1,49 @@
+
+
+// feature style heare]\
+
+
+
+.single-feature-card-area-start{
+    background: #FDFDFD;
+    border-radius: 24px;
+    width: 100%;
+    padding: 40px 30px;
+    position: relative;
+    .top-feature-wrapper{
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        .icon{
+            min-width: 44px;
+            max-width: 44px;
+            height: auto;
+        }
+        .information{
+            .title{
+                font-size: 24px;
+                margin-top: 10px;
+            }
+        }
+    }
+    .space{
+        margin-top: 60px;
+        color: #B9BBBD;
+    }
+    #chart-5,
+    #chart-6,
+    #chart-7,
+    #chart-8{
+        position: absolute;
+        right: 20px;
+        bottom: 0;
+        svg{
+            width: 100px !important;
+            height: auto;
+            path{
+                stroke-width: 14px !important;
+                stroke-linecap: round;
+            }
+        }
+    }
+}

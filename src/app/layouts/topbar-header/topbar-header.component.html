@@ -1,0 +1,31 @@
+<header class="header">
+	<div class="header__wrapper">
+		<div class="header__logo-wrapper">
+			<a [routerLink]="['/']" class="header__logo">
+				<img class="logo-lite" src="assets/img/logo-dark.svg" alt="Header logo" />
+				<img class="logo-dark" src="assets/img/logo-lite.svg" alt="Header logo" />
+			</a>
+		</div>
+		<nav class="header__menu-wrapper">
+			<ul class="header__menu">
+				<li class="header__menu__item has-children" *ngFor="let item of menuItems" (click)="toggleItem($event)">
+					<a href="javascript:void(0);" class="header__menu__link">
+						<img src="{{item.icon}}" alt=""/>
+              			<span>{{item.label}}</span>
+					</a>  
+					<ul class="header__submenu">
+						<li class="header__menu__item" *ngFor="let subitem of item.subItems">
+							<a [routerLink]="subitem.link" routerLinkActive="active" class="header__menu__link"*ngIf="subitem.link">{{subitem.label}}</a>
+							<a href="javascript:void(0);" *ngIf="!subitem.link" class="header__menu__link customizer__btn--top" (click)="subitem.onclick(eventService)">{{subitem.label}}</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</nav>
+		<div class="header__action">
+			<div class="header__action__item">
+				<app-trigger id="offcanvas"></app-trigger>
+			</div> 
+		</div>
+	</div>
+</header>

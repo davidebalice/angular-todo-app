@@ -1,0 +1,27 @@
+.rowTitle > div {
+  text-align: center;
+}
+
+.rowTitle > div:nth-child(1) {
+  width: 10%;
+  max-width:150px;
+}
+
+.rowTitle > div:nth-child(2) {
+  width: 30%;
+  text-align: left;
+}
+
+.rowTitle > div:nth-child(3) {
+  width: 20%;
+}
+
+.rowTitle > div:nth-child(4) {
+  width: 20%;
+}
+
+.rowTitle > div:nth-child(5) {
+  width: 20%;
+  margin-right: 60px;
+  text-align: end;
+}

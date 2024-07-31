@@ -1,0 +1,1 @@
+.rowTitle>div{text-align:center}.rowTitle>div:nth-child(1){width:10%;max-width:150px}.rowTitle>div:nth-child(2){width:40%;text-align:left}.rowTitle>div:nth-child(3){width:20%}.rowTitle>div:nth-child(4){width:20%}.rowTitle>div:nth-child(5){width:10%}.cardContainer{display:flex;flex-direction:row;flex-wrap:wrap;width:100%;gap:1%}/*# sourceMappingURL=list-card.component.css.map */

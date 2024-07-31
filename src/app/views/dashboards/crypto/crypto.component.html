@@ -1,0 +1,429 @@
+<div class="content__wrapper">
+  <div class="content__section-wrapper">
+    <div class="content__feature content__feature--two mb-40">
+      <div class="content__feature__swiper-btn">
+        <div class="swiper-btn swiper-btn-prev">
+          <i class="uil-arrow-left"></i>
+        </div>
+        <div class="swiper-btn swiper-btn-next">
+          <i class="uil-arrow-right"></i>
+        </div>
+      </div>
+      <div class="swiper-container" #userReview>
+        <div class="swiper-wrapper">
+          <div class="swiper-slide" *ngFor="let data of CryptoCoin">
+            <div class="content__feature__card">
+              <div class="content__feature__card__top">
+                <div class="content__feature__card__top__img">
+                 <img src="{{data.icon}}" alt=""/>
+                </div>
+                <div class="content__feature__card__top__content">
+                  <h4 class="content__feature__card__top__title">{{data.icon_name}}</h4>
+                  <p class="content__feature__card__top__subtitle">{{data.icon_type}}</p>
+                </div>
+              </div>
+              <div class="content__feature__card__text">
+                <span class="content__feature__card__price">{{data.price}}</span>
+                <span class="content__feature__card__growth {{data.persantage_type}}">{{data.persantage}}</span>
+              </div>
+              <div class="content__feature__card__img">
+                <img src="{{data.chart}}" alt=""/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content__section content__core mb-40">
+      <div class="content__section__header">
+        <div class="content__section__header__title-part">
+          <h4 class="content__section__header__title">Core Assets</h4>
+        </div>
+      </div>
+      <div class="content__section__content">
+        <div class="content__core__top">
+          <ul class="nav nav-tabs content__core__nav" id="crypto-asset-tab" role="tablist" ngbNav #nav="ngbNav" [(activeId)]="active">
+            <li [ngbNavItem]="1" class="content__core__nav__item" role="presentation">
+              <button ngbNavLink class="content__core__nav__link" id="crypto-bitcoin-tab" data-bs-toggle="tab" data-bs-target="#crypto-bitcoin-content" type="button" role="tab" aria-controls="crypto-bitcoin-content" aria-selected="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                  <path d="M21.3335 12.6668C21.3326 11.5627 20.4375 10.6679 19.3336 10.6667H13.3335V14.6667H19.3336C20.4375 14.6658 21.3326 13.7707 21.3335 12.6668Z" fill="#FFAB2D"/>
+                  <path d="M13.3335 21.3333H19.3336C20.4381 21.3333 21.3335 20.4379 21.3335 19.3335C21.3335 18.2287 20.4381 17.3333 19.3336 17.3333H13.3335V21.3333Z" fill="#FFAB2D"/>
+                  <path d="M16 0C7.16347 0 0 7.16347 0 16C0 24.8365 7.16347 32 16 32C24.8365 32 32 24.8365 32 16C31.9899 7.16765 24.8323 0.0101144 16 0ZM24.0002 19.4284C23.997 21.9522 21.9522 23.997 19.4288 23.9998V25.1428C19.4288 25.774 18.9168 26.2857 18.2859 26.2857C17.6546 26.2857 17.1429 25.774 17.1429 25.1428V23.9998H14.8574V25.1428C14.8574 25.774 14.3454 26.2857 13.7145 26.2857C13.0832 26.2857 12.5716 25.774 12.5716 25.1428V23.9998H9.14311C8.51183 23.9998 8.00017 23.4882 8.00017 22.8572C8.00017 22.226 8.51183 21.7143 9.14311 21.7143H10.2857V10.2857H9.14311C8.51183 10.2857 8.00017 9.77404 8.00017 9.14276C8.00017 8.51148 8.51183 7.99983 9.14311 7.99983H12.5716V6.85724C12.5716 6.22596 13.0832 5.71431 13.7145 5.71431C14.3458 5.71431 14.8574 6.22596 14.8574 6.85724V7.99983H17.1429V6.85724C17.1429 6.22596 17.6546 5.71431 18.2859 5.71431C18.9171 5.71431 19.4288 6.22596 19.4288 6.85724V7.99983C21.9428 7.98936 23.9894 10.0185 24.0002 12.5325C24.0058 13.8638 23.4285 15.1309 22.4202 16C23.4191 16.8594 23.9956 18.1104 24.0002 19.4284Z" fill="#FFAB2D"/>
+                </svg>
+                Bitcoin
+              </button>
+              <ng-template ngbNavContent>
+                <div class="tab-pane content__core__single fade show active" id="crypto-bitcoin-content" role="tabpanel" aria-labelledby="crypto-bitcoin-tab">
+                  <div class="content__core__content__top">
+                    <div class="content__core__content__info">
+                      <div class="content__core__content__info__single">
+                        <span class="content__core__content__info__subtitle">
+                          Bitcoin
+                        </span>
+                        <span class="content__core__content__info__title">
+                          BTC / USD
+                        </span>
+                      </div>
+                      <div class="content__core__content__info__single">
+                        <span class="content__core__content__info__subtitle">
+                          Mark Price
+                        </span>
+                        <span class="content__core__content__info__title">
+                          148.42
+                          <span class="content__core__content__info__growth danger-color">-3.28%</span>
+                        </span>
+                      </div>
+                      <div class="content__core__content__info__single">
+                        <span class="content__core__content__info__subtitle">
+                          Funding Rate
+                        </span>
+                        <span class="content__core__content__info__title">
+                          -0,0252%/hr
+                        </span>
+                      </div>
+                      <div class="content__core__content__info__single">
+                        <span class="content__core__content__info__subtitle">
+                          Volume
+                        </span>
+                        <span class="content__core__content__info__title">
+                          104k
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="content__core__content__chart">
+                    <div id="bitcoin-chart" class="crypto-asset-chart">
+                      <apx-chart
+                        [series]="bitcoinChart.series"
+                        [chart]="bitcoinChart.chart"
+                        [xaxis]="bitcoinChart.xaxis"
+                        [yaxis]="bitcoinChart.yaxis"
+                        [colors]="bitcoinChart.colors"
+                        [fill]="bitcoinChart.fill"
+                        [legend]="bitcoinChart.legend"
+                        [stroke]="bitcoinChart.stroke"
+                        [markers]="bitcoinChart.markers"
+                        [labels]="bitcoinChart.labels"
+                        [dataLabels]="bitcoinChart.dataLabels"
+                        [grid]="bitcoinChart.grid"
+                        [tooltip]="bitcoinChart.tooltip"
+                        [responsive]="bitcoinChart.responsive"
+                      ></apx-chart>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </li>
+            <li [ngbNavItem]="2" class="content__core__nav__item" role="presentation">
+              <button ngbNavLink class="content__core__nav__link" id="crypto-ethererum-tab" data-bs-toggle="tab" data-bs-target="#crypto-ethererum-content" type="button" role="tab" aria-controls="crypto-ethererum-content" aria-selected="false">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                  <path d="M16.5068 18.4978C16.1813 18.6062 15.8187 18.6062 15.4932 18.4978L12 17.3333L16 24L20 17.3333L16.5068 18.4978Z" fill="#00ADA3"/>
+                  <path d="M16 16L20 14.4001L16 8L12 14.4001L16 16Z" fill="#00ADA3"/>
+                  <path d="M16 0C7.16347 0 0 7.16347 0 16C0 24.8365 7.16347 32 16 32C24.8365 32 32 24.8365 32 16C31.9902 7.16765 24.8323 0.00976567 16 0ZM22.7366 15.3684L17.0223 26.797C16.7401 27.3617 16.0534 27.5905 15.489 27.3083C15.2676 27.1977 15.0883 27.0185 14.9777 26.797L9.26343 15.3684C9.08591 15.0119 9.10614 14.5889 9.3168 14.2509L15.0311 5.10814C15.4109 4.57312 16.1521 4.44687 16.6871 4.82668C16.7963 4.90411 16.8915 4.99898 16.9689 5.10814L22.6829 14.2509C22.8939 14.5889 22.9141 15.0119 22.7366 15.3684Z" fill="#00ADA3"/>
+                </svg>
+                Ethereum
+              </button>
+              <ng-template ngbNavContent>
+                <div class="tab-pane content__core__single fade show active" id="crypto-bitcoin-content" role="tabpanel" aria-labelledby="crypto-bitcoin-tab">
+                  <div class="content__core__content__top">
+                    <div class="content__core__content__info">
+                      <div class="content__core__content__info__single">
+                        <span class="content__core__content__info__subtitle">
+                          Ethererum
+                        </span>
+                        <span class="content__core__content__info__title">
+                          ETH / USD
+                        </span>
+                      </div>
+                      <div class="content__core__content__info__single">
+                        <span class="content__core__content__info__subtitle">
+                          Mark Price
+                        </span>
+                        <span class="content__core__content__info__title">
+                          148.42
+                          <span class="content__core__content__info__growth danger-color">-3.28%</span>
+                        </span>
+                      </div>
+                      <div class="content__core__content__info__single">
+                        <span class="content__core__content__info__subtitle">
+                          Funding Rate
+                        </span>
+                        <span class="content__core__content__info__title">
+                          -0,0252%/hr
+                        </span>
+                      </div>
+                      <div class="content__core__content__info__single">
+                        <span class="content__core__content__info__subtitle">
+                          Volume
+                        </span>
+                        <span class="content__core__content__info__title">
+                          104k
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="content__core__content__chart">
+                    <div id="bitcoin-chart" class="crypto-asset-chart">
+                      <apx-chart
+                        [series]="bitcoinChart.series"
+                        [chart]="bitcoinChart.chart"
+                        [xaxis]="bitcoinChart.xaxis"
+                        [yaxis]="bitcoinChart.yaxis"
+                        [colors]="bitcoinChart.colors"
+                        [fill]="bitcoinChart.fill"
+                        [legend]="bitcoinChart.legend"
+                        [stroke]="bitcoinChart.stroke"
+                        [markers]="bitcoinChart.markers"
+                        [labels]="bitcoinChart.labels"
+                        [dataLabels]="bitcoinChart.dataLabels"
+                        [grid]="bitcoinChart.grid"
+                        [tooltip]="bitcoinChart.tooltip"
+                        [responsive]="bitcoinChart.responsive"
+                      ></apx-chart>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </li>
+            <li [ngbNavItem]="3" class="content__core__nav__item" role="presentation">
+              <button ngbNavLink class="content__core__nav__link" id="crypto-litecoin-tab" data-bs-toggle="tab" data-bs-target="#crypto-litecoin-content" type="button" role="tab" aria-controls="crypto-litecoin-content" aria-selected="false">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                  <path d="M16 0C7.16347 0 0 7.16347 0 16C0 24.8365 7.16347 32 16 32C24.8365 32 32 24.8365 32 16C31.9899 7.16765 24.8323 0.0101144 16 0ZM21.7143 24.0002H12.5716C11.9403 24.0002 11.4286 23.4885 11.4286 22.8572C11.4286 22.8032 11.4325 22.7491 11.4401 22.6954L12.3002 16.6738L10.563 17.1084C10.4723 17.1314 10.3792 17.1429 10.2857 17.1429C9.65441 17.1422 9.14345 16.6302 9.1438 15.999C9.1445 15.4751 9.50095 15.0189 10.0091 14.8912L12.649 14.2314L13.7256 6.69506C13.8149 6.07006 14.3939 5.63619 15.0189 5.72547C15.6439 5.81476 16.0778 6.39372 15.9885 7.01872L15.0433 13.6329L19.1515 12.6057C19.7629 12.4498 20.3848 12.8192 20.5403 13.4306C20.6962 14.042 20.3269 14.6638 19.7155 14.8197C19.712 14.8204 19.7085 14.8215 19.705 14.8222L14.6938 16.075L13.8885 21.7143H21.7143C22.3456 21.7143 22.8572 22.226 22.8572 22.8572C22.8572 23.4882 22.3456 24.0002 21.7143 24.0002Z" fill="#374C98"/>
+                </svg>
+                Litecoin
+              </button>
+              <ng-template ngbNavContent>
+                <div class="tab-pane content__core__single fade show active" id="crypto-bitcoin-content" role="tabpanel" aria-labelledby="crypto-bitcoin-tab">
+                  <div class="content__core__content__top">
+                    <div class="content__core__content__info">
+                      <div class="content__core__content__info__single">
+                        <span class="content__core__content__info__subtitle">
+                          Litecoin
+                        </span>
+                        <span class="content__core__content__info__title">
+                          LTC / USD
+                        </span>
+                      </div>
+                      <div class="content__core__content__info__single">
+                        <span class="content__core__content__info__subtitle">
+                          Mark Price
+                        </span>
+                        <span class="content__core__content__info__title">
+                          148.42
+                          <span class="content__core__content__info__growth danger-color">-3.28%</span>
+                        </span>
+                      </div>
+                      <div class="content__core__content__info__single">
+                        <span class="content__core__content__info__subtitle">
+                          Funding Rate
+                        </span>
+                        <span class="content__core__content__info__title">
+                          -0,0252%/hr
+                        </span>
+                      </div>
+                      <div class="content__core__content__info__single">
+                        <span class="content__core__content__info__subtitle">
+                          Volume
+                        </span>
+                        <span class="content__core__content__info__title">
+                          104k
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="content__core__content__chart">
+                    <div id="bitcoin-chart" class="crypto-asset-chart">
+                      <apx-chart
+                        [series]="bitcoinChart.series"
+                        [chart]="bitcoinChart.chart"
+                        [xaxis]="bitcoinChart.xaxis"
+                        [yaxis]="bitcoinChart.yaxis"
+                        [colors]="bitcoinChart.colors"
+                        [fill]="bitcoinChart.fill"
+                        [legend]="bitcoinChart.legend"
+                        [stroke]="bitcoinChart.stroke"
+                        [markers]="bitcoinChart.markers"
+                        [labels]="bitcoinChart.labels"
+                        [dataLabels]="bitcoinChart.dataLabels"
+                        [grid]="bitcoinChart.grid"
+                        [tooltip]="bitcoinChart.tooltip"
+                        [responsive]="bitcoinChart.responsive"
+                      ></apx-chart>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </li>
+          </ul>
+          <div class="content__core__action">
+            <div class="content__core__action__select">
+              <select class="asset_select">
+                <option value="overview">Market Overview</option>
+                <option value="overview1">Overview One</option>
+                <option value="overview2">Overview Two</option>
+                <option value="overview3">Overview Three</option>
+              </select>
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
+                <path d="M13.9873 19.217C13.7177 19.2146 13.4596 19.1076 13.2674 18.9186L3.08562 8.73681C2.90015 8.54478 2.79752 8.28759 2.79984 8.02062C2.80216 7.75366 2.90924 7.49829 3.09802 7.30951C3.2868 7.12073 3.54217 7.01365 3.80914 7.01133C4.0761 7.00901 4.3333 7.11164 4.52533 7.29711L13.9873 16.7591L23.4493 7.29711C23.5432 7.19986 23.6555 7.12229 23.7798 7.06893C23.904 7.01557 24.0376 6.98748 24.1728 6.98631C24.308 6.98513 24.442 7.01089 24.5672 7.06209C24.6923 7.11328 24.806 7.18889 24.9016 7.28449C24.9972 7.38009 25.0728 7.49377 25.124 7.6189C25.1752 7.74403 25.2009 7.8781 25.1998 8.0133C25.1986 8.14849 25.1705 8.2821 25.1171 8.40632C25.0638 8.53054 24.9862 8.64289 24.889 8.73681L14.7071 18.9186C14.515 19.1076 14.2568 19.2146 13.9873 19.217Z" fill="#AB54DB"/>
+              </svg>
+            </div>
+            <div ngbDropdown >
+              <a href="javascript:void(0);" class="content__toggle__btn" ngbDropdownToggle>
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
+                  <path d="M13.9998 8.16667C15.2885 8.16667 16.3332 7.122 16.3332 5.83333C16.3332 4.54467 15.2885 3.5 13.9998 3.5C12.7112 3.5 11.6665 4.54467 11.6665 5.83333C11.6665 7.122 12.7112 8.16667 13.9998 8.16667Z" fill="#A3A3A3"/>
+                  <path d="M13.9998 16.3334C15.2885 16.3334 16.3332 15.2887 16.3332 14C16.3332 12.7114 15.2885 11.6667 13.9998 11.6667C12.7112 11.6667 11.6665 12.7114 11.6665 14C11.6665 15.2887 12.7112 16.3334 13.9998 16.3334Z" fill="#A3A3A3"/>
+                  <path d="M13.9998 24.4999C15.2885 24.4999 16.3332 23.4553 16.3332 22.1666C16.3332 20.8779 15.2885 19.8333 13.9998 19.8333C12.7112 19.8333 11.6665 20.8779 11.6665 22.1666C11.6665 23.4553 12.7112 24.4999 13.9998 24.4999Z" fill="#A3A3A3"/>
+                </svg>
+              </a>
+              <ul class="content__toggle__content" ngbDropdownMenu >
+                <li><a href="javascript:void(0);">Edit</a></li>
+                <li><a href="javascript:void(0);">Delete</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="tab-content content__core__content" id="transaction-content">
+          <div [ngbNavOutlet]="nav" class="mt-2"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content__double-column mb-40">
+      <div class="content__section content__market">
+        <div class="content__section__header">
+          <h4 class="content__section__header__title">Market Previews</h4>
+        </div>
+        <div class="content__section__content content__market__content">
+          <div class="content__market__single" *ngFor="let data of MarketPreviews">
+            <div class="content__market__single__icon">
+              <img src="{{data.icon}}" alt=""/>
+            </div>
+            <div class="content__market__single__wrapper">
+              <div class="content__market__single__content">
+                <h4 class="content__market__single__title">{{data.icon_name}}</h4>
+                <p class="content__market__single__subtitle">{{data.time}}</p>
+              </div>
+              <div class="content__market__single__growth">
+                <span class="content__market__single__growth__amount">{{data.price}}</span>
+                <span class="content__market__single__growth__percent {{data.persantage_type}}">{{data.persantage}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="content__section content__activity">
+        <div class="content__section__header">
+          <div class="content__section__header__title-part">
+            <h4 class="content__section__header__title">Market Activity</h4>
+          </div>
+          <div class="content__section__header__content-part">
+            <div class="content__section__header__btn">
+              <a href="javascript:void(0);" class="content__section__header__link">
+                View More
+              </a>
+            </div>
+          </div>
+          <div ngbDropdown >
+            <a href="javascript:void(0);" class="content__toggle__btn" ngbDropdownToggle>
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
+                <path d="M13.9998 8.16667C15.2885 8.16667 16.3332 7.122 16.3332 5.83333C16.3332 4.54467 15.2885 3.5 13.9998 3.5C12.7112 3.5 11.6665 4.54467 11.6665 5.83333C11.6665 7.122 12.7112 8.16667 13.9998 8.16667Z" fill="#A3A3A3"/>
+                <path d="M13.9998 16.3334C15.2885 16.3334 16.3332 15.2887 16.3332 14C16.3332 12.7114 15.2885 11.6667 13.9998 11.6667C12.7112 11.6667 11.6665 12.7114 11.6665 14C11.6665 15.2887 12.7112 16.3334 13.9998 16.3334Z" fill="#A3A3A3"/>
+                <path d="M13.9998 24.4999C15.2885 24.4999 16.3332 23.4553 16.3332 22.1666C16.3332 20.8779 15.2885 19.8333 13.9998 19.8333C12.7112 19.8333 11.6665 20.8779 11.6665 22.1666C11.6665 23.4553 12.7112 24.4999 13.9998 24.4999Z" fill="#A3A3A3"/>
+              </svg>
+            </a>
+            <ul class="content__toggle__content" ngbDropdownMenu>
+              <li><a href="javascript:void(0);">Edit</a></li>
+              <li><a href="javascript:void(0);">Delete</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="content__section__content">
+          <div id="market-activity-chart">
+            <apx-chart
+              [series]="marketActivityChart.series"
+              [chart]="marketActivityChart.chart"
+              [xaxis]="marketActivityChart.xaxis"
+              [yaxis]="marketActivityChart.yaxis"
+              [colors]="marketActivityChart.colors"
+              [fill]="marketActivityChart.fill"
+              [legend]="marketActivityChart.legend"
+              [stroke]="marketActivityChart.stroke"
+              [markers]="marketActivityChart.markers"
+              [labels]="marketActivityChart.labels"
+              [dataLabels]="marketActivityChart.dataLabels"
+              [grid]="marketActivityChart.grid"
+              [tooltip]="marketActivityChart.tooltip"
+              [responsive]="marketActivityChart.responsive"
+            ></apx-chart>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content__widget content__widget--two">
+    <div class="content__widget__single content__widget__news">
+      <h4 class="content__widget__news__title">All Crypto News Updates</h4>
+      <p class="content__widget__news__subtitle">Read more about crypto informations who helps you manage, organize and control your assets safely</p>
+      <a href="javascript:void(0);" class="btn">
+        Learn More
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+          <path d="M3.5 13H19.09L13.79 18.29C13.6963 18.3829 13.6219 18.4935 13.5711 18.6154C13.5203 18.7373 13.4942 18.868 13.4942 19C13.4942 19.132 13.5203 19.2627 13.5711 19.3845C13.6219 19.5064 13.6963 19.617 13.79 19.71C13.883 19.8037 13.9936 19.8781 14.1154 19.9289C14.2373 19.9796 14.368 20.0058 14.5 20.0058C14.632 20.0058 14.7627 19.9796 14.8846 19.9289C15.0064 19.8781 15.117 19.8037 15.21 19.71L22.21 12.71C22.3037 12.617 22.3781 12.5064 22.4289 12.3845C22.4797 12.2627 22.5058 12.132 22.5058 12C22.5058 11.868 22.4797 11.7373 22.4289 11.6154C22.3781 11.4935 22.3037 11.3829 22.21 11.29L15.21 4.28997C15.1168 4.19673 15.0061 4.12277 14.8843 4.07231C14.7624 4.02185 14.6319 3.99588 14.5 3.99588C14.2337 3.99588 13.9783 4.10167 13.79 4.28997C13.6968 4.38321 13.6228 4.4939 13.5723 4.61572C13.5219 4.73755 13.4959 4.86811 13.4959 4.99997C13.4959 5.26627 13.6017 5.52167 13.79 5.70997L19.09 11H3.5C3.23478 11 2.98043 11.1053 2.79289 11.2929C2.60536 11.4804 2.5 11.7348 2.5 12C2.5 12.2652 2.60536 12.5195 2.79289 12.7071C2.98043 12.8946 3.23478 13 3.5 13V13Z" fill="white"/>
+        </svg>
+      </a>
+    </div>
+    <div class="content__widget__single content__widget__summary">
+      <div class="content__widget__summary__header">
+        <h4 class="content__widget__summary__title">Summary</h4>
+        <div ngbDropdown>
+          <a href="javascript:void(0);" class="content__toggle__btn" ngbDropdownToggle>
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
+              <path d="M13.9998 8.16667C15.2885 8.16667 16.3332 7.122 16.3332 5.83333C16.3332 4.54467 15.2885 3.5 13.9998 3.5C12.7112 3.5 11.6665 4.54467 11.6665 5.83333C11.6665 7.122 12.7112 8.16667 13.9998 8.16667Z" fill="#A3A3A3"/>
+              <path d="M13.9998 16.3334C15.2885 16.3334 16.3332 15.2887 16.3332 14C16.3332 12.7114 15.2885 11.6667 13.9998 11.6667C12.7112 11.6667 11.6665 12.7114 11.6665 14C11.6665 15.2887 12.7112 16.3334 13.9998 16.3334Z" fill="#A3A3A3"/>
+              <path d="M13.9998 24.4999C15.2885 24.4999 16.3332 23.4553 16.3332 22.1666C16.3332 20.8779 15.2885 19.8333 13.9998 19.8333C12.7112 19.8333 11.6665 20.8779 11.6665 22.1666C11.6665 23.4553 12.7112 24.4999 13.9998 24.4999Z" fill="#A3A3A3"/>
+            </svg>
+          </a>
+          <ul class="content__toggle__content" ngbDropdownMenu>
+            <li><a href="javascript:void(0);">Edit</a></li>
+            <li><a href="javascript:void(0);">Delete</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="content__widget__summary__content">
+        <div id="summary-chart">
+          <apx-chart
+              [series]="summaryChart.series"
+              [labels]="summaryChart.labels"
+              [colors]="summaryChart.colors"
+              [plotOptions]="summaryChart.plotOptions"
+              [dataLabels]="summaryChart.dataLabels"
+              [chart]="summaryChart.chart"
+              [responsive]="summaryChart.responsive"
+              [legend]="summaryChart.legend"
+            ></apx-chart>
+        </div>
+      </div>
+    </div>
+    <div class="content__widget__single content__widget__trading">
+      <div class="content__widget__single__header">
+        <h4 class="content__widget__single__title">Recent Trading</h4>
+        <p class="content__widget__single__subtitle">Maiores dicta atque dolorem temporibus</p>
+      </div>
+      <div class="content__widget__trading__content">
+        <div class="content__widget__trading__single" *ngFor="let data of RecentData">
+          <div class="content__widget__trading__single__icon {{data.type}}">
+            <i class="{{data.icon}}"></i>
+          </div>
+          <div class="content__widget__trading__single__wrapper">
+            <div class="content__widget__trading__single__content">
+              <h4 class="content__widget__trading__single__title">{{data.title}}</h4>
+              <p class="content__widget__trading__single__subtitle">{{data.time}}</p>
+            </div>
+            <span class="content__widget__trading__single__growth {{data.type}}-color">{{data.price}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

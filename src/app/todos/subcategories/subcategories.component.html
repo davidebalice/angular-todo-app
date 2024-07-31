@@ -1,0 +1,95 @@
+<h5>Products > Subcategories</h5>
+<hr />
+
+<mat-card class="pageCard">
+  <mat-card-content>
+    <div class="buttonContainer">
+      <button (click)="onNewSubcategory()" class="buttonBase buttonHeight">
+        <mat-icon>add_circle</mat-icon>
+        New subcategory
+      </button>
+    </div>
+
+    <hr />
+
+    <div class="inputContainer subCatSelect">
+      <label for="idCategory" class="labelText">Category</label>
+      <form
+        *ngIf="categoryForm"
+        [formGroup]="categoryForm"
+        class="formContainer"
+      >
+        <select
+          type="text"
+          id="idCategory"
+          formControlName="idCategory"
+          class="inputField subCatSelect"
+          (change)="onCategoryChange($event.target.value)"
+          *ngIf="selectedIdCategory >= 1 && categories$"
+        >
+          <option
+            *ngFor="let category of categories$ | async"
+            [value]="category.id"
+            [selected]="category.id === selectedIdCategory"
+          >
+            {{ category.name }}
+          </option>
+        </select>
+      </form>
+    </div>
+
+    <hr />
+    <div class="rowTitle">
+      <div>Subcategory</div>
+      <div>Manage</div>
+    </div>
+
+    <div class="row">
+      <ng-container *ngIf="isLoading; else loadedContent">
+        <div class="loadingContainer">
+          <img src="../../../assets/images/loading.svg" />
+        </div>
+      </ng-container>
+
+      <ng-template #loadedContent>
+        <ng-container *ngIf="subcategories; else isLoading">
+          <div class="col-12" *ngFor="let subcategory of subcategories">
+            <div class="listRow">
+              <div class="listBody">
+                <h5 class="listTitle">{{ subcategory.name }}</h5>
+              </div>
+
+              <div class="cardButtonContainer">
+                <button
+                  class="cardButton"
+                  (click)="onEditSubcategory(subcategory.id)"
+                  matTooltipPosition="above"
+                  matTooltipShowDelay="100"
+                  matTooltipHideDelay="100"
+                  matTooltip="Edit"
+                >
+                  <mat-icon class="editButton">edit</mat-icon>
+                </button>
+
+                <button
+                  class="cardButton cardButtonDelete"
+                  (click)="onDelete(subcategory.id, subcategory.name)"
+                  matTooltipPosition="above"
+                  matTooltipShowDelay="100"
+                  matTooltipHideDelay="100"
+                  matTooltip="Delete"
+                >
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </ng-template>
+
+      <ng-template #noSubcategory>
+        <div class="noSubcategory">No subcategory available.</div>
+      </ng-template>
+    </div>
+  </mat-card-content>
+</mat-card>

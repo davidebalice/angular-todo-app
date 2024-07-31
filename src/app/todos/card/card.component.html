@@ -1,0 +1,89 @@
+<div class="cardImgContainer">
+  <img
+    [src]="
+      getFullImageUrl(product.imageUrl)
+        | protectedImage
+        | async
+        | defaultImage : 'assets/images/nophoto.jpg'
+    "
+    alt="{{ product.name }}"
+    class="cardImg"
+    (click)="openImageDialog(product.imageUrl, 'products/image')"
+  />
+</div>
+<div class="cardBody">
+  <h5 class="cardTitle">{{ product.name }}</h5>
+  <p class="cardText"><b>Sku:</b> {{ product.sku }}</p>
+
+  <div>{{ product.categoryDto.name }}</div>
+
+  <div>{{ product.price | currencyFormat }}</div>
+</div>
+
+<div class="buttonContainer">
+  <button
+    class="cardButton"
+    matTooltipPosition="above"
+    matTooltipShowDelay="100"
+    matTooltipHideDelay="100"
+    matTooltip="Detail"
+    (click)="openDialog(product.id)"
+  >
+    <mat-icon class="viewButton">article</mat-icon>
+  </button>
+
+  <button
+    class="cardButton"
+    (click)="onEditProduct(product.id)"
+    matTooltipPosition="above"
+    matTooltipShowDelay="100"
+    matTooltipHideDelay="100"
+    matTooltip="Edit"
+  >
+    <mat-icon class="editButton">edit</mat-icon>
+  </button>
+
+  <button
+    class="cardButton"
+    (click)="onAttributeProduct(product.id)"
+    matTooltipPosition="above"
+    matTooltipShowDelay="100"
+    matTooltipHideDelay="100"
+    matTooltip="Attributes"
+  >
+    <mat-icon class="editButton">sell</mat-icon>
+  </button>
+
+  <button
+    class="cardButton"
+    (click)="onPhotoProduct(product.id)"
+    matTooltipPosition="above"
+    matTooltipShowDelay="100"
+    matTooltipHideDelay="100"
+    matTooltip="Photo"
+  >
+    <mat-icon class="editButton">photo_camera</mat-icon>
+  </button>
+
+  <button
+    class="cardButton"
+    (click)="onGalleryProduct(product.id)"
+    matTooltipPosition="above"
+    matTooltipShowDelay="100"
+    matTooltipHideDelay="100"
+    matTooltip="Gallery"
+  >
+    <mat-icon class="editButton">photo_library</mat-icon>
+  </button>
+
+  <button
+    class="cardButton cardButtonDelete"
+    (click)="onDelete(product.id, product.name)"
+    matTooltipPosition="above"
+    matTooltipShowDelay="100"
+    matTooltipHideDelay="100"
+    matTooltip="Delete"
+  >
+    <mat-icon>delete</mat-icon>
+  </button>
+</div>

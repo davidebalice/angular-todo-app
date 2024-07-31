@@ -1,0 +1,123 @@
+<h5>
+  Products > Edit >
+  <span>{{ product?.name || "" }}</span>
+</h5>
+<hr />
+
+<mat-card class="pageCard">
+  <mat-card-content>
+    <button type="button" class="buttonBase buttonBack" (click)="onBack()">
+      <mat-icon> chevron_left</mat-icon>
+      Back
+    </button>
+
+    <div *ngIf="product$ | async as product; else loading">
+      <form
+        *ngIf="productForm"
+        [formGroup]="productForm"
+        (ngSubmit)="onSubmit()"
+        class="formContainer"
+      >
+        <div class="inputContainer">
+          <label for="name" class="labelText">Name of product</label>
+          <input
+            type="text"
+            id="name"
+            formControlName="name"
+            class="inputField"
+          />
+        </div>
+
+        <div class="inputContainer">
+          <label for="idCategory" class="labelText">Category</label>
+          <select
+            type="text"
+            id="idCategory"
+            formControlName="idCategory"
+            class="inputField"
+          >
+            <option
+              *ngFor="let category of categories$ | async"
+              [value]="category.id"
+            >
+              {{ category.name }}
+            </option>
+          </select>
+        </div>
+
+        <div class="inputContainer">
+          <label for="idSubcategory" class="labelText">Subategory</label>
+          <select
+            type="text"
+            id="idSubcategory"
+            formControlName="idSubcategory"
+            class="inputField"
+          >
+            <option
+              *ngFor="let subcategory of subcategories$ | async; else: loading"
+              [value]="subcategory.id"
+            >
+              {{ subcategory.name }}
+            </option>
+          </select>
+        </div>
+
+        <div class="inputContainer">
+          <label for="sku" class="labelText">Sku</label>
+          <input
+            type="text"
+            id="sku"
+            formControlName="sku"
+            class="inputField"
+          />
+        </div>
+
+        <div class="inputContainer">
+          <label for="price" class="labelText">Price</label>
+          <input
+            type="text"
+            id="price"
+            formControlName="price"
+            class="inputField"
+          />
+        </div>
+
+        <div class="inputContainer inputContainerFull">
+          <label for="description" class="labelText">Description</label>
+          <textarea
+            type="text"
+            id="description"
+            class="inputField"
+            formControlName="description"
+            rows="6"
+          ></textarea>
+        </div>
+
+        <div class="submitContainer">
+          <button
+            type="button"
+            class="buttonBase buttonCancel"
+            (click)="onCancel()"
+          >
+            Cancel
+          </button>
+
+          <button
+            type="submit"
+            class="buttonBase"
+            [disabled]="!productForm.valid"
+          >
+            <mat-icon>save</mat-icon>
+            Save
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <ng-template #loading>
+      <div class="loadingContainer">
+        <img src="../../../assets/images/loading.svg" />
+      </div>
+    </ng-template>
+  </mat-card-content>
+</mat-card>

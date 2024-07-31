@@ -1,0 +1,40 @@
+<div class="row">
+  <ng-container *ngIf="isLoading; else loadedContent">
+    <div class="loadingContainer">
+      <img src="../../../assets/images/loading.svg" />
+    </div>
+  </ng-container>
+
+  <ng-template #loadedContent>
+    <ng-container *ngIf="loadedProducts.length > 0; else noProducts">
+      <div class="cardContainer">
+        <div
+          class="column cardRow"
+          fxFlex="100%"
+          fxFlex.gt-sm="49%"
+          fxFlex.gt-md="32%"
+          fxFlex.gt-md="24%"
+          fxFlex.gt-lg="19%"
+          *ngFor="let product of loadedProducts"
+        >
+          <app-card [product]="product"></app-card>
+        </div>
+      </div>
+    </ng-container>
+  </ng-template>
+
+  <div class="customPagination" *ngIf="pagination && totalItems > limit">
+    <mat-paginator
+      [length]="totalItems"
+      [pageSize]="limit"
+      [pageSizeOptions]="[]"
+      (page)="onPageChanged($event)"
+      [showFirstLastButtons]="false"
+    >
+    </mat-paginator>
+  </div>
+
+  <ng-template #noProducts>
+    <div class="noData">No products available.</div>
+  </ng-template>
+</div>

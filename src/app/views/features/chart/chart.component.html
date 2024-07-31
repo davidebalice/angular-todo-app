@@ -1,0 +1,119 @@
+<div class="content__wrapper">
+  <div class="content__section-wrapper">
+    <div class="row">
+      <div class="col-lg-6 mb-40">
+        <div class="content__section content__server-request">
+          <div class="content__section__header">
+            <div class="content__section__header__title-part">
+              <h4 class="content__section__header__title">Server Request</h4>
+            </div>
+          </div>
+          <div class="content__section__content">
+            <div id="line-chart" class="server-request-chart">
+              <apx-chart
+                [series]="serverRequest.series"
+                [chart]="serverRequest.chart"
+                [xaxis]="serverRequest.xaxis"
+                [yaxis]="serverRequest.yaxis"
+                [colors]="serverRequest.colors"
+                [fill]="serverRequest.fill"
+                [legend]="serverRequest.legend"
+                [stroke]="serverRequest.stroke"
+                [markers]="serverRequest.markers"
+                [labels]="serverRequest.labels"
+                [dataLabels]="serverRequest.dataLabels"
+                [grid]="serverRequest.grid"
+                [tooltip]="serverRequest.tooltip"
+                [responsive]="serverRequest.responsive"
+              ></apx-chart>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 mb-40">
+        <div class="content__section">
+          <div id="stack-chart">
+            <apx-chart
+                [series]="stackChart.series"
+                [chart]="stackChart.chart"
+                [xaxis]="stackChart.xaxis"
+                [yaxis]="stackChart.yaxis"
+                [legend]="stackChart.legend"
+                [grid]="stackChart.grid"
+                [tooltip]="stackChart.tooltip"
+                [dataLabels]="stackChart.dataLabels"
+                [plotOptions]="stackChart.plotOptions"
+              ></apx-chart>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 md-mb-40">
+        <div class="content__section content__visitor-count">
+          <div class="content__section__header">
+            <div class="content__section__header__title-part">
+              <h4 class="content__section__header__title">Visitors</h4>
+            </div>
+            <div class="content__section__header__content-part">
+              <div class="content__section__header__btn">
+                <a href="javascript:void(0);" class="content__section__header__link">
+                View More
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="content__section__content">
+            <div class="content__visitor-count__number">
+              <h2 class="content__visitor-count__number__title">98,425k</h2>
+              <div class="content__visitor-count__number__text">
+                <span class="content__visitor-count__number__subtitle">+2.5%</span>
+                <p class="content__visitor-count__number__desc">Than last week</p>
+              </div>
+            </div>
+            <div>
+              <apx-chart
+                [series]="columnChart.series"
+                [chart]="columnChart.chart"
+                [colors]="columnChart.colors"
+                [plotOptions]="columnChart.plotOptions"
+                [dataLabels]="columnChart.dataLabels"
+                [xaxis]="columnChart.xaxis"
+                [yaxis]="columnChart.yaxis"
+                [grid]="columnChart.grid"
+                [tooltip]="columnChart.tooltip"
+              ></apx-chart>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="content__section content__chat-summary">
+          <div class="content__section__header">
+            <div class="content__section__header__title-part">
+              <h4 class="content__section__header__title">Chart Summary</h4>
+            </div>
+            <div class="content__section__header__content-part">
+              <div class="content__section__header__btn">
+                <a href="javascript:void(0);" class="content__section__header__link">
+                Download Report
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="content__section__content">
+            <div id="pie-chart">
+              <apx-chart
+                [series]="pieChart.series"
+                [labels]="pieChart.labels"
+                [colors]="pieChart.colors"
+                [plotOptions]="pieChart.plotOptions"
+                [chart]="pieChart.chart"
+                [responsive]="pieChart.responsive"
+                [legend]="pieChart.legend"
+              ></apx-chart>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

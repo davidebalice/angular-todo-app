@@ -1,0 +1,353 @@
+<div class="content__wrapper">
+  <div class="content__section-wrapper">
+    <div class="content__double-column mb-40">
+      <div class="content__section content__income-count">
+        <div class="content__section__header">
+          <div class="content__section__header__title-part">
+            <h4 class="content__section__header__title">Income</h4>
+          </div>
+        </div>
+        <div class="content__section__content">
+          <div class="content__section__content__top">
+            <div class="content__section__content__top__left">
+            <h4 class="content__section__content__amount increment">
+              <i class="uil uil-angle-up"></i>
+              +4,6%
+            </h4>
+            <p class="content__section__content__subtitle">Bigger than last week</p>
+            </div>
+            <div class="content__section__content__top__right">
+            <h4 class="content__section__content__price">$1,572.68</h4>
+            </div>
+          </div>
+          <div id="income-chart" class="column-chart">
+              <apx-chart
+              [series]="income.series"
+              [chart]="income.chart"
+              [colors]="income.colors"
+              [fill]="income.fill"
+              [plotOptions]="income.plotOptions"
+              [dataLabels]="income.dataLabels"
+              [xaxis]="income.xaxis"
+              [yaxis]="income.yaxis"
+              [grid]="income.grid"
+              [tooltip]="income.tooltip"
+            ></apx-chart>
+          </div>
+        </div>
+      </div>
+      <div class="content__section content__expense-count">
+        <div class="content__section__header">
+          <div class="content__section__header__title-part">
+            <h4 class="content__section__header__title">Expense</h4>
+          </div>
+        </div>
+        <div class="content__section__content">
+          <div class="content__section__content__top">
+            <div class="content__section__content__top__left">
+              <h4 class="content__section__content__amount decrement">
+                <i class="uil uil-angle-down"></i>
+                -2.5%
+              </h4>
+              <p class="content__section__content__subtitle">Bigger than last week</p>
+              </div>
+              <div class="content__section__content__top__right">
+              <h4 class="content__section__content__price">$802.16</h4>
+            </div>
+          </div>
+          <div id="expense-chart">
+            <apx-chart
+              [series]="expense.series"
+              [chart]="expense.chart"
+              [colors]="expense.colors"
+              [fill]="expense.fill"
+              [plotOptions]="expense.plotOptions"
+              [dataLabels]="expense.dataLabels"
+              [xaxis]="expense.xaxis"
+              [yaxis]="expense.yaxis"
+              [grid]="expense.grid"
+              [tooltip]="expense.tooltip"
+            ></apx-chart>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content__section content__transaction">
+      <div class="content__section__header">
+        <div class="content__section__header__title-part">
+          <h4 class="content__section__header__title">All Transaction</h4>
+        </div>
+        <div class="content__section__header__content-part">
+          <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav nav-tabs transaction-tab">
+            <li [ngbNavItem]="1" class="nav-item">
+              <button ngbNavLink class="nav-link" id="transaction-history-tab" data-bs-toggle="tab" data-bs-target="#transaction-history-content" type="button" role="tab" aria-controls="transaction-history-content" aria-selected="true">History</button>
+              <ng-template ngbNavContent>
+                <div class="transaction-content">
+                  <div class="transaction-type">
+                    <div class="transaction-type__single {{data.type}}" *ngFor="let data of HistoryData">
+                      <div class="transaction-type__single__icon">
+                      <i class="{{data.icon}}"></i>
+                      </div>
+                      <div class="transaction-type__single__content">
+                      <h4 class="transaction-type__single__content__title">{{data.title}}</h4>
+                      <p class="transaction-type__single__content__subtitle">{{data.time}}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="transaction-type">
+                    <div class="transaction-type__single" *ngFor="let data of HistoryData">
+                      <div class="transaction-type__single__icon">
+                        <img src="{{data.img}}" alt="user" />
+                      </div>
+                      <div class="transaction-type__single__content">
+                        <h4 class="transaction-type__single__content__title">{{data.name}}</h4>
+                        <p class="transaction-type__single__content__subtitle">{{data.sub_title}}</p>
+                      </div>
+                      <div class="transaction-type__single__rate">
+                        <span class="{{data.price_type}}" *ngIf="data.price_type === 'decrement'">- {{data.price}}</span>
+                        <span class="{{data.price_type}}" *ngIf="data.price_type === 'increment'">+ {{data.price}}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </li>
+            <li [ngbNavItem]="2" class="nav-item">
+              <button ngbNavLink class="nav-link" id="transaction-upcoming-tab" data-bs-toggle="tab" data-bs-target="#transaction-upcoming-content" type="button" role="tab" aria-controls="transaction-upcoming-content" aria-selected="false">Upcoming</button>
+              <ng-template ngbNavContent>
+                <div class="transaction-content">
+                  <div class="transaction-type">
+                    <div class="transaction-type__single {{data.type}}" *ngFor="let data of HistoryData">
+                      <div class="transaction-type__single__icon">
+                      <i class="{{data.icon}}"></i>
+                      </div>
+                      <div class="transaction-type__single__content">
+                      <h4 class="transaction-type__single__content__title">{{data.title}}</h4>
+                      <p class="transaction-type__single__content__subtitle">{{data.time}}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="transaction-type">
+                    <div class="transaction-type__single" *ngFor="let data of HistoryData">
+                      <div class="transaction-type__single__icon">
+                        <img src="{{data.img}}" alt="user" />
+                      </div>
+                      <div class="transaction-type__single__content">
+                        <h4 class="transaction-type__single__content__title">{{data.name}}</h4>
+                        <p class="transaction-type__single__content__subtitle">{{data.sub_title}}</p>
+                      </div>
+                      <div class="transaction-type__single__rate">
+                        <span class="{{data.price_type}}" *ngIf="data.price_type === 'decrement'">- {{data.price}}</span>
+                        <span class="{{data.price_type}}" *ngIf="data.price_type === 'increment'">+ {{data.price}}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </li>
+            <li [ngbNavItem]="3" class="nav-item">
+              <button ngbNavLink class="nav-link" id="transaction-request-tab" data-bs-toggle="tab" data-bs-target="#transaction-request-content" type="button" role="tab" aria-controls="transaction-request-content" aria-selected="false">Request</button>
+              <ng-template ngbNavContent>
+                <div class="transaction-content">
+                  <div class="transaction-type">
+                    <div class="transaction-type__single {{data.type}}" *ngFor="let data of HistoryData">
+                      <div class="transaction-type__single__icon">
+                      <i class="{{data.icon}}"></i>
+                      </div>
+                      <div class="transaction-type__single__content">
+                      <h4 class="transaction-type__single__content__title">{{data.title}}</h4>
+                      <p class="transaction-type__single__content__subtitle">{{data.time}}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="transaction-type">
+                    <div class="transaction-type__single" *ngFor="let data of HistoryData">
+                      <div class="transaction-type__single__icon">
+                        <img src="{{data.img}}" alt="user" />
+                      </div>
+                      <div class="transaction-type__single__content">
+                        <h4 class="transaction-type__single__content__title">{{data.name}}</h4>
+                        <p class="transaction-type__single__content__subtitle">{{data.sub_title}}</p>
+                      </div>
+                      <div class="transaction-type__single__rate">
+                        <span class="{{data.price_type}}" *ngIf="data.price_type === 'decrement'">- {{data.price}}</span>
+                        <span class="{{data.price_type}}" *ngIf="data.price_type === 'increment'">+ {{data.price}}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </li>
+          </ul>
+          <ul class="transaction-filter filter-part">
+            <li>
+              <label for="filterDate" id="content__filter__label" (click)="d.toggle()">
+                <i class="uil-calendar-alt"></i>
+              </label>
+              <input type="date" id="content__filter__date" name="filterDate" ngbDatepicker #d="ngbDatepicker">
+            </li>
+            <li ngbDropdown>
+              <a href="javascript:void(0);" class="content__toggle__btn" ngbDropdownToggle>
+                <i class="uil-search"></i>
+              </a>
+              <div class="content__toggle__content content__header__searchform" ngbDropdownMenu>
+                <input type="text" placeholder="Search" class="content__header__btn">
+                <i class="uil uil-search"></i>
+              </div>
+            </li>
+            <li ngbDropdown>
+              <a href="javascript:void(0);" class="content__toggle__btn" ngbDropdownToggle>
+                <i class="uil-filter"></i>
+              </a>
+              <div class="content__toggle__content filter-popup" ngbDropdownMenu>
+                <a href="javascript:void(0);">Name</a>
+                <a href="javascript:void(0);">Date</a>
+                <a href="javascript:void(0);">Amount</a>
+                <a href="javascript:void(0);">Last Modified</a>
+                <button class="btn btn--sm">Apply Filters</button>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="content__section__content">
+        <div class="tab-content transaction-content" id="transaction-content">
+            <div [ngbNavOutlet]="nav" class="mt-2"></div>
+        </div>
+        <div class="content__section__header__btn">
+          <a href="javascript:void(0);" class="btn load-more-btn">
+            Load More <i class="uil uil-angle-down"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content__widget">
+    <div class="content__widget__single mb-20">
+      <div class="content__widget__single__mastercard">
+        <div class="content__widget__single__mastercard__top">
+          <div class="single-content mb-30">
+            <div class="content__widget__single__mastercard__top__content">
+              <p class="content__widget__single__mastercard__top__subtitle">Your Balance</p>
+              <h2 class="content__widget__single__mastercard__top__title">$ 9,425</h2>
+            </div>
+            <div class="content__widget__single__mastercard__top__icon">
+              <a href="javascript:void(0);">
+                <i class="uil uil-ellipsis-h"></i>
+              </a>
+            </div>
+          </div>
+          <div class="single-content">
+            <div class="content__widget__single__mastercard__top__content">
+              <span>2451 **** **** ****</span>
+            </div>
+            <div class="content__widget__single__mastercard__top__date">
+              <span>02/21</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="content__widget__single__mastercard__bottom single-content">
+          <div class="content__widget__single__mastercard__bottom__content">
+            <p class="content__widget__single__mastercard__bottom__subtitle">Name</p>
+            <h2 class="content__widget__single__mastercard__bottom__title">David Bekam</h2>
+          </div>
+          <div class="content__widget__single__mastercard__bottom__icon">
+            <img src="assets/img/icon/mastercard-icon.svg" alt="mastercard" />
+            <span class="card-name">Mastersef</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content__widget__single mb-20">
+      <div class="content__widget__single__header">
+        <h4 class="content__widget__single__title">Recent Transfer</h4>
+        <p class="content__widget__single__subtitle">Maiores dicta atque dolorem temporibus </p>
+      </div>
+      <div class="content__widget__single__content">
+        <ul class="content__widget__single__transfer-img">
+          <li class="content__widget__single__transfer-img__single trending">
+            <a href="javascript:void(0);" class="content__widget__single__transfer-img__link">
+              <img src="assets/img/avatar/t1.svg" alt="user" />
+            </a>
+          </li>
+          <li class="content__widget__single__transfer-img__single transparent">
+          <a href="javascript:void(0);" class="content__widget__single__transfer-img__link">
+            <img src="assets/img/avatar/t2.svg" alt="user" />
+          </a>
+          </li>
+          <li class="content__widget__single__transfer-img__single trending">
+          <a href="javascript:void(0);" class="content__widget__single__transfer-img__link">
+            <img src="assets/img/avatar/t3.svg" alt="user" />
+          </a>
+          </li>
+          <li class="content__widget__single__transfer-img__single">
+          <a href="javascript:void(0);" class="content__widget__single__transfer-img__link">
+            <i class="uil uil-navigator"></i>
+          </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="content__widget__single">
+      <div class="content__widget__single__header">
+        <h4 class="content__widget__single__title">Spending Categories</h4>
+        <p class="content__widget__single__subtitle">Maiores dicta atque dolorem temporibus</p>
+      </div>
+      <div class="content__widget__single__content">
+        <div class="content__widget__single__progress primary mb-30">
+          <div class="content__widget__single__progress__icon">
+            <i class="uil uil-info-circle"></i>
+          </div>
+          <div class="content__widget__single__progress__text">
+            <h4 class="content__widget__single__progress__title">Installment</h4>
+            <div class="content__widget__single__progressbar">
+              <div class="content__widget__single__progressbar__inner" style="width: 80%;"></div>
+            </div>
+            <p class="content__widget__single__progress__subtitle"><span>$ 420.26 Used</span> /from $ 1,000</p>
+          </div>
+        </div>
+        <div class="content__widget__single__progress success mb-30">
+          <div class="content__widget__single__progress__icon">
+            <i class="uil uil-info-circle"></i>
+          </div>
+          <div class="content__widget__single__progress__text">
+            <h4 class="content__widget__single__progress__title">Restaurant</h4>
+            <div class="content__widget__single__progressbar">
+              <div class="content__widget__single__progressbar__inner" style="width: 80%;"></div>
+            </div>
+            <p class="content__widget__single__progress__subtitle"><span>$ 420.26 Used</span> /from $ 1,000</p>
+          </div>
+        </div>
+        <div class="content__widget__single__progress warning mb-30">
+          <div class="content__widget__single__progress__icon">
+            <i class="uil uil-info-circle"></i>
+          </div>
+          <div class="content__widget__single__progress__text">
+            <h4 class="content__widget__single__progress__title">Transport</h4>
+            <div class="content__widget__single__progressbar">
+              <div class="content__widget__single__progressbar__inner" style="width: 65%;"></div>
+            </div>
+            <p class="content__widget__single__progress__subtitle"><span>$ 420.26 Used</span> /from $ 1,000</p>
+          </div>
+        </div>
+        <div class="content__widget__single__progress info mb-30">
+          <div class="content__widget__single__progress__icon">
+            <i class="uil uil-info-circle"></i>
+          </div>
+          <div class="content__widget__single__progress__text">
+            <h4 class="content__widget__single__progress__title">Holiday</h4>
+            <div class="content__widget__single__progressbar">
+              <div class="content__widget__single__progressbar__inner" style="width: 70%;"></div>
+            </div>
+            <p class="content__widget__single__progress__subtitle"><span>$ 420.26 Used</span> /from $ 1,000</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

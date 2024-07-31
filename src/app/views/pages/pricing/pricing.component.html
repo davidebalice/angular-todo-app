@@ -1,0 +1,47 @@
+<div class="content__pricing">
+    <div class="content__pricing__wrapper">
+        <div class="row">
+            <div class="col-lg-4 mb-40" *ngFor="let data of PriceData">
+                <div class="content__pricing__single" [ngClass]="{'active': data.id == '2'}">
+                    <div class="content__pricing__header">
+                        <span class="content__pricing__badge">{{data.tag}}</span>
+                        <div class="content__pricing__tag">
+                            <span class="content__pricing__currency">$</span>
+                            <span class="content__pricing__amount">{{data.price}}</span>
+                            <span class="content__pricing__period">per month</span>
+                        </div>
+                        <span class="content__pricing__subtitle">Grow your business with ease.</span>
+                    </div>
+                    <div class="content__pricing__body">
+                        <ul class="content__pricing__feature">	
+                            <li class="content__pricing__feature__list active">
+                                <i class="uil-check"></i> 
+                                <span class="content__pricing__feature__text">Business Solution</span>
+                            </li>
+                            <li class="content__pricing__feature__list active">
+                                <i class="uil-check"></i> 
+                                <span class="content__pricing__feature__text">24/7 Consultant Service</span>
+                            </li>
+                            <li class="content__pricing__feature__list">
+                                <i class="uil-check"></i> 
+                                <span class="content__pricing__feature__text">Great Customer Support</span>
+                            </li>
+                            <li class="content__pricing__feature__list">
+                                <i class="uil-check"></i> 
+                                <span class="content__pricing__feature__text">Market Growth Solution</span>
+                            </li>
+                            <li class="content__pricing__feature__list">
+                                <i class="uil-check"></i> 
+                                <span class="content__pricing__feature__text">24/7 Consultant Service</span>
+                            </li>
+                        </ul>
+                        <div class="content__pricing__btn-part">
+                            <a class="content__pricing__btn" href="javascript:void(0);">Try for Free</a>
+                        </div>
+                        <span class="content__pricing__profit">$999 billed annually. Save $189.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

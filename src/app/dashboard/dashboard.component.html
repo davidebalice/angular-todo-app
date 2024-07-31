@@ -1,0 +1,84 @@
+<div class="row">
+  <div class="col-12 col-lg-12 col-xxl-4 d-flex">
+    <mat-card class="rounded-4 w-100 overflowHidden">
+      <mat-card-content style="padding: 0">
+        <div class="dashboard">
+          <div class="dashboardBody">
+            <h4 class="mb-0">Products Admin panel</h4>
+            <br />
+            <h5 class="mb-0">developed in Angular - Spring Boot</h5>
+            <br />
+            <img src="assets/images/angular-spring.png" width="140" alt="" />
+          </div>
+
+          <p class="dashboardFooter">www.davidebalice.dev</p>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="col-12 col-lg-6 col-xxl-4 d-flex">
+    <mat-card class="rounded-4 w-100">
+      <mat-card-content style="height: 100%">
+        <div class="demoContainer">
+          <span class="demoText1">DEMO MODE</span>
+          <span class="demoText2"
+            >Demo mode is active, crud operations 
+            <br />
+            (write, update, delete) are
+            not allowed</span
+          >
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="col-12 col-lg-6 col-xxl-4 d-flex">
+    <mat-card class="rounded-4 w-100">
+      <mat-card-content style="height: 100%">
+        <div class="mb-3 githubContainer">
+          <img src="../../assets/images/github.png" class="github" />
+
+          <div class="githubButtonContainer">
+            <div class="dashButton">
+              <a
+                href="https://github.com/davidebalice/spring-boot3-rest-api-starter"
+                target="_blank"
+                >Backend</a
+              >
+            </div>
+            <div class="dashButton">
+              <a
+                href="https://github.com/davidebalice/angular-products-admin-panel"
+                target="_blank"
+                >Frontend</a
+              >
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+<!--end row-->
+
+<div class="row">
+  <div class="col-12 col-xxl-12 d-flex">
+    <mat-card class="rounded-4 w-100">
+      <mat-card-content>
+        <div
+          class="d-flex flex-row gap-3 align-items-center justify-content-between"
+        >
+          <div class="">
+            <h5 class="">Last products</h5>
+          </div>
+        </div>
+        <br /><br />
+        <div class="row">
+          <app-list-home [limit]="6"></app-list-home>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+<!--end row-->

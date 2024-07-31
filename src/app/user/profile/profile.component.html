@@ -1,0 +1,317 @@
+<div *ngIf="user$ | async as user; else loading">
+  <mat-card class="rounded-4">
+    <mat-card-content class="p-4">
+      <div
+        class="pt-5 d-flex flex-column flex-lg-row align-items-start justify-content-between gap-4"
+      >
+        <div class="">
+          <h3 class="mb-2">{{ user.name }} {{ user.surname }}</h3>
+          <p class="mb-1">{{ user.email }}</p>
+          <div
+            class="d-flex align-items-center flex-column flex-lg-row gap-3 mt-3"
+          ></div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <div class="row">
+    <div class="col-12 col-xl-8">
+      <mat-card class="rounded-4">
+        <mat-card-content class="p-4">
+          <form *ngIf="userForm" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+            <div
+              class="d-flex flex-row gap-3 align-items-center justify-content-between mb-3"
+            >
+              <div class="">
+                <h5 class="">Edit Profile</h5>
+              </div>
+              <div>
+                <button mat-icon-button [matMenuTriggerFor]="menu">
+                  <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu" class="rounded-4">
+                  <button mat-menu-item>
+                    <mat-icon class="material-icons-outlined"
+                      >visibility</mat-icon
+                    >
+                    <span>View</span>
+                  </button>
+                  <button mat-menu-item>
+                    <mat-icon class="material-icons-outlined">edit</mat-icon>
+                    <span>Edit</span>
+                  </button>
+                  <button mat-menu-item>
+                    <mat-icon class="material-icons-outlined">delete</mat-icon>
+                    <span>Delete</span>
+                  </button>
+                </mat-menu>
+              </div>
+            </div>
+
+            <div class="row g-3">
+              <div class="col-12 col-md-6">
+                <mat-form-field class="w-100" appearance="outline">
+                  <mat-label>Username</mat-label>
+                  <input matInput placeholder="Ex. Jhon" value="deo.jhon" />
+                </mat-form-field>
+              </div>
+              <div class="col-12 col-md-6">
+                <mat-form-field class="w-100" appearance="outline">
+                  <mat-label>Email</mat-label>
+                  <input
+                    matInput
+                    placeholder="Ex. xyz@.com"
+                    value="jhon@xyz.com"
+                  />
+                </mat-form-field>
+              </div>
+              <div class="col-12 col-md-6">
+                <mat-form-field class="w-100" appearance="outline">
+                  <mat-label>Name</mat-label>
+                  <input
+                    matInput
+                    formControlName="name"
+                    name="name"
+                    value="{{ user.name }}"
+                  />
+                </mat-form-field>
+              </div>
+              <div class="col-12 col-md-6">
+                <mat-form-field class="w-100" appearance="outline">
+                  <mat-label>Surname</mat-label>
+                  <input
+                    matInput
+                    id="surname"
+                    formControlName="surname"
+                    name="surname"
+                    value="{{ user.surname }}"
+                  />
+                </mat-form-field>
+              </div>
+              <div class="col-12 col-md-12">
+                <mat-form-field class="w-100" appearance="outline">
+                  <mat-label>Phone</mat-label>
+                  <input
+                    matInput
+                    placeholder="Ex. 88XX25X65"
+                    value="+91-9945XX26XX"
+                  />
+                </mat-form-field>
+              </div>
+              <div class="col-12 col-md-12">
+                <mat-form-field class="w-100" appearance="outline">
+                  <mat-label>Password</mat-label>
+                  <input matInput placeholder="Ex. @#45gh" value="Password" />
+                </mat-form-field>
+              </div>
+              <div class="col-12 col-md-12">
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>DOB</mat-label>
+                  <input matInput [matDatepicker]="picker3" />
+                  <mat-hint>MM/DD/YYYY</mat-hint>
+                  <mat-datepicker-toggle
+                    matSuffix
+                    [for]="picker3"
+                  ></mat-datepicker-toggle>
+                  <mat-datepicker #picker3></mat-datepicker>
+                </mat-form-field>
+              </div>
+              <div class="col-12 col-md-12">
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>Country</mat-label>
+                  <mat-select>
+                    <mat-option>None</mat-option>
+                    <mat-option
+                      *ngFor="let country of countries"
+                      [value]="country"
+                      >{{ country }}</mat-option
+                    >
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-12 col-md-5">
+                <mat-form-field class="w-100" appearance="outline">
+                  <mat-label>City</mat-label>
+                  <input
+                    matInput
+                    placeholder="Enter City Name"
+                    value="New York"
+                  />
+                </mat-form-field>
+              </div>
+              <div class="col-12 col-md-4">
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>State</mat-label>
+                  <mat-select>
+                    <mat-option>None</mat-option>
+                    <mat-option *ngFor="let state of states" [value]="state">{{
+                      state
+                    }}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-12 col-md-3">
+                <mat-form-field class="w-100" appearance="outline">
+                  <mat-label>Zip</mat-label>
+                  <input matInput placeholder="Zip Code" value="200100" />
+                </mat-form-field>
+              </div>
+              <div class="col-12 col-md-12">
+                <mat-form-field class="w-100" appearance="outline">
+                  <mat-label>About Me</mat-label>
+                  <textarea
+                    matInput
+                    placeholder="Ex. It makes me feel..."
+                    value="A beautiful premium dashboard for Angular Material."
+                  ></textarea>
+                </mat-form-field>
+              </div>
+              <div class="col-12 col-md-12">
+                <div class="d-flex gap-3">
+                  <button mat-flat-button color="primary" class="px-4">
+                    Update Profile
+                  </button>
+                  <button mat-stroked-button class="px-4">Reset</button>
+                </div>
+              </div>
+            </div>
+            <!--end row-->
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="col-12 col-xl-4">
+      <mat-card class="rounded-4">
+        <mat-card-content class="p-4">
+          <div
+            class="d-flex flex-row gap-3 align-items-center justify-content-between mb-3"
+          >
+            <div class="">
+              <h5 class="">About</h5>
+            </div>
+            <div>
+              <button mat-icon-button [matMenuTriggerFor]="menu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu" class="rounded-4">
+                <button mat-menu-item>
+                  <mat-icon class="material-icons-outlined"
+                    >visibility</mat-icon
+                  >
+                  <span>View</span>
+                </button>
+                <button mat-menu-item>
+                  <mat-icon class="material-icons-outlined">edit</mat-icon>
+                  <span>Edit</span>
+                </button>
+                <button mat-menu-item>
+                  <mat-icon class="material-icons-outlined">delete</mat-icon>
+                  <span>Delete</span>
+                </button>
+              </mat-menu>
+            </div>
+          </div>
+          <div class="full-info">
+            <div class="info-list d-flex flex-column gap-3">
+              <div class="info-list-item d-flex align-items-center gap-3">
+                <span class="material-icons-outlined">account_circle</span>
+                <p>Full Name: Jhon Deo</p>
+              </div>
+              <div class="info-list-item d-flex align-items-center gap-3">
+                <span class="material-icons-outlined">done</span>
+                <p>Status: active</p>
+              </div>
+              <div class="info-list-item d-flex align-items-center gap-3">
+                <span class="material-icons-outlined">code</span>
+                <p>Role: Developer</p>
+              </div>
+              <div class="info-list-item d-flex align-items-center gap-3">
+                <span class="material-icons-outlined">flag</span>
+                <p>Country: USA</p>
+              </div>
+              <div class="info-list-item d-flex align-items-center gap-3">
+                <span class="material-icons-outlined">language</span>
+                <p>Language: English</p>
+              </div>
+              <div class="info-list-item d-flex align-items-center gap-3">
+                <span class="material-icons-outlined">send</span>
+                <p>Email: jhon.xyz</p>
+              </div>
+              <div class="info-list-item d-flex align-items-center gap-3">
+                <span class="material-icons-outlined">call</span>
+                <p>Phone: (124) 895-6724</p>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="d-flex flex-row gap-3 align-items-center justify-content-between mb-3 mt-5"
+          >
+            <div class="">
+              <h5 class="">Social Accounts</h5>
+            </div>
+            <div>
+              <button mat-icon-button [matMenuTriggerFor]="menu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu" class="rounded-4">
+                <button mat-menu-item>
+                  <mat-icon class="material-icons-outlined"
+                    >visibility</mat-icon
+                  >
+                  <span>View</span>
+                </button>
+                <button mat-menu-item>
+                  <mat-icon class="material-icons-outlined">edit</mat-icon>
+                  <span>Edit</span>
+                </button>
+                <button mat-menu-item>
+                  <mat-icon class="material-icons-outlined">delete</mat-icon>
+                  <span>Delete</span>
+                </button>
+              </mat-menu>
+            </div>
+          </div>
+
+          <div class="accounts d-flex flex-column gap-4">
+            <div class="d-flex align-items-center gap-3">
+              <div class="">
+                <img src="assets/images/app/facebook.png" width="30" alt="" />
+              </div>
+              <div class="flex-grow-1">
+                <h6 class="mb-0">Facebook</h6>
+                <p class="mb-0">.....</p>
+              </div>
+              <div class=""></div>
+            </div>
+            <div class="d-flex align-items-center gap-3">
+              <div class="">
+                <img src="assets/images/app/linkedin.png" width="30" alt="" />
+              </div>
+              <div class="flex-grow-1">
+                <h6 class="mb-0">Linkedin</h6>
+                <p class="mb-0">.....</p>
+              </div>
+              <div class=""></div>
+            </div>
+
+            <div class="d-flex align-items-center gap-3">
+              <div class="">
+                <img src="assets/images/app/instagram.png" width="30" alt="" />
+              </div>
+              <div class="flex-grow-1">
+                <h6 class="mb-0">Instagram</h6>
+                <p class="mb-0">.....</p>
+              </div>
+              <div class=""></div>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
+<ng-template #loading>
+  <p>Caricamento...</p>
+</ng-template>

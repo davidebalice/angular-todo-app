@@ -1,0 +1,105 @@
+<div class="content__wrapper">
+    <div class="content__section-wrapper">
+        <div class="content__section content__section--transparent content__calendar">
+            <button class="btn content__calendar__toggle">
+                <i class="uil-bars"></i> Event List
+            </button>
+            <div class="content__calendar__sidebar">
+                <div class="content__calendar__sidebar__header">
+                    <button class="btn btn--primary btn__add-modal">
+                        <i class="uil-plus"></i> New Event
+                    </button>
+                </div>
+
+                <div class="content__calendar__sidebar__meeting">
+                    <span class="content__calendar__sidebar__meeting__label">My Schedule Today</span>
+                    <div class="content__calendar__sidebar__meeting__single">
+                        <div class="content__calendar__sidebar__meeting__single__text">
+                            <h4 class="content__calendar__sidebar__meeting__single__title">Client Weekly Meeting</h4>
+                            <span class="content__calendar__sidebar__meeting__single__time">09:00 AM - 10:00 AM</span>
+                        </div>
+                        <div class="content__calendar__sidebar__meeting__single__tag">
+                            <a href="javascript:void(0);" class="content__calendar__sidebar__meeting__single__tag__item danger">
+                            Urgent
+                            </a>
+                            <a href="javascript:void(0);" class="content__calendar__sidebar__meeting__single__tag__item success">
+                            Face to face
+                            </a>
+                        </div>
+                        <div class="content__calendar__sidebar__meeting__single__author">
+                            <div class="content__calendar__sidebar__meeting__single__author__img">
+                                <img src="assets/img/avatar/chat/1.svg" alt="avatar">
+                            </div>
+                            <div class="content__calendar__sidebar__meeting__single__author__content">
+                                <div class="content__calendar__sidebar__meeting__single__author__text">
+                                    <span class="content__calendar__sidebar__meeting__single__author__title">John Braun</span>
+                                    <a href="javascript:void(0);" class="content__calendar__sidebar__meeting__single__author__btn">View details</a>
+                                </div>
+                                <div class="content__calendar__sidebar__meeting__single__author__icon">
+                                    <a href="javascript:void(0);">
+                                    <i class="uil-angle-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content__calendar__sidebar__meeting__single">
+                        <div class="content__calendar__sidebar__meeting__single__text">
+                            <h4 class="content__calendar__sidebar__meeting__single__title">Maintenance CenterLoad Balancer</h4>
+                            <span class="content__calendar__sidebar__meeting__single__time">09:00 AM - 10:30 AM</span>
+                        </div>
+                        <div class="content__calendar__sidebar__meeting__single__tag">
+                            <a href="javascript:void(0);" class="content__calendar__sidebar__meeting__single__tag__item primary">
+                            Fixing
+                            </a>
+                            <a href="javascript:void(0);" class="content__calendar__sidebar__meeting__single__tag__item warning">
+                            Backend
+                            </a>
+                        </div>
+                    </div>
+                    <div class="content__calendar__sidebar__meeting__single">
+                        <div class="content__calendar__sidebar__meeting__single__text">
+                            <h4 class="content__calendar__sidebar__meeting__single__title">Check Annual Report</h4>
+                            <span class="content__calendar__sidebar__meeting__single__time">09:00 AM - 10:30 AM</span>
+                        </div>
+                        <div class="content__calendar__sidebar__meeting__single__tag">
+                            <a href="javascript:void(0);" class="content__calendar__sidebar__meeting__single__tag__item info">
+                            Report
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content__calendar__sidebar__bottom">
+                    <button class="btn content__calendar__sidebar__bottom__btn">View More <i class="uil-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="tab-content content__calendar__content">
+                <div class="content__modal__form">
+                    <div class="content__modal__form__header">
+                        <h3 class="content__modal__form__title">Add New Event</h3>
+                        <button class="content__modal__form__close">
+                            <i class="uil-times"></i>
+                        </button>
+                    </div>
+                    <form class="content__modal__form__wrapper">
+                        <div class="content__modal__form__item">
+                            <input type="text" name="content__modal__form__name" class="content__modal__form__input" placeholder="Event Title" />
+                        </div>
+                        <div class="content__modal__form__item">
+                            <textarea name="content__modal__form__desc" class="content__modal__form__input content__modal__form__input--textarea" placeholder="Event Description"></textarea>
+                        </div>
+                        <div class="content__modal__form__item">
+                            <button type="submit" class="content__modal__form__submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+                <div id='calendar' class="calendar">
+                    <full-calendar [options]="calendarOptions"></full-calendar>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

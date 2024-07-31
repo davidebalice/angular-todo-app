@@ -1,0 +1,173 @@
+<div class="content__wrapper">
+    <div class="content__section-wrapper">
+        <div class="content__section content__section--transparent content__todo">
+            <div class="content__todo__content tab-content custom-al" id="todo-task-content">
+                <div class="tab-pane fade show active" id="todo-task-content-important">
+                    <div class="content__todo__header custom-al">
+                        <div class="content__todo__header__title">
+                            <button class="btn btn--primary btn__add-modal" (click)="open(content)"><i class="uil-plus"></i> New Contact</button>
+                        </div>
+                        <ul class="nav nav-tabs todo-tab content__todo__header__filter" id="todo-tab" role="tablist" ngbNav #nav="ngbNav" [(activeId)]="active">
+                            <li>
+                                <button class="btn btn--primary-transparent">Favourites (20)
+                                    <i class="uil uil-heart"></i>
+                                </button>
+                            </li>
+                            <li class="content__todo__header__filter__sortby">
+                                <select>
+                                    <option value="newest">Newest Contacts</option>
+                                    <option value="oldest">Oldest</option>
+                                    <option value="name">Name</option>
+                                </select>
+                                <i class="uil-angle-down"></i>
+                            </li>
+                            <li class="nav-item" role="presentation" [ngbNavItem]="1">
+                                <a ngbNavLink href="javascript:void(0);" id="todo_list_tab" class="" data-bs-toggle="tab" data-bs-target="#todo_list_content" type="button" role="tab" aria-controls="todo_list_content" aria-selected="false">
+                                    <i class="uil-bars"></i>
+                                </a>
+                                <ng-template ngbNavContent>
+                                    <div class="content__section content__form table-responsive">
+                                        <table class="table-reviews-1">
+                                            <thead>
+                                                <tr style="width: 100%;">
+                                                    <th style="width: 20%;">Name</th>
+                                                    <th style="width: 20%;">Designation</th>
+                                                    <th  style="width: 20%;">Company</th>
+                                                    <th style="width: 20%;">Phone</th>
+                                                    <th style="width: 20%;">Email</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="">
+                                                <tr *ngFor="let data of ContactData">
+                                                    <td>
+                                                        <div class="author-area">
+                                                            <div class="profile-picture">
+                                                                <img src="{{data.profile}}" alt="reviews">
+                                                            </div>
+                                                            <p>{{data.name}}</p>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <span class="designation">{{data.designation}}</span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="name">{{data.company}}</span>
+                                                    </td>
+                                                    <td><a href="tel:+4733378901">{{data.phone}}</a></td>
+                                                    <td><a href="mailto:webmaster@example.com">{{data.email}}</a></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </ng-template>
+                            </li>
+                            <li class="nav-item" role="presentation" [ngbNavItem]="2">
+                                <a ngbNavLink href="javascript:void(0);" id="todo_grid_tab" class="" data-bs-toggle="tab" data-bs-target="#todo_grid_content" type="button" role="tab" aria-controls="todo_grid_contant" aria-selected="false">
+                                    <i class="uil-apps"></i>
+                                </a>
+                                <ng-template ngbNavContent>
+                                    <div class="row g-40">
+                                        <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12" *ngFor="let data of ContactData">
+                                            <!-- single contact grid area start -->
+                                            <div class="single-contact-grid-area">
+                                                <div class="top-area">
+                                                    <div class="avatar">
+                                                        <img src="{{data.profile}}" alt="">
+                                                    </div>
+                                                    <div class="action-area" ngbDropdown >
+                                                        <div class="single">
+                                                            <i class="uil uil-heart"></i>
+                                                        </div>
+                                                        <div class="single content__chat__header__filter__btn" ngbDropdownToggle>
+                                                            <i class="uil uil-ellipsis-v"></i>
+                                                        </div>
+                                                        
+                                                        <div class="content__chat__header__filter__content" ngbDropdownMenu >
+                                                            <a class="dropdown-item" href="javascript:void(0);">view</a>
+                                                            <a class="dropdown-item" href="javascript:void(0);">Edit</a>
+                                                            <a class="dropdown-item" href="javascript:void(0);">Details</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="details-area">
+                                                    <h4 class="name">{{data.name}}</h4>
+                                                    <span class="designation">Centra{{data.designation}}</span>
+                                                    <div class="contact-wrapper">
+                                                        <a href="javascript:void(0);" class="single-contact">
+                                                            <i class="uil uil-bag"></i>
+                                                            <p>{{data.company}}</p>
+                                                        </a>
+                                                        <a href="javascript:void(0);" class="single-contact">
+                                                            <i class="uil uil-phone"></i>
+                                                            <p>{{data.phone}}</p>
+                                                        </a>
+                                                        <a href="javascript:void(0);" class="single-contact">
+                                                            <i class="uil uil-envelope"></i>
+                                                            <p>{{data.email}}</p>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- single contact grid area end -->
+                                        </div>
+                                    </div>
+                                </ng-template>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-content transaction-content">
+                        <div [ngbNavOutlet]="nav" class=""></div>
+                    </div>
+                    <div class="content__todo__footer">
+                        <div class="content__todo__footer__text">Showing 4 of 256 data</div>
+                        <div class="content__todo__footer__pagination">
+                            <ul class="pagination">
+                                <li class="pagination__item">
+                                    <a href="javascript:void(0);" class="pagination__link active">1</a>
+                                </li>
+                                <li class="pagination__item">
+                                    <a href="javascript:void(0);" class="pagination__link">2</a>
+                                </li>
+                                <li class="pagination__item">
+                                    <a href="javascript:void(0);" class="pagination__link">3</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>	
+        </div>
+
+        <ng-template #content let-modal>    
+            <div class="content__modal__form active">
+                <div class="content__modal__form__header">
+                    <h3 class="content__modal__form__title">Add New Contact</h3>
+                    <button class="content__modal__form__close" (click)="modal.dismiss('Cross click')">
+                        <i class="uil-times"></i>
+                    </button>
+                </div>
+                <form class="content__modal__form__wrapper">
+                    <div class="content__modal__form__item">
+                        <input type="text" name="content__modal__form__name" class="content__modal__form__input" placeholder="Name" />
+                    </div>
+                    <div class="content__modal__form__item">
+                        <input type="text" name="content__modal__form__name" class="content__modal__form__input" placeholder="Designation" />
+                    </div>
+                    <div class="content__modal__form__item">
+                        <input type="text" name="content__modal__form__name" class="content__modal__form__input" placeholder="Studio Name" />
+                    </div>
+                    <div class="content__modal__form__item">
+                        <input type="text" name="content__modal__form__name" class="content__modal__form__input" placeholder="Phone Number" />
+                    </div>
+                    <div class="content__modal__form__item">
+                        <input type="text" name="content__modal__form__name" class="content__modal__form__input" placeholder="Email Address" />
+                    </div>
+                    <div class="content__modal__form__item">
+                        <button type="submit" class="content__modal__form__submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </ng-template>
+        
+    </div>
+</div>

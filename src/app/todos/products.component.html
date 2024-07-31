@@ -1,0 +1,60 @@
+<h5>Products</h5>
+<hr />
+
+<mat-card class="pageCard">
+  <mat-card-content>
+    <div class="buttonContainer">
+      <div class="buttonContainer2">
+        <button (click)="onNewProduct()" class="buttonBase">
+          <mat-icon>add_circle</mat-icon>
+          New product
+        </button>
+        <div class="viewContainer">
+          <div>View</div>
+          <mat-icon
+            (click)="onChangeView('row')"
+            class="buttonBase buttonView"
+            [ngClass]="{
+              notSelected: visualization === 'grid',
+              buttonBase: true,
+              buttonView: true
+            }"
+            matTooltipPosition="above"
+            matTooltipShowDelay="100"
+            matTooltipHideDelay="100"
+            matTooltip="Row"
+            >view_list</mat-icon
+          >
+
+          <mat-icon
+            (click)="onChangeView('grid')"
+            class="buttonBase buttonView"
+            [ngClass]="{
+              notSelected: visualization === 'row',
+              buttonBase: true,
+              buttonView: true
+            }"
+            matTooltipPosition="above"
+            matTooltipShowDelay="100"
+            matTooltipHideDelay="100"
+            matTooltip="Grid"
+            >grid_view</mat-icon
+          >
+        </div>
+      </div>
+
+      <app-search></app-search>
+    </div>
+    <hr />
+    <app-list-row
+      [pagination]="pagination"
+      [limit]="9"
+      *ngIf="visualization === 'row'"
+    ></app-list-row>
+    <app-list-card
+      [pagination]="pagination"
+      [limit]="9"
+      *ngIf="visualization === 'grid'"
+    ></app-list-card>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,331 @@
+/*---------------------------------------
+#. DarkMode
+---------------------------------------*/
+
+html[data-theme="dark"] {
+  body,
+  .content__authentication,
+  .content__section .transaction-tab .filter-popup,
+  .content__section .transaction-filter .filter-popup,
+  .content__toggle__content,
+  .content__core__nav__link.active,
+  .content__core__nav__link:hover {
+    background: var(--dark-color);
+  }
+  body,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .content__transaction
+    .transaction-content
+    .transaction-type__single__content__title {
+    color: var(--gray-color);
+  }
+
+  .table-reviews-1 tbody tr td a,
+  .kanban-between-area--wrapper-top .left .title,
+  .kanban-between-area--wrapper-top .left p,
+  .kanban-drag-and-drop-area-wrapper .stages .stage.top-stage .stagename {
+    color: #fff;
+  }
+  .kanban-drag-and-drop-area-wrapper {
+    .app {
+      &::-webkit-scrollbar {
+        width: 0px;
+      }
+      &::-webkit-scrollbar:vertical {
+        width: 0px;
+      }
+      &::-webkit-scrollbar:horizontal {
+        width: 0px;
+        height: 7px;
+        background: #0e0e0e;
+      }
+      &::-webkit-scrollbar-track {
+        background: #383838;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: #0e0e0e;
+      }
+    }
+  }
+
+  .logo-dark {
+    display: block;
+  }
+  .logo-lite {
+    display: none;
+  }
+
+  a {
+    color: var(--sec-color);
+    &:hover {
+      color: var(--primary-color);
+    }
+  }
+
+  .btn {
+    color: var(--gray-color);
+    background-color: #222222;
+    &:hover {
+      color: var(--white-color);
+      background-color: var(--primary-color);
+    }
+  }
+  .table-reviews-1 tbody tr {
+    border-top: 1px solid #313131;
+  }
+
+  .table-reviews-1 tbody tr td {
+    border: none;
+    border-radius: 0;
+  }
+
+  .btn__customizer,
+  .content__widget__summary,
+  .content__invoice__chat__content,
+  .content__widget__trading__single,
+  .content__market__single,
+  .single-contact-grid-area,
+  .table-reviews-1,
+  .table-reviews-1 thead tr th,
+  .kanban-drag-and-drop-area-wrapper .CONTENT .deal,
+  .single-feature-card-area-start,
+  .top_area_file__manager,
+  .table-reviews-1 tbody tr td {
+    background: #222222;
+  }
+  .content__todo__sidebar.custom_al__file button.nav-link.active {
+    background: #17161e !important;
+  }
+  .customizer .btn__customizer-close {
+    background-color: var(--dark-color);
+    svg path {
+      fill: var(--gray-color);
+    }
+  }
+  .label {
+    color: var(--sec-color);
+  }
+  .content__header__quickaction__link svg {
+    stroke: var(--sec-color);
+  }
+  .sidebar__footer__title,
+  .btn--transparent i,
+  .btn--dark-transparent i,
+  .content__core__nav__link,
+  .content__feature__swiper-btn .swiper-btn i,
+  .content__pricing__tag,
+  .content__blog_details__comment__form input,
+  .content__blog_details__comment__form textarea,
+  .content__invoice .content__todo__header__title h4,
+  .content__invoice .content__todo__list__single__subtitle,
+  .content__invoice__chat__service select,
+  .content__core__action__select select,
+  .content__invoice__chat__amount input,
+  .content__market__single__growth__amount,
+  .content__core__content__info__title {
+    color: var(--white-color);
+  }
+
+  .customizer {
+    background-color: #222222;
+  }
+
+  .apexcharts-gridline {
+    stroke: var(--dark-color) !important;
+  }
+
+  //Sidebar CSS
+  .sidebar {
+    border-color: var(--body-color);
+    background-image: linear-gradient(var(--dark-color), #222222);
+  }
+  .sidebar__submenu {
+    background: #222222;
+  }
+  .sidebar__menu__link,
+  .content__visitor-count__number__desc,
+  .content__visitor-count__number__subtitle,
+  .content__review__single__content__text,
+  .content__pricing__subtitle,
+  .content__pricing__profit {
+    color: var(--sec-color);
+  }
+  #pie-chart .apexcharts-legend-text {
+    color: var(--sec-color) !important;
+  }
+
+  blockquote,
+  .content__section,
+  .content__feature__card,
+  .content__todo__sidebar,
+  .content__todo__list__single,
+  .content__chat__sidebar,
+  .content__chat__content,
+  .content__chat__list__single,
+  .content__chat__header__filter__content,
+  .content__chat__sidebar__searchform__search,
+  .content__calendar__sidebar,
+  .content__calendar__content,
+  .content__blog__single,
+  .content__blog_details__comment__form input,
+  .content__blog_details__comment__form textarea,
+  .content__faq__accordion__item,
+  .content__pricing__single,
+  .content__testimonial__single,
+  .content__authentication__content,
+  .content__review__single,
+  .content__header__popup,
+  .content__modal__form {
+    background: #222222;
+  }
+
+  .content__chat__list__single__msg,
+  .content__chat__send__input input,
+  .content__calendar__content
+    .calendar
+    .fc-view-container
+    .fc-head
+    .ui-widget-header {
+    color: var(--sec-color);
+    background: var(--desc-color);
+  }
+
+  .content__chat__list__single__title,
+  .content__calendar__content .calendar .fc-more,
+  .content__calendar__content .calendar .fc-popover .fc-title,
+  .content__calendar__content .calendar .fc-header-toolbar .fc-left .ui-button,
+  .content__blog_details__description,
+  blockquote span,
+  .content__blog_details__comment__subtitle,
+  .content__faq__accordion__button,
+  .content__authentication__form-group label,
+  .content__authentication__form-footer,
+  .content__authentication__form-group input::placeholder,
+  .content__authentication__form-submit.return-btn,
+  .content__authentication__desc .verification-number,
+  .content__error__desc,
+  .content__core__content__info__subtitle {
+    color: var(--sec-color);
+  }
+
+  .content__chat__sidebar__tab .nav-item .nav-link.active,
+  .content__chat__sidebar__tab .nav-item .nav-link:hover,
+  .content__invoice__chat__toggler,
+  .content__core__nav__link,
+  .content__feature__swiper-btn .swiper-btn {
+    background: var(--desc-color);
+  }
+
+  .load-more-btn,
+  .content__calendar__content .calendar .fc-popover .fc-header,
+  .content__calendar__content
+    .calendar
+    .fc-header-toolbar
+    .fc-right
+    .fc-button-group
+    .ui-button,
+  .content__form__single__box input,
+  .content__form__single__box textarea,
+  .content__header__searchform,
+  .content__authentication__form-group input,
+  .content__header__popup__title,
+  .content__header__popup__header,
+  .content__header__popup__footer {
+    background: var(--dark-color);
+    color: var(--grayThree-color);
+    border-color: var(--desc-color);
+  }
+  .content__invoice .content__todo__list__single {
+    border-bottom-color: var(--desc-color);
+  }
+  .content__transaction .content__section__header,
+  .content__chat__header,
+  .content__chat__header__filter__content,
+  .content__chat__sidebar__searchform__search,
+  .content__calendar__sidebar__meeting__single,
+  .content__form__single:not(:last-child),
+  .content__market__single,
+  .content__invoice__chat__amount,
+  .content__core__content__info__single {
+    border-color: var(--desc-color);
+  }
+  .content__header__popup:before {
+    border-bottom-color: #222222;
+  }
+
+  .content__transaction .transaction-tab .nav-item .nav-link,
+  .content__widget__categories__single i {
+    color: var(--sec-color);
+    background-color: var(--desc-color);
+  }
+
+  .content__widget__single__progress__subtitle,
+  .content__todo__header__filter select,
+  .content__header__searchform input {
+    color: var(--sec-color);
+  }
+
+  .content__todo__sidebar__tab .nav-item .nav-link,
+  .content__todo__sidebar__text span,
+  .content__todo__footer__text,
+  .content__chat__sidebar__searchform__search input {
+    color: var(--sec-color);
+  }
+
+  .content__chat__sidebar__tab .chat-tab-single__title {
+    color: var(--sec-color);
+  }
+  .content__chat__sidebar__tab .chat-tab-single__subtitle {
+    color: var(--grayThree-color);
+  }
+
+  .content__chat__header__filter li {
+    color: var(--gray-color);
+  }
+
+  .content__pricing__feature__list,
+  .content__calendar__content .calendar .fc-view-container .fc-day-number {
+    color: var(--sec-color);
+  }
+
+  .content__calendar__content .calendar .fc-view-container .ui-widget-content {
+    border-color: var(--sec-color);
+  }
+
+  .tooltip--white::after {
+    box-shadow: unset;
+  }
+
+  .content__authentication__form-social__single svg path,
+  .content__invoice__chat__toggler svg path {
+    fill: var(--white-color);
+  }
+
+  .content__invoice__chat__toggler:hover svg path {
+    fill: var(--primary-color);
+  }
+
+  .content__feature__swiper-btn .swiper-btn:hover {
+    background: var(--primary-color);
+  }
+
+  .ui-datepicker {
+    background: var(--dark-color);
+    border-color: var(--desc-color) !important;
+  }
+  .ui-datepicker th,
+  .ui-datepicker .ui-datepicker-title {
+    color: var(--sec-color);
+  }
+  .ui-state-default,
+  .ui-widget-content .ui-state-default {
+    color: var(--sec-color);
+    background: #222222;
+    border-color: #222222;
+  }
+}

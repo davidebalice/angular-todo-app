@@ -1,0 +1,63 @@
+<h5>
+  Products > Set attributes
+  <span>{{ product?.name || "" }}</span>
+</h5>
+
+<hr />
+
+<mat-card class="pageCard">
+  <mat-card-content>
+    <button type="button" class="buttonBase buttonBack" (click)="onBack()">
+      <mat-icon> chevron_left</mat-icon>
+      Back
+    </button>
+    <div class="rowTitle">
+      <div>Attribute & values</div>
+    </div>
+
+    <div class="row">
+      <ng-container *ngIf="isLoading; else loadedContent">
+        <div class="loadingContainer">
+          <img src="../../../assets/images/loading.svg" />
+        </div>
+      </ng-container>
+
+      <ng-template #loadedContent>
+        <ng-container *ngIf="attributes.length > 0; else noAttribute">
+          <div class="col-12" *ngFor="let attribute of attributes">
+            <div class="listRow">
+              <div class="listBody">
+                <h5 class="listTitle">
+                  {{ attribute.name }}
+
+                  <ul class="valuesContainer">
+                    <li *ngFor="let value of attribute.values">
+                      <input
+                        type="checkbox"
+                        *ngIf="settedAttributes"
+                        [value]="value.id"
+                        [checked]="
+                          isAttributeValueSelected(attribute.id, value.id)
+                        "
+                        (change)="
+                          handleCheckboxChange(
+                            attribute.id,
+                            value.id,
+                            $event.target.checked
+                          )
+                        "
+                      />{{ value.value }}
+                    </li>
+                  </ul>
+                </h5>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </ng-template>
+      <ng-template #noAttribute>
+        <div class="noData">No attribute available.</div>
+      </ng-template>
+    </div>
+  </mat-card-content>
+</mat-card>

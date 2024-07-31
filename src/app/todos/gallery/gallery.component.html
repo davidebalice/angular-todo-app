@@ -1,0 +1,87 @@
+<h5>Products > Gallery > {{ product.name && product.name }}</h5>
+<hr />
+
+<mat-card class="pageCard">
+  <mat-card-content>
+    <button type="button" class="buttonBase buttonBack" (click)="onBack()">
+      <mat-icon> chevron_left</mat-icon>
+      Back
+    </button>
+    <div class="row" *ngIf="product$ | async as product; else loading">
+      <div class="row">
+        <div class="col-xs-12">
+          <form
+            *ngIf="productForm"
+            [formGroup]="productForm"
+            (ngSubmit)="onSubmit()"
+          >
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="form-group fileInputContainer">
+                  <div class="uploadContainer">
+                    <input
+                      type="file"
+                      id="images"
+                      formControlName="images"
+                      name="images"
+                      class="fileInputLabel"
+                      multiple
+                      accept="image/*"
+                      (change)="onFilesSelected($event)"
+                    />
+                    <label for="images" class="fileInputButton">
+                      <mat-icon>attach_file</mat-icon>
+                      Select files
+                    </label>
+                    <span class="fileInputLabel" *ngIf="selectedFiles.length">
+                      {{ selectedFiles.length }} files selected
+                    </span>
+                    <span class="fileInputLabel" *ngIf="!selectedFiles.length">
+                      No files selected
+                    </span>
+                  </div>
+                  <button
+                    type="submit"
+                    class="btn btn-success buttonBase"
+                    [disabled]="submitting"
+                  >
+                    <mat-icon>upload</mat-icon>
+                    <span *ngIf="!submitting">Upload</span>
+                    <mat-spinner *ngIf="submitting" diameter="20"></mat-spinner>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="row galleryContainer">
+          <div
+            class="galleryItem img-thumbnail"
+            *ngFor="let image of uploadedImages; else: loading"
+          >
+            <img
+              [src]="
+                getFullImageUrl(image.url)
+                  | protectedImage
+                  | async
+                  | defaultImage : 'assets/images/nophoto.jpg'
+              "
+              (click)="openImageDialog(image.url, 'products/gallery')"
+              class="galleryImg"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #loading>
+      <div class="loadingContainer">
+        <img src="../../../assets/images/loading.svg" />
+      </div>
+    </ng-template>
+  </mat-card-content>
+</mat-card>

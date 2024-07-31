@@ -1,0 +1,78 @@
+<h5>Products > Photo > {{ product.name && product.name }}</h5>
+<hr />
+
+<mat-card class="pageCard">
+  <mat-card-content>
+    <button type="button" class="buttonBase buttonBack" (click)="onBack()">
+      <mat-icon> chevron_left</mat-icon>
+      Back
+    </button>
+    <div class="row" *ngIf="product$ | async as product; else loading">
+      <div class="row">
+        <div class="col-xs-12">
+          <form
+            *ngIf="productForm"
+            [formGroup]="productForm"
+            (ngSubmit)="onSubmit()"
+          >
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="form-group fileInputContainer">
+                  <div class="uploadContainer">
+                    <input
+                      type="file"
+                      id="image"
+                      formControlName="image"
+                      name="image"
+                      class="fileInputabel"
+                      #image
+                      accept="image/*"
+                      (change)="uploadImage($event)"
+                    />
+                    <label for="file-upload" class="fileInputButton">
+                      <mat-icon>attach_file</mat-icon>
+                      Select file</label
+                    >
+                    <span class="fileInputLabel" id="file-name" *ngIf="file">
+                      {{ file.name }}
+                    </span>
+                    <span class="fileInputLabel" id="file-name" *ngIf="!file">
+                      No file selected
+                    </span>
+                  </div>
+                  <button
+                    type="submit"
+                    class="btn btn-success buttonBase"
+                    [disabled]="submitting"
+                  >
+                    <mat-icon>upload</mat-icon>
+                    <span *ngIf="!submitting">Upload</span>
+                    <mat-spinner *ngIf="submitting" diameter="20"></mat-spinner>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <img
+                  [src]="
+                    getFullImageUrl(imageUrl)
+                      | protectedImage
+                      | async
+                      | defaultImage : 'assets/images/nophoto.jpg'
+                  "
+                  class="img-responsive photo"
+                />
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <ng-template #loading>
+      <div class="loadingContainer">
+        <img src="../../../assets/images/loading.svg" />
+      </div>
+    </ng-template>
+  </mat-card-content>
+</mat-card>

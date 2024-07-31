@@ -1,0 +1,10 @@
+<div mat-dialog-content>
+  <img
+    [src]="getFullImageUrl(data.imageUrl,directory) | protectedImage | async"
+    alt="Image"
+    style="width: 100%; height: auto"
+  />
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Chiudi</button>
+</div>

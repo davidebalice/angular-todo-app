@@ -1,0 +1,67 @@
+<h5>Products > Subcategories > New</h5>
+<hr />
+
+<mat-card class="pageCard">
+  <mat-card-content>
+    <button type="button" class="buttonBase buttonBack" (click)="onBack()">
+      <mat-icon> chevron_left</mat-icon>
+      Back
+    </button>
+
+    <div formGroupName="category" style="width: 100%">
+      <form
+        [formGroup]="subcategoryForm"
+        (ngSubmit)="onSubmit()"
+        class="formContainer"
+      >
+        <div class="inputContainer inputContainerFull">
+          <label for="name" class="labelText">Name of subcategory</label>
+          <input
+            type="text"
+            id="name"
+            formControlName="name"
+            class="inputField"
+          />
+        </div>
+
+        <div class="inputContainer inputContainerFull">
+          <label for="name" class="labelText">Category</label>
+          <select
+            id="idCategory"
+            formControlName="id"
+            class="inputField subCatSelect"
+            (change)="onCategoryChange($event.target.value)"
+            *ngIf="selectedIdCategory >= 1 && categories$"
+          >
+            <option
+              *ngFor="let category of categories$ | async"
+              [value]="category.id"
+              [selected]="category.id === selectedIdCategory"
+            >
+              {{ category.name }}
+            </option>
+          </select>
+        </div>
+
+        <div class="submitContainer">
+          <button
+            type="button"
+            class="buttonBase buttonCancel"
+            (click)="onCancel()"
+          >
+            <mat-icon>cancel</mat-icon>
+            Cancel
+          </button>
+          <button
+            type="submit"
+            class="buttonBase"
+            [disabled]="!subcategoryForm.valid"
+          >
+            <mat-icon>add_circle</mat-icon>
+            Add subcategory
+          </button>
+        </div>
+      </form>
+    </div>
+  </mat-card-content>
+</mat-card>

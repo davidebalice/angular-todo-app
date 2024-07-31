@@ -1,0 +1,617 @@
+<div class="row g-4">
+    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12">
+        <!-- single feature card area wrapper -->
+        <div class="single-feature-card-area-start">
+            <div class="top-feature-wrapper">
+                <div class="icon">
+                    <img src="assets/img/feature/01.png" alt="feature">
+                </div>
+                <div class="information">
+                    <span>Storage</span>
+                    <h5 class="title">Dropbox</h5>
+                </div>
+            </div>
+            <div class="space">120Gb / 250Gb</div>
+            <div id="chart-5">
+                <apx-chart
+                    [series]="storageChart.series"
+                    [chart]="storageChart.chart"
+                    [plotOptions]="storageChart.plotOptions"
+                    [stroke]="storageChart.stroke"
+                    [fill]="storageChart.fill"
+                    [labels]="storageChart.labels"
+                    ></apx-chart>
+            </div>
+        </div>
+        <!-- single feature card area wrapper end -->
+    </div>
+    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12">
+        <!-- single feature card area wrapper -->
+        <div class="single-feature-card-area-start">
+            <div class="top-feature-wrapper">
+                <div class="icon">
+                    <img src="assets/img/feature/02.png" alt="feature">
+                </div>
+                <div class="information">
+                    <span>Storage</span>
+                    <h5 class="title">Google Drive</h5>
+                </div>
+            </div>
+            <div class="space">120Gb / 250Gb</div>
+            <div id="chart-6">
+                <apx-chart
+                    [series]="googleDriveChart.series"
+                    [chart]="googleDriveChart.chart"
+                    [plotOptions]="googleDriveChart.plotOptions"
+                    [stroke]="googleDriveChart.stroke"
+                    [fill]="googleDriveChart.fill"
+                    [labels]="googleDriveChart.labels"
+                    ></apx-chart>
+            </div>
+        </div>
+        <!-- single feature card area wrapper end -->
+    </div>
+    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12">
+        <!-- single feature card area wrapper -->
+        <div class="single-feature-card-area-start">
+            <div class="top-feature-wrapper">
+                <div class="icon">
+                    <img src="assets/img/feature/03.png" alt="feature">
+                </div>
+                <div class="information">
+                    <span>Storage</span>
+                    <h5 class="title">One Drive</h5>
+                </div>
+            </div>
+            <div class="space">120Gb / 250Gb</div>
+            <div id="chart-7">
+                <apx-chart
+                    [series]="oneDriveChart.series"
+                    [chart]="oneDriveChart.chart"
+                    [plotOptions]="oneDriveChart.plotOptions"
+                    [stroke]="oneDriveChart.stroke"
+                    [fill]="oneDriveChart.fill"
+                    [labels]="oneDriveChart.labels"
+                    ></apx-chart>
+            </div>
+        </div>
+        <!-- single feature card area wrapper end -->
+    </div>
+    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12">
+        <!-- single feature card area wrapper -->
+        <div class="single-feature-card-area-start">
+            <div class="top-feature-wrapper">
+                <div class="icon">
+                    <img src="assets/img/feature/04.png" alt="feature">
+                </div>
+                <div class="information">
+                    <span>Storage</span>
+                    <h5 class="title">iCloud</h5>
+                </div>
+            </div>
+            <div class="space">120Gb / 250Gb</div>
+            <div id="chart-8">
+                <apx-chart
+                    [series]="icloudChart.series"
+                    [chart]="icloudChart.chart"
+                    [plotOptions]="icloudChart.plotOptions"
+                    [stroke]="icloudChart.stroke"
+                    [fill]="icloudChart.fill"
+                    [labels]="icloudChart.labels"
+                    ></apx-chart>
+            </div>
+        </div>
+        <!-- single feature card area wrapper end -->
+    </div>
+</div>
+<div class=" table-responsive content__section content__section--transparent content__todo mt-5">
+    <div class="content__todo__sidebar custom_al__file">
+        <div class="content__todo__sidebar__label">
+            <div class="content__todo__sidebar__text" ngbDropdown >
+                <span>Categories</span>
+                <a href="javascript:void(0);" class="content__chat__header__filter__btn active" ngbDropdownToggle>
+                    <i class="uil-ellipsis-h"></i>
+                </a>
+                <div class="content__chat__header__filter__content" ngbDropdownMenu >
+                    <ul class="content__chat__header__filter__content__list">
+                        <li class="content__chat__header__filter__content__list__item">
+                            <a href="javascript:void(0);" class="content__chat__header__filter__content__list__link">Edit</a>
+                        </li>
+                        <li class="content__chat__header__filter__content__list__item">
+                            <a href="javascript:void(0);" class="content__chat__header__filter__content__list__link">Delete</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <ul class="nav nav-tabs content__todo__sidebar__tab mb-20" 
+            id="todo-task-tab" role="tablist" ngbNav #nav="ngbNav" [(activeId)]="active">
+                <li class="nav-item" role="presentation" [ngbNavItem]="1">
+                    <button ngbNavLink class="nav-link active" id="todo-task-tab-important" data-bs-toggle="tab" data-bs-target="#todo-task-content-important" type="button" role="tab" aria-controls="todo-task-content-important" aria-selected="true">
+                        <img src="assets/img/file/01.png" alt="">
+                        All Files
+                    </button>
+                    <ng-template ngbNavContent>
+                        <div class="content__todo__header custom_al__file">
+                            <div class="content__todo__header__title">
+                                <div class="title">
+                                    <i class="uil-info-circle"></i>
+                                    <h4>File</h4>
+                                </div>
+                                <span>Eum fuga consequuntur ut et.</span>
+                            </div>
+                            <ul class="nav nav-tabs todo-tab content__todo__header__filter" id="todo-tab" role="tablist">
+                                <li class="content__todo__header__filter__sortby">
+                                    <select>
+                                        <option value="newest">Recent</option>
+                                        <option value="oldest">Oldest</option>
+                                        <option value="name">Name</option>
+                                    </select>
+                                    <i class="uil-angle-down"></i>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="file_manager_content__body">  
+                            <div class="top_area_file__manager">
+                                <div class="left">
+                                    <div class="image-logo">
+                                        <img src="assets/img/file/07.png" alt="file_manager">
+                                    </div>
+                                    <div class="directory">
+                                        <span>Storage /</span>
+                                        <span>Drive C /</span>
+                                        <span>Libary </span>
+                                    </div>
+                                </div>
+                                <div class="right">
+                                    <div class="search-area d-inline-block" style="position: relative;" ngbDropdown >
+                                        <div class="content__header__quickaction__link" ngbDropdownToggle>
+                                            <i class="uil-search"></i>
+                                        </div>
+                                        <div class="content__header__searchform content__header__popup" ngbDropdownMenu>
+                                            <input type="text" placeholder="Search" class="content__header__btn">
+                                            <i class="uil uil-search"></i>
+                                        </div>
+                                    </div>
+                                    <div class="icons">
+                                        <i class="uil-star"></i>
+                                        <i class="uil-square-full"></i>
+                                    </div>
+                                </div>
+                            </div>          
+                            <div class="mt-4 content__section content__form table-responsive">
+                                <table class="table-reviews-1 custom_filemanager">
+                                    <thead>
+                                        <tr style="width: 100%;">
+                                            <th style="width: 40%;">File Name</th>
+                                            <th style="width: 15%;">File Items</th>
+                                            <th style="width: 30%;">Last Modified</th>
+                                            <th style="width: 15%;">File Size</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="">
+                                        <tr *ngFor="let data of FileData">
+                                            <td>
+                                                <div class="author-area">
+                                                    <div class="profile-picture">
+                                                        <img src="{{data.image}}" alt="reviews">
+                                                    </div>
+                                                    <p>{{data.name}}</p>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <span class="designation">{{data.items}} Folders</span>
+                                            </td>
+                                            <td>
+                                                <span class="name">{{data.time}}min ago</span>
+                                            </td>
+                                            <td><a href="javascript:void(0);">
+                                                {{data.size}} Mb
+                                            </a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </ng-template>
+                </li>
+                <li class="nav-item" role="presentation" [ngbNavItem]="2">
+                    <button ngbNavLink class="nav-link" id="todo-task-tab-completed" data-bs-toggle="tab" data-bs-target="#todo-task-content-completed" type="button" role="tab" aria-controls="todo-task-content-completed" aria-selected="false">
+                        <img src="assets/img/file/02.png" alt="">
+                        Images
+                    </button>
+                    <ng-template ngbNavContent>
+                        <div class="content__todo__header custom_al__file">
+                            <div class="content__todo__header__title">
+                                <div class="title">
+                                    <i class="uil-info-circle"></i>
+                                    <h4>Images</h4>
+                                </div>
+                                <span>Eum fuga consequuntur ut et.</span>
+                            </div>
+                            <ul class="nav nav-tabs todo-tab content__todo__header__filter" id="todo-tab" role="tablist">
+                                <li class="content__todo__header__filter__sortby">
+                                    <select>
+                                        <option value="newest">Recent</option>
+                                        <option value="oldest">Oldest</option>
+                                        <option value="name">Name</option>
+                                    </select>
+                                    <i class="uil-angle-down"></i>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="file_manager_content__body">
+                            <div class="top_area_file__manager">
+                                <div class="left">
+                                    <div class="image-logo">
+                                        <img src="assets/img/file/07.png" alt="file_manager">
+                                    </div>
+                                    <div class="directory">
+                                        <span>Storage /</span>
+                                        <span>Drive H /</span>
+                                        <span>Booking </span>
+                                    </div>
+                                </div>
+                                <div class="right">
+                                    <div class="search-area d-inline-block" style="position: relative;" ngbDropdown >
+                                        <div class="content__header__quickaction__link" ngbDropdownToggle>
+                                            <i class="uil-search"></i>
+                                        </div>
+                                        <div class="content__header__searchform content__header__popup" ngbDropdownMenu>
+                                            <input type="text" placeholder="Search" class="content__header__btn">
+                                            <i class="uil uil-search"></i>
+                                        </div>
+                                    </div>
+                                    <div class="icons">
+                                        <i class="uil-star"></i>
+                                        <i class="uil-square-full"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-4 content__section content__form table-responsive">
+                                <table class="table-reviews-1 custom_filemanager">
+                                    <thead>
+                                        <tr style="width: 100%;">
+                                            <th style="width: 40%;">File Name</th>
+                                            <th style="width: 15%;">File Items</th>
+                                            <th style="width: 30%;">Last Modified</th>
+                                            <th style="width: 15%;">File Size</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="">
+                                        <tr *ngFor="let data of FileData">
+                                            <td>
+                                                <div class="author-area">
+                                                    <div class="profile-picture">
+                                                        <img src="{{data.image}}" alt="reviews">
+                                                    </div>
+                                                    <p>{{data.name}}</p>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <span class="designation">{{data.items}} Folders</span>
+                                            </td>
+                                            <td>
+                                                <span class="name">{{data.time}}min ago</span>
+                                            </td>
+                                            <td><a href="javascript:void(0);">
+                                                {{data.size}} Mb
+                                            </a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </ng-template>
+                </li>
+                <li class="nav-item" role="presentation" [ngbNavItem]="3">
+                    <button ngbNavLink class="nav-link" id="todo-task-tab-removed" data-bs-toggle="tab" data-bs-target="#todo-task-content-removed" type="button" role="tab" aria-controls="todo-task-content-removed" aria-selected="false">
+                        <img src="assets/img/file/03.png" alt="">
+                        Video
+                    </button>
+                    <ng-template ngbNavContent>
+                        <div class="content__todo__header custom_al__file">
+                            <div class="content__todo__header__title">
+                                <div class="title">
+                                    <i class="uil-info-circle"></i>
+                                    <h4>Video</h4>
+                                </div>
+                                <span>Eum fuga consequuntur ut et.</span>
+                            </div>
+                            <ul class="nav nav-tabs todo-tab content__todo__header__filter" id="todo-tab" role="tablist">
+                                <li class="content__todo__header__filter__sortby">
+                                    <select>
+                                        <option value="newest">Recent</option>
+                                        <option value="oldest">Oldest</option>
+                                        <option value="name">Name</option>
+                                    </select>
+                                    <i class="uil-angle-down"></i>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="file_manager_content__body">
+                            <div class="top_area_file__manager">
+                                <div class="left">
+                                    <div class="image-logo">
+                                        <img src="assets/img/file/07.png" alt="file_manager">
+                                    </div>
+                                    <div class="directory">
+                                        <span>Storage /</span>
+                                        <span>Drive B /</span>
+                                        <span>Tutor </span>
+                                    </div>
+                                </div>
+                                <div class="right">
+                                    <div class="search-area d-inline-block" style="position: relative;" ngbDropdown >
+                                        <div class="content__header__quickaction__link" ngbDropdownToggle>
+                                            <i class="uil-search"></i>
+                                        </div>
+                                        <div class="content__header__searchform content__header__popup" ngbDropdownMenu>
+                                            <input type="text" placeholder="Search" class="content__header__btn">
+                                            <i class="uil uil-search"></i>
+                                        </div>
+                                    </div>
+                                    <div class="icons">
+                                        <i class="uil-star"></i>
+                                        <i class="uil-square-full"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-4 content__section content__form table-responsive">
+                                <table class="table-reviews-1 custom_filemanager">
+                                    <thead>
+                                        <tr style="width: 100%;">
+                                            <th style="width: 40%;">File Name</th>
+                                            <th style="width: 15%;">File Items</th>
+                                            <th style="width: 30%;">Last Modified</th>
+                                            <th style="width: 15%;">File Size</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="">
+                                        <tr *ngFor="let data of FileData">
+                                            <td>
+                                                <div class="author-area">
+                                                    <div class="profile-picture">
+                                                        <img src="{{data.image}}" alt="reviews">
+                                                    </div>
+                                                    <p>{{data.name}}</p>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <span class="designation">{{data.items}} Folders</span>
+                                            </td>
+                                            <td>
+                                                <span class="name">{{data.time}}min ago</span>
+                                            </td>
+                                            <td><a href="javascript:void(0);">
+                                                {{data.size}} Mb
+                                            </a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </ng-template>
+                </li>
+                <li class="nav-item" role="presentation" [ngbNavItem]="4">
+                    <button ngbNavLink class="nav-link" id="todo-task-tab-due" data-bs-toggle="tab" data-bs-target="#todo-task-content-due" type="button" role="tab" aria-controls="todo-task-content-due" aria-selected="false">
+                        <img src="assets/img/file/04.png" alt="">
+                        Music
+                    </button>
+                    <ng-template ngbNavContent>
+                        <div class="content__todo__header custom_al__file">
+                            <div class="content__todo__header__title">
+                                <div class="title">
+                                    <i class="uil-info-circle"></i>
+                                    <h4>Music</h4>
+                                </div>
+                                <span>Eum fuga consequuntur ut et.</span>
+                            </div>
+                            <ul class="nav nav-tabs todo-tab content__todo__header__filter" id="todo-tab" role="tablist">
+                                <li class="content__todo__header__filter__sortby">
+                                    <select>
+                                        <option value="newest">Recent</option>
+                                        <option value="oldest">Oldest</option>
+                                        <option value="name">Name</option>
+                                    </select>
+                                    <i class="uil-angle-down"></i>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="file_manager_content__body">
+                            <div class="top_area_file__manager">
+                                <div class="left">
+                                    <div class="image-logo">
+                                        <img src="assets/img/file/07.png" alt="file_manager">
+                                    </div>
+                                    <div class="directory">
+                                        <span>Storage /</span>
+                                        <span>Drive G /</span>
+                                        <span>Cooking </span>
+                                    </div>
+                                </div>
+                                <div class="right">
+                                    <div class="search-area d-inline-block" style="position: relative;" ngbDropdown >
+                                        <div class="content__header__quickaction__link" ngbDropdownToggle>
+                                            <i class="uil-search"></i>
+                                        </div>
+                                        <div class="content__header__searchform content__header__popup" ngbDropdownMenu>
+                                            <input type="text" placeholder="Search" class="content__header__btn">
+                                            <i class="uil uil-search"></i>
+                                        </div>
+                                    </div>
+                                    <div class="icons">
+                                        <i class="uil-star"></i>
+                                        <i class="uil-square-full"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-4 content__section content__form table-responsive">
+                                <table class="table-reviews-1 custom_filemanager">
+                                    <thead>
+                                        <tr style="width: 100%;">
+                                            <th style="width: 40%;">File Name</th>
+                                            <th style="width: 15%;">File Items</th>
+                                            <th style="width: 30%;">Last Modified</th>
+                                            <th style="width: 15%;">File Size</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="">
+                                        <tr *ngFor="let data of FileData">
+                                            <td>
+                                                <div class="author-area">
+                                                    <div class="profile-picture">
+                                                        <img src="{{data.image}}" alt="reviews">
+                                                    </div>
+                                                    <p>{{data.name}}</p>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <span class="designation">{{data.items}} Folders</span>
+                                            </td>
+                                            <td>
+                                                <span class="name">{{data.time}}min ago</span>
+                                            </td>
+                                            <td><a href="javascript:void(0);">
+                                                {{data.size}} Mb
+                                            </a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </ng-template>
+                </li>
+                <li class="nav-item" role="presentation" [ngbNavItem]="5">
+                    <button ngbNavLink class="nav-link" id="todo-task-tab-due" data-bs-toggle="tab" data-bs-target="#todo-task-content-documentation" type="button" role="tab" aria-controls="todo-task-content-documentation" aria-selected="false">
+                        <img src="assets/img/file/05.png" alt="">
+                        Document
+                    </button>
+                    <ng-template ngbNavContent>
+                        <div class="content__todo__header custom_al__file">
+                            <div class="content__todo__header__title">
+                                <div class="title">
+                                    <i class="uil-info-circle"></i>
+                                    <h4>Document</h4>
+                                </div>
+                                <span>Eum fuga consequuntur ut et.</span>
+                            </div>
+                            <ul class="nav nav-tabs todo-tab content__todo__header__filter" id="todo-tab" role="tablist">
+                                <li class="content__todo__header__filter__sortby">
+                                    <select>
+                                        <option value="newest">Recent</option>
+                                        <option value="oldest">Oldest</option>
+                                        <option value="name">Name</option>
+                                    </select>
+                                    <i class="uil-angle-down"></i>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="file_manager_content__body">
+                            <div class="top_area_file__manager">
+                                <div class="left">
+                                    <div class="image-logo">
+                                        <img src="assets/img/file/07.png" alt="file_manager">
+                                    </div>
+                                    <div class="directory">
+                                        <span>Storage /</span>
+                                        <span>Manager A /</span>
+                                        <span>Plugins </span>
+                                    </div>
+                                </div>
+                                <div class="right">
+                                    <div class="search-area d-inline-block" style="position: relative;" ngbDropdown >
+                                        <div class="content__header__quickaction__link" ngbDropdownToggle>
+                                            <i class="uil-search"></i>
+                                        </div>
+                                        <div class="content__header__searchform content__header__popup" ngbDropdownMenu>
+                                            <input type="text" placeholder="Search" class="content__header__btn">
+                                            <i class="uil uil-search"></i>
+                                        </div>
+                                    </div>
+                                    <div class="icons">
+                                        <i class="uil-star"></i>
+                                        <i class="uil-square-full"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-4 content__section content__form table-responsive">
+                                <table class="table-reviews-1 custom_filemanager">
+                                    <thead>
+                                        <tr style="width: 100%;">
+                                            <th style="width: 40%;">File Name</th>
+                                            <th style="width: 15%;">File Items</th>
+                                            <th style="width: 30%;">Last Modified</th>
+                                            <th style="width: 15%;">File Size</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="">
+                                        <tr *ngFor="let data of FileData">
+                                            <td>
+                                                <div class="author-area">
+                                                    <div class="profile-picture">
+                                                        <img src="{{data.image}}" alt="reviews">
+                                                    </div>
+                                                    <p>{{data.name}}</p>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <span class="designation">{{data.items}} Folders</span>
+                                            </td>
+                                            <td>
+                                                <span class="name">{{data.time}}min ago</span>
+                                            </td>
+                                            <td><a href="javascript:void(0);">
+                                                {{data.size}} Mb
+                                            </a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </ng-template>
+                </li>
+            </ul>
+            <div class="content__todo__sidebar__text" ngbDropdown >
+                <span>Go To Folders</span>
+                <a href="javascript:void(0);" class="content__chat__header__filter__btn active" ngbDropdownToggle>
+                    <i class="uil-ellipsis-h"></i>
+                </a>
+                <div class="content__chat__header__filter__content" ngbDropdownMenu >
+                    <ul class="content__chat__header__filter__content__list">
+                        <li class="content__chat__header__filter__content__list__item">
+                            <a href="javascript:void(0);" class="content__chat__header__filter__content__list__link">Edit</a>
+                        </li>
+                        <li class="content__chat__header__filter__content__list__item">
+                            <a href="javascript:void(0);" class="content__chat__header__filter__content__list__link">Delete</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="content__todo__sidebar__label al__file">
+            <ul class="nav nav-tabs content__todo__sidebar__tab" id="todo-task-label" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link primary active" id="team-task-tab" data-bs-toggle="tab" data-bs-target="#team-task-content" type="button" role="tab" aria-controls="team-task-content" aria-selected="true">
+                    <img src="assets/img/file/06.png" alt="">
+                     Assets
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link success" id="low-task-tab" data-bs-toggle="tab" data-bs-target="#low-task-content" type="button" role="tab" aria-controls="low-task-content" aria-selected="false">
+                    <img src="assets/img/file/06.png" alt="">
+                    User Interface Propo...
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link warning" id="medium-task-tab" data-bs-toggle="tab" data-bs-target="#medium-task-content" type="button" role="tab" aria-controls="medium-task-content" aria-selected="false">
+                    <img src="assets/img/file/06.png" alt="">
+                    Documentation of...
+                </button>
+            </li>
+            </ul>
+        </div>
+    </div>
+    <div class="content__todo__content tab-content" id="todo-task-content">
+        <div [ngbNavOutlet]="nav" class=""></div>
+    </div>	
+</div>

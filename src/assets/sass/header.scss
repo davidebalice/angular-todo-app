@@ -1,0 +1,146 @@
+/*---------------------------------------
+#. Header
+---------------------------------------*/
+
+@import "mixins/mixins";
+
+.header {
+    display: none;
+    padding: 20px 0 30px;
+    @include e('wrapper') {
+        width: 100%;
+        display: flex;
+        padding: 0 22px;
+        align-items: center;
+    }
+    @include e('logo-wrapper') {
+        max-width: 310px;
+    }
+    @include e('logo') {
+        display: flex;
+        align-items: center;
+        img {
+            max-height: 50px;
+            max-width: 100%;
+        }
+    }
+    @include e('menu-wrapper') {
+        flex: 1;
+        margin-inline-start: 50px;
+    }
+    @include e('menu') {
+        display: flex;
+        gap: 30px;
+        @include e('item') {
+            position: relative;
+            a {
+                display: flex;
+                gap: 10px;
+                align-items: center;
+                color: var(--body-color);
+                padding: 10px 15px;
+                transition: all 0.3s ease;
+                svg {
+                    width: 20px;
+                    height: 20px;
+                    path {
+                        transition: all 0.3s ease;
+                    }
+                }
+                &.active,
+                &:hover {
+                    color: var(--primary-color);
+                    svg path {
+                        fill: var(--primary-color);
+                    }
+                }
+            }
+            &:hover {
+                .header__submenu{
+                    height: auto;
+                    opacity: 1;
+                    visibility: visible;
+                    transform: translateY(0);
+                }
+            }
+        }
+        li {
+            display: flex;
+            align-items: center;
+        }
+    }
+    @include e('submenu') {
+        position: absolute;
+        inset-inline-start: 0;
+        top: 100%;
+        width: 100%;
+        min-width: 200px;
+        padding: 15px 0;
+        background-color: var(--white-color);
+        border-radius: 8px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        z-index: 1;
+        height: 0;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: transform 0.3s ease;
+        .header__menu__link {
+            width: 100%;
+            padding: 10px 25px;
+            &.active {
+                color: var(--primary-color);
+            }
+        }
+    }
+    @include e('action') {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+    }
+    @include e('action__btn') {
+        padding: 8px 20px;
+        color: #000;
+        background: #c4bebe;
+        border-radius: 5px;
+        border: none;
+        transition: all 0.3s ease;
+        &:hover {
+            background: #ccc4c4;
+        }
+    }
+}
+
+// Top Menu
+html[data-nav="top"] {
+    .header {
+        display: block;
+    }
+    .content__header {
+        .content__header__customizer {
+            display: none;
+        }
+    }
+    .sidebar {
+        display: none;
+    }
+
+    @include lg {
+        .header {
+            display: none;
+        }
+        .content__header {
+            .content__header__customizer {
+                display: flex;
+            }
+        }
+        .sidebar {
+            display: block;
+        }
+    }
+}
+
+
+.header__submenu{
+    z-index: 20;
+}

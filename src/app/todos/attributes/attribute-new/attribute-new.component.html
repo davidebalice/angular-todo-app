@@ -1,0 +1,46 @@
+<h5>Products > Attributes > New</h5>
+<hr />
+
+<mat-card class="pageCard">
+  <mat-card-content>
+    <button type="button" class="buttonBase buttonBack" (click)="onBack()">
+      <mat-icon> chevron_left</mat-icon>
+      Back
+    </button>
+
+    <form
+      [formGroup]="attributeForm"
+      (ngSubmit)="onSubmit()"
+      class="formContainer"
+    >
+      <div class="inputContainer inputContainerFull">
+        <label for="name" class="labelText">Name of attribute</label>
+        <input
+          type="text"
+          id="name"
+          formControlName="name"
+          class="inputField"
+        />
+      </div>
+
+      <div class="submitContainer">
+        <button
+          type="button"
+          class="buttonBase buttonCancel"
+          (click)="onCancel()"
+        >
+          <mat-icon>cancel</mat-icon>
+          Cancel
+        </button>
+        <button
+          type="submit"
+          class="buttonBase"
+          [disabled]="!attributeForm.valid"
+        >
+          <mat-icon>add_circle</mat-icon>
+          Add attribute
+        </button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
