@@ -8,10 +8,11 @@ import { EditComponent } from './edit/edit.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { NewComponent } from './new/new.component';
 import { PhotoComponent } from './photo/photo.component';
-import { ProductsComponent } from './products.component';
+import { TodosComponent } from './todos.component';
 
 import { AttributeEditComponent } from './attributes/attribute-edit/attribute-edit.component';
 import { AttributeNewComponent } from './attributes/attribute-new/attribute-new.component';
+import { AttributesSetComponent } from './attributes/attribute-set/attributes-set.component';
 import { AttributesComponent } from './attributes/attributes.component';
 import { SubcategoriesComponent } from './subcategories/subcategories.component';
 import { SubcategoryEditComponent } from './subcategories/subcategory-edit/subcategory-edit.component';
@@ -19,12 +20,11 @@ import { SubcategoryNewComponent } from './subcategories/subcategory-new/subcate
 import { ValueEditComponent } from './values/value-edit/value-edit.component';
 import { ValueNewComponent } from './values/value-new/value-new.component';
 import { ValuesComponent } from './values/values.component';
-import { AttributesSetComponent } from './attributes/attribute-set/attributes-set.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: ProductsComponent,
+    component: TodosComponent,
     canActivate: [AuthGuard],
   },
   {
@@ -118,4 +118,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class ProductsRoutingModule {}
+export class TodosRoutingModule {}

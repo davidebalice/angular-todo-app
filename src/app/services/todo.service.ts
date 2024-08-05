@@ -7,15 +7,15 @@ import {
 import { Injectable, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, Subject, catchError, map, tap, throwError } from 'rxjs';
-import { Product } from '../model/product.model';
+import { Todo } from '../model/todo.model';
 @Injectable()
-export class ProductService implements OnInit, OnDestroy {
-  productsList = new Subject<Product[]>();
-  productSelected = new Subject<Product>();
+export class TodoService implements OnInit, OnDestroy {
+  todosList = new Subject<Todo[]>();
+  todoSelected = new Subject<Todo>();
   error = new Subject<string>();
   csrfToken: Subject<string> = new Subject<string>();
   csrfValue: string;
-  private products: Product[];
+  private todos: Todo[];
   tokenValue: string;
 
   constructor(private http: HttpClient, private router: Router) {}
@@ -59,22 +59,22 @@ export class ProductService implements OnInit, OnDestroy {
     );
   }
 
-  fetchProducts(
+  fetchTodos(
     keyword?: string,
     category?: number,
     limit?: number,
     page: number = 1
-  ): Observable<{ products: Product[]; totalItems: number }> {
+  ): Observable<{ todos: Todo[]; totalItems: number }> {
     const headers = this.getHeaders();
-    let apiUrl = '/products/';
+    let apiUrl = '/todos/';
     let params = new HttpParams();
 
     if (keyword) {
-      apiUrl = '/products/search';
+      apiUrl = '/todos/search';
       params = params.append('keyword', keyword);
     } else {
       if (category > 0) {
-        apiUrl = '/products/searchByCategoryId';
+        apiUrl = '/todos/searchByCategoryId';
         params = params.append('categoryId', category);
       }
     }
@@ -85,16 +85,16 @@ export class ProductService implements OnInit, OnDestroy {
     params = params.append('page', (page - 1).toString());
 
     return this.http
-      .get<{ products: Product[]; totalItems: number }>(apiUrl, {
+      .get<{ todos: Todo[]; totalItems: number }>(apiUrl, {
         headers,
         params,
       })
       .pipe(
         map((response) => {
           return {
-            products: response.products.map((product) => ({
-              ...product,
-              categoryName: product.categoryDto?.name || 'Unknown Category',
+            todos: response.todos.map((todo) => ({
+              ...todo,
+              categoryName: todo.categoryDto?.name || 'Unknown Category',
             })),
             totalItems: response.totalItems,
           };
@@ -103,20 +103,20 @@ export class ProductService implements OnInit, OnDestroy {
           if (error.status === 401) {
             this.router.navigate(['/login']);
           }
-          return throwError(() => new Error('Error loading products.'));
+          return throwError(() => new Error('Error loading todos.'));
         })
       );
   }
 
-  getProducts() {
-    return this.products.slice();
+  getTodos() {
+    return this.todos.slice();
   }
 
-  getProduct(index: number) {
-    return this.products[index];
+  getTodo(index: number) {
+    return this.todos[index];
   }
 
-  getById(id: number): Observable<Product> {
+  getById(id: number): Observable<Todo> {
     const headers = this.getHeaders();
 
     let params = new HttpParams();
@@ -124,7 +124,7 @@ export class ProductService implements OnInit, OnDestroy {
     params = params.append('test2', '1');
 
     return this.http
-      .get<Product>(`/products/${id}`, {
+      .get<Todo>(`/todos/${id}`, {
         headers,
         params,
       })
@@ -139,11 +139,11 @@ export class ProductService implements OnInit, OnDestroy {
       );
   }
 
-  addProduct(product: Product) {
+  addTodo(todo: Todo) {
     const headers = this.getHeaders();
 
     return this.http
-      .post(`/products/add`, product, {
+      .post(`/todos/add`, todo, {
         withCredentials: true,
         headers,
       })
@@ -156,17 +156,17 @@ export class ProductService implements OnInit, OnDestroy {
             this.router.navigate(['/login']);
           }
           return throwError(
-            () => new Error('Error adding product.' + error.error.message)
+            () => new Error('Error adding todo.' + error.error.message)
           );
         })
       );
   }
 
-  addProductWithPhoto(product: FormData) {
+  addTodoWithPhoto(todo: FormData) {
     const headers = this.getHeadersForm();
 
     return this.http
-      .post(`/products/add-with-photo`, product, { headers })
+      .post(`/todos/add-with-photo`, todo, { headers })
       .pipe(
         tap((response) => {
           console.log('Response from backend:', response);
@@ -175,15 +175,15 @@ export class ProductService implements OnInit, OnDestroy {
           if (error.status === 401) {
             this.router.navigate(['/login']);
           }
-          return throwError(() => new Error('Error adding product.'));
+          return throwError(() => new Error('Error adding todo.'));
         })
       );
   }
 
-  updateProduct(id: number, dataProduct: Product) {
+  updateTodo(id: number, dataTodo: Todo) {
     const headers = this.getHeaders();
     return this.http
-      .patch(`/products/${id}`, dataProduct, {
+      .patch(`/todos/${id}`, dataTodo, {
         withCredentials: true,
         responseType: 'text',
         headers,
@@ -197,23 +197,23 @@ export class ProductService implements OnInit, OnDestroy {
             this.router.navigate(['/login']);
           }
           return throwError(
-            () => new Error('Error updating product. ' + error.error)
+            () => new Error('Error updating todo. ' + error.error)
           );
         })
       );
   }
 
-  deleteProduct(productId: number) {
+  deleteTodo(todoId: number) {
     const headers = this.getHeaders();
-    return this.http.delete(`/products/${productId}`, { headers });
+    return this.http.delete(`/todos/${todoId}`, { headers });
   }
 
-  uploadProduct(id: number, imageFile: File) {
+  uploadTodo(id: number, imageFile: File) {
     const formData = new FormData();
     if (imageFile instanceof File) {
       formData.append('image', imageFile, imageFile.name);
 
-      const url = `/products/${id}/uploadImage`;
+      const url = `/todos/${id}/uploadImage`;
 
       const headers = new HttpHeaders();
       headers.set('Cache-Control', 'no-cache');
@@ -247,7 +247,7 @@ export class ProductService implements OnInit, OnDestroy {
       }
     });
 
-    const url = `/products/${id}/gallery/upload`;
+    const url = `/todos/${id}/gallery/upload`;
 
     const headers = new HttpHeaders();
     headers.set('Cache-Control', 'no-cache');
@@ -268,14 +268,14 @@ export class ProductService implements OnInit, OnDestroy {
   }
 
   getImages(id: number): Observable<string[]> {
-    const url = `/products/${id}/gallery`;
+    const url = `/todos/${id}/gallery`;
 
     const headers = new HttpHeaders();
     headers.set('Cache-Control', 'no-cache');
 
     return this.http.get<string[]>(url, { headers }).pipe(
       tap((response) => {
-        console.log('Existing images:', response["gallery"]);
+        console.log('Existing images:', response['gallery']);
       }),
       catchError((error: HttpErrorResponse) => {
         if (error.status === 401) {

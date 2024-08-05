@@ -7,7 +7,7 @@ import {
   ConfirmDialogData,
 } from 'src/app/components/confirm-dialog/confirm-dialog.component';
 import { Attribute } from '../../model/attribute.model';
-import { Product } from '../../model/product.model';
+import { Product } from '../../model/todo.model';
 import { AttributeService } from '../../services/attribute.service';
 @Component({
   selector: 'app-attributes',

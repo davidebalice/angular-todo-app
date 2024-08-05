@@ -1,13 +1,13 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Observable, catchError, finalize, map, take } from 'rxjs';
-import { AppConfig } from '../../app-config';
-import { Product } from '../../model/product.model';
-import { ProductService } from '../../services/product.service';
-import { MatDialog } from '@angular/material/dialog';
 import { DemoDialogComponent } from 'src/app/components/demo-dialog/demo-dialog.component';
+import { AppConfig } from '../../app-config';
+import { Product } from '../../model/todo.model';
+import { ProductService } from '../../services/todo.service';
 
 @Component({
   selector: 'app-photo',
@@ -102,7 +102,7 @@ export class PhotoComponent implements OnInit {
   getFullImageUrl(imageUrl: string): string {
     return `${AppConfig.apiUrl}/products/image/${imageUrl}`;
   }
-  
+
   onCancel() {
     this.router.navigate(['../'], { relativeTo: this.route });
   }

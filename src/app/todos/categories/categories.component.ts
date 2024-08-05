@@ -7,7 +7,7 @@ import {
   ConfirmDialogData,
 } from 'src/app/components/confirm-dialog/confirm-dialog.component';
 import { Category } from '../../model/category.model';
-import { Product } from '../../model/product.model';
+import { Product } from '../../model/todo.model';
 import { CategoryService } from '../../services/category.service';
 @Component({
   selector: 'app-categories',

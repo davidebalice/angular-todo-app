@@ -15,8 +15,8 @@ import {
   ConfirmDialogData,
 } from 'src/app/components/confirm-dialog/confirm-dialog.component';
 import { CategoryService } from 'src/app/services/category.service';
-import { Product } from '../../model/product.model';
 import { Subcategory } from '../../model/subcategory.model';
+import { Product } from '../../model/todo.model';
 import { SubcategoryService } from '../../services/subcategory.service';
 @Component({
   selector: 'app-subcategories',

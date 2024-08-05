@@ -11,8 +11,8 @@ export const routes: Routes = [
         data: {
           title: 'Dashboard',
           breadcrumb: {
-            label: 'Dashboard',
-            des: 'Welcome to Dashboard',
+            label: 'Angular Todo App',
+            des: 'Dashboard',
           },
         },
       },

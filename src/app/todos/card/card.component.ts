@@ -8,8 +8,8 @@ import {
 } from 'src/app/components/confirm-dialog/confirm-dialog.component';
 import { ImageDialogComponent } from 'src/app/components/image-dialog/image-dialog.component';
 import { AppConfig } from '../../app-config';
-import { Product } from '../../model/product.model';
-import { ProductService } from '../../services/product.service';
+import { Product } from '../../model/todo.model';
+import { ProductService } from '../../services/todo.service';
 import { DetailComponent } from '../detail/detail.component';
 import { ListCardComponent } from '../list-card/list-card.component';
 @Component({

@@ -10,14 +10,14 @@ export const MENU: MenuItem[] = [
   {
     id: 13,
     label: 'Todo',
-    icon: 'home',
+    icon: 'text_snippet',
     link: '/app/todo',
   },
 
   {
     id: 14,
     label: 'Calendar',
-    icon: 'home',
+    icon: 'calendar_month',
     link: '/app/calendar',
   },
 

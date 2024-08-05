@@ -94,9 +94,9 @@ label {
 }
 
 .loginButton {
-  background-color: var(--button-bg-color);
+  background-color: var(--primary-color);
 }
 
 .loginButton:hover {
-  background-color: var(--button-hover-bg-color);
+  background-color: var(--secondary-color) !important;
 }

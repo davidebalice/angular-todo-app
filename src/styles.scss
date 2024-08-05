@@ -121,14 +121,17 @@ a {
   display: flex;
   justify-content: start;
   border-radius: 6px !important;
+  transition: none !important;
 }
 .sidebar__menu__link.active {
   background: var(--primary-color) !important;
   color: #ffffff !important;
 }
+
 .sidebar__menu__link.active span {
   background: var(--primary-color) !important;
   color: #ffffff !important;
+  transition: none !important;
 }
 .sidebar__menu__link:hover {
   background: var(--secondary-color) !important;

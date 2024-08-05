@@ -10,30 +10,6 @@ import { TwoStepComponent } from './views/auth/two-step/two-step.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  /*
-  {
-    path: '',
-    redirectTo: '/dashboard',
-    pathMatch: 'full',
-  },
-  */
-  /*
-  {
-    path: '',
-    component: FullLayoutComponent,
-    data: { title: 'full Views' },
-    children: Full_ROUTES,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: '',
-    component: ContentLayoutComponent,
-    data: { title: 'content Views' },
-    children: CONTENT_ROUTES,
-    canActivate: [AuthGuard],
-  },
-  */
-  // { path: '**', redirectTo: '/dashboard' },
 
   {
     path: '',
@@ -57,7 +33,7 @@ export const routes: Routes = [
       },
       {
         path: 'app',
-        loadChildren: () => import('./views/app/routes').then((m) => m.routes),
+        loadChildren: () => import('./views/routes').then((m) => m.routes),
       },
     ],
   },

@@ -2,13 +2,20 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { catchError, Observable, Subject, Subscription, take, takeUntil } from 'rxjs';
+import {
+  catchError,
+  Observable,
+  Subject,
+  Subscription,
+  take,
+  takeUntil,
+} from 'rxjs';
 import {
   ConfirmDialogComponent,
   ConfirmDialogData,
 } from 'src/app/components/confirm-dialog/confirm-dialog.component';
 import { AttributeService } from 'src/app/services/attribute.service';
-import { Product } from '../../model/product.model';
+import { Product } from '../../model/todo.model';
 import { Value } from '../../model/value.model';
 import { ValueService } from '../../services/value.service';
 @Component({

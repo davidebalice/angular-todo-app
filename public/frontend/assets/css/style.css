@@ -211,7 +211,6 @@ html[data-nav="top"] .sidebar {
 .sidebar__logo {
   display: flex;
   align-items: center;
-  border-bottom: 1px solid #ddd;
 }
 .sidebar__logo img {
   max-height: 50px;
@@ -259,7 +258,7 @@ html[data-nav="top"] .sidebar {
   padding: 16px 25px;
   font-size: 16px;
   line-height: 24px;
-  border-radius: 8px;
+  border-radius: 18px;
   transition: all 0.3s ease;
 }
 @media only screen and (max-width: 575px) {
@@ -284,7 +283,8 @@ html[data-nav="top"] .sidebar {
 .sidebar__menu__link.default-active,
 .sidebar__menu__link.active,
 .sidebar__menu__link:hover {
-  background: var(--secondary-color) !important;
+  color: var(--primary-color) !important;
+  background: rgba(171, 84, 219, 0.15);
 }
 .sidebar__menu__link.default-active i,
 .sidebar__menu__link.active i,
@@ -304,12 +304,15 @@ html[data-nav="top"] .sidebar {
     var(--sectionTwo-color)
   );
   z-index: 1;
-  border-radius: 18px;
+  border-radius: 8px;
 }
 .sidebar__submenu .sidebar__menu__link {
   cursor: pointer;
   padding: 8px 25px;
   background: rgba(0, 0, 0, 0);
+}
+.sidebar__submenu .sidebar__menu__link:hover {
+  background: var(--secondary-color) !important;
 }
 .sidebar__footer__title {
   display: inline-block;
@@ -578,7 +581,7 @@ html[data-nav="top"] .sidebar {
   }
 }
 :root {
-  --primary-color: #ab54db;
+  --primary-color: #3b9ae4;
   --secondary-color: #b7dbf9;
   --dark-color: #17161e;
   --body-color: #464255;
@@ -595,12 +598,12 @@ html[data-nav="top"] .sidebar {
   --success-color: #00a389;
   --warning-color: #ffbb54;
   --danger-color: #ff5b5b;
-  --pink-color: #ff68b5;
+  --pink-color: #167ccb;
   --info-color: #58cdff;
   --tertiary-color: #ef9a91;
   --quatinery-color: #f1e6b9;
   --dark-color-transparent: #17161e26;
-  --primary-color-transparent: #ab54db26;
+  --primary-color-transparent: #167ccb;
   --success-color-transparent: #2ed6a326;
   --warning-color-transparent: #ffbb5426;
   --info-color-transparent: #58cdff26;

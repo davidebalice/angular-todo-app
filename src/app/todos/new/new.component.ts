@@ -9,13 +9,11 @@ import {
   finalize,
   take,
   takeUntil,
-  throwError,
 } from 'rxjs';
 import { DemoDialogComponent } from 'src/app/components/demo-dialog/demo-dialog.component';
 import { SubcategoryService } from 'src/app/services/subcategory.service';
 import { CategoryService } from '../../services/category.service';
-import { ProductService } from '../../services/product.service';
-import { HttpErrorResponse } from '@angular/common/http';
+import { ProductService } from '../../services/todo.service';
 
 @Component({
   selector: 'app-new',
@@ -59,7 +57,7 @@ export class NewComponent implements OnInit {
       idSubcategory: 0,
     });
 
-    this.productForm.get('idCategory')?.valueChanges.subscribe(categoryId => {
+    this.productForm.get('idCategory')?.valueChanges.subscribe((categoryId) => {
       this.loadSubcategories(categoryId);
     });
   }

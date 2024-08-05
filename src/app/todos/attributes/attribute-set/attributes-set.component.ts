@@ -4,7 +4,7 @@ import { catchError, map, Subscription, throwError } from 'rxjs';
 import { ProductAttributeResponse } from 'src/app/model/attribute.model';
 import { AttributeAndValues } from 'src/app/model/attributeAndValues.model';
 import { ProductService } from 'src/app/services/product.service';
-import { Product } from '../../../model/product.model';
+import { Product } from '../../../model/todo.model';
 import { AttributeService } from '../../../services/attribute.service';
 @Component({
   selector: 'app-attributes-set',

@@ -2,8 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription, catchError, take } from 'rxjs';
 import { AppConfig } from '../../../app-config';
-import { Product } from '../../../model/product.model';
-import { ProductService } from '../../../services/product.service';
+import { Product } from '../../../model/todo.model';
+import { ProductService } from '../../../services/todo.service';
 import { ListDashboardComponent } from '../list/list.component';
 
 @Component({
@@ -19,10 +19,8 @@ export class RowComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private router: Router,
-    private listComponent: ListDashboardComponent,
+    private listComponent: ListDashboardComponent
   ) {}
-
-
 
   ngOnInit(): void {}
 

@@ -1,19 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormArray,
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Observable, Subject, catchError, finalize, map, take } from 'rxjs';
-import { Product } from '../../model/product.model';
-import { CategoryService } from '../../services/category.service';
-import { ProductService } from '../../services/product.service';
-import { MatDialog } from '@angular/material/dialog';
 import { DemoDialogComponent } from 'src/app/components/demo-dialog/demo-dialog.component';
 import { SubcategoryService } from 'src/app/services/subcategory.service';
+import { Product } from '../../model/todo.model';
+import { CategoryService } from '../../services/category.service';
+import { ProductService } from '../../services/todo.service';
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
@@ -108,7 +102,7 @@ export class EditComponent implements OnInit {
       price: [product.price],
     });
 
-    this.productForm.get('idCategory')?.valueChanges.subscribe(categoryId => {
+    this.productForm.get('idCategory')?.valueChanges.subscribe((categoryId) => {
       this.loadSubcategories(categoryId);
     });
 

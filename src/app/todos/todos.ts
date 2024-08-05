@@ -3,11 +3,11 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { MatModule } from '../appModules/mat.module';
+//import { MatModule } from '../appModules/mat.module';
 import { AuthInterceptor } from '../interceptors/auth-interceptor';
 import { RestApiUrlInterceptor } from '../interceptors/rest-api-url.interceptor';
 import { AuthService } from '../services/auth.service';
-import { ProductService } from '../services/product.service';
+import { TodoService } from '../services/todo.service';
 import { CardComponent } from './card/card.component';
 import { RowComponent } from './row/row.component';
 
@@ -16,6 +16,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { SharedModule } from '../shared/shared.module';
 import { AttributeEditComponent } from './attributes/attribute-edit/attribute-edit.component';
 import { AttributeNewComponent } from './attributes/attribute-new/attribute-new.component';
+import { AttributesSetComponent } from './attributes/attribute-set/attributes-set.component';
 import { AttributesComponent } from './attributes/attributes.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { CategoryEditComponent } from './categories/category-edit/category-edit.component';
@@ -27,20 +28,19 @@ import { ListCardComponent } from './list-card/list-card.component';
 import { ListRowComponent } from './list-row/list-row.component';
 import { NewComponent } from './new/new.component';
 import { PhotoComponent } from './photo/photo.component';
-import { ProductsRoutingModule } from './products-routing.module';
-import { ProductsComponent } from './products.component';
 import { SearchComponent } from './search/search.component';
 import { SubcategoriesComponent } from './subcategories/subcategories.component';
 import { SubcategoryEditComponent } from './subcategories/subcategory-edit/subcategory-edit.component';
 import { SubcategoryNewComponent } from './subcategories/subcategory-new/subcategory-new.component';
+import { TodosRoutingModule } from './todos-routing.module';
+import { TodosComponent } from './todos.component';
 import { ValueEditComponent } from './values/value-edit/value-edit.component';
 import { ValueNewComponent } from './values/value-new/value-new.component';
 import { ValuesComponent } from './values/values.component';
-import { AttributesSetComponent } from './attributes/attribute-set/attributes-set.component';
 
 @NgModule({
   declarations: [
-    ProductsComponent,
+    TodosComponent,
     SearchComponent,
     RowComponent,
     CardComponent,
@@ -67,8 +67,8 @@ import { AttributesSetComponent } from './attributes/attribute-set/attributes-se
   ],
   imports: [
     CommonModule,
-    ProductsRoutingModule,
-    MatModule,
+    TodosRoutingModule,
+   // MatModule,
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
@@ -78,7 +78,7 @@ import { AttributesSetComponent } from './attributes/attribute-set/attributes-se
   exports: [SharedModule],
   providers: [
     AuthService,
-    ProductService,
+    TodoService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: RestApiUrlInterceptor,
@@ -88,4 +88,4 @@ import { AttributesSetComponent } from './attributes/attribute-set/attributes-se
     provideAnimationsAsync(),
   ],
 })
-export class ProductsModule {}
+export class TodosModule {}

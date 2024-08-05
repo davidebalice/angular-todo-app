@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Product } from '../model/product.model';
+import { Product } from '../model/todo.model';
 
 @Component({
-  selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss'],
+  selector: 'app-todos',
+  templateUrl: './todos.component.html',
+  styleUrls: ['./todos.component.scss'],
 })
 export class ProductsComponent {
   selectedProduct: Product;
@@ -19,7 +19,7 @@ export class ProductsComponent {
   onBackProducts() {}
 
   onNewProduct() {
-    this.router.navigate(['/products/new']);
+    this.router.navigate(['/todos/new']);
   }
 
   onChangeView(type: string) {
