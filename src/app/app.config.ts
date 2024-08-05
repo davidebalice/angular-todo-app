@@ -25,6 +25,6 @@ export const appConfig: ApplicationConfig = {
       multi: true,
     },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-    AuthService, provideAnimationsAsync(),
+    AuthService, provideAnimationsAsync(), provideAnimationsAsync(), provideAnimationsAsync(),
   ],
 };

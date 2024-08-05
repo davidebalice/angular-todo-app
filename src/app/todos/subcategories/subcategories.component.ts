@@ -13,10 +13,10 @@ import {
 import {
   ConfirmDialogComponent,
   ConfirmDialogData,
-} from 'src/app/components/confirm-dialog/confirm-dialog.component';
-import { CategoryService } from 'src/app/services/category.service';
+} from '../../components/confirm-dialog/confirm-dialog.component';
+import { CategoryService } from '../../services/category.service';
 import { Subcategory } from '../../model/subcategory.model';
-import { Product } from '../../model/todo.model';
+import { Todo } from '../../model/todo.model';
 import { SubcategoryService } from '../../services/subcategory.service';
 @Component({
   selector: 'app-subcategories',
@@ -26,8 +26,8 @@ import { SubcategoryService } from '../../services/subcategory.service';
 export class SubcategoriesComponent implements OnInit, OnDestroy {
   subcategories: Subcategory[] = [];
   selectedSubcategory: Subcategory = null;
-  products: Product[] = [];
-  filteredProducts: Product[] = [];
+  todos: Todo[] = [];
+  filteredTodos: Todo[] = [];
   subscription: Subscription;
   isLoading = true;
   selectedIdCategory: number = null;
@@ -122,16 +122,16 @@ export class SubcategoriesComponent implements OnInit, OnDestroy {
     this.selectedSubcategory = subcategory;
 
     if (subcategory) {
-      this.router.navigate([`/products/idsubcat/${subcategory.id}`]);
+      this.router.navigate([`/todos/idsubcat/${subcategory.id}`]);
     }
   }
 
   onNewSubcategory() {
-    this.router.navigate(['/products/subcategories/new']);
+    this.router.navigate(['/todos/subcategories/new']);
   }
 
   onEditSubcategory(subcategoryId: number) {
-    this.router.navigate([`/products/subcategories/${subcategoryId}/edit`]);
+    this.router.navigate([`/todos/subcategories/${subcategoryId}/edit`]);
   }
 
   onDelete(categoryId: number, item: string) {
@@ -149,7 +149,7 @@ export class SubcategoriesComponent implements OnInit, OnDestroy {
           .deleteSubcategory(categoryId)
           .pipe(
             catchError((error) => {
-              console.error('Error deleting product', error);
+              console.error('Error deleting todo', error);
               throw error;
             })
           )

@@ -1,12 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { MatModule } from 'src/app/appModules/mat.module';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-confirm-dialog',
   standalone: true,
-  imports: [CommonModule, MatModule],
+  imports: [CommonModule, MatButtonModule, MatDialogModule],
   template: `
     <h2 mat-dialog-title>{{ data.title }}</h2>
     <mat-dialog-content class="message">{{ data.message }}<br /><b style="font-size:13px">{{ data.item }}</b></mat-dialog-content>

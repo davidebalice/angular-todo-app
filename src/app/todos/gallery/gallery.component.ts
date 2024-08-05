@@ -4,11 +4,11 @@ import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { map, Observable } from 'rxjs';
-import { AppConfig } from 'src/app/app-config';
-import { DemoDialogComponent } from 'src/app/components/demo-dialog/demo-dialog.component';
-import { ImageDialogComponent } from 'src/app/components/image-dialog/image-dialog.component';
-import { Product } from '../../model/todo.model';
-import { ProductService } from '../../services/todo.service';
+import { AppConfig } from '../../app-config';
+import { DemoDialogComponent } from '../../components/demo-dialog/demo-dialog.component';
+import { ImageDialogComponent } from '../../components/image-dialog/image-dialog.component';
+import { Todo } from '../../model/todo.model';
+import { TodoService } from '../../services/todo.service';
 
 @Component({
   selector: 'app-gallery',
@@ -18,22 +18,22 @@ import { ProductService } from '../../services/todo.service';
 export class GalleryComponent implements OnInit {
   id: number | undefined;
   editMode = false;
-  productForm: FormGroup;
-  product: Product;
-  product$: Observable<Product> | undefined;
+  todoForm: FormGroup;
+  todo: Todo;
+  todo$: Observable<Todo> | undefined;
   submitting = false;
   file: any;
   imageUrl: string;
   selectedFiles: File[] = [];
   uploadedImages: string[] = [];
 
-  get productControls() {
-    return (this.productForm.get('ingredients') as FormArray).controls;
+  get todoControls() {
+    return (this.todoForm.get('ingredients') as FormArray).controls;
   }
 
   constructor(
     private route: ActivatedRoute,
-    private productService: ProductService,
+    private todoService: TodoService,
     private fb: FormBuilder,
     private router: Router,
     private http: HttpClient,
@@ -55,20 +55,20 @@ export class GalleryComponent implements OnInit {
     this.route.params.subscribe((params: Params) => {
       this.id = +params['id'];
       if (this.id !== undefined) {
-        this.product$ = this.productService.getById(this.id);
+        this.todo$ = this.todoService.getById(this.id);
 
-        this.productService
+        this.todoService
           .getById(this.id)
           .pipe(
-            map((product) => {
-              this.product = product;
-              //this.initForm(this.product);
+            map((todo) => {
+              this.todo = todo;
+              //this.initForm(this.todo);
             })
           )
           .subscribe();
       }
       this.loadImages();
-      this.productForm = this.fb.group({
+      this.todoForm = this.fb.group({
         images: [null],
       });
     });
@@ -80,7 +80,7 @@ export class GalleryComponent implements OnInit {
 
   onSubmit() {
     const id = this.id;
-    this.productService.uploadGallery(id, this.selectedFiles).subscribe({
+    this.todoService.uploadGallery(id, this.selectedFiles).subscribe({
       next: (response) => {
         console.log('Images uploaded successfully:', response);
       },
@@ -99,11 +99,11 @@ export class GalleryComponent implements OnInit {
   }
 
   getFullImageUrl(imageUrl: string): string {
-    return `${AppConfig.apiUrl}/products/gallery/${imageUrl}`;
+    return `${AppConfig.apiUrl}/todos/gallery/${imageUrl}`;
   }
 
   loadImages() {
-    this.productService.getImages(this.id).subscribe({
+    this.todoService.getImages(this.id).subscribe({
       next: (response) => {
         this.uploadedImages = response['gallery'];
       },
@@ -114,6 +114,6 @@ export class GalleryComponent implements OnInit {
   }
 
   onBack() {
-    this.router.navigate(['./products']);
+    this.router.navigate(['./todos']);
   }
 }

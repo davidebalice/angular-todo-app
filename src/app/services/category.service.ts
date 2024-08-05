@@ -23,7 +23,7 @@ import { Category } from '../model/category.model';
 export class CategoryService {
   private categoriesUrl = '/categories/';
   private categoriesSubject = new BehaviorSubject<Category[]>([]);
-  private subscription: Subscription;
+  private subscription: Subscription | undefined;
   constructor(private http: HttpClient, private router: Router) {}
 
   private getHeaders(): HttpHeaders {

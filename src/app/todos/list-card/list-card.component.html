@@ -6,7 +6,7 @@
   </ng-container>
 
   <ng-template #loadedContent>
-    <ng-container *ngIf="loadedProducts.length > 0; else noProducts">
+    <ng-container *ngIf="loadedTodos.length > 0; else noTodos">
       <div class="cardContainer">
         <div
           class="column cardRow"
@@ -15,15 +15,18 @@
           fxFlex.gt-md="32%"
           fxFlex.gt-md="24%"
           fxFlex.gt-lg="19%"
-          *ngFor="let product of loadedProducts"
+          *ngFor="let todo of loadedTodos"
         >
-          <app-card [product]="product"></app-card>
+          <app-card [todo]="todo"></app-card>
         </div>
       </div>
     </ng-container>
   </ng-template>
 
-  <div class="customPagination" *ngIf="pagination && totalItems > limit">
+  <div
+    class="customPagination"
+    *ngIf="pagination && totalItems && totalItems > limit"
+  >
     <mat-paginator
       [length]="totalItems"
       [pageSize]="limit"
@@ -34,7 +37,7 @@
     </mat-paginator>
   </div>
 
-  <ng-template #noProducts>
-    <div class="noData">No products available.</div>
+  <ng-template #noTodos>
+    <div class="noData">No todos available.</div>
   </ng-template>
 </div>

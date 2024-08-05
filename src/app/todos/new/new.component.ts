@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgModule, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -10,31 +10,34 @@ import {
   take,
   takeUntil,
 } from 'rxjs';
-import { DemoDialogComponent } from 'src/app/components/demo-dialog/demo-dialog.component';
-import { SubcategoryService } from 'src/app/services/subcategory.service';
+import { DemoDialogComponent } from '../../components/demo-dialog/demo-dialog.component';
+import { SubcategoryService } from '../../services/subcategory.service';
 import { CategoryService } from '../../services/category.service';
-import { ProductService } from '../../services/todo.service';
+import { TodoService } from '../../services/todo.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-new',
   templateUrl: './new.component.html',
   styleUrl: './new.component.css',
+  imports: [CommonModule, NgModule],
+
 })
 export class NewComponent implements OnInit {
-  productForm: FormGroup;
+  todoForm: FormGroup;
   submitting = false;
   imageFile: File | null = null;
   private destroy$ = new Subject<void>();
   categories$: Observable<any[]>;
   subcategories$: Observable<any[]>;
 
-  get productControls() {
-    return (this.productForm.get('ingredients') as FormArray).controls;
+  get todoControls() {
+    return (this.todoForm.get('ingredients') as FormArray).controls;
   }
 
   constructor(
     private route: ActivatedRoute,
-    private productService: ProductService,
+    private todoService: TodoService,
     private categoryService: CategoryService,
     private subcategoryService: SubcategoryService,
     private router: Router,
@@ -48,7 +51,7 @@ export class NewComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadCategories();
-    this.productForm = this.formBuilder.group({
+    this.todoForm = this.formBuilder.group({
       name: ['', Validators.required],
       description: [''],
       sku: [''],
@@ -57,7 +60,7 @@ export class NewComponent implements OnInit {
       idSubcategory: 0,
     });
 
-    this.productForm.get('idCategory')?.valueChanges.subscribe((categoryId) => {
+    this.todoForm.get('idCategory')?.valueChanges.subscribe((categoryId) => {
       this.loadSubcategories(categoryId);
     });
   }
@@ -67,18 +70,18 @@ export class NewComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.productForm.valid && !this.submitting) {
+    if (this.todoForm.valid && !this.submitting) {
       this.submitting = true;
 
-      this.productService
-        .addProduct(this.productForm.value)
+      this.todoService
+        .addTodo(this.todoForm.value)
         .pipe(
           take(1),
           catchError((error) => {
             if (error.message.includes('Demo')) {
               this.openDemoDialog();
             }
-            console.error('Error adding product', error);
+            console.error('Error adding todo', error);
             throw error;
           }),
           finalize(() => {
@@ -88,36 +91,36 @@ export class NewComponent implements OnInit {
         )
         .subscribe({
           next: (response) => {
-            console.log('Product added successfully', response);
+            console.log('Todo added successfully', response);
             this.onCancel();
           },
           error: (error) => {
-            console.error('Error adding product', error.error);
+            console.error('Error adding todo', error.error);
           },
         });
     }
   }
 
   onSubmitWithPhoto() {
-    if (this.productForm.valid && !this.submitting) {
+    if (this.todoForm.valid && !this.submitting) {
       const formData = new FormData();
 
-      formData.append('name', this.productForm.get('name')?.value);
+      formData.append('name', this.todoForm.get('name')?.value);
       formData.append(
         'description',
-        this.productForm.get('description')?.value
+        this.todoForm.get('description')?.value
       );
-      formData.append('idCategory', this.productForm.get('idCategory')?.value);
-      formData.append('sku', this.productForm.get('sku')?.value);
-      formData.append('price', this.productForm.get('price')?.value);
+      formData.append('idCategory', this.todoForm.get('idCategory')?.value);
+      formData.append('sku', this.todoForm.get('sku')?.value);
+      formData.append('price', this.todoForm.get('price')?.value);
 
       if (this.imageFile) {
         formData.append('image', this.imageFile, this.imageFile.name);
       }
 
       this.submitting = true;
-      this.productService
-        .addProductWithPhoto(formData)
+      this.todoService
+        .addTodoWithPhoto(formData)
         .pipe(
           take(1),
           finalize(() => {
@@ -128,10 +131,10 @@ export class NewComponent implements OnInit {
         )
         .subscribe({
           next: (response) => {
-            console.log('Product added successfully', response);
+            console.log('Todo added successfully', response);
           },
           error: (error) => {
-            //console.error('Error adding product', error);
+            //console.error('Error adding todo', error);
           },
         });
     }
@@ -142,7 +145,7 @@ export class NewComponent implements OnInit {
   }
 
   onBack() {
-    this.router.navigate(['./products']);
+    this.router.navigate(['./todos']);
   }
 
   loadCategories(): void {

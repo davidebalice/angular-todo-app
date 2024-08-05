@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable, Subject, takeUntil } from 'rxjs';
-import { CategoryService } from 'src/app/services/category.service';
+import { CategoryService } from '../../services/category.service';
 
 @Component({
   selector: 'app-search',
@@ -39,10 +39,10 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   onSearch(searchTerm: string, idCategory: number): void {
     if ((searchTerm && searchTerm.trim().length > 0) || idCategory > 1) {
-      this.router.navigate(['/products'], {
+      this.router.navigate(['/todos'], {
         queryParams: { key: searchTerm, category: idCategory },
       });
-    } else this.router.navigate(['/products']);
+    } else this.router.navigate(['/todos']);
   }
 
   ngOnDestroy(): void {

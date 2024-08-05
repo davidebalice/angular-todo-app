@@ -2,20 +2,20 @@
   <button mat-button (click)="closeDialog()">Close</button>
 </div>
 <div mat-dialog-content>
-  <div class="row" *ngIf="product$ | async as product; else loading">
+  <div class="row" *ngIf="todo$ | async as todo; else loading">
     <div class="row">
       <div class="col-xs-12">
         <img
-          [src]="getFullImageUrl(product.imageUrl)"
-          alt="{{ product.name }}"
+          [src]="getFullImageUrl(todo.imageUrl)"
+          alt="{{ todo.name }}"
           class="img-responsive"
         />
       </div>
     </div>
     <div class="row">
       <div class="col-xs-12">
-        <h1>{{ product.name }}</h1>
-        <h4>{{ product.description }}</h4>
+        <h1>{{ todo.name }}</h1>
+        <h4>{{ todo.description }}</h4>
       </div>
     </div>
     <div class="row">

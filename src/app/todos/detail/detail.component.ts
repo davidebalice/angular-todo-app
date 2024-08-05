@@ -1,25 +1,28 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, NgModule, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { AppConfig } from '../../app-config';
-import { Product } from '../../model/todo.model';
-import { ProductService } from '../../services/todo.service';
+import { Todo } from '../../model/todo.model';
+import { TodoService } from '../../services/todo.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
   styleUrl: './detail.component.css',
+  imports: [CommonModule, NgModule],
+
 })
 export class DetailComponent implements OnInit {
-  product: Product;
-  product$: Observable<Product> | undefined;
-  id: number | undefined;
+  todo: Todo | undefined;
+  todo$: Observable<Todo> | undefined;
+  id: number = 0;
 
-  private subscription: Subscription;
+  private subscription: Subscription | undefined;
 
   constructor(
-    private productService: ProductService,
+    private todoService: TodoService,
     private route: ActivatedRoute,
     private router: Router,
     public dialogRef: MatDialogRef<DetailComponent>,
@@ -34,28 +37,28 @@ export class DetailComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.id) {
-      this.product$ = this.productService.getById(this.id);
-      this.subscription = this.product$.subscribe((product: Product) => {
-        this.product = product;
+      this.todo$ = this.todoService.getById(this.id);
+      this.subscription = this.todo$.subscribe((todo: Todo) => {
+        this.todo = todo;
       });
     }
   }
 
   getFullImageUrl(imageUrl: string): string {
-    return `${AppConfig.apiUrl}/products/image/${imageUrl}`;
+    return `${AppConfig.apiUrl}/todos/image/${imageUrl}`;
   }
 
-  onEditProduct() {
+  onEditTodo() {
     this.router.navigate(['edit'], { relativeTo: this.route });
   }
 
-  onDeleteProduct() {
-    this.productService.deleteProduct(this.id);
-    this.router.navigate(['/products']);
+  onDeleteTodo() {
+    this.todoService.deleteTodo(this.id);
+    this.router.navigate(['/todos']);
   }
 
-  onBackProducts() {
-    this.router.navigate(['/products']);
+  onBackTodos() {
+    this.router.navigate(['/todos']);
   }
 
   ngOnDestroy(): void {

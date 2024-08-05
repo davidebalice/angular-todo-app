@@ -1,4 +1,4 @@
-<h5>Products > Gallery > {{ product.name && product.name }}</h5>
+<h5>Todos > Gallery > {{ todo.name && todo.name }}</h5>
 <hr />
 
 <mat-card class="pageCard">
@@ -7,12 +7,12 @@
       <mat-icon> chevron_left</mat-icon>
       Back
     </button>
-    <div class="row" *ngIf="product$ | async as product; else loading">
+    <div class="row" *ngIf="todo$ | async as todo; else loading">
       <div class="row">
         <div class="col-xs-12">
           <form
-            *ngIf="productForm"
-            [formGroup]="productForm"
+            *ngIf="todoForm"
+            [formGroup]="todoForm"
             (ngSubmit)="onSubmit()"
           >
             <div class="row">
@@ -70,7 +70,7 @@
                   | async
                   | defaultImage : 'assets/images/nophoto.jpg'
               "
-              (click)="openImageDialog(image.url, 'products/gallery')"
+              (click)="openImageDialog(image.url, 'todos/gallery')"
               class="galleryImg"
             />
           </div>

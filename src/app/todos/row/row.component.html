@@ -2,29 +2,27 @@
   <div>
     <img
       [src]="
-        getFullImageUrl(product.imageUrl)
+        getFullImageUrl(todo.imageUrl)
           | protectedImage
           | async
           | defaultImage : 'assets/images/nophoto.jpg'
       "
-      alt="{{ product.name }}"
+      alt="{{ todo.name }}"
       class="listImg"
-      (click)="openImageDialog(product.imageUrl,'products/image')"
+      (click)="openImageDialog(todo.imageUrl,'todos/image')"
     />
   </div>
 
   <div class="listBody">
-    <h5 class="listTitle">{{ product.name }}</h5>
-    <p class="listText"><b>Sku:</b> {{ product.sku }}</p>
+    <h5 class="listTitle">{{ todo.name }}</h5>
+    <p class="listText"><b>Sku:</b> 000000000</p>
   </div>
 
   <div class="listBody">
-    <div>{{ product.categoryDto.name }}</div>
+    <!--div>{{ todo.categoryDto.name }}</div-->
   </div>
 
-  <div class="listBody">
-    <div>{{ product.price | currencyFormat }}</div>
-  </div>
+  
 
   <div class="cardButtonContainer">
     <button
@@ -33,14 +31,14 @@
       matTooltipShowDelay="100"
       matTooltipHideDelay="100"
       matTooltip="Detail"
-      (click)="openDialog(product.id)"
+      (click)="openDialog(todo.id)"
     >
       <mat-icon class="viewButton">article</mat-icon>
     </button>
 
     <button
       class="cardButton"
-      (click)="onEditProduct(product.id)"
+      (click)="onEditTodo(todo.id)"
       matTooltipPosition="above"
       matTooltipShowDelay="100"
       matTooltipHideDelay="100"
@@ -51,7 +49,7 @@
 
     <button
       class="cardButton"
-      (click)="onAttributeProduct(product.id)"
+      (click)="onAttributeTodo(todo.id)"
       matTooltipPosition="above"
       matTooltipShowDelay="100"
       matTooltipHideDelay="100"
@@ -62,7 +60,7 @@
 
     <button
       class="cardButton"
-      (click)="onPhotoProduct(product.id)"
+      (click)="onPhotoTodo(todo.id)"
       matTooltipPosition="above"
       matTooltipShowDelay="100"
       matTooltipHideDelay="100"
@@ -73,7 +71,7 @@
 
     <button
       class="cardButton"
-      (click)="onGalleryProduct(product.id)"
+      (click)="onGalleryTodo(todo.id)"
       matTooltipPosition="above"
       matTooltipShowDelay="100"
       matTooltipHideDelay="100"
@@ -84,7 +82,7 @@
 
     <button
       class="cardButton cardButtonDelete"
-      (click)="onDelete(product.id,product.name)"
+      (click)="onDelete(todo.id,todo.name)"
       matTooltipPosition="above"
       matTooltipShowDelay="100"
       matTooltipHideDelay="100"

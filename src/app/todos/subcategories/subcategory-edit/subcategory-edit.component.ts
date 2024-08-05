@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Observable, Subject, finalize, map, take, takeUntil } from 'rxjs';
-import { CategoryService } from 'src/app/services/category.service';
+import { CategoryService } from '../../../services/category.service';
 import { Subcategory } from '../../../model/subcategory.model';
 import { SubcategoryService } from '../../../services/subcategory.service';
 
@@ -92,7 +92,7 @@ export class SubcategoryEditComponent implements OnInit, OnDestroy {
   }
 
   onCancel() {
-    this.router.navigate(['./products/subcategories']);
+    this.router.navigate(['./todos/subcategories']);
   }
 
   private initForm(subcategory: Subcategory) {
@@ -111,6 +111,6 @@ export class SubcategoryEditComponent implements OnInit, OnDestroy {
   }
 
   onBack() {
-    this.router.navigate(['./products/subcategories']);
+    this.router.navigate(['./todos/subcategories']);
   }
 }

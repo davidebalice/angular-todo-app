@@ -11,7 +11,7 @@ export const MENU: MenuItem[] = [
     id: 13,
     label: 'Todo',
     icon: 'text_snippet',
-    link: '/app/todo',
+    link: '/todos',
   },
 
   {

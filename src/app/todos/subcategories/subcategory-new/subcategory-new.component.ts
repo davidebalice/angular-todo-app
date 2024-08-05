@@ -7,7 +7,7 @@ import {
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subject, finalize, take, takeUntil } from 'rxjs';
-import { CategoryService } from 'src/app/services/category.service';
+import { CategoryService } from '../../../services/category.service';
 import { SubcategoryService } from '../../../services/subcategory.service';
 
 @Component({
@@ -16,12 +16,12 @@ import { SubcategoryService } from '../../../services/subcategory.service';
   styleUrl: './subcategory-new.component.scss',
 })
 export class SubcategoryNewComponent {
-  subcategoryForm: FormGroup;
+  subcategoryForm: FormGroup | undefined;
   submitting = false;
   imageFile: File | null = null;
   private destroy$ = new Subject<void>();
-  categories$: Observable<any[]>;
-  selectedIdCategory: number = null;
+  categories$: Observable<any[]> | undefined;
+  selectedIdCategory: number = 0;
 
   constructor(
     private route: ActivatedRoute,
@@ -49,7 +49,7 @@ export class SubcategoryNewComponent {
   }
 
   loadDefaultCategory(): void {
-    if (!this.selectedIdCategory) {
+    if (!this.selectedIdCategory && this.categories$) {
       this.categories$.subscribe((categories) => {
         if (categories.length > 0) {
           this.selectedIdCategory = categories[0].id;
@@ -65,7 +65,17 @@ export class SubcategoryNewComponent {
   onCategoryChange(categoryId: number): void {
     this.selectedIdCategory = categoryId;
     this.loadSubcategories(categoryId);
-    this.subcategoryForm.get('category.id').setValue(categoryId);
+    if (this.subcategoryForm) {
+      const categoryControl = this.subcategoryForm.get('category.id');
+
+      if (categoryControl) {
+        categoryControl.setValue(categoryId);
+      } else {
+        console.error('Control "category.id" not found in the form');
+      }
+    } else {
+      console.error('Form "subcategoryForm" is undefined');
+    }
   }
 
   loadSubcategories(categoryId: number): void {
@@ -73,7 +83,11 @@ export class SubcategoryNewComponent {
   }
 
   onSubmit() {
-    if (this.subcategoryForm.valid && !this.submitting) {
+    if (
+      this.subcategoryForm &&
+      this.subcategoryForm.valid &&
+      !this.submitting
+    ) {
       this.submitting = true;
 
       this.subCategoryService
@@ -91,7 +105,7 @@ export class SubcategoryNewComponent {
             console.log('Subcategory added successfully', response);
           },
           error: (error) => {
-            //console.error('Error adding product', error);
+            //console.error('Error adding todo', error);
           },
         });
     }
@@ -102,7 +116,7 @@ export class SubcategoryNewComponent {
   }
 
   onBack() {
-    this.router.navigate(['./products/subcategories/'], {
+    this.router.navigate(['./todos/subcategories/'], {
       queryParams: { idCategory: this.selectedIdCategory },
     });
   }

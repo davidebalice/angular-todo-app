@@ -1,4 +1,4 @@
-<h5>Products > New</h5>
+<h5>Todos > New</h5>
 <hr />
 
 <mat-card class="pageCard">
@@ -9,12 +9,12 @@
     </button>
 
     <form
-      [formGroup]="productForm"
+      [formGroup]="todoForm"
       (ngSubmit)="onSubmit()"
       class="formContainer"
     >
       <div class="inputContainer inputContainerFull">
-        <label for="name" class="labelText">Name of product</label>
+        <label for="name" class="labelText">Name of todo</label>
         <input
           type="text"
           id="name"
@@ -95,10 +95,10 @@
         <button
           type="submit"
           class="buttonBase"
-          [disabled]="!productForm.valid"
+          [disabled]="!todoForm.valid"
         >
           <mat-icon>add_circle</mat-icon>
-          Add product
+          Add todo
         </button>
       </div>
     </form>

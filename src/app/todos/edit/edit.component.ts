@@ -1,31 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgModule, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Observable, Subject, catchError, finalize, map, take } from 'rxjs';
-import { DemoDialogComponent } from 'src/app/components/demo-dialog/demo-dialog.component';
-import { SubcategoryService } from 'src/app/services/subcategory.service';
-import { Product } from '../../model/todo.model';
+import { DemoDialogComponent } from '../../components/demo-dialog/demo-dialog.component';
+import { SubcategoryService } from '../../services/subcategory.service';
+import { Todo } from '../../model/todo.model';
 import { CategoryService } from '../../services/category.service';
-import { ProductService } from '../../services/todo.service';
+import { TodoService } from '../../services/todo.service';
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
   styleUrl: './edit.component.css',
+  imports: [CommonModule, NgModule],
 })
 export class EditComponent implements OnInit {
-  id: number | undefined;
-  productForm: FormGroup;
-  product: Product;
-  product$: Observable<Product> | undefined;
+  id: number = 0;
+  todoForm: FormGroup | undefined;
+  todo: Todo | undefined;
+  todo$: Observable<Todo> | undefined;
   submitting = false;
   private destroy$ = new Subject<void>();
-  categories$: Observable<any[]>;
-  subcategories$: Observable<any[]>;
+  categories$: Observable<any[]> | undefined;
+  subcategories$: Observable<any[]> | undefined;
 
   constructor(
     private route: ActivatedRoute,
-    private productService: ProductService,
+    private todoService: TodoService,
     private categoryService: CategoryService,
     private subcategoryService: SubcategoryService,
     private router: Router,
@@ -43,14 +45,14 @@ export class EditComponent implements OnInit {
       this.id = +params['id'];
 
       if (this.id !== undefined) {
-        this.product$ = this.productService.getById(this.id);
+        this.todo$ = this.todoService.getById(this.id);
 
-        this.productService
+        this.todoService
           .getById(this.id)
           .pipe(
-            map((product) => {
-              this.product = product;
-              this.initForm(this.product);
+            map((todo) => {
+              this.todo = todo;
+              this.initForm(this.todo);
             })
           )
           .subscribe();
@@ -59,17 +61,17 @@ export class EditComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.productForm.valid && !this.submitting) {
+    if (this.todoForm && this.todoForm.valid && !this.submitting) {
       this.submitting = true;
-      this.productService
-        .updateProduct(this.id, this.productForm.value)
+      this.todoService
+        .updateTodo(this.id, this.todoForm.value)
         .pipe(
           take(1),
           catchError((error) => {
             if (error.message.includes('Demo')) {
               this.openDemoDialog();
             }
-            console.error('Error adding product', error);
+            console.error('Error adding todo', error);
             throw error;
           }),
           finalize(() => {
@@ -79,34 +81,32 @@ export class EditComponent implements OnInit {
         )
         .subscribe({
           next: (response) => {
-            console.log('Product updated successfully', response);
+            console.log('Todo updated successfully', response);
           },
           error: (error) => {
-            console.error('Error updating product', error);
+            console.error('Error updating todo', error);
           },
         });
     }
   }
 
   onCancel() {
-    this.router.navigate(['/products']);
+    this.router.navigate(['/todos']);
   }
 
-  private initForm(product: Product) {
-    this.productForm = this.formBuilder.group({
-      name: [product.name, Validators.required],
-      idCategory: [product.idCategory, Validators.required],
-      idSubcategory: [product.idSubcategory],
-      description: [product.description, Validators.required],
-      sku: [product.sku],
-      price: [product.price],
+  private initForm(todo: Todo) {
+    this.todoForm = this.formBuilder.group({
+      name: [todo.name, Validators.required],
+      idCategory: [todo.idCategory, Validators.required],
+      idSubcategory: [todo.idSubcategory],
+      description: [todo.description, Validators.required],
     });
 
-    this.productForm.get('idCategory')?.valueChanges.subscribe((categoryId) => {
+    this.todoForm.get('idCategory')?.valueChanges.subscribe((categoryId) => {
       this.loadSubcategories(categoryId);
     });
 
-    this.loadSubcategories(product.idCategory);
+    this.loadSubcategories(todo.idCategory);
   }
 
   loadCategories(): void {
@@ -125,6 +125,6 @@ export class EditComponent implements OnInit {
   }
 
   onBack() {
-    this.router.navigate(['./products']);
+    this.router.navigate(['./todos']);
   }
 }

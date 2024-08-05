@@ -1,23 +1,20 @@
 import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-//import { MatModule } from '../appModules/mat.module';
 import { AuthInterceptor } from '../interceptors/auth-interceptor';
 import { RestApiUrlInterceptor } from '../interceptors/rest-api-url.interceptor';
-import { AuthService } from '../services/auth.service';
-import { TodoService } from '../services/todo.service';
+import { DefaultImagePipe } from '../pipes/defaultImage.pipe';
+import { ProtectedImagePipe } from '../pipes/protected-images.pipe';
 import { CardComponent } from './card/card.component';
-import { RowComponent } from './row/row.component';
-
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatDialogModule } from '@angular/material/dialog';
-import { SharedModule } from '../shared/shared.module';
-import { AttributeEditComponent } from './attributes/attribute-edit/attribute-edit.component';
-import { AttributeNewComponent } from './attributes/attribute-new/attribute-new.component';
-import { AttributesSetComponent } from './attributes/attribute-set/attributes-set.component';
-import { AttributesComponent } from './attributes/attributes.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { CategoryEditComponent } from './categories/category-edit/category-edit.component';
 import { CategoryNewComponent } from './categories/category-new/category-new.component';
@@ -28,15 +25,13 @@ import { ListCardComponent } from './list-card/list-card.component';
 import { ListRowComponent } from './list-row/list-row.component';
 import { NewComponent } from './new/new.component';
 import { PhotoComponent } from './photo/photo.component';
+import { RowComponent } from './row/row.component';
 import { SearchComponent } from './search/search.component';
 import { SubcategoriesComponent } from './subcategories/subcategories.component';
 import { SubcategoryEditComponent } from './subcategories/subcategory-edit/subcategory-edit.component';
 import { SubcategoryNewComponent } from './subcategories/subcategory-new/subcategory-new.component';
 import { TodosRoutingModule } from './todos-routing.module';
 import { TodosComponent } from './todos.component';
-import { ValueEditComponent } from './values/value-edit/value-edit.component';
-import { ValueNewComponent } from './values/value-new/value-new.component';
-import { ValuesComponent } from './values/values.component';
 
 @NgModule({
   declarations: [
@@ -57,28 +52,24 @@ import { ValuesComponent } from './values/values.component';
     SubcategoriesComponent,
     SubcategoryEditComponent,
     SubcategoryNewComponent,
-    AttributesComponent,
-    AttributeEditComponent,
-    AttributeNewComponent,
-    AttributesSetComponent,
-    ValuesComponent,
-    ValueEditComponent,
-    ValueNewComponent,
+    ProtectedImagePipe,
+    DefaultImagePipe,
   ],
   imports: [
     CommonModule,
-    TodosRoutingModule,
-   // MatModule,
     FormsModule,
     ReactiveFormsModule,
-    FlexLayoutModule,
+    MatCardModule,
+    MatIconModule,
+    MatTooltipModule,
+    MatPaginatorModule,
     MatDialogModule,
-    SharedModule,
+    MatProgressSpinnerModule,
+    FlexLayoutModule,
+    TodosRoutingModule,
   ],
-  exports: [SharedModule],
+  exports: [ListCardComponent, ListRowComponent, EditComponent],
   providers: [
-    AuthService,
-    TodoService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: RestApiUrlInterceptor,

@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, NgModule, OnDestroy, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -9,20 +9,23 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Observable, Subject, finalize, map, take, takeUntil } from 'rxjs';
 import { Category } from '../../../model/category.model';
 import { CategoryService } from '../../../services/category.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-category-edit',
   templateUrl: './category-edit.component.html',
   styleUrl: './category-edit.component.scss',
+  imports: [CommonModule, NgModule],
+
 })
 export class CategoryEditComponent implements OnInit, OnDestroy {
-  id: number | undefined;
-  categoryForm: FormGroup;
-  category: Category;
+  id: number = 0;
+  categoryForm: FormGroup | undefined;
+  category: Category | undefined;
   category$: Observable<Category> | undefined;
   submitting = false;
   private destroy$ = new Subject<void>();
-  categories$: Observable<any[]>;
+  categories$: Observable<any[]> | undefined;
 
   constructor(
     private route: ActivatedRoute,
@@ -53,7 +56,7 @@ export class CategoryEditComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    if (this.categoryForm.valid && !this.submitting) {
+    if (this.categoryForm && this.categoryForm.valid && !this.submitting) {
       this.submitting = true;
       this.categoryService
         .updateCategory(this.id, this.categoryForm.value)
@@ -77,7 +80,7 @@ export class CategoryEditComponent implements OnInit, OnDestroy {
   }
 
   onCancel() {
-    this.router.navigate(['./products/categories']);
+    this.router.navigate(['./todos/categories']);
   }
 
   private initForm(category: Category) {
@@ -96,6 +99,6 @@ export class CategoryEditComponent implements OnInit, OnDestroy {
   }
 
   onBack() {
-    this.router.navigate(['./products/categories']);
+    this.router.navigate(['./todos/categories']);
   }
 }

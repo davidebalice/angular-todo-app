@@ -1,33 +1,36 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, NgModule } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { PageEvent } from '@angular/material/paginator';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { DemoDialogComponent } from 'src/app/components/demo-dialog/demo-dialog.component';
-import { Product } from 'src/app/model/product.model';
-import { ProductService } from 'src/app/services/product.service';
+import { DemoDialogComponent } from '../../components/demo-dialog/demo-dialog.component';
+import { Todo } from '../../model/todo.model';
+import { TodoService } from '../../services/todo.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-list-card',
   templateUrl: './list-card.component.html',
   styleUrl: './list-card.component.scss',
+  imports: [CommonModule, NgModule],
+
 })
 export class ListCardComponent {
-  subscription: Subscription;
-  loadedProducts: Product[] = [];
-  paginatedProducts: Product[] = [];
+  @Input() limit: number = 1;
+  @Input() pagination: boolean = true;
+  subscription!: Subscription;
+  loadedTodos: Todo[] = [];
+  paginatedTodos: Todo[] = [];
   isLoading = true;
-  error = null;
-  totalItems: number;
+  error = '';
+  totalItems: number | undefined;
   currentPage: number = 1;
-  private errorSub: Subscription;
-  private queryParamSub: Subscription;
-  private routeParamsSub: Subscription;
-  @Input() limit: number;
-  @Input() pagination: boolean;
+  private errorSub: Subscription | undefined;
+  private queryParamSub: Subscription | undefined;
+  private routeParamsSub: Subscription | undefined;
 
   constructor(
-    private productService: ProductService,
+    private todoService: TodoService,
     private route: ActivatedRoute,
     public demoDialog: MatDialog
   ) {}
@@ -37,7 +40,7 @@ export class ListCardComponent {
   }
 
   ngOnInit() {
-    this.errorSub = this.productService.error.subscribe((errorMessage) => {
+    this.errorSub = this.todoService.error.subscribe((errorMessage) => {
       this.error = errorMessage;
     });
 
@@ -45,9 +48,9 @@ export class ListCardComponent {
       const searchKey = params['key'] || '';
       const categoryId = params['category'] || '';
       if (categoryId) {
-        this.fetchProducts(searchKey, categoryId);
+        this.fetchTodos(searchKey, categoryId);
       } else {
-        this.fetchProducts(searchKey);
+        this.fetchTodos(searchKey);
       }
     });
 
@@ -55,9 +58,9 @@ export class ListCardComponent {
       const categoryId = params['category'] || 0;
       const searchKey = this.route.snapshot.queryParams['key'] || '';
       if (categoryId) {
-        this.fetchProducts(searchKey, categoryId);
+        this.fetchTodos(searchKey, categoryId);
       } else {
-        this.fetchProducts(searchKey);
+        this.fetchTodos(searchKey);
       }
     });
   }
@@ -77,23 +80,23 @@ export class ListCardComponent {
     }
   }
 
-  onUpdateProducts() {
-    this.fetchProducts();
+  onUpdateTodos() {
+    this.fetchTodos();
   }
 
-  fetchProducts(searchKey?: string, categoryId?: number) {
+  fetchTodos(searchKey?: string, categoryId?: number) {
     this.isLoading = true;
-    this.subscription = this.productService
-      .fetchProducts(searchKey, categoryId, this.limit, this.currentPage)
+    this.subscription = this.todoService
+      .fetchTodos(searchKey, categoryId, this.limit, this.currentPage)
       .subscribe({
         next: (response) => {
           this.isLoading = false;
-          this.loadedProducts = response.products.map((product) => ({
-            ...product,
-            categoryName: product.categoryDto?.name || 'Unknown Category',
+          this.loadedTodos = response.todos.map((todo) => ({
+            ...todo,
+            categoryName: todo.categoryDto?.name || 'Unknown Category',
           }));
           this.totalItems = response.totalItems;
-          this.paginateProducts();
+          this.paginateTodos();
         },
         error: (error) => {
           this.isLoading = false;
@@ -105,12 +108,12 @@ export class ListCardComponent {
 
   onPageChanged(event: PageEvent): void {
     this.currentPage = event.pageIndex + 1;
-    this.fetchProducts();
+    this.fetchTodos();
   }
 
-  paginateProducts() {
+  paginateTodos() {
     const startIndex = (this.currentPage - 1) * this.limit;
     const endIndex = startIndex + this.limit;
-    this.paginatedProducts = this.loadedProducts.slice(startIndex, endIndex);
+    this.paginatedTodos = this.loadedTodos.slice(startIndex, endIndex);
   }
 }

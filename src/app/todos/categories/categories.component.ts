@@ -1,25 +1,27 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, NgModule, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { catchError, Subscription } from 'rxjs';
 import {
   ConfirmDialogComponent,
   ConfirmDialogData,
-} from 'src/app/components/confirm-dialog/confirm-dialog.component';
+} from '../../components/confirm-dialog/confirm-dialog.component';
 import { Category } from '../../model/category.model';
-import { Product } from '../../model/todo.model';
+import { Todo } from '../../model/todo.model';
 import { CategoryService } from '../../services/category.service';
 @Component({
   selector: 'app-categories',
   templateUrl: './categories.component.html',
   styleUrls: ['./categories.component.css'],
+  imports: [CommonModule, NgModule],
 })
 export class CategoriesComponent implements OnInit, OnDestroy {
   categories: Category[] = [];
-  selectedCategory: Category = null;
-  products: Product[] = [];
-  filteredProducts: Product[] = [];
-  subscription: Subscription;
+  selectedCategory: Category | undefined;
+  todos: Todo[] = [];
+  filteredTodos: Todo[] = [];
+  subscription: Subscription | undefined;
   isLoading = true;
 
   constructor(
@@ -39,23 +41,25 @@ export class CategoriesComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
   onSelectCategory(category: Category): void {
     this.selectedCategory = category;
 
     if (category) {
-      this.router.navigate([`/products/idcat/${category.id}`]);
+      this.router.navigate([`/todos/idcat/${category.id}`]);
     }
   }
 
   onNewCategory() {
-    this.router.navigate(['/products/categories/new']);
+    this.router.navigate(['/todos/categories/new']);
   }
 
   onEditCategory(categoryId: number) {
-    this.router.navigate([`/products/categories/${categoryId}/edit`]);
+    this.router.navigate([`/todos/categories/${categoryId}/edit`]);
   }
 
   onDelete(categoryId: number, title: string) {
@@ -73,7 +77,7 @@ export class CategoriesComponent implements OnInit, OnDestroy {
           .deleteCategory(categoryId)
           .pipe(
             catchError((error) => {
-              console.error('Error deleting product', error);
+              console.error('Error deleting todo', error);
               throw error;
             })
           )

@@ -1,6 +1,6 @@
 <h5>
-  Products > Edit >
-  <span>{{ product?.name || "" }}</span>
+  Todos > Edit >
+  <span>{{ todo?.name || "" }}</span>
 </h5>
 <hr />
 
@@ -11,15 +11,15 @@
       Back
     </button>
 
-    <div *ngIf="product$ | async as product; else loading">
+    <div *ngIf="todo$ | async as todo; else loading">
       <form
-        *ngIf="productForm"
-        [formGroup]="productForm"
+        *ngIf="todoForm"
+        [formGroup]="todoForm"
         (ngSubmit)="onSubmit()"
         class="formContainer"
       >
         <div class="inputContainer">
-          <label for="name" class="labelText">Name of product</label>
+          <label for="name" class="labelText">Name of todo</label>
           <input
             type="text"
             id="name"
@@ -105,7 +105,7 @@
           <button
             type="submit"
             class="buttonBase"
-            [disabled]="!productForm.valid"
+            [disabled]="!todoForm.valid"
           >
             <mat-icon>save</mat-icon>
             Save

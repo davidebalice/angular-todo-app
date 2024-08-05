@@ -15,15 +15,15 @@
     </ng-container>
 
     <ng-template #loadedContent>
-      <ng-container *ngIf="loadedProducts && loadedProducts.length > 0; else noProducts">
-        <div class="col-12" *ngFor="let product of loadedProducts">
-          <app-row [product]="product"></app-row>
+      <ng-container *ngIf="loadedTodos && loadedTodos.length > 0; else noTodos">
+        <div class="col-12" *ngFor="let todo of loadedTodos">
+          <app-row [todo]="todo"></app-row>
         </div>
       </ng-container>
     </ng-template>
 
-    <ng-template #noProducts>
-      <div class="noData">No products available.</div>
+    <ng-template #noTodos>
+      <div class="noData">No todos available.</div>
     </ng-template>
 
     <div class="customPagination" *ngIf="pagination && totalItems > limit">

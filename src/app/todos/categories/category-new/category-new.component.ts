@@ -1,28 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import {
-  FormArray,
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { Component, NgModule } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subject, finalize, take, takeUntil } from 'rxjs';
 import { CategoryService } from '../../../services/category.service';
-
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-category-new',
   templateUrl: './category-new.component.html',
-  styleUrl: './category-new.component.scss'
+  styleUrl: './category-new.component.scss',
+  imports: [CommonModule, NgModule],
 })
 export class CategoryNewComponent {
-  categoryForm: FormGroup;
+  categoryForm: FormGroup | undefined;
   submitting = false;
   imageFile: File | null = null;
   private destroy$ = new Subject<void>();
-  categories$: Observable<any[]>;
-
+  categories$: Observable<any[]> | undefined;
 
   constructor(
     private route: ActivatedRoute,
@@ -32,10 +26,12 @@ export class CategoryNewComponent {
   ) {}
 
   ngOnInit(): void {
-    this.categoryForm = this.formBuilder.group({
-      name: ['', Validators.required],
-      description: [''],
-    });
+    if (this.categoryForm) {
+      this.categoryForm = this.formBuilder.group({
+        name: ['', Validators.required],
+        description: [''],
+      });
+    }
   }
 
   onFileSelected(event: any) {
@@ -43,7 +39,7 @@ export class CategoryNewComponent {
   }
 
   onSubmit() {
-    if (this.categoryForm.valid && !this.submitting) {
+    if (this.categoryForm && this.categoryForm.valid && !this.submitting) {
       this.submitting = true;
 
       this.categoryService
@@ -61,7 +57,7 @@ export class CategoryNewComponent {
             console.log('Category added successfully', response);
           },
           error: (error) => {
-            //console.error('Error adding product', error);
+            //console.error('Error adding todo', error);
           },
         });
     }
@@ -72,7 +68,7 @@ export class CategoryNewComponent {
   }
 
   onBack() {
-    this.router.navigate(['./products/categories']);
+    this.router.navigate(['./todos/categories']);
   }
 
   ngOnDestroy() {

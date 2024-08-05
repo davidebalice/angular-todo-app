@@ -10,7 +10,6 @@ import { TwoStepComponent } from './views/auth/two-step/two-step.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
-
   {
     path: '',
     component: LayoutComponent,
@@ -31,11 +30,17 @@ export const routes: Routes = [
         loadChildren: () =>
           import('./views/pages/routes').then((m) => m.routes),
       },
+      /*
       {
         path: 'app',
         loadChildren: () => import('./views/routes').then((m) => m.routes),
-      },
+      },*/
     ],
+  },
+  {
+    path: 'todos',
+    loadChildren: () =>
+      import('./todos/todos-routing.module').then((m) => m.routes),
   },
   {
     path: 'signin',

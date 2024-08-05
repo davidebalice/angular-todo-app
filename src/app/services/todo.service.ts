@@ -14,9 +14,9 @@ export class TodoService implements OnInit, OnDestroy {
   todoSelected = new Subject<Todo>();
   error = new Subject<string>();
   csrfToken: Subject<string> = new Subject<string>();
-  csrfValue: string;
-  private todos: Todo[];
-  tokenValue: string;
+  csrfValue!: string;
+  private todos!: Todo[];
+  tokenValue!: string;
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -50,7 +50,7 @@ export class TodoService implements OnInit, OnDestroy {
       (response: any) => {
         this.csrfToken.next(response.token.trim());
         this.csrfValue = response.token.trim();
-        this.error.next(null);
+        this.error.next('');
       },
       (error) => {
         console.error('Error fetching CSRF token', error);
@@ -73,9 +73,9 @@ export class TodoService implements OnInit, OnDestroy {
       apiUrl = '/todos/search';
       params = params.append('keyword', keyword);
     } else {
-      if (category > 0) {
+      if (category! > 0) {
         apiUrl = '/todos/searchByCategoryId';
-        params = params.append('categoryId', category);
+        params = params.append('categoryId', category!);
       }
     }
 
@@ -165,19 +165,17 @@ export class TodoService implements OnInit, OnDestroy {
   addTodoWithPhoto(todo: FormData) {
     const headers = this.getHeadersForm();
 
-    return this.http
-      .post(`/todos/add-with-photo`, todo, { headers })
-      .pipe(
-        tap((response) => {
-          console.log('Response from backend:', response);
-        }),
-        catchError((error: HttpErrorResponse) => {
-          if (error.status === 401) {
-            this.router.navigate(['/login']);
-          }
-          return throwError(() => new Error('Error adding todo.'));
-        })
-      );
+    return this.http.post(`/todos/add-with-photo`, todo, { headers }).pipe(
+      tap((response) => {
+        console.log('Response from backend:', response);
+      }),
+      catchError((error: HttpErrorResponse) => {
+        if (error.status === 401) {
+          this.router.navigate(['/login']);
+        }
+        return throwError(() => new Error('Error adding todo.'));
+      })
+    );
   }
 
   updateTodo(id: number, dataTodo: Todo) {
@@ -275,7 +273,6 @@ export class TodoService implements OnInit, OnDestroy {
 
     return this.http.get<string[]>(url, { headers }).pipe(
       tap((response) => {
-        console.log('Existing images:', response['gallery']);
       }),
       catchError((error: HttpErrorResponse) => {
         if (error.status === 401) {

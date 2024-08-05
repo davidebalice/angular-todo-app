@@ -6,8 +6,8 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Observable, catchError, finalize, map, take } from 'rxjs';
 import { DemoDialogComponent } from 'src/app/components/demo-dialog/demo-dialog.component';
 import { AppConfig } from '../../app-config';
-import { Product } from '../../model/todo.model';
-import { ProductService } from '../../services/todo.service';
+import { Todo } from '../../model/todo.model';
+import { TodoService } from '../../services/todo.service';
 
 @Component({
   selector: 'app-photo',
@@ -17,20 +17,20 @@ import { ProductService } from '../../services/todo.service';
 export class PhotoComponent implements OnInit {
   id: number | undefined;
   editMode = false;
-  productForm: FormGroup;
-  product: Product;
-  product$: Observable<Product> | undefined;
+  todoForm: FormGroup;
+  todo: Todo;
+  todo$: Observable<Todo> | undefined;
   submitting = false;
   file: any;
   imageUrl: string;
 
-  get productControls() {
-    return (this.productForm.get('ingredients') as FormArray).controls;
+  get todoControls() {
+    return (this.todoForm.get('ingredients') as FormArray).controls;
   }
 
   constructor(
     private route: ActivatedRoute,
-    private productService: ProductService,
+    private todoService: TodoService,
     private router: Router,
     private http: HttpClient,
     public demoDialog: MatDialog
@@ -47,15 +47,15 @@ export class PhotoComponent implements OnInit {
 
       if (this.editMode) {
         if (this.id !== undefined) {
-          this.product$ = this.productService.getById(this.id);
+          this.todo$ = this.todoService.getById(this.id);
 
-          this.productService
+          this.todoService
             .getById(this.id)
             .pipe(
-              map((product) => {
-                this.product = product;
-                this.initForm(this.product);
-                this.imageUrl = product.imageUrl;
+              map((todo) => {
+                this.todo = todo;
+                this.initForm(this.todo);
+                this.imageUrl = todo.imageUrl;
               })
             )
             .subscribe();
@@ -72,15 +72,15 @@ export class PhotoComponent implements OnInit {
   onSubmit() {
     if (!this.submitting) {
       this.submitting = true;
-      this.productService
-        .uploadProduct(this.id, this.file)
+      this.todoService
+        .uploadTodo(this.id, this.file)
         .pipe(
           take(1),
           catchError((error) => {
             if (error.message.includes('Demo')) {
               this.openDemoDialog();
             }
-            console.error('Error adding product', error);
+            console.error('Error adding todo', error);
             throw error;
           }),
           finalize(() => {
@@ -90,36 +90,36 @@ export class PhotoComponent implements OnInit {
         )
         .subscribe({
           next: (response) => {
-            console.log('Product updated successfully', response);
+            console.log('Todo updated successfully', response);
           },
           error: (error) => {
-            console.error('Error updating product', error);
+            console.error('Error updating todo', error);
           },
         });
     }
   }
 
   getFullImageUrl(imageUrl: string): string {
-    return `${AppConfig.apiUrl}/products/image/${imageUrl}`;
+    return `${AppConfig.apiUrl}/todos/image/${imageUrl}`;
   }
 
   onCancel() {
     this.router.navigate(['../'], { relativeTo: this.route });
   }
 
-  private initForm(product: Product) {
-    let productImageUrl = '';
+  private initForm(todo: Todo) {
+    let todoImageUrl = '';
 
-    if (this.editMode && product) {
-      productImageUrl = product.imageUrl;
+    if (this.editMode && todo) {
+      todoImageUrl = todo.imageUrl;
     }
 
-    this.productForm = new FormGroup({
-      image: new FormControl(productImageUrl, Validators.required),
+    this.todoForm = new FormGroup({
+      image: new FormControl(todoImageUrl, Validators.required),
     });
   }
 
   onBack() {
-    this.router.navigate(['./products']);
+    this.router.navigate(['./todos']);
   }
 }
