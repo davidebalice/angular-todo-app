@@ -1,10 +1,8 @@
-<div class="cardImgContainer">
+<div class="cardImgContainer" *ngIf="todo">
   <img
     [src]="
-      getFullImageUrl(todo.imageUrl)
-        | protectedImage
-        | async
-        | defaultImage : 'assets/images/nophoto.jpg'
+      (getFullImageUrl(todo.imageUrl) | protectedImage | async) ||
+      'assets/images/nophoto.jpg'
     "
     alt="{{ todo.name }}"
     class="cardImg"
@@ -16,7 +14,6 @@
   <p class="cardText"><b>Sku:</b> 00000</p>
 
   <!--div>{{ todo.categoryDto.name }}</div-->
-
 </div>
 
 <div class="buttonContainer">

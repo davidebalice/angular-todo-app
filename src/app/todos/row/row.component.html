@@ -1,15 +1,97 @@
-<div class="listRow">
+<div class="listRow" *ngIf="todo">
+  <div class="tab-content transaction-content">
+    <div
+      class="tab-pane fade active show"
+      id="todo_list_content"
+      role="tabpanel"
+      aria-labelledby="todo_list_tab"
+    >
+      <div class="content__todo__list">
+        <div class="content__todo__list__single">
+          <div class="content__todo__list__single__checkbox">
+            <input type="checkbox" name="todo-1" id="todo-" />
+            <label for="todo-">
+              <i class="uil-check"></i>
+            </label>
+          </div>
+
+          <div class="content__todo__list__single__text">
+            <!--span class="content__todo__list__single__subtitle">{{data.time}}</span-->
+            <!--h4 class="content__todo__list__single__title">{{data.title}}</h4-->
+          </div>
+
+          <div class="content__todo__list__single__tag">
+            <a
+              href="javascript:void(0);"
+              class="content__todo__list__single__tag__item"
+            >
+              <i class="uil uil-tag-alt"></i>
+            </a>
+          </div>
+
+          <div class="content__todo__list__single__author">
+            <a
+              href="javascript:void(0);"
+              class="content__todo__list__single__author__img"
+            >
+              <img src="" alt="avatar" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="tab-pane fade"
+      id="todo_grid_content"
+      role="tabpanel"
+      aria-labelledby="todo_grid_tab"
+    >
+      <div class="content__todo__list content__todo__list--grid">
+        <div class="content__todo__list__single">
+          <div class="content__todo__list__single__checkbox">
+            <input type="checkbox" name="todo-11" id="todo-" />
+            <label for="todo-">
+              <i class="uil-check"></i>
+            </label>
+          </div>
+
+          <div class="content__todo__list__single__text">
+            <!--span class="content__todo__list__single__subtitle">{{data.time}}</span-->
+            <!--h4 class="content__todo__list__single__title">{{data.title}}</h4-->
+          </div>
+
+          <div class="content__todo__list__single__tag">
+            <a
+              href="javascript:void(0);"
+              class="content__todo__list__single__tag__item"
+            >
+              <i class="uil uil-tag-alt"></i>
+            </a>
+          </div>
+
+          <div class="content__todo__list__single__author">
+            <a
+              href="javascript:void(0);"
+              class="content__todo__list__single__author__img"
+            >
+              <img src="" alt="avatar" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div>
     <img
       [src]="
-        getFullImageUrl(todo.imageUrl)
-          | protectedImage
-          | async
-          | defaultImage : 'assets/images/nophoto.jpg'
+        (getFullImageUrl(todo.imageUrl) | protectedImage | async) ||
+        'assets/images/nophoto.jpg'
       "
       alt="{{ todo.name }}"
       class="listImg"
-      (click)="openImageDialog(todo.imageUrl,'todos/image')"
+      (click)="openImageDialog(todo.imageUrl, 'todos/image')"
     />
   </div>
 
@@ -21,8 +103,6 @@
   <div class="listBody">
     <!--div>{{ todo.categoryDto.name }}</div-->
   </div>
-
-  
 
   <div class="cardButtonContainer">
     <button
@@ -82,7 +162,7 @@
 
     <button
       class="cardButton cardButtonDelete"
-      (click)="onDelete(todo.id,todo.name)"
+      (click)="onDelete(todo.id, todo.name)"
       matTooltipPosition="above"
       matTooltipShowDelay="100"
       matTooltipHideDelay="100"

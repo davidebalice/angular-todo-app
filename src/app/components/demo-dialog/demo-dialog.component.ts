@@ -2,11 +2,12 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { TodosModule } from '../../todos/todos.module';
 
 @Component({
   selector: 'app-demo-dialog',
   standalone: true,
-  imports: [CommonModule, MatDialogModule, MatButtonModule], 
+  imports: [TodosModule], 
   template: `
     <h2 mat-dialog-title>Demo mode</h2>
     <mat-dialog-content class="message">

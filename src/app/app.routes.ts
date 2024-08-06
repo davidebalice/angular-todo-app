@@ -30,15 +30,12 @@ export const routes: Routes = [
         loadChildren: () =>
           import('./views/pages/routes').then((m) => m.routes),
       },
-      /*
-      {
-        path: 'app',
-        loadChildren: () => import('./views/routes').then((m) => m.routes),
-      },*/
     ],
   },
   {
     path: 'todos',
+    component: LayoutComponent,
+    canActivate: [AuthGuard],
     loadChildren: () =>
       import('./todos/todos-routing.module').then((m) => m.routes),
   },

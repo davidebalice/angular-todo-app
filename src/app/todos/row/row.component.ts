@@ -1,30 +1,30 @@
-import { Component, Input, NgModule, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Subscription, catchError, take } from 'rxjs';
+import { AppConfig } from '../../app-config';
 import {
   ConfirmDialogComponent,
   ConfirmDialogData,
 } from '../../components/confirm-dialog/confirm-dialog.component';
 import { ImageDialogComponent } from '../../components/image-dialog/image-dialog.component';
-import { AppConfig } from '../../app-config';
 import { Todo } from '../../model/todo.model';
 import { TodoService } from '../../services/todo.service';
 import { DetailComponent } from '../detail/detail.component';
 import { ListRowComponent } from '../list-row/list-row.component';
-import { CommonModule } from '@angular/common';
+import { TodosModule } from '../todos.module';
 @Component({
   selector: 'app-row',
+  standalone: true,
   templateUrl: './row.component.html',
   styleUrl: './row.component.css',
-  imports: [CommonModule, NgModule],
-
+  imports: [TodosModule],
 })
 export class RowComponent implements OnInit {
-  @Input() todo: Todo;
+  @Input() todo: Todo | undefined;
   fullStars: number = 0;
   halfStar: boolean = false;
-  private subscription: Subscription;
+  private subscription: Subscription | undefined;
   constructor(
     private todoService: TodoService,
     private router: Router,
@@ -45,8 +45,12 @@ export class RowComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onSelected() {
-    this.router.navigate(['/todos', this.todo.id]);
+  navigateToTodo(): void {
+    if (this.todo) {
+      this.router.navigate(['/todos', this.todo.id]);
+    } else {
+      console.error('Todo is undefined');
+    }
   }
 
   private fetchTodos() {

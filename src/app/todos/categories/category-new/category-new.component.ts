@@ -1,15 +1,16 @@
-import { Component, NgModule } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subject, finalize, take, takeUntil } from 'rxjs';
 import { CategoryService } from '../../../services/category.service';
-import { CommonModule } from '@angular/common';
+import { TodosModule } from '../../todos.module';
 
 @Component({
   selector: 'app-category-new',
+  standalone: true,
   templateUrl: './category-new.component.html',
   styleUrl: './category-new.component.scss',
-  imports: [CommonModule, NgModule],
+  imports: [TodosModule],
 })
 export class CategoryNewComponent {
   categoryForm: FormGroup | undefined;

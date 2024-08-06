@@ -9,6 +9,7 @@
     </button>
 
     <form
+      *ngIf="todoForm"
       [formGroup]="todoForm"
       (ngSubmit)="onSubmit()"
       class="formContainer"
@@ -92,11 +93,7 @@
           <mat-icon>cancel</mat-icon>
           Cancel
         </button>
-        <button
-          type="submit"
-          class="buttonBase"
-          [disabled]="!todoForm.valid"
-        >
+        <button type="submit" class="buttonBase" [disabled]="!todoForm.valid">
           <mat-icon>add_circle</mat-icon>
           Add todo
         </button>

@@ -9,6 +9,7 @@
     </button>
 
     <form
+      *ngIf="categoryForm"
       [formGroup]="categoryForm"
       (ngSubmit)="onSubmit()"
       class="formContainer"
@@ -33,7 +34,6 @@
           rows="6"
         ></textarea>
       </div>
-
 
       <div class="submitContainer">
         <button

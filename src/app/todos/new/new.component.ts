@@ -1,5 +1,5 @@
-import { Component, NgModule, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import {
@@ -11,29 +11,25 @@ import {
   takeUntil,
 } from 'rxjs';
 import { DemoDialogComponent } from '../../components/demo-dialog/demo-dialog.component';
-import { SubcategoryService } from '../../services/subcategory.service';
 import { CategoryService } from '../../services/category.service';
+import { SubcategoryService } from '../../services/subcategory.service';
 import { TodoService } from '../../services/todo.service';
-import { CommonModule } from '@angular/common';
+import { TodosModule } from '../todos.module';
 
 @Component({
   selector: 'app-new',
+  standalone: true,
   templateUrl: './new.component.html',
   styleUrl: './new.component.css',
-  imports: [CommonModule, NgModule],
-
+  imports: [TodosModule],
 })
 export class NewComponent implements OnInit {
-  todoForm: FormGroup;
+  todoForm: FormGroup | undefined;
   submitting = false;
   imageFile: File | null = null;
   private destroy$ = new Subject<void>();
-  categories$: Observable<any[]>;
-  subcategories$: Observable<any[]>;
-
-  get todoControls() {
-    return (this.todoForm.get('ingredients') as FormArray).controls;
-  }
+  categories$: Observable<any[]> | undefined;
+  subcategories$: Observable<any[]> | undefined;
 
   constructor(
     private route: ActivatedRoute,
@@ -70,7 +66,7 @@ export class NewComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.todoForm.valid && !this.submitting) {
+    if (this.todoForm && this.todoForm.valid && !this.submitting) {
       this.submitting = true;
 
       this.todoService
@@ -102,14 +98,11 @@ export class NewComponent implements OnInit {
   }
 
   onSubmitWithPhoto() {
-    if (this.todoForm.valid && !this.submitting) {
+    if (this.todoForm && this.todoForm.valid && !this.submitting) {
       const formData = new FormData();
 
       formData.append('name', this.todoForm.get('name')?.value);
-      formData.append(
-        'description',
-        this.todoForm.get('description')?.value
-      );
+      formData.append('description', this.todoForm.get('description')?.value);
       formData.append('idCategory', this.todoForm.get('idCategory')?.value);
       formData.append('sku', this.todoForm.get('sku')?.value);
       formData.append('price', this.todoForm.get('price')?.value);

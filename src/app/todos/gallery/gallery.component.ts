@@ -1,6 +1,7 @@
+import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { map, Observable } from 'rxjs';
@@ -9,27 +10,30 @@ import { DemoDialogComponent } from '../../components/demo-dialog/demo-dialog.co
 import { ImageDialogComponent } from '../../components/image-dialog/image-dialog.component';
 import { Todo } from '../../model/todo.model';
 import { TodoService } from '../../services/todo.service';
+import { TodosModule } from '../todos.module';
+
+interface UploadedImage {
+  url: string;
+}
 
 @Component({
   selector: 'app-gallery',
+  standalone: true,
   templateUrl: './gallery.component.html',
   styleUrl: './gallery.component.css',
+  imports: [TodosModule, CommonModule],
 })
 export class GalleryComponent implements OnInit {
-  id: number | undefined;
+  id: number = 0;
   editMode = false;
-  todoForm: FormGroup;
-  todo: Todo;
+  todoForm: FormGroup | undefined;
+  todo: Todo | undefined;
   todo$: Observable<Todo> | undefined;
   submitting = false;
   file: any;
-  imageUrl: string;
+  imageUrl: string = '';
   selectedFiles: File[] = [];
-  uploadedImages: string[] = [];
-
-  get todoControls() {
-    return (this.todoForm.get('ingredients') as FormArray).controls;
-  }
+  uploadedImages: UploadedImage[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -99,18 +103,22 @@ export class GalleryComponent implements OnInit {
   }
 
   getFullImageUrl(imageUrl: string): string {
-    return `${AppConfig.apiUrl}/todos/gallery/${imageUrl}`;
+    return imageUrl
+      ? `${AppConfig.apiUrl}/todos/gallery/${imageUrl}`
+      : 'assets/images/nophoto.jpg';
   }
 
   loadImages() {
-    this.todoService.getImages(this.id).subscribe({
-      next: (response) => {
-        this.uploadedImages = response['gallery'];
-      },
-      error: (error) => {
-        console.error('Error loading existing images:', error);
-      },
-    });
+    if (this.id) {
+      this.todoService.getImages(this.id).subscribe({
+        next: (response: any) => {
+          this.uploadedImages = response['gallery'];
+        },
+        error: (error) => {
+          console.error('Error loading existing images:', error);
+        },
+      });
+    }
   }
 
   onBack() {

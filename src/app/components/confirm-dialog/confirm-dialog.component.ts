@@ -1,16 +1,18 @@
-import { CommonModule } from '@angular/common';
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatButtonModule } from '@angular/material/button';
+import { TodosModule } from '../../todos/todos.module';
 
 @Component({
   selector: 'app-confirm-dialog',
   standalone: true,
-  imports: [CommonModule, MatButtonModule, MatDialogModule],
+  imports: [TodosModule],
   template: `
     <h2 mat-dialog-title>{{ data.title }}</h2>
-    <mat-dialog-content class="message">{{ data.message }}<br /><b style="font-size:13px">{{ data.item }}</b></mat-dialog-content>
+    <mat-dialog-content class="message"
+      >{{ data.message }}<br /><b style="font-size:13px">{{
+        data.item
+      }}</b></mat-dialog-content
+    >
     <mat-dialog-actions align="end">
       <button mat-button mat-dialog-close color="primary">Cancel</button>
       <button mat-button [mat-dialog-close]="true" color="warn">Confirm</button>

@@ -2,25 +2,28 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Observable, Subject, finalize, map, take, takeUntil } from 'rxjs';
-import { CategoryService } from '../../../services/category.service';
 import { Subcategory } from '../../../model/subcategory.model';
+import { CategoryService } from '../../../services/category.service';
 import { SubcategoryService } from '../../../services/subcategory.service';
+import { TodosModule } from '../../todos.module';
 
 @Component({
   selector: 'app-subcategory-edit',
+  standalone: true,
   templateUrl: './subcategory-edit.component.html',
   styleUrl: './subcategory-edit.component.scss',
+  imports: [TodosModule],
 })
 export class SubcategoryEditComponent implements OnInit, OnDestroy {
-  id: number | undefined;
-  categories$: Observable<any[]>;
-  subcategoryForm: FormGroup;
-  subcategory: Subcategory;
+  id: number = 0;
+  categories$: Observable<any[]> | undefined;
+  subcategoryForm: FormGroup | undefined;
+  subcategory: Subcategory | undefined;
   subcategory$: Observable<Subcategory> | undefined;
   submitting = false;
   private destroy$ = new Subject<void>();
-  subcategories$: Observable<any[]>;
-  selectedIdCategory: number = null;
+  subcategories$: Observable<any[]> | undefined;
+  selectedIdCategory: number = 0;
 
   constructor(
     private route: ActivatedRoute,
@@ -58,18 +61,31 @@ export class SubcategoryEditComponent implements OnInit, OnDestroy {
     });
   }
 
-  onCategoryChange(categoryId: number): void {
+  onCategoryChange(event: Event): void {
+    const selectElement = event.target as HTMLSelectElement;
+    const categoryId = parseInt(selectElement.value, 10);
     this.selectedIdCategory = categoryId;
-    this.subcategoryForm.get('category.id').setValue(categoryId);
+    if (this.subcategoryForm) {
+      const categoryControl = this.subcategoryForm.get('category.id');
+
+      if (categoryControl) {
+        categoryControl.setValue(categoryId);
+      } else {
+        console.error('Control "category.id" not found in the form');
+      }
+    } else {
+      console.error('Form "subcategoryForm" is undefined');
+    }
   }
 
   onSubmit() {
-    if (this.subcategoryForm.valid && !this.submitting) {
+    if (
+      this.subcategoryForm &&
+      this.subcategoryForm.valid &&
+      !this.submitting
+    ) {
       this.submitting = true;
-      console.log(this.subcategoryForm.value);
-      console.log(this.subcategoryForm.value);
-      console.log(this.subcategoryForm.value);
-      console.log(this.subcategoryForm.value);
+
       this.subcategoryService
         .updateSubcategory(this.id, this.subcategoryForm.value)
         .pipe(

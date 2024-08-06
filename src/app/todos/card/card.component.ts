@@ -12,10 +12,13 @@ import { Todo } from '../../model/todo.model';
 import { TodoService } from '../../services/todo.service';
 import { DetailComponent } from '../detail/detail.component';
 import { ListCardComponent } from '../list-card/list-card.component';
+import { TodosModule } from '../todos.module';
 @Component({
   selector: 'app-card',
+  standalone: true,
   templateUrl: './card.component.html',
   styleUrl: './card.component.css',
+  imports: [TodosModule],
 })
 export class CardComponent implements OnInit {
   @Input() todo!: Todo;

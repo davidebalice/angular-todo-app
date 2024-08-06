@@ -9,11 +9,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subject, finalize, take, takeUntil } from 'rxjs';
 import { CategoryService } from '../../../services/category.service';
 import { SubcategoryService } from '../../../services/subcategory.service';
+import { TodosModule } from '../../todos.module';
 
 @Component({
   selector: 'app-subcategory-new',
   templateUrl: './subcategory-new.component.html',
   styleUrl: './subcategory-new.component.scss',
+  standalone: true,
+  imports: [TodosModule],
 })
 export class SubcategoryNewComponent {
   subcategoryForm: FormGroup | undefined;
@@ -62,9 +65,16 @@ export class SubcategoryNewComponent {
     }
   }
 
-  onCategoryChange(categoryId: number): void {
-    this.selectedIdCategory = categoryId;
-    this.loadSubcategories(categoryId);
+  onCategoryChange(event: Event): void {
+    const selectElement = event.target as HTMLSelectElement;
+    const categoryId = parseInt(selectElement.value, 10);
+    if (!isNaN(categoryId)) {
+      this.selectedIdCategory = categoryId;
+      this.loadSubcategories(categoryId);
+    } else {
+      console.error('ID categoria non valido:', selectElement.value);
+    }
+
     if (this.subcategoryForm) {
       const categoryControl = this.subcategoryForm.get('category.id');
 

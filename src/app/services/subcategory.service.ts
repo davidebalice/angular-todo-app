@@ -22,7 +22,7 @@ import { Subcategory } from '../model/subcategory.model';
 export class SubcategoryService {
   private subcategoriesUrl = '/subcategories/';
   private subcategoriesSubject = new BehaviorSubject<Subcategory[]>([]);
-  private subscription: Subscription;
+  private subscription: Subscription | undefined;
   constructor(private http: HttpClient, private router: Router) {}
 
   private getHeaders(): HttpHeaders {

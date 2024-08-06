@@ -1,19 +1,20 @@
 import { Component, Input, NgModule } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { PageEvent } from '@angular/material/paginator';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { DemoDialogComponent } from '../../components/demo-dialog/demo-dialog.component';
 import { Todo } from '../../model/todo.model';
 import { TodoService } from '../../services/todo.service';
-import { CommonModule } from '@angular/common';
+import { TodosModule } from '../todos.module';
+import { CardComponent } from '../card/card.component';
 
 @Component({
   selector: 'app-list-card',
+  standalone: true,
   templateUrl: './list-card.component.html',
   styleUrl: './list-card.component.scss',
-  imports: [CommonModule, NgModule],
-
+  imports: [TodosModule, CardComponent, MatPaginator],
 })
 export class ListCardComponent {
   @Input() limit: number = 1;

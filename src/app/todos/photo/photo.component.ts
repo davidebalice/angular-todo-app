@@ -4,29 +4,28 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Observable, catchError, finalize, map, take } from 'rxjs';
-import { DemoDialogComponent } from 'src/app/components/demo-dialog/demo-dialog.component';
 import { AppConfig } from '../../app-config';
+import { DemoDialogComponent } from '../../components/demo-dialog/demo-dialog.component';
 import { Todo } from '../../model/todo.model';
 import { TodoService } from '../../services/todo.service';
+import { TodosModule } from '../todos.module';
 
 @Component({
   selector: 'app-photo',
+  standalone: true,
   templateUrl: './photo.component.html',
   styleUrl: './photo.component.css',
+  imports: [TodosModule],
 })
 export class PhotoComponent implements OnInit {
-  id: number | undefined;
+  id: number = 0;
   editMode = false;
-  todoForm: FormGroup;
-  todo: Todo;
+  todoForm: FormGroup | undefined;
+  todo: Todo | undefined;
   todo$: Observable<Todo> | undefined;
   submitting = false;
   file: any;
-  imageUrl: string;
-
-  get todoControls() {
-    return (this.todoForm.get('ingredients') as FormArray).controls;
-  }
+  imageUrl: string = '';
 
   constructor(
     private route: ActivatedRoute,

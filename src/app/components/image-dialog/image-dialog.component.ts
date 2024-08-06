@@ -1,13 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, Inject } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AppConfig } from '../../app-config';
-import { PipesModule } from '../../pipes/pipe.module';
+import { TodosModule } from '../../todos/todos.module';
 @Component({
   selector: 'app-image-dialog',
   standalone: true,
-  imports: [CommonModule, MatButtonModule, MatDialogModule, PipesModule],
+  imports: [TodosModule, CommonModule],
   templateUrl: './image-dialog.component.html',
   styleUrls: ['./image-dialog.component.scss'],
 })

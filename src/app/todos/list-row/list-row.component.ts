@@ -1,26 +1,27 @@
-import { Component, Input, NgModule } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { PageEvent } from '@angular/material/paginator';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { DemoDialogComponent } from '../../components/demo-dialog/demo-dialog.component';
 import { Todo } from '../../model/todo.model';
 import { TodoService } from '../../services/todo.service';
-import { CommonModule } from '@angular/common';
+import { RowComponent } from '../row/row.component';
+import { TodosModule } from '../todos.module';
 
 @Component({
   selector: 'app-list-row',
+  standalone: true,
   templateUrl: './list-row.component.html',
   styleUrl: './list-row.component.scss',
-  imports: [CommonModule, NgModule],
-
+  imports: [TodosModule, RowComponent, MatPaginator],
 })
 export class ListRowComponent {
   subscription: Subscription | undefined;
   loadedTodos: Todo[] = [];
   paginatedTodos: Todo[] = [];
   isLoading = true;
-  error = "";
+  error = '';
   totalItems: number = 0;
   currentPage: number = 1;
   private errorSub: Subscription | undefined;

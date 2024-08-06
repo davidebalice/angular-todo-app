@@ -1,5 +1,4 @@
-import { CommonModule } from '@angular/common';
-import { Component, NgModule, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { catchError, Subscription } from 'rxjs';
@@ -10,11 +9,14 @@ import {
 import { Category } from '../../model/category.model';
 import { Todo } from '../../model/todo.model';
 import { CategoryService } from '../../services/category.service';
+import { TodosModule } from '../todos.module';
+
 @Component({
   selector: 'app-categories',
+  standalone: true,
   templateUrl: './categories.component.html',
   styleUrls: ['./categories.component.css'],
-  imports: [CommonModule, NgModule],
+  imports: [TodosModule],
 })
 export class CategoriesComponent implements OnInit, OnDestroy {
   categories: Category[] = [];

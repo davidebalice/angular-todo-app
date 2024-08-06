@@ -24,7 +24,7 @@
           id="idCategory"
           formControlName="idCategory"
           class="inputField subCatSelect"
-          (change)="onCategoryChange($event.target.value)"
+          (change)="onCategoryChange($event)"
           *ngIf="selectedIdCategory >= 1 && categories$"
         >
           <option
@@ -52,7 +52,7 @@
       </ng-container>
 
       <ng-template #loadedContent>
-        <ng-container *ngIf="subcategories; else isLoading">
+        <ng-container *ngIf="subcategories">
           <div class="col-12" *ngFor="let subcategory of subcategories">
             <div class="listRow">
               <div class="listBody">

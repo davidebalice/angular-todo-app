@@ -8,12 +8,13 @@ import { SubcategoryService } from '../../services/subcategory.service';
 import { Todo } from '../../model/todo.model';
 import { CategoryService } from '../../services/category.service';
 import { TodoService } from '../../services/todo.service';
-import { CommonModule } from '@angular/common';
+import { TodosModule } from '../todos.module';
 @Component({
   selector: 'app-edit',
+  standalone: true,
   templateUrl: './edit.component.html',
   styleUrl: './edit.component.css',
-  imports: [CommonModule, NgModule],
+  imports: [TodosModule],
 })
 export class EditComponent implements OnInit {
   id: number = 0;

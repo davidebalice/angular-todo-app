@@ -6,11 +6,12 @@ import {
   NoopAnimationDriver,
   WebAnimationsDriver,
   WebAnimationsStyleNormalizer
-} from "./chunk-B4N54BLU.js";
+} from "./chunk-WKX4KQLI.js";
 import {
   BrowserModule,
   DomRendererFactory2
 } from "./chunk-JSWF6NV4.js";
+import "./chunk-WQ6HTJQD.js";
 import "./chunk-WBM3ZCXZ.js";
 import {
   DOCUMENT
@@ -31,8 +32,8 @@ import {
   ɵɵdefineNgModule,
   ɵɵinject
 } from "./chunk-Z5AG4KVC.js";
-import "./chunk-SAVXX6OM.js";
 import "./chunk-SG3BCSKH.js";
+import "./chunk-SAVXX6OM.js";
 import "./chunk-PQ7O3X3G.js";
 import "./chunk-ASLTLD6L.js";
 

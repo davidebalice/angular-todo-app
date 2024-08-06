@@ -1,4 +1,4 @@
-import { Component, NgModule, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -9,14 +9,14 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Observable, Subject, finalize, map, take, takeUntil } from 'rxjs';
 import { Category } from '../../../model/category.model';
 import { CategoryService } from '../../../services/category.service';
-import { CommonModule } from '@angular/common';
+import { TodosModule } from '../../todos.module';
 
 @Component({
   selector: 'app-category-edit',
+  standalone: true,
   templateUrl: './category-edit.component.html',
   styleUrl: './category-edit.component.scss',
-  imports: [CommonModule, NgModule],
-
+  imports: [TodosModule],
 })
 export class CategoryEditComponent implements OnInit, OnDestroy {
   id: number = 0;

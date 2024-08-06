@@ -14,27 +14,30 @@ import {
   ConfirmDialogComponent,
   ConfirmDialogData,
 } from '../../components/confirm-dialog/confirm-dialog.component';
-import { CategoryService } from '../../services/category.service';
 import { Subcategory } from '../../model/subcategory.model';
 import { Todo } from '../../model/todo.model';
+import { CategoryService } from '../../services/category.service';
 import { SubcategoryService } from '../../services/subcategory.service';
+import { TodosModule } from '../todos.module';
 @Component({
   selector: 'app-subcategories',
+  standalone: true,
   templateUrl: './subcategories.component.html',
   styleUrls: ['./subcategories.component.css'],
+  imports: [TodosModule],
 })
 export class SubcategoriesComponent implements OnInit, OnDestroy {
   subcategories: Subcategory[] = [];
-  selectedSubcategory: Subcategory = null;
+  selectedSubcategory: Subcategory | undefined;
   todos: Todo[] = [];
   filteredTodos: Todo[] = [];
-  subscription: Subscription;
+  subscription: Subscription | undefined;
   isLoading = true;
-  selectedIdCategory: number = null;
+  selectedIdCategory: number = 0;
   showSelect: boolean = false;
   private destroy$ = new Subject<void>();
-  categories$: Observable<any[]>;
-  categoryForm: FormGroup;
+  categories$: Observable<any[]> | undefined;
+  categoryForm: FormGroup | undefined;
 
   constructor(
     private categoryService: CategoryService,
@@ -51,7 +54,7 @@ export class SubcategoriesComponent implements OnInit, OnDestroy {
 
   loadDefaultCategory(): void {
     console.log(this.selectedIdCategory);
-    if (!this.selectedIdCategory) {
+    if (!this.selectedIdCategory && this.categories$) {
       this.categories$.pipe(take(2)).subscribe((categories) => {
         if (categories.length > 0) {
           this.selectedIdCategory = categories[0].id;
@@ -68,9 +71,15 @@ export class SubcategoriesComponent implements OnInit, OnDestroy {
     this.showSelect = false;
   }
 
-  onCategoryChange(categoryId: number): void {
-    this.selectedIdCategory = categoryId;
-    this.loadSubcategories(categoryId);
+  onCategoryChange(event: Event): void {
+    const selectElement = event.target as HTMLSelectElement;
+    const categoryId = parseInt(selectElement.value, 10);
+    if (!isNaN(categoryId)) {
+      this.selectedIdCategory = categoryId;
+      this.loadSubcategories(categoryId);
+    } else {
+      console.error('ID categoria non valido:', selectElement.value);
+    }
   }
 
   loadSubcategories(categoryId: number): void {

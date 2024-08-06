@@ -1,18 +1,18 @@
-import { Component, Inject, NgModule, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { AppConfig } from '../../app-config';
 import { Todo } from '../../model/todo.model';
 import { TodoService } from '../../services/todo.service';
-import { CommonModule } from '@angular/common';
+import { TodosModule } from '../todos.module';
 
 @Component({
   selector: 'app-detail',
+  standalone: true,
   templateUrl: './detail.component.html',
   styleUrl: './detail.component.css',
-  imports: [CommonModule, NgModule],
-
+  imports: [TodosModule],
 })
 export class DetailComponent implements OnInit {
   todo: Todo | undefined;

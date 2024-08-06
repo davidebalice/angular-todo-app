@@ -10,6 +10,7 @@
 
     <div formGroupName="category" style="width: 100%">
       <form
+        *ngIf="subcategoryForm"
         [formGroup]="subcategoryForm"
         (ngSubmit)="onSubmit()"
         class="formContainer"
@@ -30,7 +31,7 @@
             id="idCategory"
             formControlName="id"
             class="inputField subCatSelect"
-            (change)="onCategoryChange($event.target.value)"
+            (change)="onCategoryChange($event)"
             *ngIf="selectedIdCategory >= 1 && categories$"
           >
             <option

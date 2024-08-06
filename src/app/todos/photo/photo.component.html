@@ -1,4 +1,4 @@
-<h5>Todos > Photo > {{ todo.name && todo.name }}</h5>
+<h5>Todos > Photo > {{ todo?.name }}</h5>
 <hr />
 
 <mat-card class="pageCard">
@@ -10,11 +10,7 @@
     <div class="row" *ngIf="todo$ | async as todo; else loading">
       <div class="row">
         <div class="col-xs-12">
-          <form
-            *ngIf="todoForm"
-            [formGroup]="todoForm"
-            (ngSubmit)="onSubmit()"
-          >
+          <form *ngIf="todoForm" [formGroup]="todoForm" (ngSubmit)="onSubmit()">
             <div class="row">
               <div class="col-xs-12">
                 <div class="form-group fileInputContainer">
@@ -56,10 +52,8 @@
               <div class="col-xs-12">
                 <img
                   [src]="
-                    getFullImageUrl(imageUrl)
-                      | protectedImage
-                      | async
-                      | defaultImage : 'assets/images/nophoto.jpg'
+                    (getFullImageUrl(imageUrl) | protectedImage | async) ||
+                    'assets/images/nophoto.jpg'
                   "
                   class="img-responsive photo"
                 />
