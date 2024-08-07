@@ -12,7 +12,8 @@ import {
 } from 'rxjs';
 import { DemoDialogComponent } from '../../components/demo-dialog/demo-dialog.component';
 import { CategoryService } from '../../services/category.service';
-import { SubcategoryService } from '../../services/subcategory.service';
+import { StatusService } from '../../services/status.service';
+import { TagService } from '../../services/tag.service';
 import { TodoService } from '../../services/todo.service';
 import { TodosModule } from '../todos.module';
 
@@ -29,13 +30,15 @@ export class NewComponent implements OnInit {
   imageFile: File | null = null;
   private destroy$ = new Subject<void>();
   categories$: Observable<any[]> | undefined;
-  subcategories$: Observable<any[]> | undefined;
+  tags$: Observable<any[]> | undefined;
+  status$: Observable<any[]> | undefined;
 
   constructor(
     private route: ActivatedRoute,
     private todoService: TodoService,
     private categoryService: CategoryService,
-    private subcategoryService: SubcategoryService,
+    private tagService: TagService,
+    private statusService: StatusService,
     private router: Router,
     private formBuilder: FormBuilder,
     public demoDialog: MatDialog
@@ -47,17 +50,14 @@ export class NewComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadCategories();
+    this.loadTags();
+    this.loadStatus();
     this.todoForm = this.formBuilder.group({
-      name: ['', Validators.required],
+      title: ['', Validators.required],
       description: [''],
-      sku: [''],
-      price: [''],
-      idCategory: 0,
-      idSubcategory: 0,
-    });
-
-    this.todoForm.get('idCategory')?.valueChanges.subscribe((categoryId) => {
-      this.loadSubcategories(categoryId);
+      tagId: [0, Validators.required],
+      statusId: [0, Validators.required],
+      categoryId: [0, Validators.required],
     });
   }
 
@@ -101,7 +101,7 @@ export class NewComponent implements OnInit {
     if (this.todoForm && this.todoForm.valid && !this.submitting) {
       const formData = new FormData();
 
-      formData.append('name', this.todoForm.get('name')?.value);
+      formData.append('title', this.todoForm.get('title')?.value);
       formData.append('description', this.todoForm.get('description')?.value);
       formData.append('idCategory', this.todoForm.get('idCategory')?.value);
       formData.append('sku', this.todoForm.get('sku')?.value);
@@ -146,9 +146,14 @@ export class NewComponent implements OnInit {
     this.categories$ = this.categoryService.getCategories();
   }
 
-  loadSubcategories(categoryId: number): void {
-    this.subcategoryService.fetchSubcategories(categoryId);
-    this.subcategories$ = this.subcategoryService.getSubcategories();
+  loadTags(): void {
+    this.tagService.fetchTags();
+    this.tags$ = this.tagService.getTags();
+  }
+
+  loadStatus(): void {
+    this.statusService.fetchStatus();
+    this.status$ = this.statusService.getStatus();
   }
 
   ngOnDestroy() {

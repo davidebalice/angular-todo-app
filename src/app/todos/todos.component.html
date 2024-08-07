@@ -4,35 +4,37 @@
       <i class="uil-bars"></i> Task List
     </button>
     <div class="content__section content__section--transparent content__todo">
-      <div *ngIf="tags && tags.length > 0">
-        <h2>Tag List</h2>
-        <ul>
-          <li *ngFor="let tag of tags">
-            {{ tag.name }}
-          </li>
-        </ul>
-      </div>
-      <div *ngIf="tags.length === 0">
-        <p>No tags available.</p>
-      </div>
-
-      <div *ngIf="status && status.length > 0">
-        <h2>Status List</h2>
-        <ul>
-          <li *ngFor="let item of status">
-            {{ item.name }}
-          </li>
-        </ul>
-      </div>
-      <div *ngIf="status.length === 0">
-        <p>No status available.</p>
-      </div>
-
       <div class="content__todo__sidebar">
         <div class="content__todo__sidebar__label">
           <button class="btn btn--primary btn__add-modal">
             <i class="uil-plus"></i> New Task
           </button>
+
+          <div *ngIf="tags && tags.length > 0">
+            <h2>Tag List</h2>
+            <ul>
+              <li *ngFor="let tag of tags">
+                {{ tag.name }}
+              </li>
+            </ul>
+          </div>
+          <div *ngIf="tags.length === 0">
+            <p>No tags available.</p>
+          </div>
+    
+          <div *ngIf="status && status.length > 0">
+            <h2>Status List</h2>
+            <ul>
+              <li *ngFor="let item of status">
+                {{ item.name }}
+              </li>
+            </ul>
+          </div>
+          <div *ngIf="status.length === 0">
+            <p>No status available.</p>
+          </div>
+
+
           <ul
             class="nav nav-tabs content__todo__sidebar__tab mb-4"
             id="todo-task-tab"

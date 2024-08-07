@@ -15,21 +15,21 @@
       class="formContainer"
     >
       <div class="inputContainer inputContainerFull">
-        <label for="name" class="labelText">Name of todo</label>
+        <label for="title" class="labelText">Name of todo</label>
         <input
           type="text"
-          id="name"
-          formControlName="name"
+          id="title"
+          formControlName="title"
           class="inputField"
         />
       </div>
 
       <div class="inputContainer">
-        <label for="idCategory" class="labelText">Category</label>
+        <label for="categoryId" class="labelText">Category</label>
         <select
           type="text"
-          id="idCategory"
-          formControlName="idCategory"
+          id="categoryId"
+          formControlName="categoryId"
           class="inputField"
         >
           <option
@@ -42,35 +42,31 @@
       </div>
 
       <div class="inputContainer">
-        <label for="idSubcategory" class="labelText">Subategory</label>
+        <label for="tagId" class="labelText">Tag</label>
         <select
           type="text"
-          id="idSubcategory"
-          formControlName="idSubcategory"
+          id="tagId"
+          formControlName="tagId"
           class="inputField"
         >
-          <option
-            *ngFor="let subcategory of subcategories$ | async"
-            [value]="subcategory.id"
-          >
-            {{ subcategory.name }}
+          <option *ngFor="let tag of tags$ | async" [value]="tag.id">
+            {{ tag.name }}
           </option>
         </select>
       </div>
 
       <div class="inputContainer">
-        <label for="sku" class="labelText">Sku</label>
-        <input type="text" id="sku" formControlName="sku" class="inputField" />
-      </div>
-
-      <div class="inputContainer">
-        <label for="price" class="labelText">Price</label>
-        <input
-          type="number"
-          id="price"
-          formControlName="price"
+        <label for="statusId" class="labelText">Status</label>
+        <select
+          type="text"
+          id="statusId"
+          formControlName="statusId"
           class="inputField"
-        />
+        >
+          <option *ngFor="let item of status$ | async" [value]="item.id">
+            {{ item.name }}
+          </option>
+        </select>
       </div>
 
       <div class="inputContainer inputContainerFull">

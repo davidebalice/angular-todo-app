@@ -8,16 +8,13 @@
     >
       <div class="content__todo__list">
         <div class="content__todo__list__single">
-          <div class="content__todo__list__single__checkbox">
-            <input type="checkbox" name="todo-1" id="todo-" />
-            <label for="todo-">
-              <i class="uil-check"></i>
-            </label>
-          </div>
+         
 
           <div class="content__todo__list__single__text">
             <!--span class="content__todo__list__single__subtitle">{{data.time}}</span-->
             <!--h4 class="content__todo__list__single__title">{{data.title}}</h4-->
+            <span class="content__todo__list__single__subtitle">r23r32r32r</span>
+            <h4 class="content__todo__list__single__title">ergerergerg</h4>
           </div>
 
           <div class="content__todo__list__single__tag">
@@ -40,135 +37,95 @@
         </div>
       </div>
     </div>
-
-    <div
-      class="tab-pane fade"
-      id="todo_grid_content"
-      role="tabpanel"
-      aria-labelledby="todo_grid_tab"
-    >
-      <div class="content__todo__list content__todo__list--grid">
-        <div class="content__todo__list__single">
-          <div class="content__todo__list__single__checkbox">
-            <input type="checkbox" name="todo-11" id="todo-" />
-            <label for="todo-">
-              <i class="uil-check"></i>
-            </label>
-          </div>
-
-          <div class="content__todo__list__single__text">
-            <!--span class="content__todo__list__single__subtitle">{{data.time}}</span-->
-            <!--h4 class="content__todo__list__single__title">{{data.title}}</h4-->
-          </div>
-
-          <div class="content__todo__list__single__tag">
-            <a
-              href="javascript:void(0);"
-              class="content__todo__list__single__tag__item"
-            >
-              <i class="uil uil-tag-alt"></i>
-            </a>
-          </div>
-
-          <div class="content__todo__list__single__author">
-            <a
-              href="javascript:void(0);"
-              class="content__todo__list__single__author__img"
-            >
-              <img src="" alt="avatar" />
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div>
-    <img
-      [src]="
-        (getFullImageUrl(todo.imageUrl) | protectedImage | async) ||
-        'assets/images/nophoto.jpg'
-      "
-      alt="{{ todo.name }}"
-      class="listImg"
-      (click)="openImageDialog(todo.imageUrl, 'todos/image')"
-    />
-  </div>
-
-  <div class="listBody">
-    <h5 class="listTitle">{{ todo.name }}</h5>
-    <p class="listText"><b>Sku:</b> 000000000</p>
-  </div>
-
-  <div class="listBody">
-    <!--div>{{ todo.categoryDto.name }}</div-->
-  </div>
-
-  <div class="cardButtonContainer">
-    <button
-      class="cardButton"
-      matTooltipPosition="above"
-      matTooltipShowDelay="100"
-      matTooltipHideDelay="100"
-      matTooltip="Detail"
-      (click)="openDialog(todo.id)"
-    >
-      <mat-icon class="viewButton">article</mat-icon>
-    </button>
-
-    <button
-      class="cardButton"
-      (click)="onEditTodo(todo.id)"
-      matTooltipPosition="above"
-      matTooltipShowDelay="100"
-      matTooltipHideDelay="100"
-      matTooltip="Edit"
-    >
-      <mat-icon class="editButton">edit</mat-icon>
-    </button>
-
-    <button
-      class="cardButton"
-      (click)="onAttributeTodo(todo.id)"
-      matTooltipPosition="above"
-      matTooltipShowDelay="100"
-      matTooltipHideDelay="100"
-      matTooltip="Attributes"
-    >
-      <mat-icon class="editButton">sell</mat-icon>
-    </button>
-
-    <button
-      class="cardButton"
-      (click)="onPhotoTodo(todo.id)"
-      matTooltipPosition="above"
-      matTooltipShowDelay="100"
-      matTooltipHideDelay="100"
-      matTooltip="Photo"
-    >
-      <mat-icon class="editButton">photo_camera</mat-icon>
-    </button>
-
-    <button
-      class="cardButton"
-      (click)="onGalleryTodo(todo.id)"
-      matTooltipPosition="above"
-      matTooltipShowDelay="100"
-      matTooltipHideDelay="100"
-      matTooltip="Gallery"
-    >
-      <mat-icon class="editButton">photo_library</mat-icon>
-    </button>
-
-    <button
-      class="cardButton cardButtonDelete"
-      (click)="onDelete(todo.id, todo.name)"
-      matTooltipPosition="above"
-      matTooltipShowDelay="100"
-      matTooltipHideDelay="100"
-      matTooltip="Delete"
-    >
-      <mat-icon>delete</mat-icon>
-    </button>
   </div>
 </div>
+
+
+<!--div>
+  <img
+    [src]="
+      (getFullImageUrl(todo.imageUrl) | protectedImage | async) ||
+      'assets/images/nophoto.jpg'
+    "
+    alt="{{ todo.name }}"
+    class="listImg"
+    (click)="openImageDialog(todo.imageUrl, 'todos/image')"
+  />
+</div>
+
+<div class="listBody">
+  <h5 class="listTitle">{{ todo.name }}</h5>
+  <p class="listText"><b>Sku:</b> 000000000</p>
+</div>
+
+<div class="listBody">
+  <div>{{ todo.categoryDto.name }}</div>
+</div>
+
+<div class="cardButtonContainer">
+  <button
+    class="cardButton"
+    matTooltipPosition="above"
+    matTooltipShowDelay="100"
+    matTooltipHideDelay="100"
+    matTooltip="Detail"
+    (click)="openDialog(todo.id)"
+  >
+    <mat-icon class="viewButton">article</mat-icon>
+  </button>
+
+  <button
+    class="cardButton"
+    (click)="onEditTodo(todo.id)"
+    matTooltipPosition="above"
+    matTooltipShowDelay="100"
+    matTooltipHideDelay="100"
+    matTooltip="Edit"
+  >
+    <mat-icon class="editButton">edit</mat-icon>
+  </button>
+
+  <button
+    class="cardButton"
+    (click)="onAttributeTodo(todo.id)"
+    matTooltipPosition="above"
+    matTooltipShowDelay="100"
+    matTooltipHideDelay="100"
+    matTooltip="Attributes"
+  >
+    <mat-icon class="editButton">sell</mat-icon>
+  </button>
+
+  <button
+    class="cardButton"
+    (click)="onPhotoTodo(todo.id)"
+    matTooltipPosition="above"
+    matTooltipShowDelay="100"
+    matTooltipHideDelay="100"
+    matTooltip="Photo"
+  >
+    <mat-icon class="editButton">photo_camera</mat-icon>
+  </button>
+
+  <button
+    class="cardButton"
+    (click)="onGalleryTodo(todo.id)"
+    matTooltipPosition="above"
+    matTooltipShowDelay="100"
+    matTooltipHideDelay="100"
+    matTooltip="Gallery"
+  >
+    <mat-icon class="editButton">photo_library</mat-icon>
+  </button>
+
+  <button
+    class="cardButton cardButtonDelete"
+    (click)="onDelete(todo.id, todo.name)"
+    matTooltipPosition="above"
+    matTooltipShowDelay="100"
+    matTooltipHideDelay="100"
+    matTooltip="Delete"
+  >
+    <mat-icon>delete</mat-icon>
+  </button>
+</div-->
