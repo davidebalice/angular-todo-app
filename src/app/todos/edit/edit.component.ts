@@ -1,12 +1,13 @@
-import { Component, NgModule, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Observable, Subject, catchError, finalize, map, take } from 'rxjs';
 import { DemoDialogComponent } from '../../components/demo-dialog/demo-dialog.component';
-import { SubcategoryService } from '../../services/subcategory.service';
 import { Todo } from '../../model/todo.model';
 import { CategoryService } from '../../services/category.service';
+import { StatusService } from '../../services/status.service';
+import { TagService } from '../../services/tag.service';
 import { TodoService } from '../../services/todo.service';
 import { TodosModule } from '../todos.module';
 @Component({
@@ -24,13 +25,15 @@ export class EditComponent implements OnInit {
   submitting = false;
   private destroy$ = new Subject<void>();
   categories$: Observable<any[]> | undefined;
-  subcategories$: Observable<any[]> | undefined;
+  tags$: Observable<any[]> | undefined;
+  status$: Observable<any[]> | undefined;
 
   constructor(
     private route: ActivatedRoute,
     private todoService: TodoService,
     private categoryService: CategoryService,
-    private subcategoryService: SubcategoryService,
+    private tagService: TagService,
+    private statusService: StatusService,
     private router: Router,
     private formBuilder: FormBuilder,
     public demoDialog: MatDialog
@@ -42,6 +45,8 @@ export class EditComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadCategories();
+    this.loadTags();
+    this.loadStatus();
     this.route.params.subscribe((params: Params) => {
       this.id = +params['id'];
 
@@ -97,17 +102,19 @@ export class EditComponent implements OnInit {
 
   private initForm(todo: Todo) {
     this.todoForm = this.formBuilder.group({
-      name: [todo.name, Validators.required],
-      idCategory: [todo.idCategory, Validators.required],
-      idSubcategory: [todo.idSubcategory],
+      title: [todo.title, Validators.required],
+      categoryId: [todo.categoryId, Validators.required],
+      tagId: [todo.tagId, Validators.required],
+      statusId: [todo.statusId, Validators.required],
       description: [todo.description, Validators.required],
     });
 
-    this.todoForm.get('idCategory')?.valueChanges.subscribe((categoryId) => {
+    /*
+    this.todoForm.get('categoryId')?.valueChanges.subscribe((categoryId) => {
       this.loadSubcategories(categoryId);
     });
-
-    this.loadSubcategories(todo.idCategory);
+    this.loadSubcategories(todo.categoryId);
+    */
   }
 
   loadCategories(): void {
@@ -115,9 +122,14 @@ export class EditComponent implements OnInit {
     this.categories$ = this.categoryService.getCategories();
   }
 
-  loadSubcategories(categoryId: number): void {
-    this.subcategoryService.fetchSubcategories(categoryId);
-    this.subcategories$ = this.subcategoryService.getSubcategories();
+  loadTags(): void {
+    this.tagService.fetchTags();
+    this.tags$ = this.tagService.getTags();
+  }
+
+  loadStatus(): void {
+    this.statusService.fetchStatus();
+    this.status$ = this.statusService.getStatus();
   }
 
   ngOnDestroy() {

@@ -1,15 +1,17 @@
 <h5>
   Todos > Edit >
-  <span>{{ todo?.name || "" }}</span>
+  <span>{{ todo?.title || "" }}</span>
 </h5>
 <hr />
 
 <mat-card class="pageCard">
   <mat-card-content>
-    <button type="button" class="buttonBase buttonBack" (click)="onBack()">
+    <button type="button" class="fc-button fc-button-primary" (click)="onBack()">
       <mat-icon> chevron_left</mat-icon>
       Back
     </button>
+
+    <div class="spacer"></div>
 
     <div *ngIf="todo$ | async as todo; else loading">
       <form
@@ -19,22 +21,22 @@
         class="formContainer"
       >
         <div class="inputContainer">
-          <label for="name" class="labelText">Name of todo</label>
+          <label for="title" class="labelText">Name of todo</label>
           <input
             type="text"
-            id="name"
-            formControlName="name"
-            class="inputField"
+            id="title"
+            formControlName="title"
+            class="form-control inputField"
           />
         </div>
 
         <div class="inputContainer">
-          <label for="idCategory" class="labelText">Category</label>
+          <label for="categoryId" class="labelText">Category</label>
           <select
             type="text"
-            id="idCategory"
-            formControlName="idCategory"
-            class="inputField"
+            id="categoryId"
+            formControlName="categoryId"
+            class="form-control inputField"
           >
             <option
               *ngFor="let category of categories$ | async"
@@ -46,40 +48,37 @@
         </div>
 
         <div class="inputContainer">
-          <label for="idSubcategory" class="labelText">Subategory</label>
+          <label for="tagId" class="labelText">Tags</label>
           <select
             type="text"
-            id="idSubcategory"
-            formControlName="idSubcategory"
-            class="inputField"
+            id="tagId"
+            formControlName="tagId"
+            class="form-control inputField"
           >
             <option
-              *ngFor="let subcategory of subcategories$ | async; else: loading"
-              [value]="subcategory.id"
+              *ngFor="let tag of tags$ | async; else: loading"
+              [value]="tag.id"
             >
-              {{ subcategory.name }}
+              {{ tag.name }}
             </option>
           </select>
         </div>
 
         <div class="inputContainer">
-          <label for="sku" class="labelText">Sku</label>
-          <input
+          <label for="statusId" class="labelText">Status</label>
+          <select
             type="text"
-            id="sku"
-            formControlName="sku"
-            class="inputField"
-          />
-        </div>
-
-        <div class="inputContainer">
-          <label for="price" class="labelText">Price</label>
-          <input
-            type="text"
-            id="price"
-            formControlName="price"
-            class="inputField"
-          />
+            id="statusId"
+            formControlName="statusId"
+            class="form-control inputField"
+          >
+            <option
+              *ngFor="let item of status$ | async; else: loading"
+              [value]="item.id"
+            >
+              {{ item.name }}
+            </option>
+          </select>
         </div>
 
         <div class="inputContainer inputContainerFull">
@@ -87,26 +86,14 @@
           <textarea
             type="text"
             id="description"
-            class="inputField"
+            class="form-control inputField"
             formControlName="description"
             rows="6"
           ></textarea>
         </div>
 
         <div class="submitContainer">
-          <button
-            type="button"
-            class="buttonBase buttonCancel"
-            (click)="onCancel()"
-          >
-            Cancel
-          </button>
-
-          <button
-            type="submit"
-            class="buttonBase"
-            [disabled]="!todoForm.valid"
-          >
+          <button type="submit" class="fc-button fc-button-primary" [disabled]="!todoForm.valid">
             <mat-icon>save</mat-icon>
             Save
           </button>

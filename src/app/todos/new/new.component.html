@@ -3,10 +3,16 @@
 
 <mat-card class="pageCard">
   <mat-card-content>
-    <button type="button" class="buttonBase buttonBack" (click)="onBack()">
+    <button
+      type="button"
+      class="fc-button fc-button-primary"
+      (click)="onBack()"
+    >
       <mat-icon> chevron_left</mat-icon>
       Back
     </button>
+
+    <div class="spacer"></div>
 
     <form
       *ngIf="todoForm"
@@ -20,7 +26,7 @@
           type="text"
           id="title"
           formControlName="title"
-          class="inputField"
+          class="form-control inputField"
         />
       </div>
 
@@ -29,8 +35,9 @@
         <select
           type="text"
           id="categoryId"
+          name="categoryId"
           formControlName="categoryId"
-          class="inputField"
+          class="form-control inputField"
         >
           <option
             *ngFor="let category of categories$ | async"
@@ -46,8 +53,9 @@
         <select
           type="text"
           id="tagId"
+          name="tagId"
           formControlName="tagId"
-          class="inputField"
+          class="form-control inputField"
         >
           <option *ngFor="let tag of tags$ | async" [value]="tag.id">
             {{ tag.name }}
@@ -60,8 +68,9 @@
         <select
           type="text"
           id="statusId"
+          name="statusId"
           formControlName="statusId"
-          class="inputField"
+          class="form-control inputField"
         >
           <option *ngFor="let item of status$ | async" [value]="item.id">
             {{ item.name }}
@@ -74,7 +83,7 @@
         <textarea
           type="text"
           id="description"
-          class="inputField"
+          class="form-control inputField"
           formControlName="description"
           rows="6"
         ></textarea>
@@ -83,13 +92,13 @@
       <div class="submitContainer">
         <button
           type="button"
-          class="buttonBase buttonCancel"
+          class="fc-button fc-button-primary"
           (click)="onCancel()"
         >
           <mat-icon>cancel</mat-icon>
           Cancel
         </button>
-        <button type="submit" class="buttonBase" [disabled]="!todoForm.valid">
+        <button type="submit" class="fc-button fc-button-primary" [disabled]="!todoForm.valid">
           <mat-icon>add_circle</mat-icon>
           Add todo
         </button>

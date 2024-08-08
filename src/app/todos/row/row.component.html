@@ -34,6 +34,17 @@
               <img src="" alt="avatar" />
             </a>
           </div>
+
+          <button
+          class="cardButton"
+          (click)="onEditTodo(todo.id)"
+          matTooltipPosition="above"
+          matTooltipShowDelay="100"
+          matTooltipHideDelay="100"
+          matTooltip="Edit"
+        >
+          <mat-icon class="editButton">edit</mat-icon>
+        </button>
         </div>
       </div>
     </div>
@@ -74,27 +85,9 @@
     <mat-icon class="viewButton">article</mat-icon>
   </button>
 
-  <button
-    class="cardButton"
-    (click)="onEditTodo(todo.id)"
-    matTooltipPosition="above"
-    matTooltipShowDelay="100"
-    matTooltipHideDelay="100"
-    matTooltip="Edit"
-  >
-    <mat-icon class="editButton">edit</mat-icon>
-  </button>
+ 
 
-  <button
-    class="cardButton"
-    (click)="onAttributeTodo(todo.id)"
-    matTooltipPosition="above"
-    matTooltipShowDelay="100"
-    matTooltipHideDelay="100"
-    matTooltip="Attributes"
-  >
-    <mat-icon class="editButton">sell</mat-icon>
-  </button>
+
 
   <button
     class="cardButton"

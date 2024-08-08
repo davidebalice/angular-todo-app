@@ -141,7 +141,7 @@ export class TodoService implements OnInit, OnDestroy {
 
   addTodo(todo: Todo) {
     const headers = this.getHeaders();
-
+    console.log(todo);
     return this.http
       .post(`/todos/add`, todo, {
         withCredentials: true,
@@ -272,8 +272,7 @@ export class TodoService implements OnInit, OnDestroy {
     headers.set('Cache-Control', 'no-cache');
 
     return this.http.get<string[]>(url, { headers }).pipe(
-      tap((response) => {
-      }),
+      tap((response) => {}),
       catchError((error: HttpErrorResponse) => {
         if (error.status === 401) {
           this.router.navigate(['/login']);

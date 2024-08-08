@@ -2,29 +2,32 @@ import { CategoryDto } from './category.model';
 
 export class Todo {
   public id: number;
-  public name: string;
+  public title: string;
   public description: string;
   public imageUrl: string;
   public categoryDto: CategoryDto | undefined;
-  public idCategory: number;
-  public idSubcategory: number;
+  public categoryId: number;
+  public tagId: number;
+  public statusId: number;
   public createdAt: Date;
 
   constructor(
     id: number,
-    name: string,
+    title: string,
     description: string,
-    idCategory: number,
-    idSubcategory: number,
+    categoryId: number,
+    tagId: number,
+    statusId: number,
     imageUrl: string,
     createdAt: Date
   ) {
     this.id = id;
-    this.name = name;
+    this.title = title;
     this.description = description;
     this.imageUrl = imageUrl;
-    this.idCategory = idCategory;
-    this.idSubcategory = idSubcategory;
+    this.categoryId = categoryId;
+    this.tagId = tagId;
+    this.statusId = statusId;
     this.createdAt = createdAt;
   }
 }

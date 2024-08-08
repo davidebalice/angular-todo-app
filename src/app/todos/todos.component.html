@@ -6,8 +6,9 @@
     <div class="content__section content__section--transparent content__todo">
       <div class="content__todo__sidebar">
         <div class="content__todo__sidebar__label">
-          <button class="btn btn--primary btn__add-modal">
-            <i class="uil-plus"></i> New Task
+          <button (click)="onNewTodo()" class="fc-button fc-button-primary">
+            <mat-icon>add_circle</mat-icon>
+            New todo
           </button>
 
           <div *ngIf="tags && tags.length > 0">
@@ -220,7 +221,7 @@
       <div class="mainTodoContainer">
         <div class="buttonContainer">
           <div class="buttonContainer2">
-            <button (click)="onNewTodo()" class="buttonBase">
+            <button (click)="onNewTodo()" class="fc-button fc-button-primary">
               <mat-icon>add_circle</mat-icon>
               New todo
             </button>

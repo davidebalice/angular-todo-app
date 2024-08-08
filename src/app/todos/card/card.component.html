@@ -4,13 +4,13 @@
       (getFullImageUrl(todo.imageUrl) | protectedImage | async) ||
       'assets/images/nophoto.jpg'
     "
-    alt="{{ todo.name }}"
+    alt="{{ todo.title }}"
     class="cardImg"
     (click)="openImageDialog(todo.imageUrl, 'todos/image')"
   />
 </div>
 <div class="cardBody">
-  <h5 class="cardTitle">{{ todo.name }}</h5>
+  <h5 class="cardTitle">{{ todo.title }}</h5>
   <p class="cardText"><b>Sku:</b> 00000</p>
 
   <!--div>{{ todo.categoryDto.name }}</div-->
@@ -74,7 +74,7 @@
 
   <button
     class="cardButton cardButtonDelete"
-    (click)="onDelete(todo.id, todo.name)"
+    (click)="onDelete(todo.id, todo.title)"
     matTooltipPosition="above"
     matTooltipShowDelay="100"
     matTooltipHideDelay="100"
