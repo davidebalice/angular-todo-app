@@ -8,13 +8,11 @@
     >
       <div class="content__todo__list">
         <div class="content__todo__list__single">
-         
-
           <div class="content__todo__list__single__text">
-            <!--span class="content__todo__list__single__subtitle">{{data.time}}</span-->
-            <!--h4 class="content__todo__list__single__title">{{data.title}}</h4-->
-            <span class="content__todo__list__single__subtitle">r23r32r32r</span>
-            <h4 class="content__todo__list__single__title">ergerergerg</h4>
+            <span class="content__todo__list__single__subtitle">{{
+              todo.createdAt
+            }}</span>
+            <h4 class="content__todo__list__single__title">{{ todo.title }}</h4>
           </div>
 
           <div class="content__todo__list__single__tag">
@@ -22,7 +20,7 @@
               href="javascript:void(0);"
               class="content__todo__list__single__tag__item"
             >
-              <i class="uil uil-tag-alt"></i>
+              <i class="uil uil-tag-alt"></i> {{ todo.tag?.name }}
             </a>
           </div>
 
@@ -36,21 +34,20 @@
           </div>
 
           <button
-          class="cardButton"
-          (click)="onEditTodo(todo.id)"
-          matTooltipPosition="above"
-          matTooltipShowDelay="100"
-          matTooltipHideDelay="100"
-          matTooltip="Edit"
-        >
-          <mat-icon class="editButton">edit</mat-icon>
-        </button>
+            class="cardButton"
+            (click)="onEditTodo(todo.id)"
+            matTooltipPosition="above"
+            matTooltipShowDelay="100"
+            matTooltipHideDelay="100"
+            matTooltip="Edit"
+          >
+            <mat-icon class="editButton">edit</mat-icon>
+          </button>
         </div>
       </div>
     </div>
   </div>
 </div>
-
 
 <!--div>
   <img

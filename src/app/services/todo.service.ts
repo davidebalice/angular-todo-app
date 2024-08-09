@@ -94,7 +94,7 @@ export class TodoService implements OnInit, OnDestroy {
           return {
             todos: response.todos.map((todo) => ({
               ...todo,
-              categoryName: todo.categoryDto?.name || 'Unknown Category',
+              categoryName: todo.category?.name || 'Unknown Category',
             })),
             totalItems: response.totalItems,
           };

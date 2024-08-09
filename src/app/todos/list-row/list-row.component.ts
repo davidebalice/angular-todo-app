@@ -94,7 +94,7 @@ export class ListRowComponent {
           this.isLoading = false;
           this.loadedTodos = response.todos.map((todo) => ({
             ...todo,
-            categoryName: todo.categoryDto?.name || 'Unknown Category',
+            categoryName: todo.category?.name || 'Unknown Category',
           }));
           this.totalItems = response.totalItems;
           this.paginateTodos();

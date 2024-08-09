@@ -63,6 +63,7 @@
         </select>
       </div>
 
+
       <div class="inputContainer">
         <label for="statusId" class="labelText">Status</label>
         <select
@@ -98,7 +99,11 @@
           <mat-icon>cancel</mat-icon>
           Cancel
         </button>
-        <button type="submit" class="fc-button fc-button-primary" [disabled]="!todoForm.valid">
+        <button
+          type="submit"
+          class="fc-button fc-button-primary"
+          [disabled]="!todoForm.valid"
+        >
           <mat-icon>add_circle</mat-icon>
           Add todo
         </button>

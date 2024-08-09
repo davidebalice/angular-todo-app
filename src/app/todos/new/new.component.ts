@@ -11,6 +11,7 @@ import {
   takeUntil,
 } from 'rxjs';
 import { DemoDialogComponent } from '../../components/demo-dialog/demo-dialog.component';
+import { AuthService } from '../../services/auth.service';
 import { CategoryService } from '../../services/category.service';
 import { StatusService } from '../../services/status.service';
 import { TagService } from '../../services/tag.service';
@@ -32,10 +33,13 @@ export class NewComponent implements OnInit {
   categories$: Observable<any[]> | undefined;
   tags$: Observable<any[]> | undefined;
   status$: Observable<any[]> | undefined;
+  user$: Observable<any> | undefined;
+  userId: number | undefined;
 
   constructor(
     private route: ActivatedRoute,
     private todoService: TodoService,
+    private authService: AuthService,
     private categoryService: CategoryService,
     private tagService: TagService,
     private statusService: StatusService,
@@ -52,12 +56,15 @@ export class NewComponent implements OnInit {
     this.loadCategories();
     this.loadTags();
     this.loadStatus();
+    this.loadUser();
+
     this.todoForm = this.formBuilder.group({
       title: ['', Validators.required],
       description: [''],
       tagId: [0, Validators.required],
       statusId: [0, Validators.required],
       categoryId: [0, Validators.required],
+      userId: [this.userId, Validators.required],
     });
   }
 
@@ -104,8 +111,6 @@ export class NewComponent implements OnInit {
       formData.append('title', this.todoForm.get('title')?.value);
       formData.append('description', this.todoForm.get('description')?.value);
       formData.append('idCategory', this.todoForm.get('idCategory')?.value);
-      formData.append('sku', this.todoForm.get('sku')?.value);
-      formData.append('price', this.todoForm.get('price')?.value);
 
       if (this.imageFile) {
         formData.append('image', this.imageFile, this.imageFile.name);
@@ -141,6 +146,23 @@ export class NewComponent implements OnInit {
     this.router.navigate(['./todos']);
   }
 
+  loadUser(): void {
+    this.authService.getLoggedUser().subscribe((user) => {
+      this.userId = user?.id;
+      console.log('this.userId');
+      console.log('this.userId');
+      console.log('this.userId');
+      console.log('this.userId');
+      console.log('this.userId');
+      console.log('this.userId');
+      console.log('this.userId');
+      console.log('this.userId');
+      console.log(this.userId);
+      if (this.todoForm) {
+        this.todoForm.patchValue({ userId: this.userId });
+      }
+    });
+  }
   loadCategories(): void {
     this.categoryService.fetchCategories();
     this.categories$ = this.categoryService.getCategories();

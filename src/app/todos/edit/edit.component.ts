@@ -103,9 +103,10 @@ export class EditComponent implements OnInit {
   private initForm(todo: Todo) {
     this.todoForm = this.formBuilder.group({
       title: [todo.title, Validators.required],
-      categoryId: [todo.categoryId, Validators.required],
-      tagId: [todo.tagId, Validators.required],
-      statusId: [todo.statusId, Validators.required],
+      categoryId: [todo.category?.id, Validators.required],
+      tagId: [todo.tag?.id, Validators.required],
+      statusId: [todo.status?.id, Validators.required],
+      userId: [todo.user?.id, Validators.required],
       description: [todo.description, Validators.required],
     });
 

@@ -23,7 +23,7 @@ import { User } from '../model/user.model';
 export class UserService {
   private usersUrl = '/users/';
   private usersSubject = new BehaviorSubject<User[]>([]);
-  private subscription: Subscription;
+  private subscription: Subscription | undefined;
   constructor(private http: HttpClient, private router: Router) {}
 
   private getHeaders(): HttpHeaders {

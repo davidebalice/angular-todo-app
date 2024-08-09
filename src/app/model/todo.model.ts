@@ -1,14 +1,21 @@
 import { CategoryDto } from './category.model';
+import { StatusDto } from './status.model';
+import { TagDto } from './tag.model';
+import { UserDto } from './user.model';
 
 export class Todo {
   public id: number;
   public title: string;
   public description: string;
   public imageUrl: string;
-  public categoryDto: CategoryDto | undefined;
+  public category: CategoryDto | undefined;
   public categoryId: number;
   public tagId: number;
+  public tag: TagDto | undefined;
+  public userId: number;
+  public user: UserDto | undefined;
   public statusId: number;
+  public status: StatusDto | undefined;
   public createdAt: Date;
 
   constructor(
@@ -17,9 +24,14 @@ export class Todo {
     description: string,
     categoryId: number,
     tagId: number,
+    userId: number,
     statusId: number,
     imageUrl: string,
-    createdAt: Date
+    createdAt: Date,
+    category: CategoryDto,
+    tag: TagDto,
+    user: UserDto,
+    status: StatusDto
   ) {
     this.id = id;
     this.title = title;
@@ -28,6 +40,11 @@ export class Todo {
     this.categoryId = categoryId;
     this.tagId = tagId;
     this.statusId = statusId;
+    this.userId = userId;
     this.createdAt = createdAt;
+    this.category = category;
+    this.tag = tag;
+    this.status = status;
+    this.user = user;
   }
 }
