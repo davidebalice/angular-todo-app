@@ -42,8 +42,16 @@ a {
   border: none;
 }
 .nav-tabs .nav-link.active {
-  background-color: #ab54db26;
-  color: #ab54db;
+  background-color: rgba(59, 154, 228, 0.8);
+  color: #fff !important;
+  border-top-right-radius: 0 !important;
+  border-top-left-radius: 0 !important;
+}
+.nav-tabs .nav-link.active span{
+  color: #fff !important;
+}
+.nav-tabs .nav-link.active .mat-icon{
+  color: #fff !important;
 }
 .offcanvas.offcanvas-end {
   width: auto;
@@ -166,10 +174,10 @@ a {
 .submitContainer {
   display: flex;
   gap: 10px;
-  width:100%;
+  width: 100%;
   margin-top: 20px;
   padding-top: 20px;
-  border-top:1px solid #ddd
+  border-top: 1px solid #ddd;
 }
 
 .formContainer {
@@ -191,8 +199,17 @@ a {
   width: 100%;
 }
 
-.spacer{
+.spacer {
   margin-top: 20px;
   padding-top: 20px;
-  border-top:1px solid #ddd
+  border-top: 1px solid #ddd;
+}
+
+.sideTagsTitle {
+  width: 100%;
+  text-align: center;
+  background-color: #f1f1f1;
+  padding: 13px 0;
+  color: #444;
+  font-size: 16px;
 }

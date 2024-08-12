@@ -1,1 +1,342 @@
-html[data-theme=dark] body,html[data-theme=dark] .content__authentication,html[data-theme=dark] .content__section .transaction-tab .filter-popup,html[data-theme=dark] .content__section .transaction-filter .filter-popup,html[data-theme=dark] .content__toggle__content,html[data-theme=dark] .content__core__nav__link.active,html[data-theme=dark] .content__core__nav__link:hover{background:var(--dark-color)}html[data-theme=dark] body,html[data-theme=dark] h1,html[data-theme=dark] h2,html[data-theme=dark] h3,html[data-theme=dark] h4,html[data-theme=dark] h5,html[data-theme=dark] h6,html[data-theme=dark] .content__transaction .transaction-content .transaction-type__single__content__title{color:var(--gray-color)}html[data-theme=dark] .table-reviews-1 tbody tr td a,html[data-theme=dark] .kanban-between-area--wrapper-top .left .title,html[data-theme=dark] .kanban-between-area--wrapper-top .left p,html[data-theme=dark] .kanban-drag-and-drop-area-wrapper .stages .stage.top-stage .stagename{color:#fff}html[data-theme=dark] .kanban-drag-and-drop-area-wrapper .app::-webkit-scrollbar{width:0px}html[data-theme=dark] .kanban-drag-and-drop-area-wrapper .app::-webkit-scrollbar:vertical{width:0px}html[data-theme=dark] .kanban-drag-and-drop-area-wrapper .app::-webkit-scrollbar:horizontal{width:0px;height:7px;background:#0e0e0e}html[data-theme=dark] .kanban-drag-and-drop-area-wrapper .app::-webkit-scrollbar-track{background:#383838}html[data-theme=dark] .kanban-drag-and-drop-area-wrapper .app::-webkit-scrollbar-thumb{background:#0e0e0e}html[data-theme=dark] .logo-dark{display:block}html[data-theme=dark] .logo-lite{display:none}html[data-theme=dark] a{color:var(--sec-color)}html[data-theme=dark] a:hover{color:var(--primary-color)}html[data-theme=dark] .btn{color:var(--gray-color);background-color:#222}html[data-theme=dark] .btn:hover{color:var(--white-color);background-color:var(--primary-color)}html[data-theme=dark] .table-reviews-1 tbody tr{border-top:1px solid #313131}html[data-theme=dark] .table-reviews-1 tbody tr td{border:none;border-radius:0}html[data-theme=dark] .btn__customizer,html[data-theme=dark] .content__widget__summary,html[data-theme=dark] .content__invoice__chat__content,html[data-theme=dark] .content__widget__trading__single,html[data-theme=dark] .content__market__single,html[data-theme=dark] .single-contact-grid-area,html[data-theme=dark] .table-reviews-1,html[data-theme=dark] .table-reviews-1 thead tr th,html[data-theme=dark] .kanban-drag-and-drop-area-wrapper .CONTENT .deal,html[data-theme=dark] .single-feature-card-area-start,html[data-theme=dark] .top_area_file__manager,html[data-theme=dark] .table-reviews-1 tbody tr td{background:#222}html[data-theme=dark] .content__todo__sidebar.custom_al__file button.nav-link.active{background:#17161e !important}html[data-theme=dark] .customizer .btn__customizer-close{background-color:var(--dark-color)}html[data-theme=dark] .customizer .btn__customizer-close svg path{fill:var(--gray-color)}html[data-theme=dark] .label{color:var(--sec-color)}html[data-theme=dark] .content__header__quickaction__link svg{stroke:var(--sec-color)}html[data-theme=dark] .sidebar__footer__title,html[data-theme=dark] .btn--transparent i,html[data-theme=dark] .btn--dark-transparent i,html[data-theme=dark] .content__core__nav__link,html[data-theme=dark] .content__feature__swiper-btn .swiper-btn i,html[data-theme=dark] .content__pricing__tag,html[data-theme=dark] .content__blog_details__comment__form input,html[data-theme=dark] .content__blog_details__comment__form textarea,html[data-theme=dark] .content__invoice .content__todo__header__title h4,html[data-theme=dark] .content__invoice .content__todo__list__single__subtitle,html[data-theme=dark] .content__invoice__chat__service select,html[data-theme=dark] .content__core__action__select select,html[data-theme=dark] .content__invoice__chat__amount input,html[data-theme=dark] .content__market__single__growth__amount,html[data-theme=dark] .content__core__content__info__title{color:var(--white-color)}html[data-theme=dark] .customizer{background-color:#222}html[data-theme=dark] .apexcharts-gridline{stroke:var(--dark-color) !important}html[data-theme=dark] .sidebar{border-color:var(--body-color);background-image:linear-gradient(var(--dark-color), #222222)}html[data-theme=dark] .sidebar__submenu{background:#222}html[data-theme=dark] .sidebar__menu__link,html[data-theme=dark] .content__visitor-count__number__desc,html[data-theme=dark] .content__visitor-count__number__subtitle,html[data-theme=dark] .content__review__single__content__text,html[data-theme=dark] .content__pricing__subtitle,html[data-theme=dark] .content__pricing__profit{color:var(--sec-color)}html[data-theme=dark] #pie-chart .apexcharts-legend-text{color:var(--sec-color) !important}html[data-theme=dark] blockquote,html[data-theme=dark] .content__section,html[data-theme=dark] .content__feature__card,html[data-theme=dark] .content__todo__sidebar,html[data-theme=dark] .content__todo__list__single,html[data-theme=dark] .content__chat__sidebar,html[data-theme=dark] .content__chat__content,html[data-theme=dark] .content__chat__list__single,html[data-theme=dark] .content__chat__header__filter__content,html[data-theme=dark] .content__chat__sidebar__searchform__search,html[data-theme=dark] .content__calendar__sidebar,html[data-theme=dark] .content__calendar__content,html[data-theme=dark] .content__blog__single,html[data-theme=dark] .content__blog_details__comment__form input,html[data-theme=dark] .content__blog_details__comment__form textarea,html[data-theme=dark] .content__faq__accordion__item,html[data-theme=dark] .content__pricing__single,html[data-theme=dark] .content__testimonial__single,html[data-theme=dark] .content__authentication__content,html[data-theme=dark] .content__review__single,html[data-theme=dark] .content__header__popup,html[data-theme=dark] .content__modal__form{background:#222}html[data-theme=dark] .content__chat__list__single__msg,html[data-theme=dark] .content__chat__send__input input,html[data-theme=dark] .content__calendar__content .calendar .fc-view-container .fc-head .ui-widget-header{color:var(--sec-color);background:var(--desc-color)}html[data-theme=dark] .content__chat__list__single__title,html[data-theme=dark] .content__calendar__content .calendar .fc-more,html[data-theme=dark] .content__calendar__content .calendar .fc-popover .fc-title,html[data-theme=dark] .content__calendar__content .calendar .fc-header-toolbar .fc-left .ui-button,html[data-theme=dark] .content__blog_details__description,html[data-theme=dark] blockquote span,html[data-theme=dark] .content__blog_details__comment__subtitle,html[data-theme=dark] .content__faq__accordion__button,html[data-theme=dark] .content__authentication__form-group label,html[data-theme=dark] .content__authentication__form-footer,html[data-theme=dark] .content__authentication__form-group input::placeholder,html[data-theme=dark] .content__authentication__form-submit.return-btn,html[data-theme=dark] .content__authentication__desc .verification-number,html[data-theme=dark] .content__error__desc,html[data-theme=dark] .content__core__content__info__subtitle{color:var(--sec-color)}html[data-theme=dark] .content__chat__sidebar__tab .nav-item .nav-link.active,html[data-theme=dark] .content__chat__sidebar__tab .nav-item .nav-link:hover,html[data-theme=dark] .content__invoice__chat__toggler,html[data-theme=dark] .content__core__nav__link,html[data-theme=dark] .content__feature__swiper-btn .swiper-btn{background:var(--desc-color)}html[data-theme=dark] .load-more-btn,html[data-theme=dark] .content__calendar__content .calendar .fc-popover .fc-header,html[data-theme=dark] .content__calendar__content .calendar .fc-header-toolbar .fc-right .fc-button-group .ui-button,html[data-theme=dark] .content__form__single__box input,html[data-theme=dark] .content__form__single__box textarea,html[data-theme=dark] .content__header__searchform,html[data-theme=dark] .content__authentication__form-group input,html[data-theme=dark] .content__header__popup__title,html[data-theme=dark] .content__header__popup__header,html[data-theme=dark] .content__header__popup__footer{background:var(--dark-color);color:var(--grayThree-color);border-color:var(--desc-color)}html[data-theme=dark] .content__invoice .content__todo__list__single{border-bottom-color:var(--desc-color)}html[data-theme=dark] .content__transaction .content__section__header,html[data-theme=dark] .content__chat__header,html[data-theme=dark] .content__chat__header__filter__content,html[data-theme=dark] .content__chat__sidebar__searchform__search,html[data-theme=dark] .content__calendar__sidebar__meeting__single,html[data-theme=dark] .content__form__single:not(:last-child),html[data-theme=dark] .content__market__single,html[data-theme=dark] .content__invoice__chat__amount,html[data-theme=dark] .content__core__content__info__single{border-color:var(--desc-color)}html[data-theme=dark] .content__header__popup:before{border-bottom-color:#222}html[data-theme=dark] .content__transaction .transaction-tab .nav-item .nav-link,html[data-theme=dark] .content__widget__categories__single i{color:var(--sec-color);background-color:var(--desc-color)}html[data-theme=dark] .content__widget__single__progress__subtitle,html[data-theme=dark] .content__todo__header__filter select,html[data-theme=dark] .content__header__searchform input{color:var(--sec-color)}html[data-theme=dark] .content__todo__sidebar__tab .nav-item .nav-link,html[data-theme=dark] .content__todo__sidebar__text span,html[data-theme=dark] .content__todo__footer__text,html[data-theme=dark] .content__chat__sidebar__searchform__search input{color:var(--sec-color)}html[data-theme=dark] .content__chat__sidebar__tab .chat-tab-single__title{color:var(--sec-color)}html[data-theme=dark] .content__chat__sidebar__tab .chat-tab-single__subtitle{color:var(--grayThree-color)}html[data-theme=dark] .content__chat__header__filter li{color:var(--gray-color)}html[data-theme=dark] .content__pricing__feature__list,html[data-theme=dark] .content__calendar__content .calendar .fc-view-container .fc-day-number{color:var(--sec-color)}html[data-theme=dark] .content__calendar__content .calendar .fc-view-container .ui-widget-content{border-color:var(--sec-color)}html[data-theme=dark] .tooltip--white::after{box-shadow:unset}html[data-theme=dark] .content__authentication__form-social__single svg path,html[data-theme=dark] .content__invoice__chat__toggler svg path{fill:var(--white-color)}html[data-theme=dark] .content__invoice__chat__toggler:hover svg path{fill:var(--primary-color)}html[data-theme=dark] .content__feature__swiper-btn .swiper-btn:hover{background:var(--primary-color)}html[data-theme=dark] .ui-datepicker{background:var(--dark-color);border-color:var(--desc-color) !important}html[data-theme=dark] .ui-datepicker th,html[data-theme=dark] .ui-datepicker .ui-datepicker-title{color:var(--sec-color)}html[data-theme=dark] .ui-state-default,html[data-theme=dark] .ui-widget-content .ui-state-default{color:var(--sec-color);background:#222;border-color:#222}/*# sourceMappingURL=darkMode.css.map */
+html[data-theme="dark"] body,
+html[data-theme="dark"] .content__authentication,
+html[data-theme="dark"] .content__section .transaction-tab .filter-popup,
+html[data-theme="dark"] .content__section .transaction-filter .filter-popup,
+html[data-theme="dark"] .content__toggle__content,
+html[data-theme="dark"] .content__core__nav__link.active,
+html[data-theme="dark"] .content__core__nav__link:hover {
+  background: var(--dark-color);
+}
+html[data-theme="dark"] body,
+html[data-theme="dark"] h1,
+html[data-theme="dark"] h2,
+html[data-theme="dark"] h3,
+html[data-theme="dark"] h4,
+html[data-theme="dark"] h5,
+html[data-theme="dark"] h6,
+html[data-theme="dark"]
+  .content__transaction
+  .transaction-content
+  .transaction-type__single__content__title {
+  color: var(--gray-color);
+}
+html[data-theme="dark"] .table-reviews-1 tbody tr td a,
+html[data-theme="dark"] .kanban-between-area--wrapper-top .left .title,
+html[data-theme="dark"] .kanban-between-area--wrapper-top .left p,
+html[data-theme="dark"]
+  .kanban-drag-and-drop-area-wrapper
+  .stages
+  .stage.top-stage
+  .stagename {
+  color: #fff;
+}
+html[data-theme="dark"]
+  .kanban-drag-and-drop-area-wrapper
+  .app::-webkit-scrollbar {
+  width: 0px;
+}
+html[data-theme="dark"]
+  .kanban-drag-and-drop-area-wrapper
+  .app::-webkit-scrollbar:vertical {
+  width: 0px;
+}
+html[data-theme="dark"]
+  .kanban-drag-and-drop-area-wrapper
+  .app::-webkit-scrollbar:horizontal {
+  width: 0px;
+  height: 7px;
+  background: #0e0e0e;
+}
+html[data-theme="dark"]
+  .kanban-drag-and-drop-area-wrapper
+  .app::-webkit-scrollbar-track {
+  background: #383838;
+}
+html[data-theme="dark"]
+  .kanban-drag-and-drop-area-wrapper
+  .app::-webkit-scrollbar-thumb {
+  background: #0e0e0e;
+}
+html[data-theme="dark"] .logo-dark {
+  display: block;
+}
+html[data-theme="dark"] .logo-lite {
+  display: none;
+}
+html[data-theme="dark"] a {
+  color: var(--sec-color);
+}
+html[data-theme="dark"] a:hover {
+  color: var(--primary-color);
+}
+html[data-theme="dark"] .btn {
+  color: var(--gray-color);
+  background-color: #222;
+}
+html[data-theme="dark"] .btn:hover {
+  color: var(--white-color);
+  background-color: var(--primary-color);
+}
+html[data-theme="dark"] .table-reviews-1 tbody tr {
+  border-top: 1px solid #313131;
+}
+html[data-theme="dark"] .table-reviews-1 tbody tr td {
+  border: none;
+  border-radius: 0;
+}
+html[data-theme="dark"] .btn__customizer,
+html[data-theme="dark"] .content__widget__summary,
+html[data-theme="dark"] .content__invoice__chat__content,
+html[data-theme="dark"] .content__widget__trading__single,
+html[data-theme="dark"] .content__market__single,
+html[data-theme="dark"] .single-contact-grid-area,
+html[data-theme="dark"] .table-reviews-1,
+html[data-theme="dark"] .table-reviews-1 thead tr th,
+html[data-theme="dark"] .kanban-drag-and-drop-area-wrapper .CONTENT .deal,
+html[data-theme="dark"] .single-feature-card-area-start,
+html[data-theme="dark"] .top_area_file__manager,
+html[data-theme="dark"] .table-reviews-1 tbody tr td {
+  background: #222;
+}
+html[data-theme="dark"]
+  .content__todo__sidebar.custom_al__file
+  button.nav-link.active {
+  background: #17161e !important;
+}
+html[data-theme="dark"] .customizer .btn__customizer-close {
+  background-color: var(--dark-color);
+}
+html[data-theme="dark"] .customizer .btn__customizer-close svg path {
+  fill: var(--gray-color);
+}
+html[data-theme="dark"] .label {
+  color: var(--sec-color);
+}
+html[data-theme="dark"] .content__header__quickaction__link svg {
+  stroke: var(--sec-color);
+}
+html[data-theme="dark"] .sidebar__footer__title,
+html[data-theme="dark"] .btn--transparent i,
+html[data-theme="dark"] .btn--dark-transparent i,
+html[data-theme="dark"] .content__core__nav__link,
+html[data-theme="dark"] .content__feature__swiper-btn .swiper-btn i,
+html[data-theme="dark"] .content__pricing__tag,
+html[data-theme="dark"] .content__blog_details__comment__form input,
+html[data-theme="dark"] .content__blog_details__comment__form textarea,
+html[data-theme="dark"] .content__invoice .content__todo__header__title h4,
+html[data-theme="dark"]
+  .content__invoice
+  .content__todo__list__single__subtitle,
+html[data-theme="dark"] .content__invoice__chat__service select,
+html[data-theme="dark"] .content__core__action__select select,
+html[data-theme="dark"] .content__invoice__chat__amount input,
+html[data-theme="dark"] .content__market__single__growth__amount,
+html[data-theme="dark"] .content__core__content__info__title {
+  color: var(--white-color);
+}
+html[data-theme="dark"] .customizer {
+  background-color: #222;
+}
+html[data-theme="dark"] .apexcharts-gridline {
+  stroke: var(--dark-color) !important;
+}
+html[data-theme="dark"] .sidebar {
+  border-color: var(--body-color);
+  background-image: linear-gradient(var(--dark-color), #222222);
+}
+html[data-theme="dark"] .sidebar__submenu {
+  background: #222;
+}
+html[data-theme="dark"] .sidebar__menu__link,
+html[data-theme="dark"] .content__visitor-count__number__desc,
+html[data-theme="dark"] .content__visitor-count__number__subtitle,
+html[data-theme="dark"] .content__review__single__content__text,
+html[data-theme="dark"] .content__pricing__subtitle,
+html[data-theme="dark"] .content__pricing__profit {
+  color: var(--sec-color);
+}
+html[data-theme="dark"] #pie-chart .apexcharts-legend-text {
+  color: var(--sec-color) !important;
+}
+html[data-theme="dark"] blockquote,
+html[data-theme="dark"] .content__section,
+html[data-theme="dark"] .content__feature__card,
+html[data-theme="dark"] .content__todo__sidebar,
+html[data-theme="dark"] .content__todo__list__single,
+html[data-theme="dark"] .content__chat__sidebar,
+html[data-theme="dark"] .content__chat__content,
+html[data-theme="dark"] .content__chat__list__single,
+html[data-theme="dark"] .content__chat__header__filter__content,
+html[data-theme="dark"] .content__chat__sidebar__searchform__search,
+html[data-theme="dark"] .content__calendar__sidebar,
+html[data-theme="dark"] .content__calendar__content,
+html[data-theme="dark"] .content__blog__single,
+html[data-theme="dark"] .content__blog_details__comment__form input,
+html[data-theme="dark"] .content__blog_details__comment__form textarea,
+html[data-theme="dark"] .content__faq__accordion__item,
+html[data-theme="dark"] .content__pricing__single,
+html[data-theme="dark"] .content__testimonial__single,
+html[data-theme="dark"] .content__authentication__content,
+html[data-theme="dark"] .content__review__single,
+html[data-theme="dark"] .content__header__popup,
+html[data-theme="dark"] .content__modal__form {
+  background: #222;
+}
+html[data-theme="dark"] .content__chat__list__single__msg,
+html[data-theme="dark"] .content__chat__send__input input,
+html[data-theme="dark"]
+  .content__calendar__content
+  .calendar
+  .fc-view-container
+  .fc-head
+  .ui-widget-header {
+  color: var(--sec-color);
+  background: var(--desc-color);
+}
+html[data-theme="dark"] .content__chat__list__single__title,
+html[data-theme="dark"] .content__calendar__content .calendar .fc-more,
+html[data-theme="dark"]
+  .content__calendar__content
+  .calendar
+  .fc-popover
+  .fc-title,
+html[data-theme="dark"]
+  .content__calendar__content
+  .calendar
+  .fc-header-toolbar
+  .fc-left
+  .ui-button,
+html[data-theme="dark"] .content__blog_details__description,
+html[data-theme="dark"] blockquote span,
+html[data-theme="dark"] .content__blog_details__comment__subtitle,
+html[data-theme="dark"] .content__faq__accordion__button,
+html[data-theme="dark"] .content__authentication__form-group label,
+html[data-theme="dark"] .content__authentication__form-footer,
+html[data-theme="dark"] .content__authentication__form-group input::placeholder,
+html[data-theme="dark"] .content__authentication__form-submit.return-btn,
+html[data-theme="dark"] .content__authentication__desc .verification-number,
+html[data-theme="dark"] .content__error__desc,
+html[data-theme="dark"] .content__core__content__info__subtitle {
+  color: var(--sec-color);
+}
+html[data-theme="dark"] .content__chat__sidebar__tab .nav-item .nav-link.active,
+html[data-theme="dark"] .content__chat__sidebar__tab .nav-item .nav-link:hover,
+html[data-theme="dark"] .content__invoice__chat__toggler,
+html[data-theme="dark"] .content__core__nav__link,
+html[data-theme="dark"] .content__feature__swiper-btn .swiper-btn {
+  background: var(--desc-color);
+}
+html[data-theme="dark"] .load-more-btn,
+html[data-theme="dark"]
+  .content__calendar__content
+  .calendar
+  .fc-popover
+  .fc-header,
+html[data-theme="dark"]
+  .content__calendar__content
+  .calendar
+  .fc-header-toolbar
+  .fc-right
+  .fc-button-group
+  .ui-button,
+html[data-theme="dark"] .content__form__single__box input,
+html[data-theme="dark"] .content__form__single__box textarea,
+html[data-theme="dark"] .content__header__searchform,
+html[data-theme="dark"] .content__authentication__form-group input,
+html[data-theme="dark"] .content__header__popup__title,
+html[data-theme="dark"] .content__header__popup__header,
+html[data-theme="dark"] .content__header__popup__footer {
+  background: var(--dark-color);
+  color: var(--grayThree-color);
+  border-color: var(--desc-color);
+}
+html[data-theme="dark"] .content__invoice .content__todo__list__single {
+  border-bottom-color: var(--desc-color);
+}
+html[data-theme="dark"] .content__transaction .content__section__header,
+html[data-theme="dark"] .content__chat__header,
+html[data-theme="dark"] .content__chat__header__filter__content,
+html[data-theme="dark"] .content__chat__sidebar__searchform__search,
+html[data-theme="dark"] .content__calendar__sidebar__meeting__single,
+html[data-theme="dark"] .content__form__single:not(:last-child),
+html[data-theme="dark"] .content__market__single,
+html[data-theme="dark"] .content__invoice__chat__amount,
+html[data-theme="dark"] .content__core__content__info__single {
+  border-color: var(--desc-color);
+}
+html[data-theme="dark"] .content__header__popup:before {
+  border-bottom-color: #222;
+}
+html[data-theme="dark"]
+  .content__transaction
+  .transaction-tab
+  .nav-item
+  .nav-link,
+html[data-theme="dark"] .content__widget__categories__single i {
+  color: var(--sec-color);
+  background-color: var(--desc-color);
+}
+html[data-theme="dark"] .content__widget__single__progress__subtitle,
+html[data-theme="dark"] .content__todo__header__filter select,
+html[data-theme="dark"] .content__header__searchform input {
+  color: var(--sec-color);
+}
+html[data-theme="dark"] .content__todo__sidebar__tab .nav-item .nav-link,
+html[data-theme="dark"] .content__todo__sidebar__text span,
+html[data-theme="dark"] .content__todo__footer__text,
+html[data-theme="dark"] .content__chat__sidebar__searchform__search input {
+  color: var(--sec-color);
+}
+html[data-theme="dark"] .content__chat__sidebar__tab .chat-tab-single__title {
+  color: var(--sec-color);
+}
+html[data-theme="dark"]
+  .content__chat__sidebar__tab
+  .chat-tab-single__subtitle {
+  color: var(--grayThree-color);
+}
+html[data-theme="dark"] .content__chat__header__filter li {
+  color: var(--gray-color);
+}
+html[data-theme="dark"] .content__pricing__feature__list,
+html[data-theme="dark"]
+  .content__calendar__content
+  .calendar
+  .fc-view-container
+  .fc-day-number {
+  color: var(--sec-color);
+}
+html[data-theme="dark"]
+  .content__calendar__content
+  .calendar
+  .fc-view-container
+  .ui-widget-content {
+  border-color: var(--sec-color);
+}
+html[data-theme="dark"] .tooltip--white::after {
+  box-shadow: unset;
+}
+html[data-theme="dark"] .content__authentication__form-social__single svg path,
+html[data-theme="dark"] .content__invoice__chat__toggler svg path {
+  fill: var(--white-color);
+}
+html[data-theme="dark"] .content__invoice__chat__toggler:hover svg path {
+  fill: var(--primary-color);
+}
+html[data-theme="dark"] .content__feature__swiper-btn .swiper-btn:hover {
+  background: var(--primary-color);
+}
+html[data-theme="dark"] .ui-datepicker {
+  background: var(--dark-color);
+  border-color: var(--desc-color) !important;
+}
+html[data-theme="dark"] .ui-datepicker th,
+html[data-theme="dark"] .ui-datepicker .ui-datepicker-title {
+  color: var(--sec-color);
+}
+html[data-theme="dark"] .ui-state-default,
+html[data-theme="dark"] .ui-widget-content .ui-state-default {
+  color: var(--sec-color);
+  background: #222;
+  border-color: #222;
+} /*# sourceMappingURL=darkMode.css.map */

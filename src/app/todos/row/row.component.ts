@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Subscription, catchError, take } from 'rxjs';
+import { DatePipe } from '@angular/common';
 import { AppConfig } from '../../app-config';
 import {
   ConfirmDialogComponent,
@@ -30,7 +31,8 @@ export class RowComponent implements OnInit {
     private router: Router,
     private listRowComponent: ListRowComponent,
     public dialog: MatDialog,
-    private imageDialog: MatDialog
+    private imageDialog: MatDialog,
+    private datePipe: DatePipe
   ) {}
 
   openDialog(id: number): void {
@@ -41,6 +43,11 @@ export class RowComponent implements OnInit {
       maxHeight: '750px',
       data: { id: id },
     });
+  }
+
+  formatDate(date: Date | string): string | null {
+    if (!date) return null;
+    return this.datePipe.transform(date, 'dd/MM/yyyy');
   }
 
   ngOnInit(): void {}
