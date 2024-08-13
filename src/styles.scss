@@ -12,6 +12,12 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+.flexRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .dropdown-toggle::after {
   display: none;
 }
@@ -47,10 +53,10 @@ a {
   border-top-right-radius: 0 !important;
   border-top-left-radius: 0 !important;
 }
-.nav-tabs .nav-link.active span{
+.nav-tabs .nav-link.active span {
   color: #fff !important;
 }
-.nav-tabs .nav-link.active .mat-icon{
+.nav-tabs .nav-link.active .mat-icon {
   color: #fff !important;
 }
 .offcanvas.offcanvas-end {
@@ -171,6 +177,13 @@ a {
   margin-top: 5px;
 }
 
+.inputFieldColor {
+  max-width: 150px !important;
+  padding: 0px !important;
+  height: 36px;
+  cursor: pointer;
+}
+
 .submitContainer {
   display: flex;
   gap: 10px;
@@ -209,7 +222,47 @@ a {
   width: 100%;
   text-align: center;
   background-color: #f1f1f1;
-  padding: 13px 0;
   color: #444;
   font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+
+.sideTagsTitle .mat-icon {
+  color: var(--primary-color);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 4px;
+  justify-content: center;
+  background-color: white;
+}
+
+.sideTagsTitle .mat-icon:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.iconContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top:20px
+}
+
+.iconContainer label {
+  width:70px;
+  display: flex;
+  align-items: center;
+  gap:6px;
+}
+
+.iconContainer input {
+  width:17px;
+  height:17px;
 }

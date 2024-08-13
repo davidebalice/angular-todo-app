@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable, Subject, finalize, take, takeUntil } from 'rxjs';
+import { Subject, finalize, take, takeUntil } from 'rxjs';
 import { CategoryService } from '../../../services/category.service';
 import { TodosModule } from '../../todos.module';
+import { iconsData } from '../../../shared/iconsData';
 
 @Component({
   selector: 'app-category-new',
@@ -15,9 +16,9 @@ import { TodosModule } from '../../todos.module';
 export class CategoryNewComponent {
   categoryForm: FormGroup | undefined;
   submitting = false;
-  imageFile: File | null = null;
+  selectedColor: string = '#333333';
   private destroy$ = new Subject<void>();
-  categories$: Observable<any[]> | undefined;
+  icons: string[] = iconsData;
 
   constructor(
     private route: ActivatedRoute,
@@ -27,16 +28,11 @@ export class CategoryNewComponent {
   ) {}
 
   ngOnInit(): void {
-    if (this.categoryForm) {
-      this.categoryForm = this.formBuilder.group({
-        name: ['', Validators.required],
-        description: [''],
-      });
-    }
-  }
-
-  onFileSelected(event: any) {
-    this.imageFile = event.target.files[0];
+    this.categoryForm = this.formBuilder.group({
+      name: ['', Validators.required],
+      color: ['#333333', Validators.required],
+      icon: ['sell', Validators.required],
+    });
   }
 
   onSubmit() {

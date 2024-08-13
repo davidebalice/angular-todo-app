@@ -10,8 +10,51 @@
             <mat-icon>add_circle</mat-icon>
             New todo
           </button>
-          <div class="spacer"></div>
-          <div class="sideTagsTitle">Status</div>
+
+          <div class="sideTagsTitle mt-2">
+            <span>Categories</span>
+            <span (click)="navigateToCategories()">
+              <mat-icon>edit</mat-icon>
+            </span>
+          </div>
+
+          <div class="content__todo__sidebar__label">
+            <ul
+              class="nav nav-tabs content__todo__sidebar__tab"
+              id="todo-task-label"
+              role="tablist"
+              *ngIf="categories && categories.length > 0"
+            >
+              <li class="nav-item" *ngFor="let category of categories">
+                <button
+                  class="nav-link primary"
+                  id="team-task-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#team-task-content"
+                  type="button"
+                  role="tab"
+                  aria-controls="team-task-content"
+                  aria-selected="true"
+                >
+                  <mat-icon [ngStyle]="{ color: category.color }"
+                    >sell</mat-icon
+                  >
+                  <span>{{ category.name }}</span>
+                </button>
+              </li>
+            </ul>
+
+            <div *ngIf="tags.length === 0">
+              <p>No Categoriesavailable.</p>
+            </div> 
+          </div>
+
+          <div class="sideTagsTitle">
+            <span>Status</span>
+            <span (click)="navigateToStatus()">
+              <mat-icon>edit</mat-icon>
+            </span>
+          </div>
           <ul
             class="nav nav-tabs content__todo__sidebar__tab mb-4"
             id="todo-task-tab"
@@ -29,12 +72,26 @@
                 aria-controls="todo-task-content-important"
                 aria-selected="true"
               >
-                <mat-icon *ngIf="item.name == 'Completed'"  [ngStyle]="{'color': item.color}">done_all</mat-icon>
-                <mat-icon *ngIf="item.name == 'Important'" [ngStyle]="{'color': item.color}"
+                <mat-icon
+                  *ngIf="item.name == 'Completed'"
+                  [ngStyle]="{ color: item.color }"
+                  >done_all</mat-icon
+                >
+                <mat-icon
+                  *ngIf="item.name == 'Important'"
+                  [ngStyle]="{ color: item.color }"
                   >priority_high</mat-icon
                 >
-                <mat-icon *ngIf="item.name == 'In Work'" [ngStyle]="{'color': item.color}">settings</mat-icon>
-                <mat-icon *ngIf="item.name == 'Removed'" [ngStyle]="{'color': item.color}">deleted</mat-icon>
+                <mat-icon
+                  *ngIf="item.name == 'In Work'"
+                  [ngStyle]="{ color: item.color }"
+                  >settings</mat-icon
+                >
+                <mat-icon
+                  *ngIf="item.name == 'Removed'"
+                  [ngStyle]="{ color: item.color }"
+                  >deleted</mat-icon
+                >
 
                 <span>{{ item.name }}</span>
               </button>
@@ -43,7 +100,12 @@
           <div *ngIf="status.length === 0">
             <p>No status available.</p>
           </div>
-          <div class="sideTagsTitle">Tags</div>
+          <div class="sideTagsTitle">
+            <span>Tags</span>
+            <span (click)="navigateToTags()">
+              <mat-icon>edit</mat-icon>
+            </span>
+          </div>
         </div>
         <div class="content__todo__sidebar__label">
           <ul
@@ -63,7 +125,8 @@
                 aria-controls="team-task-content"
                 aria-selected="true"
               >
-              <mat-icon [ngStyle]="{'color': tag.color}">sell</mat-icon> <span>{{ tag.name }}</span>
+                <mat-icon [ngStyle]="{ color: tag.color }">sell</mat-icon>
+                <span>{{ tag.name }}</span>
               </button>
             </li>
           </ul>
@@ -72,10 +135,7 @@
             <p>No tags available.</p>
           </div>
 
-          <div class="content__todo__sidebar__label__add">
-            <i class="uil-plus-circle"></i>
-            <input class="" type="text" placeholder="Add Label" />
-          </div>
+        
         </div>
       </div>
 

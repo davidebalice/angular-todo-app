@@ -1,14 +1,16 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Category } from '../model/category.model';
+import { Status } from '../model/status.model';
 import { Tag } from '../model/tag.model';
 import { Todo } from '../model/todo.model';
+import { CategoryService } from '../services/category.service';
 import { StatusService } from '../services/status.service';
 import { TagService } from '../services/tag.service';
 import { ListCardComponent } from './list-card/list-card.component';
 import { ListRowComponent } from './list-row/list-row.component';
 import { SearchComponent } from './search/search.component';
 import { TodosModule } from './todos.module';
-import { Status } from '../model/status.model';
 
 @Component({
   selector: 'app-todos',
@@ -23,11 +25,13 @@ export class TodosComponent {
   visualization: string = 'row';
   tags: Tag[] = [];
   status: Status[] = [];
+  categories: Category[] = [];
 
   constructor(
     private router: Router,
     private tagService: TagService,
-    private statusService: StatusService
+    private statusService: StatusService,
+    private categoryService: CategoryService
   ) {}
 
   ngOnInit() {
@@ -66,9 +70,34 @@ export class TodosComponent {
         console.log('Status fetched successfully');
       },
     });
+
+    this.categoryService.fetchCategories();
+    this.categoryService.getCategories().subscribe({
+      next: (categories) => {
+        this.categories = categories;
+      },
+      error: (error) => {
+        console.error('Error fetching categories', error);
+      },
+      complete: () => {
+        console.log('Categories fetched successfully');
+      },
+    });
   }
 
   onChangeView(type: string) {
     this.visualization = type;
+  }
+
+  navigateToCategories() {
+    this.router.navigate(['/todos/categories']);
+  }
+
+  navigateToStatus() {
+    this.router.navigate(['/todos/status']);
+  }
+
+  navigateToTags() {
+    this.router.navigate(['/todos/tags']);
   }
 }

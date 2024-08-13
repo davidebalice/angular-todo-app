@@ -9,6 +9,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Observable, Subject, finalize, map, take, takeUntil } from 'rxjs';
 import { Category } from '../../../model/category.model';
 import { CategoryService } from '../../../services/category.service';
+import { iconsData } from '../../../shared/iconsData';
 import { TodosModule } from '../../todos.module';
 
 @Component({
@@ -26,6 +27,8 @@ export class CategoryEditComponent implements OnInit, OnDestroy {
   submitting = false;
   private destroy$ = new Subject<void>();
   categories$: Observable<any[]> | undefined;
+  icons: string[] = iconsData;
+
 
   constructor(
     private route: ActivatedRoute,
@@ -84,12 +87,10 @@ export class CategoryEditComponent implements OnInit, OnDestroy {
   }
 
   private initForm(category: Category) {
-    let categoryName = category.name;
-    let categoryDescription = category.description;
-
     this.categoryForm = new FormGroup({
-      name: new FormControl(categoryName, Validators.required),
-      description: new FormControl(categoryDescription),
+      name: new FormControl(category.name, Validators.required),
+      color: new FormControl(category.color, Validators.required),
+      icon: new FormControl(category.icon, Validators.required),
     });
   }
 
