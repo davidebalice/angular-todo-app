@@ -104,7 +104,7 @@ import {
   
     deleteStatus(statusId: number) {
       const headers = this.getHeaders();
-      return this.http.delete(`/status/${statusId}`, { headers });
+      return this.http.delete(`/status/delete/${statusId}`, { headers });
     }
   
     getById(id: number): Observable<Status> {

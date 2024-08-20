@@ -5,14 +5,6 @@ export const routes: Routes = [
     path:'',
     children: [
       {
-        path: 'todo',
-        loadComponent: () => import('./todo/todo.component').then(m => m.TodoComponent),
-        data: {
-          title: 'Todo',
-          breadcrumb: { label: 'Todo', des:'Form Elements is used to style and format the input field' }
-        }
-      },
-      {
         path: 'chat',
         loadComponent: () => import('./chat/chat.component').then(m => m.ChatComponent),
         data: {

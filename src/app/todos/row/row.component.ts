@@ -1,8 +1,8 @@
+import { DatePipe } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Subscription, catchError, take } from 'rxjs';
-import { DatePipe } from '@angular/common';
 import { AppConfig } from '../../app-config';
 import {
   ConfirmDialogComponent,
@@ -85,6 +85,10 @@ export class RowComponent implements OnInit {
     return `${AppConfig.apiUrl}/todos/image/${imageUrl}`;
   }
 
+  onEdit(todoId: number) {
+    this.router.navigate([`/todos/${todoId}/edit`]);
+  }
+
   onDelete(todoId: number, item: string) {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       data: {
@@ -94,25 +98,23 @@ export class RowComponent implements OnInit {
       } as ConfirmDialogData,
     });
 
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result) {
-        this.subscription = this.todoService
-          .deleteTodo(todoId)
-          .pipe(
-            catchError((error) => {
-              if (error.error.message.includes('Demo')) {
-                this.listRowComponent.openDemoDialog();
-              }
-              console.error('Error deleting todo', error);
-              throw error;
-            })
-          )
-          .subscribe({
+    dialogRef.afterClosed().subscribe({
+      next: (result) => {
+        if (result) {
+          this.todoService.deleteTodo(todoId).subscribe({
             next: () => {
               this.fetchTodos();
             },
+            error: (error) => {
+              this.fetchTodos();
+              console.error('Error handling deletion response', error);
+            },
           });
-      }
+        }
+      },
+      error: (err) => {
+        console.error('Error closing dialog', err);
+      },
     });
   }
 
@@ -133,10 +135,6 @@ export class RowComponent implements OnInit {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
-  }
-
-  onEditTodo(todoId: number) {
-    this.router.navigate([`/todos/${todoId}/edit`]);
   }
 
   generateStarsArray(difficulty: number): string[] {

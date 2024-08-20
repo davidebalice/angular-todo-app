@@ -1,9 +1,10 @@
-<h5>Todos > Categories > New</h5>
-<hr />
-
 <mat-card class="pageCard">
   <mat-card-content>
-    <button type="button" class="buttonBase buttonBack" (click)="onBack()">
+    <button
+      type="button"
+      class="fc-button fc-button-primary"
+      (click)="onBack()"
+    >
       <mat-icon> chevron_left</mat-icon>
       Back
     </button>
@@ -59,7 +60,7 @@
       <div class="submitContainer">
         <button
           type="button"
-          class="buttonBase buttonCancel"
+          class="fc-button fc-button-primary"
           (click)="onCancel()"
         >
           <mat-icon>cancel</mat-icon>
@@ -67,7 +68,7 @@
         </button>
         <button
           type="submit"
-          class="buttonBase"
+          class="fc-button fc-button-primary"
           [disabled]="!categoryForm.valid"
         >
           <mat-icon>add_circle</mat-icon>

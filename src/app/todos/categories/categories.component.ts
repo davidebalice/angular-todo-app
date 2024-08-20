@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { catchError, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import {
   ConfirmDialogComponent,
   ConfirmDialogData,
@@ -73,22 +73,23 @@ export class CategoriesComponent implements OnInit, OnDestroy {
       } as ConfirmDialogData,
     });
 
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result) {
-        this.subscription = this.categoryService
-          .deleteCategory(categoryId)
-          .pipe(
-            catchError((error) => {
-              console.error('Error deleting todo', error);
-              throw error;
-            })
-          )
-          .subscribe({
+    dialogRef.afterClosed().subscribe({
+      next: (result) => {
+        if (result) {
+          this.categoryService.deleteCategory(categoryId).subscribe({
             next: () => {
               this.categoryService.fetchCategories();
             },
+            error: (error) => {
+              this.categoryService.fetchCategories();
+              console.error('Error handling deletion response', error);
+            },
           });
-      }
+        }
+      },
+      error: (err) => {
+        console.error('Error closing dialog', err);
+      },
     });
   }
 }

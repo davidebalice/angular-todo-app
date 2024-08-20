@@ -1,20 +1,13 @@
-<h5>Products > Categories</h5>
-<hr />
-
 <mat-card class="pageCard">
   <mat-card-content>
     <div class="buttonContainer">
-      <button (click)="onNewCategory()" class="buttonBase buttonHeight">
+      <button (click)="onNewCategory()" class="fc-button fc-button-primary">
         <mat-icon>add_circle</mat-icon>
         New category
       </button>
     </div>
-    <hr />
 
-    <div class="rowTitle">
-      <div>Category</div>
-      <div>Manage</div>
-    </div>
+    <hr />
 
     <div class="row">
       <ng-container *ngIf="isLoading; else loadedContent">
@@ -25,35 +18,34 @@
 
       <ng-template #loadedContent>
         <ng-container *ngIf="categories.length > 0; else noCategory">
-          <div class="col-12" *ngFor="let category of categories">
-            <div class="listRow">
-              <div class="listBody">
-                <h5 class="listTitle">{{ category.name }}</h5>
-              </div>
+          <div class="listRow" *ngFor="let category of categories">
+            <div class="listBody">
+              <mat-icon *ngIf="category.icon" [style.color]="category.color">{{ category.icon }}</mat-icon>
+              <div class="listTitle">{{ category.name }}</div>
+            </div>
 
-              <div class="cardButtonContainer">
-                <button
-                  class="cardButton"
-                  (click)="onEditCategory(category.id)"
-                  matTooltipPosition="above"
-                  matTooltipShowDelay="100"
-                  matTooltipHideDelay="100"
-                  matTooltip="Edit"
-                >
-                  <mat-icon class="editButton">edit</mat-icon>
-                </button>
+            <div class="cardButtonContainer">
+              <button
+                class="fc-button fc-button-primary"
+                (click)="onEditCategory(category.id)"
+                matTooltipPosition="above"
+                matTooltipShowDelay="100"
+                matTooltipHideDelay="100"
+                matTooltip="Edit"
+              >
+                <mat-icon class="editButton">edit</mat-icon>
+              </button>
 
-                <button
-                  class="cardButton cardButtonDelete"
-                  (click)="onDelete(category.id, category.name)"
-                  matTooltipPosition="above"
-                  matTooltipShowDelay="100"
-                  matTooltipHideDelay="100"
-                  matTooltip="Delete"
-                >
-                  <mat-icon>delete</mat-icon>
-                </button>
-              </div>
+              <button
+                class="fc-button fc-button-primary"
+                (click)="onDelete(category.id, category.name)"
+                matTooltipPosition="above"
+                matTooltipShowDelay="100"
+                matTooltipHideDelay="100"
+                matTooltip="Delete"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
             </div>
           </div>
         </ng-container>

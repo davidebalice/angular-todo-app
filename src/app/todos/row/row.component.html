@@ -35,13 +35,24 @@
 
           <button
             class="cardButton"
-            (click)="onEditTodo(todo.id)"
+            (click)="onEdit(todo.id)"
             matTooltipPosition="above"
             matTooltipShowDelay="100"
             matTooltipHideDelay="100"
             matTooltip="Edit"
           >
             <mat-icon class="editButton">edit</mat-icon>
+          </button>
+
+          <button
+            class="cardButton"
+            (click)="onDelete(todo.id, todo.title)"
+            matTooltipPosition="above"
+            matTooltipShowDelay="100"
+            matTooltipHideDelay="100"
+            matTooltip="Delete"
+          >
+            <mat-icon class="editButton">delete</mat-icon>
           </button>
         </div>
       </div>

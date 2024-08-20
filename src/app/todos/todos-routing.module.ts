@@ -5,23 +5,19 @@ import { CategoriesComponent } from './categories/categories.component';
 import { CategoryEditComponent } from './categories/category-edit/category-edit.component';
 import { CategoryNewComponent } from './categories/category-new/category-new.component';
 import { EditComponent } from './edit/edit.component';
-import { GalleryComponent } from './gallery/gallery.component';
 import { NewComponent } from './new/new.component';
-import { PhotoComponent } from './photo/photo.component';
 
 export const routes: Routes = [
   {
     path: '',
-    //component: TodosComponent,
     loadComponent: () =>
       import('./todos.component').then((m) => m.TodosComponent),
     canActivate: [AuthGuard],
-    
     data: {
       title: 'Todo',
       breadcrumb: {
-        label: 'Todo',
-        des: 'Form Elements is used to style and format the input field',
+        label: 'Todo managements',
+        des: '',
       },
     },
   },
@@ -29,37 +25,83 @@ export const routes: Routes = [
     path: 'new',
     component: NewComponent,
     canActivate: [AuthGuard],
+    data: {
+      title: 'New todo',
+      breadcrumb: {
+        label: 'Todo > New todo',
+        des: '',
+      },
+    },
   },
   {
     path: ':id/edit',
     component: EditComponent,
     canActivate: [AuthGuard],
-  },
-  {
-    path: 'photo/:id',
-    component: PhotoComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'gallery/:id',
-    component: GalleryComponent,
-    canActivate: [AuthGuard],
+    data: {
+      title: 'Edit todo',
+      breadcrumb: {
+        label: 'Todo > Edit todo',
+        des: '',
+      },
+    },
   },
   {
     path: 'categories',
     component: CategoriesComponent,
     canActivate: [AuthGuard],
+    data: {
+      title: 'Categories',
+      breadcrumb: {
+        label: 'Todo > Categories',
+        des: '',
+      },
+    },
   },
   {
     path: 'categories/new',
     component: CategoryNewComponent,
     canActivate: [AuthGuard],
+    data: {
+      title: 'New category',
+      breadcrumb: {
+        label: 'Todo > Categories > New category',
+        des: '',
+      },
+    },
   },
   {
     path: 'categories/:id/edit',
     component: CategoryEditComponent,
     canActivate: [AuthGuard],
+    data: {
+      title: 'Edit category',
+      breadcrumb: {
+        label: 'Todo > Categories > Edit category',
+        des: '',
+      },
+    },
   },
+
+  /*
+  {
+    path: 'calendar',
+    loadComponent: () => import('./calendar/calendar.component').then(m => m.CalendarComponent),
+    data: {
+      title: 'Calendar',
+      breadcrumb: { label: 'Calendar', des:'Form Elements is used to style and format the input field' }
+    }
+  },
+ 
+  {
+    path: 'kanban',
+    loadComponent: () => import('./kanban/kanban.component').then(m => m.KanbanComponent),
+    data: {
+      title: 'File Manager',
+      breadcrumb: { label: 'Kanban', des:'Welcome to Dashboard' }
+    }
+  },
+
+*/
 ];
 
 @NgModule({
@@ -67,79 +109,3 @@ export const routes: Routes = [
   exports: [RouterModule],
 })
 export class TodosRoutingModule {}
-
-
-
-
-
-
-
-
-
-
-
-
-
-/**
- * 
- * 
- * 
-export const routes: Routes = [
-  {
-    path:'',
-    children: [
-      {
-        path: 'todo',
-        loadComponent: () => import('./todo/todo.component').then(m => m.TodoComponent),
-        data: {
-          title: 'Todo',
-          breadcrumb: { label: 'Todo', des:'Form Elements is used to style and format the input field' }
-        }
-      },
-      {
-        path: 'chat',
-        loadComponent: () => import('./chat/chat.component').then(m => m.ChatComponent),
-        data: {
-          title: 'Chat',
-          breadcrumb: { label: 'Chat', des:'Form Elements is used to style and format the input field' }
-        }
-      },
-      {
-        path: 'calendar',
-        loadComponent: () => import('./calendar/calendar.component').then(m => m.CalendarComponent),
-        data: {
-          title: 'Calendar',
-          breadcrumb: { label: 'Calendar', des:'Form Elements is used to style and format the input field' }
-        }
-      },
-      {
-        path: 'file-manager',
-        loadComponent: () => import('./file-manager/file-manager.component').then(m => m.FileManagerComponent),
-        data: {
-          title: 'File Manager',
-          breadcrumb: { label: 'File Manager', des:'Welcome to Dashboard' }
-        }
-      },
-      {
-        path: 'contact',
-        loadComponent: () => import('./contact/contact.component').then(m => m.ContactComponent),
-        data: {
-          title: 'Contact',
-          breadcrumb: { label: 'Contact', des:'Welcome to Dashboard' }
-        }
-      },
-      {
-        path: 'kanban',
-        loadComponent: () => import('./kanban/kanban.component').then(m => m.KanbanComponent),
-        data: {
-          title: 'File Manager',
-          breadcrumb: { label: 'Kanban', des:'Welcome to Dashboard' }
-        }
-      },
-    ]
-  },
-];
-
- * 
- * 
- */

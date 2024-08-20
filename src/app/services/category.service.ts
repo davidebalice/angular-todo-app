@@ -2,7 +2,6 @@ import {
   HttpClient,
   HttpErrorResponse,
   HttpHeaders,
-  HttpParams,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
@@ -102,9 +101,11 @@ export class CategoryService {
       );
   }
 
-  deleteCategory(categoryId: number) {
+  deleteCategory(categoryId: number): Observable<void> {
     const headers = this.getHeaders();
-    return this.http.delete(`/categories/${categoryId}`, { headers });
+    return this.http.delete<void>(`/categories/delete/${categoryId}`, {
+      headers,
+    });
   }
 
   getById(id: number): Observable<Category> {

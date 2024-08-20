@@ -203,7 +203,7 @@ export class TodoService implements OnInit, OnDestroy {
 
   deleteTodo(todoId: number) {
     const headers = this.getHeaders();
-    return this.http.delete(`/todos/${todoId}`, { headers });
+    return this.http.delete(`/todos/delete/${todoId}`, { headers });
   }
 
   uploadTodo(id: number, imageFile: File) {

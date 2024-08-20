@@ -29,7 +29,6 @@ export class SidebarComponent {
   isCollapsed = false;
 
   constructor(private router: Router, public eventService: EventService) {
-    // Menu Items
     this.menuItems = MENU;
   }
 

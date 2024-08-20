@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { ReloadComponent } from './components/reload/reload.component';
 import { LayoutComponent } from './layouts/layout/layout.component';
 import { TopbarHideComponent } from './layouts/topbar-hide/topbar-hide.component';
 import { LoginComponent } from './login/login.component';
@@ -19,6 +20,15 @@ export const routes: Routes = [
         path: '',
         loadChildren: () =>
           import('./views/dashboards/routes').then((m) => m.routes),
+      },
+      {
+        path: 'reload',
+        component: ReloadComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'app',
+        loadChildren: () => import('./views/routes').then((m) => m.routes),
       },
       {
         path: 'features',
