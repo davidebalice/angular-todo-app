@@ -12,9 +12,9 @@
 <mat-card class="pageCard">
   <mat-card-content>
     <div class="buttonContainer">
-      <button (click)="onNewCategory()" class="fc-button fc-button-primary">
+      <button (click)="onNewTag()" class="fc-button fc-button-primary">
         <mat-icon>add_circle</mat-icon>
-        New category
+        New tag
       </button>
     </div>
 
@@ -28,17 +28,17 @@
       </ng-container>
 
       <ng-template #loadedContent>
-        <ng-container *ngIf="categories.length > 0; else noCategory">
-          <div class="listRow" *ngFor="let category of categories">
+        <ng-container *ngIf="tags.length > 0; else noTag">
+          <div class="listRow" *ngFor="let tag of tags">
             <div class="listBody">
-              <mat-icon *ngIf="category.icon" [style.color]="category.color">{{ category.icon }}</mat-icon>
-              <div class="listTitle">{{ category.name }}</div>
+              <mat-icon *ngIf="tag.icon" [style.color]="tag.color">{{ tag.icon }}</mat-icon>
+              <div class="listTitle">{{ tag.name }}</div>
             </div>
 
             <div class="cardButtonContainer">
               <button
                 class="fc-button fc-button-primary"
-                (click)="onEditCategory(category.id)"
+                (click)="onEditTag(tag.id)"
                 matTooltipPosition="above"
                 matTooltipShowDelay="100"
                 matTooltipHideDelay="100"
@@ -49,7 +49,7 @@
 
               <button
                 class="fc-button fc-button-primary"
-                (click)="onDelete(category.id, category.name)"
+                (click)="onDelete(tag.id, tag.name)"
                 matTooltipPosition="above"
                 matTooltipShowDelay="100"
                 matTooltipHideDelay="100"
@@ -62,8 +62,8 @@
         </ng-container>
       </ng-template>
 
-      <ng-template #noCategory>
-        <div class="noData">No category available.</div>
+      <ng-template #noTag>
+        <div class="noData">No tag available.</div>
       </ng-template>
     </div>
   </mat-card-content>

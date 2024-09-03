@@ -8,13 +8,12 @@ import {
   NgbOffcanvas,
 } from '@ng-bootstrap/ng-bootstrap';
 // Components
-import { TriggerComponent } from '../trigger/trigger.component';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-topbar',
   standalone: true,
-  imports: [NgbDropdownModule, NgbCollapseModule, TriggerComponent],
+  imports: [NgbDropdownModule, NgbCollapseModule],
   templateUrl: './topbar.component.html',
   styleUrl: './topbar.component.scss',
 })

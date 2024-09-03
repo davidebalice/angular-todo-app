@@ -6,38 +6,38 @@ import {
   ConfirmDialogComponent,
   ConfirmDialogData,
 } from '../../components/confirm-dialog/confirm-dialog.component';
-import { Category } from '../../model/category.model';
+import { Tag } from '../../model/tag.model';
 import { Todo } from '../../model/todo.model';
-import { CategoryService } from '../../services/category.service';
+import { TagService } from '../../services/tag.service';
 import { TodosModule } from '../todos.module';
 
 @Component({
-  selector: 'app-categories',
+  selector: 'app-tags',
   standalone: true,
-  templateUrl: './categories.component.html',
-  styleUrls: ['./categories.component.css'],
+  templateUrl: './tags.component.html',
+  styleUrls: ['./tags.component.css'],
   imports: [TodosModule],
 })
-export class CategoriesComponent implements OnInit, OnDestroy {
-  categories: Category[] = [];
-  selectedCategory: Category | undefined;
+export class TagsComponent implements OnInit, OnDestroy {
+  tags: Tag[] = [];
+  selectedTag: Tag | undefined;
   todos: Todo[] = [];
   filteredTodos: Todo[] = [];
   subscription: Subscription | undefined;
   isLoading = true;
 
   constructor(
-    private categoryService: CategoryService,
+    private tagService: TagService,
     private router: Router,
     private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
-    this.categoryService.fetchCategories();
-    this.subscription = this.categoryService
-      .getCategories()
-      .subscribe((categories) => {
-        this.categories = categories;
+    this.tagService.fetchTags();
+    this.subscription = this.tagService
+      .getTags()
+      .subscribe((tags) => {
+        this.tags = tags;
         this.isLoading = false;
       });
   }
@@ -48,31 +48,31 @@ export class CategoriesComponent implements OnInit, OnDestroy {
     }
   }
 
-  onSelectCategory(category: Category): void {
-    this.selectedCategory = category;
+  onSelectTag(tag: Tag): void {
+    this.selectedTag = tag;
 
-    if (category) {
-      this.router.navigate([`/todos/idcat/${category.id}`]);
+    if (tag) {
+      this.router.navigate([`/todos/idcat/${tag.id}`]);
     }
   }
 
-  onNewCategory() {
-    this.router.navigate(['/todos/categories/new']);
+  onNewTag() {
+    this.router.navigate(['/todos/tags/new']);
   }
 
-  onEditCategory(categoryId: number) {
-    this.router.navigate([`/todos/categories/${categoryId}/edit`]);
+  onEditTag(tagId: number) {
+    this.router.navigate([`/todos/tags/${tagId}/edit`]);
   }
 
   onBack() {
     this.router.navigate([`/todos/`]);
   }
   
-  onDelete(categoryId: number, title: string) {
+  onDelete(tagId: number, title: string) {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       data: {
         title: 'Confirm Delete',
-        message: `Are you sure you want to delete this category?`,
+        message: `Are you sure you want to delete this tag?`,
         item: title,
       } as ConfirmDialogData,
     });
@@ -80,12 +80,12 @@ export class CategoriesComponent implements OnInit, OnDestroy {
     dialogRef.afterClosed().subscribe({
       next: (result) => {
         if (result) {
-          this.categoryService.deleteCategory(categoryId).subscribe({
+          this.tagService.deleteTag(tagId).subscribe({
             next: () => {
-              this.categoryService.fetchCategories();
+              this.tagService.fetchTags();
             },
             error: (error) => {
-              this.categoryService.fetchCategories();
+              this.tagService.fetchTags();
               console.error('Error handling deletion response', error);
             },
           });

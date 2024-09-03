@@ -12,7 +12,7 @@
 <mat-card class="pageCard">
   <mat-card-content>
     <div class="buttonContainer">
-      <button (click)="onNewCategory()" class="fc-button fc-button-primary">
+      <button (click)="onNewStatus()" class="fc-button fc-button-primary">
         <mat-icon>add_circle</mat-icon>
         New category
       </button>
@@ -28,8 +28,8 @@
       </ng-container>
 
       <ng-template #loadedContent>
-        <ng-container *ngIf="categories.length > 0; else noCategory">
-          <div class="listRow" *ngFor="let category of categories">
+        <ng-container *ngIf="status.length > 0; else noStatus">
+          <div class="listRow" *ngFor="let category of status">
             <div class="listBody">
               <mat-icon *ngIf="category.icon" [style.color]="category.color">{{ category.icon }}</mat-icon>
               <div class="listTitle">{{ category.name }}</div>
@@ -38,7 +38,7 @@
             <div class="cardButtonContainer">
               <button
                 class="fc-button fc-button-primary"
-                (click)="onEditCategory(category.id)"
+                (click)="onEditStatus(category.id)"
                 matTooltipPosition="above"
                 matTooltipShowDelay="100"
                 matTooltipHideDelay="100"
@@ -62,7 +62,7 @@
         </ng-container>
       </ng-template>
 
-      <ng-template #noCategory>
+      <ng-template #noStatus>
         <div class="noData">No category available.</div>
       </ng-template>
     </div>

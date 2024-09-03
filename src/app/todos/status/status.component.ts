@@ -6,38 +6,38 @@ import {
   ConfirmDialogComponent,
   ConfirmDialogData,
 } from '../../components/confirm-dialog/confirm-dialog.component';
-import { Category } from '../../model/category.model';
+import { Status } from '../../model/status.model';
 import { Todo } from '../../model/todo.model';
-import { CategoryService } from '../../services/category.service';
+import { StatusService } from '../../services/status.service';
 import { TodosModule } from '../todos.module';
 
 @Component({
-  selector: 'app-categories',
+  selector: 'app-status',
   standalone: true,
-  templateUrl: './categories.component.html',
-  styleUrls: ['./categories.component.css'],
+  templateUrl: './status.component.html',
+  styleUrls: ['./status.component.css'],
   imports: [TodosModule],
 })
-export class CategoriesComponent implements OnInit, OnDestroy {
-  categories: Category[] = [];
-  selectedCategory: Category | undefined;
+export class StatusComponent implements OnInit, OnDestroy {
+  status: Status[] = [];
+  selectedStatus: Status | undefined;
   todos: Todo[] = [];
   filteredTodos: Todo[] = [];
   subscription: Subscription | undefined;
   isLoading = true;
 
   constructor(
-    private categoryService: CategoryService,
+    private statusService: StatusService,
     private router: Router,
     private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
-    this.categoryService.fetchCategories();
-    this.subscription = this.categoryService
-      .getCategories()
-      .subscribe((categories) => {
-        this.categories = categories;
+    this.statusService.fetchStatus();
+    this.subscription = this.statusService
+      .getStatus()
+      .subscribe((status) => {
+        this.status = status;
         this.isLoading = false;
       });
   }
@@ -48,31 +48,31 @@ export class CategoriesComponent implements OnInit, OnDestroy {
     }
   }
 
-  onSelectCategory(category: Category): void {
-    this.selectedCategory = category;
+  onSelectStatus(status: Status): void {
+    this.selectedStatus = status;
 
-    if (category) {
-      this.router.navigate([`/todos/idcat/${category.id}`]);
+    if (status) {
+      this.router.navigate([`/todos/idcat/${status.id}`]);
     }
   }
 
-  onNewCategory() {
-    this.router.navigate(['/todos/categories/new']);
+  onNewStatus() {
+    this.router.navigate(['/todos/status/new']);
   }
 
-  onEditCategory(categoryId: number) {
-    this.router.navigate([`/todos/categories/${categoryId}/edit`]);
+  onEditStatus(statusId: number) {
+    this.router.navigate([`/todos/status/${statusId}/edit`]);
   }
 
   onBack() {
     this.router.navigate([`/todos/`]);
   }
   
-  onDelete(categoryId: number, title: string) {
+  onDelete(statusId: number, title: string) {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       data: {
         title: 'Confirm Delete',
-        message: `Are you sure you want to delete this category?`,
+        message: `Are you sure you want to delete this status?`,
         item: title,
       } as ConfirmDialogData,
     });
@@ -80,12 +80,12 @@ export class CategoriesComponent implements OnInit, OnDestroy {
     dialogRef.afterClosed().subscribe({
       next: (result) => {
         if (result) {
-          this.categoryService.deleteCategory(categoryId).subscribe({
+          this.statusService.deleteStatus(statusId).subscribe({
             next: () => {
-              this.categoryService.fetchCategories();
+              this.statusService.fetchStatus();
             },
             error: (error) => {
-              this.categoryService.fetchCategories();
+              this.statusService.fetchStatus();
               console.error('Error handling deletion response', error);
             },
           });

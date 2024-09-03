@@ -2,127 +2,51 @@
   <div class="content__section-wrapper">
     <div class="content__feature mb-40">
       <div class="content__feature__card">
-        <div class="content__feature__card__text">
-          <p class="content__feature__card__subtitle">Memory</p>
-          <h4 class="content__feature__card__title">200TB</h4>
-          <span class="content__feature__card__badge">+2.5%</span>
-        </div>
-        <div class="content__feature__card__img">
-          <img src="assets/img/feature/feature-2.svg" alt="feature" />
+        <div class="dashboard">
+          <div class="dashboardBody">
+            <h4 class="mb-0">Todo App</h4>
+            <br />
+            <h5 class="mb-0">developed in Angular - Spring Boot</h5>
+            <br />
+            <img
+              src="../../../../assets/img/angular-spring.png"
+              width="140"
+              alt=""
+            />
+          </div>
+
+          <p class="dashboardFooter">www.davidebalice.dev</p>
         </div>
       </div>
       <div class="content__feature__card">
-        <div class="content__feature__card__text">
-          <p class="content__feature__card__subtitle">Visitors</p>
-          <h4 class="content__feature__card__title">87,245k</h4>
-          <span class="content__feature__card__badge danger-color">-4.4%</span>
-        </div>
-        <div class="content__feature__card__img">
-          <img src="assets/img/feature/feature-3.svg" alt="feature" />
+        <div class="demo__container">
+          <span class="todo_text1">DEMO MODE</span>
+          <span class="todo_text2"
+            >Demo mode is active, crud operations
+            <br />
+            (write, update, delete) are not allowed</span
+          >
         </div>
       </div>
       <div class="content__feature__card">
-        <div class="content__feature__card__text">
-          <p class="content__feature__card__subtitle">New Users</p>
-          <h4 class="content__feature__card__title">4,750</h4>
-          <span class="content__feature__card__badge">+2.5%</span>
-        </div>
-        <div class="content__feature__card__img">
-          <img src="assets/img/feature/feature-1.svg" alt="feature" />
-        </div>
-      </div>
-    </div>
+        <div class="mb-3 github__container">
+          <img src="../../../../assets/img/github.png" class="github" />
 
-    <div class="content__section content__server-request mb-40">
-      <div class="content__section__header">
-        <div class="content__section__header__title-part">
-          <h4 class="content__section__header__title">Server Request</h4>
-        </div>
-      </div>
-      <div class="content__section__content">
-        <div id="line-chart" class="server-request-chart">
-          <apx-chart
-            [series]="serverrequest.series"
-            [chart]="serverrequest.chart"
-            [xaxis]="serverrequest.xaxis"
-            [yaxis]="serverrequest.yaxis"
-            [colors]="serverrequest.colors"
-            [fill]="serverrequest.fill"
-            [legend]="serverrequest.legend"
-            [stroke]="serverrequest.stroke"
-            [markers]="serverrequest.markers"
-            [labels]="serverrequest.labels"
-            [dataLabels]="serverrequest.dataLabels"
-            [grid]="serverrequest.grid"
-            [tooltip]="serverrequest.tooltip"
-            [responsive]="serverrequest.responsive"
-          ></apx-chart>
-        </div>
-      </div>
-    </div>
-
-    <div class="content__double-column mb-40">
-      <div class="content__section content__visitor-count">
-        <div class="content__section__header">
-          <div class="content__section__header__title-part">
-            <h4 class="content__section__header__title">Visitors</h4>
-          </div>
-          <div class="content__section__header__content-part">
-            <div class="content__section__header__btn">
-              <a href="javascript:void(0);" class="content__section__header__link">
-              View More
-              </a>
+          <div class="github__button__container">
+            <div class="dash__button">
+              <a
+                href="https://github.com/davidebalice/spring-boot-todo-api"
+                target="_blank"
+                >Backend</a
+              >
             </div>
-          </div>
-        </div>
-        <div class="content__section__content">
-          <div class="content__visitor-count__number">
-            <h2 class="content__visitor-count__number__title">98,425k</h2>
-            <div class="content__visitor-count__number__text">
-              <span class="content__visitor-count__number__subtitle">+2.5%</span>
-              <p class="content__visitor-count__number__desc">Than last week</p>
+            <div class="dash__button">
+              <a
+                href="https://github.com/davidebalice/angular-todo-app"
+                target="_blank"
+                >Frontend</a
+              >
             </div>
-          </div>
-          <!-- <div id="column-chart"> -->
-            <apx-chart
-              [series]="visitorsChart.series"
-              [chart]="visitorsChart.chart"
-              [colors]="visitorsChart.colors"
-              [plotOptions]="visitorsChart.plotOptions"
-              [dataLabels]="visitorsChart.dataLabels"
-              [xaxis]="visitorsChart.xaxis"
-              [yaxis]="visitorsChart.yaxis"
-              [grid]="visitorsChart.grid"
-              [tooltip]="visitorsChart.tooltip"
-            ></apx-chart>
-          <!-- </div> -->
-        </div>
-      </div>
-      <div class="content__section content__chat-summary">
-        <div class="content__section__header">
-          <div class="content__section__header__title-part">
-            <h4 class="content__section__header__title">Chart Summary</h4>
-          </div>
-          <div class="content__section__header__content-part">
-            <div class="content__section__header__btn">
-              <a href="javascript:void(0);" class="content__section__header__link">
-              Download Report
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="content__section__content">
-          <div id="pie-chart">
-            <apx-chart
-              [series]="chartSummary.series"
-              [labels]="chartSummary.labels"
-              [colors]="chartSummary.colors"
-              [plotOptions]="chartSummary.plotOptions"
-              [dataLabels]="chartSummary.dataLabels"
-              [chart]="chartSummary.chart"
-              [responsive]="chartSummary.responsive"
-              [legend]="chartSummary.legend"
-            ></apx-chart>
           </div>
         </div>
       </div>
@@ -131,11 +55,15 @@
     <div class="content__section content__section--transparent content__review">
       <div class="content__section__header">
         <div class="content__section__header__title-part">
-          <h4 class="content__section__header__title">User Review</h4>
-          <p class="content__section__header__subtitle">Eum fuga consequuntur ut et.</p>
+          <h4 class="content__section__header__title">Last Todo</h4>
+          <p class="content__section__header__subtitle">
+            Eum fuga consequuntur ut et.
+          </p>
         </div>
         <div class="content__section__header__content-part">
-          <div class="content__section__header__btn content__section__header__swiper-btn">
+          <div
+            class="content__section__header__btn content__section__header__swiper-btn"
+          >
             <div class="swiper-btn swiper-btn-prev">
               <i class="uil-arrow-left"></i>
             </div>
@@ -153,83 +81,49 @@
               <div class="content__review__single">
                 <div class="content__review__single__header">
                   <div class="content__review__single__header__img">
-                    <img src="{{data.img}}" alt="User" />
+                    <img src="{{ data.img }}" alt="User" />
                   </div>
                   <div class="content__review__single__header__text">
-                    <h4 class="content__review__single__header__title">{{data.author}}</h4>
-                    <p class="content__review__single__header__subtitle">{{data.duration}}</p>
+                    <h4 class="content__review__single__header__title">
+                      {{ data.author }}
+                    </h4>
+                    <p class="content__review__single__header__subtitle">
+                      {{ data.duration }}
+                    </p>
                   </div>
                 </div>
                 <div class="content__review__single__content">
-                  <p class="content__review__single__content__text">{{data.content}}</p>
+                  <p class="content__review__single__content__text">
+                    {{ data.content }}
+                  </p>
                 </div>
-                <div class="content__review__single__bottom" *ngIf="!data.status">
-                  <a href="javascript:void(0);" class="content__review__single__btn danger-color">Archive</a>
-                  <a href="javascript:void(0);" class="content__review__single__btn success-color">Accept</a>
+                <div
+                  class="content__review__single__bottom"
+                  *ngIf="!data.status"
+                >
+                  <a
+                    href="javascript:void(0);"
+                    class="content__review__single__btn danger-color"
+                    >Archive</a
+                  >
+                  <a
+                    href="javascript:void(0);"
+                    class="content__review__single__btn success-color"
+                    >Accept</a
+                  >
                 </div>
-                <div class="content__review__single__bottom" *ngIf="data.status">
-                  <a href="javascript:void(0);" class="content__review__single__btn success-color">Publish <i class="uil-arrow-right"></i></a>
+                <div
+                  class="content__review__single__bottom"
+                  *ngIf="data.status"
+                >
+                  <a
+                    href="javascript:void(0);"
+                    class="content__review__single__btn success-color"
+                    >Publish <i class="uil-arrow-right"></i
+                  ></a>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="content__widget">
-    <div class="content__widget__single">
-      <div class="content__widget__single__header">
-        <h4 class="content__widget__single__title">Server Status</h4>
-        <p class="content__widget__single__subtitle">Consectetur et quo dolor vero.</p>
-      </div>
-      <div class="content__widget__single__content">
-        <div id="stack-chart">
-          <apx-chart
-              [series]="serverstatus.series"
-              [chart]="serverstatus.chart"
-              [xaxis]="serverstatus.xaxis"
-              [yaxis]="serverstatus.yaxis"
-              [legend]="serverstatus.legend"
-              [grid]="serverstatus.grid"
-              [tooltip]="serverstatus.tooltip"
-              [dataLabels]="serverstatus.dataLabels"
-              [plotOptions]="serverstatus.plotOptions"
-            ></apx-chart>
-        </div>
-      </div>
-    </div>
-    <div class="content__widget__single">
-      <div class="content__widget__single__header">
-        <h4 class="content__widget__single__title">Recent Problems</h4>
-        <p class="content__widget__single__subtitle">Maiores dicta atque dolorem temporibus</p>
-      </div>
-      <div class="content__widget__single__content">
-        <div class="content__widget__single__cta mb-30" *ngFor="let data of problemsData; let isLast = last" [ngClass]="{'mb-30': !isLast}">
-          <div class="content__widget__single__cta__img">
-            <img src="{{data.img}}" alt="google" />
-          </div>
-          <div class="content__widget__single__cta__text">
-            <h4 class="content__widget__single__cta__title">{{data.title}}</h4>
-            <a routerLink={{data.link}} class="content__widget__single__cta__link">{{data.link}}</a>
-          </div>
-          <div class="content__widget__single__cta__status">
-            <a href="javascript:void(0);" class="content__widget__single__cta__btn {{data.btn_color}}">{{data.btn}}</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="content__widget__single">
-      <div class="content__widget__single__header">
-        <h4 class="content__widget__single__title">Latest Activity</h4>
-        <p class="content__widget__single__subtitle">Sit et tempora dicta omnis ab quia quo quo.</p>
-      </div>
-      <div class="content__widget__single__content">
-        <div class="content__widget__single__timeline" *ngFor="let data of activityData">
-          <div class="content__widget__single__timeline__content">
-          <h4 class="content__widget__single__timeline__content__title">{{data.title}}</h4>
-          <p class="content__widget__single__timeline__content__subtitle">{{data.content}}</p>
           </div>
         </div>
       </div>

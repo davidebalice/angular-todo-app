@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 // components
-import { HorizontalComponent } from '../horizontal/horizontal.component';
 import { VerticalComponent } from '../vertical/vertical.component';
 // services
 import { EventService } from './event.service';
@@ -10,12 +9,7 @@ import { EventService } from './event.service';
 @Component({
   selector: 'app-layout',
   standalone: true,
-  imports: [
-    CommonModule,
-    VerticalComponent,
-    HorizontalComponent,
-    HttpClientModule,
-  ],
+  imports: [CommonModule, VerticalComponent, HttpClientModule],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss',
 })

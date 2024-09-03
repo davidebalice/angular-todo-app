@@ -1,0 +1,68 @@
+.rowTitle {
+  margin-bottom: 0;
+}
+
+.rowTitle > div {
+  text-align: center;
+}
+
+.rowTitle > div:nth-child(1) {
+  width: 80%;
+  text-align: left;
+}
+
+.rowTitle > div:nth-child(2) {
+  width: 20%;
+  text-align: center;
+  margin-right: 74px;
+  text-align: end;
+}
+
+.listRow {
+  display: flex;
+  align-items: center;
+  padding: 12px 4px;
+  width:99%;
+  margin:0 auto;
+  margin-bottom: 0px !important;
+}
+
+.listRow:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+.listRow > div {
+  text-align: center;
+}
+
+.listRow > div:nth-child(1) {
+  width: 78%;
+  text-align: left;
+  padding-left: 18px;
+  align-items: center;
+  display: flex;
+}
+
+.listRow > div:nth-child(2) {
+  width: 20%;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  gap: 6px;
+}
+
+.listBody {
+  display: flex;
+  gap:10px;
+  align-items: center;
+}
+
+.listTitle {
+  font-size: 17px;
+  overflow: hidden;
+}
+
+.listText {
+  font-size: 14px;
+}

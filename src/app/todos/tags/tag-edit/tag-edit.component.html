@@ -1,0 +1,86 @@
+<mat-card class="pageCard">
+  <mat-card-content>
+    <button
+      type="button"
+      class="fc-button fc-button-primary"
+      (click)="onBack()"
+    >
+      <mat-icon> chevron_left</mat-icon>
+      Back
+    </button>
+
+    <div class="spacer"></div>
+
+    <div *ngIf="tag$ | async as tag; else loading">
+      <form
+        *ngIf="tagForm"
+        [formGroup]="tagForm"
+        (ngSubmit)="onSubmit()"
+        class="formContainer"
+      >
+        <div class="inputContainer inputContainerFull">
+          <label for="name" class="labelText">Name of tag</label>
+          <input
+            type="text"
+            id="name"
+            formControlName="name"
+            class="form-control inputField"
+          />
+        </div>
+
+        <div class="inputContainer inputContainerFull">
+          <label for="color" class="labelText">Color</label>
+          <div class="flexRow">
+            <input
+              type="color"
+              id="color"
+              [(ngModel)]="tag.color"
+              formControlName="color"
+              class="form-control inputField inputFieldColor"
+            />
+            <p class="mt-3">Selected color: {{ tag.color }}</p>
+          </div>
+        </div>
+
+        <div class="inputContainer inputContainerFull">
+          <label for="color" class="labelText">Icon</label>
+
+          <div class="iconContainer">
+            <label *ngFor="let icon of icons">
+              <input
+                type="radio"
+                name="icon"
+                formControlName="icon"
+                [value]="icon"
+              />
+              <mat-icon>{{ icon }}</mat-icon>
+            </label>
+          </div>
+        </div>
+
+        <div class="submitContainer">
+          <button
+            type="button"
+            class="fc-button fc-button-primary"
+            (click)="onCancel()"
+          >
+            Cancel
+          </button>
+
+          <button
+            type="submit"
+            class="fc-button fc-button-primary"
+            [disabled]="!tagForm.valid"
+          >
+            <mat-icon>save</mat-icon>
+            Save
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <ng-template #loading>
+      <img src="../../../assets/images/loading.svg" />
+    </ng-template>
+  </mat-card-content>
+</mat-card>

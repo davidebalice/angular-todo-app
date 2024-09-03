@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
 import { ReloadComponent } from './components/reload/reload.component';
 import { LayoutComponent } from './layouts/layout/layout.component';
-import { TopbarHideComponent } from './layouts/topbar-hide/topbar-hide.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './services/auth.guard';
 import { ForgotPasswordComponent } from './views/auth/forgot-password/forgot-password.component';
@@ -68,16 +67,5 @@ export const routes: Routes = [
     path: 'verification',
     component: TwoStepComponent,
     title: 'Two Step Verification',
-  },
-  {
-    path: '',
-    component: TopbarHideComponent,
-    children: [
-      {
-        path: '',
-        loadChildren: () =>
-          import('./views/errors/routes').then((m) => m.routes),
-      },
-    ],
   },
 ];

@@ -1,11 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '../services/auth.guard';
+import { EditComponent } from './edit/edit.component';
+import { NewComponent } from './new/new.component';
+
 import { CategoriesComponent } from './categories/categories.component';
 import { CategoryEditComponent } from './categories/category-edit/category-edit.component';
 import { CategoryNewComponent } from './categories/category-new/category-new.component';
-import { EditComponent } from './edit/edit.component';
-import { NewComponent } from './new/new.component';
+
+import { TagsComponent } from './tags/tags.component';
+import { TagEditComponent } from './tags/tag-edit/tag-edit.component';
+import { TagNewComponent } from './tags/tag-new/tag-new.component';
+
+import { StatusComponent } from './status/status.component';
+import { StatusEditComponent } from './status/status-edit/status-edit.component';
+import { StatusNewComponent } from './status/status-new/status-new.component';
+
 
 export const routes: Routes = [
   {
@@ -81,6 +91,81 @@ export const routes: Routes = [
       },
     },
   },
+
+  {
+    path: 'tags',
+    component: TagsComponent,
+    canActivate: [AuthGuard],
+    data: {
+      title: 'Tags',
+      breadcrumb: {
+        label: 'Todo > Tags',
+        des: '',
+      },
+    },
+  },
+  {
+    path: 'tags/new',
+    component: TagNewComponent,
+    canActivate: [AuthGuard],
+    data: {
+      title: 'New tag',
+      breadcrumb: {
+        label: 'Todo > Tags > New tag',
+        des: '',
+      },
+    },
+  },
+  {
+    path: 'tags/:id/edit',
+    component: TagEditComponent,
+    canActivate: [AuthGuard],
+    data: {
+      title: 'Edit tag',
+      breadcrumb: {
+        label: 'Todo > Tags > Edit tag',
+        des: '',
+      },
+    },
+  },
+
+  {
+    path: 'status',
+    component: StatusComponent,
+    canActivate: [AuthGuard],
+    data: {
+      title: 'Status',
+      breadcrumb: {
+        label: 'Todo > Status',
+        des: '',
+      },
+    },
+  },
+  {
+    path: 'status/new',
+    component: StatusNewComponent,
+    canActivate: [AuthGuard],
+    data: {
+      title: 'New status',
+      breadcrumb: {
+        label: 'Todo > Status > New status',
+        des: '',
+      },
+    },
+  },
+  {
+    path: 'status/:id/edit',
+    component: StatusEditComponent,
+    canActivate: [AuthGuard],
+    data: {
+      title: 'Edit status',
+      breadcrumb: {
+        label: 'Todo > Status > Edit status',
+        des: '',
+      },
+    },
+  },
+
 
   /*
   {
