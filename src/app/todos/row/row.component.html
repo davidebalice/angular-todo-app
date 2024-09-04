@@ -7,52 +7,52 @@
       aria-labelledby="todo_list_tab"
     >
       <div class="content__todo__list">
-        <div class="content__todo__list__single">
+        <div class="listRowItem">
           <div class="content__todo__list__single__text">
             <span class="content__todo__list__single__subtitle">{{
               formatDate(todo.createdAt)
             }}</span>
-            <h4 class="content__todo__list__single__title">{{ todo.title }}</h4>
+            <p class="content__todo__list__single__title">
+              {{ todo.title }}
+            </p>
+            <p class="content__todo__list__single__subtitle">{{ todo.description }}</p>
           </div>
 
-          <div class="content__todo__list__single__tag">
-            <a
-              href="javascript:void(0);"
-              class="content__todo__list__single__tag__item"
+          <div class="containerTodoTag">
+            <div
+              class="containerTodoTagItem"
+              [ngStyle]="{
+                'background-color': todo.tag?.color,
+              }"
+              *ngIf="todo.tag?.name"
             >
-              <i class="uil uil-tag-alt"></i> {{ todo.tag?.name }}
-            </a>
-          </div>
+              <mat-icon *ngIf="todo.tag?.icon" class="containerTodoTagIcon">
+                {{ todo.tag?.icon }}
+              </mat-icon>
+              <span>{{ todo.tag?.name }}</span>
+            </div>
 
-          <div class="content__todo__list__single__author">
-            <a
+            <div
               href="javascript:void(0);"
-              class="content__todo__list__single__author__img"
+              class="containerTodoTagItem"
+              [ngStyle]="{
+              'background-color': todo.status?.color,
+            }"
+              *ngIf="todo.status?.name"
             >
-              <img src="" alt="avatar" />
-            </a>
+              <mat-icon *ngIf="todo.status?.icon" class="containerTodoTagIcon">
+                {{ todo.status?.icon }}
+              </mat-icon>
+              <span>{{ todo.status?.name }}</span>
+            </div>
           </div>
 
-          <button
-            class="cardButton"
-            (click)="onEdit(todo.id)"
-            matTooltipPosition="above"
-            matTooltipShowDelay="100"
-            matTooltipHideDelay="100"
-            matTooltip="Edit"
-          >
-            <mat-icon class="editButton">edit</mat-icon>
+          <button class="cardButton" (click)="onEdit(todo.id)">
+            <mat-icon class="cardButtonIcon">edit</mat-icon>
           </button>
 
-          <button
-            class="cardButton"
-            (click)="onDelete(todo.id, todo.title)"
-            matTooltipPosition="above"
-            matTooltipShowDelay="100"
-            matTooltipHideDelay="100"
-            matTooltip="Delete"
-          >
-            <mat-icon class="editButton">delete</mat-icon>
+          <button class="cardButton" (click)="onDelete(todo.id, todo.title)">
+            <mat-icon class="cardButtonIcon">delete</mat-icon>
           </button>
         </div>
       </div>

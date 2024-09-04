@@ -1,5 +1,18 @@
+
+
 .listRow {
   margin-bottom: 12px;
+  border-radius: 6px !important;
+}
+
+
+.listRowItem {
+  display: flex;
+  gap:6px;
+  background-color: white;
+  padding:20px;
+  border-radius:6px;
+  align-items: start;
 }
 
 .categoryContainer {
@@ -31,4 +44,44 @@
 
 .listText {
   font-size: 14px;
+}
+
+.containerTodoTag {
+  margin-right: 10px;
+}
+
+.containerTodoTagItem {
+  width: 120px !important;
+  border-radius: 4px;
+  font-size: 13px;
+  padding: 2px 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  margin-bottom: 3px;
+}
+
+.containerTodoTagIcon {
+  font-size: 18px;
+  margin-top: 4px;
+}
+
+.cardButton {
+  background: var(--primary-color);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  padding:8px 10px;
+  display: flex;
+  align-items: center;
+}
+
+.cardButton:hover {
+  background: var(--secondary-color);
+}
+
+.cardButtonIcon{
+  font-size:20px
 }

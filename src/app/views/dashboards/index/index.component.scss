@@ -1,94 +1,137 @@
 @mixin alignContent {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .widget-icon {
-    @include alignContent();
-    width: 42px !important;
-    height: 42px !important;
-    background-color: #eee;
-    border-radius: 50%;
-    font-size: 22px;
-  }
-  
-  .dashboard {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: start;
-  }
-  
-  .dashboard__body {
-    display: flex;
-    flex-direction: column;
-    padding: 1rem;
-  }
-  
-  .dashboard__footer {
-    text-align: center;
-    width: 100%;
-    padding: 8px;
-    font-size: 14px;
-    margin-top: 50px;
-    background-color: var(--primary-color);
-    color: #fff;
-  }
-  
-  .github__container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-  }
-  
-  .github {
-    width: 50%;
-    max-width: 100px;
-  }
-  
-  .github__button__container {
-    display: flex;
-    gap: 12px;
-  }
-  
-  .dash__button {
-    color: #fff;
-    background-color: var(--primary-color);
-    padding:4px 12px;
-    border-radius: 4px;
-    margin-top:10px
-  }
-  
-  .dash__button:hover {
-    background-color: var(--secondary-color);
-  }
-  
-  .dash__button a {
-    color: #fff;
-    font-size: 13px;
-  }
-  
-  .todo_container{
-    width: 100%;
-    height:100%;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    flex-direction: column;
-    justify-content: center;
-    gap:20px
-  }
-  
-  .todo_text1{
-    font-weight: bold;
-    color: red;
-    font-size: 20px;
-  }
-  
-  .todo_text2{
-    font-size: 15px;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.widget-icon {
+  @include alignContent();
+  width: 42px !important;
+  height: 42px !important;
+  background-color: #eee;
+  border-radius: 50%;
+  font-size: 22px;
+}
+
+.dashboard__bg {
+  background: url("../../../../assets/img/todo.jpg");
+  background-size: cover;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.dashboard__overlay {
+  background: rgba(0, 0, 0, 0.7);
+  background-size: cover;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.dashboard {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dashboard__body {
+  color: #fff !important;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+.dashboard__footer {
+  text-align: center;
+  width: 100%;
+  padding: 6px;
+  font-size: 14px;
+  margin-top: 40px;
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+.dashboard__title1 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.dashboard__title2 {
+  font-size: 18px;
+}
+
+.github__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.github {
+  width: 50%;
+  max-width: 100px;
+}
+
+.github__button__container {
+  display: flex;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.dash__button {
+  color: #fff;
+  background-color: var(--primary-color);
+  padding: 4px 12px;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+.dash__button:hover {
+  background-color: var(--secondary-color);
+}
+
+.dash__button a {
+  color: #fff;
+  font-size: 13px;
+}
+
+.todo_container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+
+.todo_text1 {
+  font-weight: bold;
+  color: red;
+  font-size: 20px;
+}
+
+.todo_text2 {
+  font-size: 17px;
+}
+
+.demo__container {
+  text-align: center;
+  width: 100%;
+}
+

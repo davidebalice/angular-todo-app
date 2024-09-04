@@ -36,9 +36,9 @@
                   aria-controls="team-task-content"
                   aria-selected="true"
                 >
-                  <mat-icon [ngStyle]="{ color: category.color }"
-                    >sell</mat-icon
-                  >
+                <mat-icon *ngIf="category.icon" [ngStyle]="{ color: category.color }">
+                  {{ category.icon }}
+                </mat-icon>
                   <span>{{ category.name }}</span>
                 </button>
               </li>
@@ -46,7 +46,7 @@
 
             <div *ngIf="tags.length === 0">
               <p>No Categoriesavailable.</p>
-            </div> 
+            </div>
           </div>
 
           <div class="sideTagsTitle">
@@ -72,26 +72,10 @@
                 aria-controls="todo-task-content-important"
                 aria-selected="true"
               >
-                <mat-icon
-                  *ngIf="item.name == 'Completed'"
-                  [ngStyle]="{ color: item.color }"
-                  >done_all</mat-icon
-                >
-                <mat-icon
-                  *ngIf="item.name == 'Important'"
-                  [ngStyle]="{ color: item.color }"
-                  >priority_high</mat-icon
-                >
-                <mat-icon
-                  *ngIf="item.name == 'In Work'"
-                  [ngStyle]="{ color: item.color }"
-                  >settings</mat-icon
-                >
-                <mat-icon
-                  *ngIf="item.name == 'Removed'"
-                  [ngStyle]="{ color: item.color }"
-                  >deleted</mat-icon
-                >
+              
+                <mat-icon *ngIf="item.icon" [ngStyle]="{ color: item.color }">
+                  {{ item.icon }}
+                </mat-icon>
 
                 <span>{{ item.name }}</span>
               </button>
@@ -125,7 +109,9 @@
                 aria-controls="team-task-content"
                 aria-selected="true"
               >
-                <mat-icon [ngStyle]="{ color: tag.color }">sell</mat-icon>
+              <mat-icon *ngIf="tag.icon" [ngStyle]="{ color: tag.color }">
+                {{ tag.icon }}
+              </mat-icon>
                 <span>{{ tag.name }}</span>
               </button>
             </li>
@@ -134,8 +120,6 @@
           <div *ngIf="tags.length === 0">
             <p>No tags available.</p>
           </div>
-
-        
         </div>
       </div>
 
