@@ -8,7 +8,7 @@ import { Todo } from '../../model/todo.model';
 import { TodoService } from '../../services/todo.service';
 import { RowComponent } from '../row/row.component';
 import { TodosModule } from '../todos.module';
-
+import { SimpleChanges, OnChanges } from '@angular/core';
 @Component({
   selector: 'app-list-row',
   standalone: true,
@@ -17,6 +17,10 @@ import { TodosModule } from '../todos.module';
   imports: [TodosModule, RowComponent, MatPaginator],
 })
 export class ListRowComponent {
+  @Input() selectedCategory!: number;
+  @Input() selectedTag!: number;
+  @Input() selectedStatus!: number;
+
   subscription: Subscription | undefined;
   loadedTodos: Todo[] = [];
   paginatedTodos: Todo[] = [];
@@ -47,22 +51,23 @@ export class ListRowComponent {
 
     this.queryParamSub = this.route.queryParams.subscribe((params) => {
       const searchKey = params['key'] || '';
-      const categoryId = params['category'] || '';
-      if (categoryId) {
-        this.fetchTodos(searchKey, categoryId);
-      } else {
-        this.fetchTodos(searchKey);
-      }
+
+      this.fetchTodos(
+        searchKey,
+        this.selectedCategory,
+        this.selectedStatus,
+        this.selectedTag
+      );
     });
 
     this.routeParamsSub = this.route.params.subscribe((params) => {
-      const categoryId = params['category'] || 0;
       const searchKey = this.route.snapshot.queryParams['key'] || '';
-      if (categoryId) {
-        this.fetchTodos(searchKey, categoryId);
-      } else {
-        this.fetchTodos(searchKey);
-      }
+      this.fetchTodos(
+        searchKey,
+        this.selectedCategory,
+        this.selectedStatus,
+        this.selectedTag
+      );
     });
   }
 
@@ -82,13 +87,30 @@ export class ListRowComponent {
   }
 
   onUpdateTodos() {
-    this.fetchTodos();
+    this.fetchTodos(
+      '',
+      this.selectedCategory,
+      this.selectedStatus,
+      this.selectedTag
+    );
   }
 
-  fetchTodos(searchKey?: string, categoryId?: number) {
+  fetchTodos(
+    searchKey?: string,
+    categoryId?: number,
+    statusId?: number,
+    tagId?: number
+  ) {
     this.isLoading = true;
     this.subscription = this.todoService
-      .fetchTodos(searchKey, categoryId, this.limit, this.currentPage)
+      .fetchTodos(
+        searchKey,
+        categoryId,
+        statusId,
+        tagId,
+        this.limit,
+        this.currentPage
+      )
       .subscribe({
         next: (response) => {
           this.isLoading = false;
@@ -109,7 +131,12 @@ export class ListRowComponent {
 
   onPageChanged(event: PageEvent): void {
     this.currentPage = event.pageIndex + 1;
-    this.fetchTodos();
+    this.fetchTodos(
+      '',
+      this.selectedCategory,
+      this.selectedStatus,
+      this.selectedTag
+    );
   }
 
   paginateTodos() {
@@ -117,4 +144,12 @@ export class ListRowComponent {
     const endIndex = startIndex + this.limit;
     this.paginatedTodos = this.loadedTodos.slice(startIndex, endIndex);
   }
+
+  
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['selectedCategory'] || changes['selectedTag'] || changes['selectedStatus']) {
+      this.onUpdateTodos();
+    }
+  }
+
 }

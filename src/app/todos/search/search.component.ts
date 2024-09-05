@@ -40,10 +40,10 @@ export class SearchComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$));
   }
 
-  onSearch(searchTerm: string, idCategory: any): void {
-    if ((searchTerm && searchTerm.trim().length > 0) || idCategory > 1) {
+  onSearch(searchTerm: string): void {
+    if ((searchTerm && searchTerm.trim().length > 0)) {
       this.router.navigate(['/todos'], {
-        queryParams: { key: searchTerm, category: idCategory },
+        queryParams: { key: searchTerm },
       });
     } else this.router.navigate(['/todos']);
   }

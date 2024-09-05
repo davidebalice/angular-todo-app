@@ -11,6 +11,11 @@
             New todo
           </button>
 
+          <button (click)="onReset()" class="fc-button reset-button">
+            <mat-icon>restart_alt</mat-icon>
+            Reset filter
+          </button>
+
           <div class="sideTagsTitle mt-2">
             <span>Categories</span>
             <span (click)="navigateToCategories()">
@@ -29,16 +34,19 @@
                 <button
                   class="nav-link primary"
                   id="team-task-tab"
-                  data-bs-toggle="tab"
-                  data-bs-target="#team-task-content"
                   type="button"
                   role="tab"
+                  [ngClass]="{ active: category.id === selectedCategory }"
                   aria-controls="team-task-content"
                   aria-selected="true"
+                  (click)="selectCategory(category.id)"
                 >
-                <mat-icon *ngIf="category.icon" [ngStyle]="{ color: category.color }">
-                  {{ category.icon }}
-                </mat-icon>
+                  <mat-icon
+                    *ngIf="category.icon"
+                    [ngStyle]="{ color: category.color }"
+                  >
+                    {{ category.icon }}
+                  </mat-icon>
                   <span>{{ category.name }}</span>
                 </button>
               </li>
@@ -65,14 +73,13 @@
               <button
                 class="nav-link"
                 id="todo-task-tab-important"
-                data-bs-toggle="tab"
-                data-bs-target="#todo-task-content-important"
+                [ngClass]="{ active: item.id === selectedStatus }"
                 type="button"
                 role="tab"
                 aria-controls="todo-task-content-important"
                 aria-selected="true"
+                (click)="selectStatus(item.id)"
               >
-              
                 <mat-icon *ngIf="item.icon" [ngStyle]="{ color: item.color }">
                   {{ item.icon }}
                 </mat-icon>
@@ -104,14 +111,16 @@
                 id="team-task-tab"
                 data-bs-toggle="tab"
                 data-bs-target="#team-task-content"
+                [ngClass]="{ active: tag.id === selectedTag }"
                 type="button"
                 role="tab"
                 aria-controls="team-task-content"
                 aria-selected="true"
+                (click)="selectTag(tag.id)"
               >
-              <mat-icon *ngIf="tag.icon" [ngStyle]="{ color: tag.color }">
-                {{ tag.icon }}
-              </mat-icon>
+                <mat-icon *ngIf="tag.icon" [ngStyle]="{ color: tag.color }">
+                  {{ tag.icon }}
+                </mat-icon>
                 <span>{{ tag.name }}</span>
               </button>
             </li>
@@ -173,6 +182,9 @@
           [pagination]="pagination"
           [limit]="9"
           *ngIf="visualization === 'row'"
+          [selectedCategory]="selectedCategory"
+          [selectedTag]="selectedTag"
+          [selectedStatus]="selectedStatus"
         ></app-list-row>
         <app-list-card
           [pagination]="pagination"

@@ -62,6 +62,8 @@ export class TodoService implements OnInit, OnDestroy {
   fetchTodos(
     keyword?: string,
     category?: number,
+    status?: number,
+    tag?: number,
     limit?: number,
     page: number = 1
   ): Observable<{ todos: Todo[]; totalItems: number }> {
@@ -70,19 +72,24 @@ export class TodoService implements OnInit, OnDestroy {
     let params = new HttpParams();
 
     if (keyword) {
-      apiUrl = '/todos/search';
       params = params.append('keyword', keyword);
-    } else {
-      if (category! > 0) {
-        apiUrl = '/todos/searchByCategoryId';
-        params = params.append('categoryId', category!);
-      }
     }
-
+    if (category! > 0) {
+      params = params.append('categoryId', category!);
+    }
+    if (status! > 0) {
+      params = params.append('statusId', status!);
+    }
+    if (tag! > 0) {
+      params = params.append('tagId', tag!);
+    }
     if (limit) {
       params = params.append('size', limit);
     }
+
     params = params.append('page', (page - 1).toString());
+
+    console.log(params);
 
     return this.http
       .get<{ todos: Todo[]; totalItems: number }>(apiUrl, {

@@ -15,10 +15,7 @@ import { calendarEvents } from './data';
   templateUrl: './calendar.component.html',
   styleUrl: './calendar.component.scss'
 })
-export class CalendarComponent {
-  /***
-  * Calender Set
-  */
+export class Calendar {
   calendarOptions: CalendarOptions = {
     plugins: [
       interactionPlugin,

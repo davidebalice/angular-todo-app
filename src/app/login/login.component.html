@@ -5,7 +5,7 @@
         <img src="../../assets/img/logoDb.png" class="logoDb" />
       </div>
       <div class="logoText">
-        <b>Products Admin panel</b>
+        <b>Todo App</b>
         <br />
         developed in Angular - Spring Boot
         <br />
@@ -39,7 +39,9 @@
           Password is required
         </div>
       </div>
-      <button type="submit" [disabled]="loginForm.invalid" class="loginButton">Login</button>
+      <button type="submit" [disabled]="loginForm.invalid" class="loginButton">
+        Login
+      </button>
     </form>
     <div *ngIf="errorMessage" class="errorMessage">
       {{ errorMessage }}

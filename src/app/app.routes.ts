@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { Calendar } from './calendar/calendar.component';
 import { ReloadComponent } from './components/reload/reload.component';
 import { LayoutComponent } from './layouts/layout/layout.component';
 import { LoginComponent } from './login/login.component';
@@ -26,18 +27,9 @@ export const routes: Routes = [
         canActivate: [AuthGuard],
       },
       {
-        path: 'app',
-        loadChildren: () => import('./views/routes').then((m) => m.routes),
-      },
-      {
-        path: 'features',
-        loadChildren: () =>
-          import('./views/features/routes').then((m) => m.routes),
-      },
-      {
-        path: 'pages',
-        loadChildren: () =>
-          import('./views/pages/routes').then((m) => m.routes),
+        path: 'calendar',
+        component: Calendar,
+        canActivate: [AuthGuard],
       },
     ],
   },

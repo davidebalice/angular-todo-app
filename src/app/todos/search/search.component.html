@@ -1,7 +1,7 @@
 <form
   class="searchContainer"
   [formGroup]="searchForm"
-  (ngSubmit)="onSearch(searchInput.value, idCategory.value)"
+  (ngSubmit)="onSearch(searchInput.value)"
 >
   <div class="inputContainer">
     <input
@@ -12,24 +12,6 @@
       aria-label="Search"
       class="inputField heightInput"
     />
-  </div>
-
-  <div class="inputContainer">
-    <select
-      type="text"
-      id="idCategory"
-      #idCategory
-      formControlName="idCategory"
-      class="inputField heightInput"
-    >
-      <option value="0">Select Category</option>
-      <option
-        *ngFor="let category of categories$ | async"
-        [value]="category.id"
-      >
-        {{ category.name }}
-      </option>
-    </select>
   </div>
 
   <button class="buttonBase" type="submit">

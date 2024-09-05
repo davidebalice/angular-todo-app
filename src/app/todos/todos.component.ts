@@ -21,6 +21,9 @@ import { TodosModule } from './todos.module';
 })
 export class TodosComponent {
   selectedTodo!: Todo;
+  selectedCategory!: number;
+  selectedTag!: number;
+  selectedStatus!: number;
   pagination: boolean = true;
   visualization: string = 'row';
   tags: Tag[] = [];
@@ -99,5 +102,23 @@ export class TodosComponent {
 
   navigateToTags() {
     this.router.navigate(['/todos/tags']);
+  }
+
+  selectCategory(category: number) {
+    this.selectedCategory = category;
+  }
+  
+  selectTag(tag: number) {
+    this.selectedTag = tag;
+  }
+  
+  selectStatus(status: number) {
+    this.selectedStatus = status;
+  }
+
+  onReset(){
+    this.selectedCategory = 0;
+    this.selectedStatus = 0;
+    this.selectedTag = 0;
   }
 }
