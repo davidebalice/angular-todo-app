@@ -1,105 +1,155 @@
 <div class="content__wrapper">
-    <div class="content__section-wrapper">
-        <div class="content__section content__section--transparent content__calendar">
-            <button class="btn content__calendar__toggle">
-                <i class="uil-bars"></i> Event List
-            </button>
-            <div class="content__calendar__sidebar">
-                <div class="content__calendar__sidebar__header">
-                    <button class="btn btn--primary btn__add-modal">
-                        <i class="uil-plus"></i> New Event
-                    </button>
-                </div>
+  <div class="content__section-wrapper">
+    <button class="btn btn__toggle-task">
+      <i class="uil-bars"></i> Task List
+    </button>
+    <div class="content__section content__section--transparent content__todo">
+      <div class="content__todo__sidebar">
+        <div class="content__todo__sidebar__label">
+          <button (click)="onNewTodo()" class="fc-button fc-button-primary">
+            <mat-icon>add_circle</mat-icon>
+            New todo
+          </button>
 
-                <div class="content__calendar__sidebar__meeting">
-                    <span class="content__calendar__sidebar__meeting__label">My Schedule Today</span>
-                    <div class="content__calendar__sidebar__meeting__single">
-                        <div class="content__calendar__sidebar__meeting__single__text">
-                            <h4 class="content__calendar__sidebar__meeting__single__title">Client Weekly Meeting</h4>
-                            <span class="content__calendar__sidebar__meeting__single__time">09:00 AM - 10:00 AM</span>
-                        </div>
-                        <div class="content__calendar__sidebar__meeting__single__tag">
-                            <a href="javascript:void(0);" class="content__calendar__sidebar__meeting__single__tag__item danger">
-                            Urgent
-                            </a>
-                            <a href="javascript:void(0);" class="content__calendar__sidebar__meeting__single__tag__item success">
-                            Face to face
-                            </a>
-                        </div>
-                        <div class="content__calendar__sidebar__meeting__single__author">
-                            <div class="content__calendar__sidebar__meeting__single__author__img">
-                                <img src="assets/img/avatar/chat/1.svg" alt="avatar">
-                            </div>
-                            <div class="content__calendar__sidebar__meeting__single__author__content">
-                                <div class="content__calendar__sidebar__meeting__single__author__text">
-                                    <span class="content__calendar__sidebar__meeting__single__author__title">John Braun</span>
-                                    <a href="javascript:void(0);" class="content__calendar__sidebar__meeting__single__author__btn">View details</a>
-                                </div>
-                                <div class="content__calendar__sidebar__meeting__single__author__icon">
-                                    <a href="javascript:void(0);">
-                                    <i class="uil-angle-right"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="content__calendar__sidebar__meeting__single">
-                        <div class="content__calendar__sidebar__meeting__single__text">
-                            <h4 class="content__calendar__sidebar__meeting__single__title">Maintenance CenterLoad Balancer</h4>
-                            <span class="content__calendar__sidebar__meeting__single__time">09:00 AM - 10:30 AM</span>
-                        </div>
-                        <div class="content__calendar__sidebar__meeting__single__tag">
-                            <a href="javascript:void(0);" class="content__calendar__sidebar__meeting__single__tag__item primary">
-                            Fixing
-                            </a>
-                            <a href="javascript:void(0);" class="content__calendar__sidebar__meeting__single__tag__item warning">
-                            Backend
-                            </a>
-                        </div>
-                    </div>
-                    <div class="content__calendar__sidebar__meeting__single">
-                        <div class="content__calendar__sidebar__meeting__single__text">
-                            <h4 class="content__calendar__sidebar__meeting__single__title">Check Annual Report</h4>
-                            <span class="content__calendar__sidebar__meeting__single__time">09:00 AM - 10:30 AM</span>
-                        </div>
-                        <div class="content__calendar__sidebar__meeting__single__tag">
-                            <a href="javascript:void(0);" class="content__calendar__sidebar__meeting__single__tag__item info">
-                            Report
-                            </a>
-                        </div>
-                    </div>
-                </div>
+          <button (click)="onReset()" class="fc-button reset-button">
+            <mat-icon>restart_alt</mat-icon>
+            Reset filter
+          </button>
 
-                <div class="content__calendar__sidebar__bottom">
-                    <button class="btn content__calendar__sidebar__bottom__btn">View More <i class="uil-arrow-right"></i>
-                    </button>
-                </div>
+          <div class="sideTagsTitle mt-2">
+            <span>Categories</span>
+            <span (click)="navigateToCategories()">
+              <mat-icon>edit</mat-icon>
+            </span>
+          </div>
+
+          <div class="content__todo__sidebar__label">
+            <ul
+              class="nav nav-tabs content__todo__sidebar__tab"
+              id="todo-task-label"
+              role="tablist"
+              *ngIf="categories && categories.length > 0"
+            >
+              <li class="nav-item" *ngFor="let category of categories">
+                <button
+                  class="nav-link primary"
+                  id="team-task-tab"
+                  type="button"
+                  role="tab"
+                  [ngClass]="{ active: category.id === selectedCategory }"
+                  aria-controls="team-task-content"
+                  aria-selected="true"
+                  (click)="selectCategory(category.id)"
+                >
+                  <mat-icon
+                    *ngIf="category.icon"
+                    [ngStyle]="{ color: category.color }"
+                  >
+                    {{ category.icon }}
+                  </mat-icon>
+                  <span>{{ category.name }}</span>
+                </button>
+              </li>
+            </ul>
+
+            <div *ngIf="tags.length === 0">
+              <p>No Categoriesavailable.</p>
             </div>
+          </div>
 
-            <div class="tab-content content__calendar__content">
-                <div class="content__modal__form">
-                    <div class="content__modal__form__header">
-                        <h3 class="content__modal__form__title">Add New Event</h3>
-                        <button class="content__modal__form__close">
-                            <i class="uil-times"></i>
-                        </button>
-                    </div>
-                    <form class="content__modal__form__wrapper">
-                        <div class="content__modal__form__item">
-                            <input type="text" name="content__modal__form__name" class="content__modal__form__input" placeholder="Event Title" />
-                        </div>
-                        <div class="content__modal__form__item">
-                            <textarea name="content__modal__form__desc" class="content__modal__form__input content__modal__form__input--textarea" placeholder="Event Description"></textarea>
-                        </div>
-                        <div class="content__modal__form__item">
-                            <button type="submit" class="content__modal__form__submit">Submit</button>
-                        </div>
-                    </form>
-                </div>
-                <div id='calendar' class="calendar">
-                    <full-calendar [options]="calendarOptions"></full-calendar>
-                </div>
-            </div>
+          <div class="sideTagsTitle">
+            <span>Status</span>
+            <span (click)="navigateToStatus()">
+              <mat-icon>edit</mat-icon>
+            </span>
+          </div>
+          <ul
+            class="nav nav-tabs content__todo__sidebar__tab mb-4"
+            id="todo-task-tab"
+            role="tablist"
+            *ngIf="status && status.length > 0"
+          >
+            <li class="nav-item" *ngFor="let item of status">
+              <button
+                class="nav-link"
+                id="todo-task-tab-important"
+                [ngClass]="{ active: item.id === selectedStatus }"
+                type="button"
+                role="tab"
+                aria-controls="todo-task-content-important"
+                aria-selected="true"
+                (click)="selectStatus(item.id)"
+              >
+                <mat-icon *ngIf="item.icon" [ngStyle]="{ color: item.color }">
+                  {{ item.icon }}
+                </mat-icon>
+
+                <span>{{ item.name }}</span>
+              </button>
+            </li>
+          </ul>
+          <div *ngIf="status.length === 0">
+            <p>No status available.</p>
+          </div>
+          <div class="sideTagsTitle">
+            <span>Tags</span>
+            <span (click)="navigateToTags()">
+              <mat-icon>edit</mat-icon>
+            </span>
+          </div>
         </div>
+        <div class="content__todo__sidebar__label">
+          <ul
+            class="nav nav-tabs content__todo__sidebar__tab"
+            id="todo-task-label"
+            role="tablist"
+            *ngIf="tags && tags.length > 0"
+          >
+            <li class="nav-item" *ngFor="let tag of tags">
+              <button
+                class="nav-link primary"
+                id="team-task-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#team-task-content"
+                [ngClass]="{ active: tag.id === selectedTag }"
+                type="button"
+                role="tab"
+                aria-controls="team-task-content"
+                aria-selected="true"
+                (click)="selectTag(tag.id)"
+              >
+                <mat-icon *ngIf="tag.icon" [ngStyle]="{ color: tag.color }">
+                  {{ tag.icon }}
+                </mat-icon>
+                <span>{{ tag.name }}</span>
+              </button>
+            </li>
+          </ul>
+
+          <div *ngIf="tags.length === 0">
+            <p>No tags available.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="calendarContainer">
+        <div class="buttonContainer">
+          <div class="buttonContainer2">
+            <button (click)="onNewTodo()" class="fc-button fc-button-primary">
+              <mat-icon>add_circle</mat-icon>
+              New todo
+            </button>
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="row">
+          <div class="col-12">
+              <full-calendar [options]="calendarOptions"></full-calendar>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </div>

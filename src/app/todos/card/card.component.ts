@@ -7,10 +7,8 @@ import {
   ConfirmDialogComponent,
   ConfirmDialogData,
 } from '../../components/confirm-dialog/confirm-dialog.component';
-import { ImageDialogComponent } from '../../components/image-dialog/image-dialog.component';
 import { Todo } from '../../model/todo.model';
 import { TodoService } from '../../services/todo.service';
-import { DetailComponent } from '../detail/detail.component';
 import { ListCardComponent } from '../list-card/list-card.component';
 import { TodosModule } from '../todos.module';
 @Component({
@@ -30,18 +28,8 @@ export class CardComponent implements OnInit {
     private router: Router,
     private listCardComponent: ListCardComponent,
     public dialog: MatDialog,
-    private imageDialog: MatDialog
   ) {}
 
-  openDialog(id: number): void {
-    this.dialog.open(DetailComponent, {
-      width: '90%',
-      maxWidth: '1200px',
-      height: '90%',
-      maxHeight: '1200px',
-      data: { id: id },
-    });
-  }
 
   ngOnInit(): void {}
 
@@ -146,9 +134,5 @@ export class CardComponent implements OnInit {
     return starsArray;
   }
 
-  openImageDialog(imageUrl: string, directory: string): void {
-    this.imageDialog.open(ImageDialogComponent, {
-      data: { imageUrl: imageUrl, directory: directory },
-    });
-  }
+
 }

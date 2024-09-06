@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { ActivatedRoute } from '@angular/router';
@@ -8,7 +8,6 @@ import { Todo } from '../../model/todo.model';
 import { TodoService } from '../../services/todo.service';
 import { RowComponent } from '../row/row.component';
 import { TodosModule } from '../todos.module';
-import { SimpleChanges, OnChanges } from '@angular/core';
 @Component({
   selector: 'app-list-row',
   standalone: true,
@@ -37,7 +36,7 @@ export class ListRowComponent {
   constructor(
     private todoService: TodoService,
     private route: ActivatedRoute,
-    public demoDialog: MatDialog
+    public demoDialog: MatDialog,
   ) {}
 
   openDemoDialog() {
@@ -69,21 +68,6 @@ export class ListRowComponent {
         this.selectedTag
       );
     });
-  }
-
-  ngOnDestroy(): void {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
-    if (this.errorSub) {
-      this.errorSub.unsubscribe();
-    }
-    if (this.queryParamSub) {
-      this.queryParamSub.unsubscribe();
-    }
-    if (this.routeParamsSub) {
-      this.routeParamsSub.unsubscribe();
-    }
   }
 
   onUpdateTodos() {
@@ -129,6 +113,21 @@ export class ListRowComponent {
       });
   }
 
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+    if (this.errorSub) {
+      this.errorSub.unsubscribe();
+    }
+    if (this.queryParamSub) {
+      this.queryParamSub.unsubscribe();
+    }
+    if (this.routeParamsSub) {
+      this.routeParamsSub.unsubscribe();
+    }
+  }
+
   onPageChanged(event: PageEvent): void {
     this.currentPage = event.pageIndex + 1;
     this.fetchTodos(
@@ -145,11 +144,13 @@ export class ListRowComponent {
     this.paginatedTodos = this.loadedTodos.slice(startIndex, endIndex);
   }
 
-  
   ngOnChanges(changes: SimpleChanges) {
-    if (changes['selectedCategory'] || changes['selectedTag'] || changes['selectedStatus']) {
+    if (
+      changes['selectedCategory'] ||
+      changes['selectedTag'] ||
+      changes['selectedStatus']
+    ) {
       this.onUpdateTodos();
     }
   }
-
 }

@@ -17,7 +17,20 @@
       (ngSubmit)="onSubmit()"
       class="formContainer"
     >
-      <div class="inputContainer inputContainerFull">
+      <div class="inputContainer ">
+        <label for="title" class="labelText">Date</label>
+        <input
+          type="date"
+          id="date"
+          formControlName="date"
+          class="form-control inputField inputField2"
+        />
+      </div>
+      <div class="inputContainer ">
+       
+      </div>
+
+      <div class="inputContainer">
         <label for="title" class="labelText">Name of todo</label>
         <input
           type="text"
@@ -59,7 +72,6 @@
           </option>
         </select>
       </div>
-
 
       <div class="inputContainer">
         <label for="statusId" class="labelText">Status</label>

@@ -91,7 +91,6 @@ export const routes: Routes = [
       },
     },
   },
-
   {
     path: 'tags',
     component: TagsComponent,
@@ -128,7 +127,6 @@ export const routes: Routes = [
       },
     },
   },
-
   {
     path: 'status',
     component: StatusComponent,
@@ -165,28 +163,6 @@ export const routes: Routes = [
       },
     },
   },
-
-
-  /*
-  {
-    path: 'calendar',
-    loadComponent: () => import('./calendar/calendar.component').then(m => m.CalendarComponent),
-    data: {
-      title: 'Calendar',
-      breadcrumb: { label: 'Calendar', des:'Form Elements is used to style and format the input field' }
-    }
-  },
- 
-  {
-    path: 'kanban',
-    loadComponent: () => import('./kanban/kanban.component').then(m => m.KanbanComponent),
-    data: {
-      title: 'File Manager',
-      breadcrumb: { label: 'Kanban', des:'Welcome to Dashboard' }
-    }
-  },
-
-*/
 ];
 
 @NgModule({

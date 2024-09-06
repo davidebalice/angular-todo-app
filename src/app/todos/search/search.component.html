@@ -3,18 +3,18 @@
   [formGroup]="searchForm"
   (ngSubmit)="onSearch(searchInput.value)"
 >
-  <div class="inputContainer">
+ 
     <input
       #searchInput
       class="form-control me-2"
       type="search"
       placeholder="Search"
       aria-label="Search"
-      class="inputField heightInput"
+      class="inputField searchField"
     />
-  </div>
 
-  <button class="buttonBase" type="submit">
+
+  <button class="searchButton" type="submit">
     <mat-icon>search</mat-icon>
   </button>
 </form>

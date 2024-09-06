@@ -1,13 +1,5 @@
 <div class="cardImgContainer" *ngIf="todo">
-  <img
-    [src]="
-      (getFullImageUrl(todo.imageUrl) | protectedImage | async) ||
-      'assets/images/nophoto.jpg'
-    "
-    alt="{{ todo.title }}"
-    class="cardImg"
-    (click)="openImageDialog(todo.imageUrl, 'todos/image')"
-  />
+
 </div>
 <div class="cardBody">
   <h5 class="cardTitle">{{ todo.title }}</h5>
@@ -23,7 +15,7 @@
     matTooltipShowDelay="100"
     matTooltipHideDelay="100"
     matTooltip="Detail"
-    (click)="openDialog(todo.id)"
+  
   >
     <mat-icon class="viewButton">article</mat-icon>
   </button>

@@ -8,9 +8,9 @@
     >
       <div class="content__todo__list">
         <div class="listRowItem">
-          <div class="content__todo__list__single__text">
+          <div class="content__todo__list__single__text" (click)="openTodoDialog(todo)">
             <span class="content__todo__list__single__subtitle">{{
-              formatDate(todo.createdAt)
+              formatDate(todo.date)
             }}</span>
             <p class="content__todo__list__single__title">
               {{ todo.title }}

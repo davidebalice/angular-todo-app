@@ -16,7 +16,7 @@ export class Todo {
   public user: UserDto | undefined;
   public statusId: number;
   public status: StatusDto | undefined;
-  public createdAt: Date;
+  public date: Date;
 
   constructor(
     id: number,
@@ -27,7 +27,7 @@ export class Todo {
     userId: number,
     statusId: number,
     imageUrl: string,
-    createdAt: Date,
+    date: Date,
     category: CategoryDto,
     tag: TagDto,
     user: UserDto,
@@ -41,7 +41,7 @@ export class Todo {
     this.tagId = tagId;
     this.statusId = statusId;
     this.userId = userId;
-    this.createdAt = createdAt;
+    this.date = date;
     this.category = category;
     this.tag = tag;
     this.status = status;

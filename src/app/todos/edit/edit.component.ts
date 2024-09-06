@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Observable, Subject, catchError, finalize, map, take } from 'rxjs';
@@ -102,20 +102,23 @@ export class EditComponent implements OnInit {
 
   private initForm(todo: Todo) {
     this.todoForm = this.formBuilder.group({
-      title: [todo.title, Validators.required],
-      categoryId: [todo.category?.id, Validators.required],
-      tagId: [todo.tag?.id, Validators.required],
-      statusId: [todo.status?.id, Validators.required],
-      userId: [todo.user?.id, Validators.required],
-      description: [todo.description, Validators.required],
+      title: todo.title,
+      categoryId: todo.category?.id,
+      tagId: todo.tag?.id,
+      statusId: todo.status?.id,
+      userId: todo.user?.id,
+      description: todo.description,
+      date: this.formatDate(todo.date),
     });
+  }
 
-    /*
-    this.todoForm.get('categoryId')?.valueChanges.subscribe((categoryId) => {
-      this.loadSubcategories(categoryId);
-    });
-    this.loadSubcategories(todo.categoryId);
-    */
+  private formatDate(dateTime: Date): string {
+    const date = new Date(dateTime);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+
+    return `${year}-${month}-${day}`;
   }
 
   loadCategories(): void {

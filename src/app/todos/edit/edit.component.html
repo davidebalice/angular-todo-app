@@ -1,6 +1,10 @@
 <mat-card class="pageCard">
   <mat-card-content>
-    <button type="button" class="fc-button fc-button-primary" (click)="onBack()">
+    <button
+      type="button"
+      class="fc-button fc-button-primary"
+      (click)="onBack()"
+    >
       <mat-icon> chevron_left</mat-icon>
       Back
     </button>
@@ -14,6 +18,16 @@
         (ngSubmit)="onSubmit()"
         class="formContainer"
       >
+        <div class="inputContainer">
+          <label for="title" class="labelText">Date</label>
+          <input
+            type="date"
+            id="date"
+            formControlName="date"
+            class="form-control inputField"
+          />
+        </div>
+        <div class="inputContainer"></div>
         <div class="inputContainer">
           <label for="title" class="labelText">Name of todo</label>
           <input
@@ -49,10 +63,7 @@
             formControlName="tagId"
             class="form-control inputField"
           >
-            <option
-              *ngFor="let tag of tags$ | async; else: loading"
-              [value]="tag.id"
-            >
+            <option *ngFor="let tag of tags$ | async" [value]="tag.id">
               {{ tag.name }}
             </option>
           </select>
@@ -66,10 +77,7 @@
             formControlName="statusId"
             class="form-control inputField"
           >
-            <option
-              *ngFor="let item of status$ | async; else: loading"
-              [value]="item.id"
-            >
+            <option *ngFor="let item of status$ | async" [value]="item.id">
               {{ item.name }}
             </option>
           </select>
@@ -87,7 +95,11 @@
         </div>
 
         <div class="submitContainer">
-          <button type="submit" class="fc-button fc-button-primary" [disabled]="!todoForm.valid">
+          <button
+            type="submit"
+            class="fc-button fc-button-primary"
+            [disabled]="!todoForm.valid"
+          >
             <mat-icon>save</mat-icon>
             Save
           </button>
