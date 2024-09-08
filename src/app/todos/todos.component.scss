@@ -31,8 +31,15 @@
   gap: 14px;
 }
 
-.mainTodoContainer {
-  width: calc(100% - 350px);
+.main-todo-container {
+  flex-grow: 1;
+}
+
+.content__todo__row {
+  width: 100% !important;
+  display: flex;
+  gap:18px;
+  flex-direction: row;
 }
 
 .viewContainer {
@@ -78,17 +85,17 @@
   background-color: #aaa;
 }
 
-.reset-button{
-  border:none;
-  margin-top:4px;
+.reset-button {
+  border: none;
+  margin-top: 4px;
   display: flex;
   align-items: center;
-  gap:4px;
-  padding:7px;
+  gap: 4px;
+  padding: 7px;
   border-radius: 4px;
-  color:#777
+  color: #777;
 }
 
-.reset-button:hover{
+.reset-button:hover {
   background: #e1e1e1;
 }

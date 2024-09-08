@@ -1,9 +1,8 @@
-<div class="content__wrapper">
-  <div class="content__section-wrapper">
+
     <button class="btn btn__toggle-task">
       <i class="uil-bars"></i> Task List
     </button>
-    <div class="content__section content__section--transparent content__todo">
+    <div class="content__todo__row">
       <div class="content__todo__sidebar">
         <div class="content__todo__sidebar__label">
           <button (click)="onNewTodo()" class="fc-button fc-button-primary">
@@ -25,14 +24,14 @@
 
           <div class="content__todo__sidebar__label">
             <ul
-              class="nav nav-tabs content__todo__sidebar__tab"
+              class="nav nav-tabs content__todo__sidebar__tab mb-4"
               id="todo-task-label"
               role="tablist"
               *ngIf="categories && categories.length > 0"
             >
               <li class="nav-item" *ngFor="let category of categories">
                 <button
-                  class="nav-link primary"
+                  class="nav-link primary side-link"
                   id="team-task-tab"
                   type="button"
                   role="tab"
@@ -71,7 +70,7 @@
           >
             <li class="nav-item" *ngFor="let item of status">
               <button
-                class="nav-link"
+                class="nav-link side-link"
                 id="todo-task-tab-important"
                 [ngClass]="{ active: item.id === selectedStatus }"
                 type="button"
@@ -98,6 +97,7 @@
             </span>
           </div>
         </div>
+
         <div class="content__todo__sidebar__label">
           <ul
             class="nav nav-tabs content__todo__sidebar__tab"
@@ -107,7 +107,7 @@
           >
             <li class="nav-item" *ngFor="let tag of tags">
               <button
-                class="nav-link primary"
+                class="nav-link primary side-link"
                 id="team-task-tab"
                 data-bs-toggle="tab"
                 data-bs-target="#team-task-content"
@@ -132,7 +132,7 @@
         </div>
       </div>
 
-      <div class="mainTodoContainer">
+      <div class="main-todo-container">
         <div class="buttonContainer">
           <div class="buttonContainer2">
             <div class="viewContainer">
@@ -189,5 +189,3 @@
         ></app-list-card>
       </div>
     </div>
-  </div>
-</div>

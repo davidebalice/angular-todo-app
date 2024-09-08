@@ -74,12 +74,13 @@ export class TopbarComponent {
   }
 
   // Sidebar Toggle
-  toggleSidebar(el: any) {
-    document.querySelector('.sidebar')?.classList.toggle('d-block');
+  openSidebar() {
+    document.querySelector('.sidebar')?.classList.add('sidebar-mobile');
     document.querySelector('.dashboard')?.classList.add('overlay_active');
   }
 
   onLogout() {
     this.authService.logout();
   }
+
 }

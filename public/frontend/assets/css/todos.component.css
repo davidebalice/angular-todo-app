@@ -1,1 +1,81 @@
-.widget-icon{display:flex;align-items:center;justify-content:center;width:42px !important;height:42px !important;background-color:#eee;border-radius:50%;font-size:22px}.ratings span{font-size:20px;cursor:pointer}.buttonContainer{display:flex;justify-content:space-between;height:46px}.buttonContainer2{display:flex;gap:14px}.mainTodoContainer{width:calc(100% - 350px)}.viewContainer{display:flex;gap:4px;align-items:center;border:1px solid #ddd;border-radius:4px;padding:8px;padding-right:4px;background-color:#f1f1f1;box-shadow:0px 2px 3px 0px rgba(0,0,0,.2);border:3px solid}.viewContainer div{font-size:14px;padding:10px 20px}.buttonView{height:38px !important;align-items:center;display:flex;justify-content:center}.notSelected{background-color:#999}/*# sourceMappingURL=todos.component.css.map */
+.widget-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px !important;
+  height: 42px !important;
+  background-color: #eee;
+  border-radius: 50%;
+  font-size: 22px;
+}
+.ratings span {
+  font-size: 20px;
+  cursor: pointer;
+}
+.buttonContainer {
+  display: flex;
+  justify-content: space-between;
+  height: 46px;
+}
+.buttonContainer2 {
+  display: flex;
+  gap: 14px;
+}
+.main-todo-container {
+  flex-grow: 1;
+}
+.content__todo__row {
+  width: 100% !important;
+  display: flex;
+  gap: 18px;
+  flex-direction: row;
+}
+.viewContainer {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 8px;
+  color: #fff;
+  padding-right: 4px;
+  background-color: var(--primary-color);
+}
+.viewContainer div {
+  font-size: 14px;
+  padding: 10px 20px;
+}
+.buttonBase {
+  padding: 0px 20px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+.buttonBase:hover {
+  background-color: #aaa;
+}
+.buttonView {
+  height: 34px !important;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  background: #1e7ac1;
+}
+.buttonView:hover {
+  background: #206eaa;
+}
+.notSelected {
+  background-color: #aaa;
+}
+.reset-button {
+  border: none;
+  margin-top: 4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 7px;
+  border-radius: 4px;
+  color: #777;
+}
+.reset-button:hover {
+  background: #e1e1e1;
+} /*# sourceMappingURL=todos.component.css.map */

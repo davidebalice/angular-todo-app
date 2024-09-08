@@ -1,11 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
-// Bootstrap
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
-// services
 import { EventService } from '../layout/event.service';
-// Data
 import { MatIconModule } from '@angular/material/icon';
 import { MENU } from './menu';
 import { MenuItem } from './menu.model';
@@ -92,9 +89,8 @@ export class SidebarComponent {
     }
   }
 
-  // Close Model
-  closeModel(element: any) {
-    document.querySelector('.sidebar')?.classList.remove('d-block');
+  closeSidebar(element: any) {
+    document.querySelector('.sidebar')?.classList.remove('sidebar-mobile');
     document.querySelector('.dashboard')?.classList.remove('overlay_active');
   }
 }

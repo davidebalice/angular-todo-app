@@ -224,11 +224,11 @@ a {
   text-align: center;
   background-color: #f1f1f1;
   color: #444;
-  font-size: 16px;
+  font-size: 15px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 20px;
+  padding: 6px 16px;
 }
 
 .sideTagsTitle .mat-icon {
@@ -236,8 +236,9 @@ a {
   cursor: pointer;
   display: flex;
   align-items: center;
-  width: 38px;
-  height: 38px;
+  font-size: 20px;
+  width: 32px;
+  height: 32px;
   border-radius: 4px;
   justify-content: center;
   background-color: white;
@@ -253,17 +254,72 @@ a {
   flex-direction: row;
   gap: 20px;
   flex-wrap: wrap;
-  margin-top:20px
+  margin-top: 20px;
 }
 
 .iconContainer label {
-  width:70px;
+  width: 70px;
   display: flex;
   align-items: center;
-  gap:6px;
+  gap: 6px;
 }
 
 .iconContainer input {
-  width:17px;
-  height:17px;
+  width: 17px;
+  height: 17px;
+}
+
+.main-content {
+  gap: 40px !important;
+  padding-inline-start: 360px !important;
+}
+
+@media (max-width: 1500px) {
+  .main-content {
+    gap: 30px !important;
+    padding-inline-start: 320px !important;
+  }
+}
+
+@media (max-width: 1200px) {
+  .main-content {
+    gap: 0px !important;
+    padding-inline-start: 0px !important;
+  }
+}
+
+.content__todo__sidebar {
+  width: 270px !important;
+}
+
+@media (max-width: 1200px) {
+  .sidebar-mobile {
+    display: block !important;
+  }
+}
+
+.close-sidebar {
+  font-weight: bold;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 1492px) {
+  .content__todo__sidebar__tab .nav-item .nav-link {
+    flex-direction: row !important;
+    align-items: flex-start;
+    gap: 10px;
+    text-align: left;
+  }
+}
+
+.nav-item :hover {
+  background-color: #f9f9f9;
+}
+
+.side-link {
+  padding: 8px 10px !important;
+  font-size:13px;
+  flex-direction: row !important;
+  align-items: center !important;
 }

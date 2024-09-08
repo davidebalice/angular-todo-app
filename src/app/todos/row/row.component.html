@@ -1,4 +1,4 @@
-<div class="listRow" *ngIf="todo">
+<div class="list-row" *ngIf="todo">
   <div class="tab-content transaction-content">
     <div
       class="tab-pane fade active show"
@@ -7,126 +7,70 @@
       aria-labelledby="todo_list_tab"
     >
       <div class="content__todo__list">
-        <div class="listRowItem">
-          <div class="content__todo__list__single__text" (click)="openTodoDialog(todo)">
+        <div class="list-row-item">
+          <div
+            class="content__todo__text_container"
+            (click)="openTodoDialog(todo)"
+          >
             <span class="content__todo__list__single__subtitle">{{
               formatDate(todo.date)
             }}</span>
             <p class="content__todo__list__single__title">
               {{ todo.title }}
             </p>
-            <p class="content__todo__list__single__subtitle">{{ todo.description }}</p>
+            <p class="content__todo__list__single__subtitle">
+              {{ todo.description }}
+            </p>
           </div>
 
-          <div class="containerTodoTag">
-            <div
-              class="containerTodoTagItem"
-              [ngStyle]="{
+          <div>
+            <div class="containerTodoTag">
+              <div
+                class="containerTodoTagItem"
+                [ngStyle]="{
                 'background-color': todo.tag?.color,
               }"
-              *ngIf="todo.tag?.name"
-            >
-              <mat-icon *ngIf="todo.tag?.icon" class="containerTodoTagIcon">
-                {{ todo.tag?.icon }}
-              </mat-icon>
-              <span>{{ todo.tag?.name }}</span>
-            </div>
+                *ngIf="todo.tag?.name"
+              >
+                <mat-icon *ngIf="todo.tag?.icon" class="containerTodoTagIcon">
+                  {{ todo.tag?.icon }}
+                </mat-icon>
+                <span>{{ todo.tag?.name }}</span>
+              </div>
 
-            <div
-              href="javascript:void(0);"
-              class="containerTodoTagItem"
-              [ngStyle]="{
+              <div
+                href="javascript:void(0);"
+                class="containerTodoTagItem"
+                [ngStyle]="{
               'background-color': todo.status?.color,
             }"
-              *ngIf="todo.status?.name"
-            >
-              <mat-icon *ngIf="todo.status?.icon" class="containerTodoTagIcon">
-                {{ todo.status?.icon }}
-              </mat-icon>
-              <span>{{ todo.status?.name }}</span>
+                *ngIf="todo.status?.name"
+              >
+                <mat-icon
+                  *ngIf="todo.status?.icon"
+                  class="containerTodoTagIcon"
+                >
+                  {{ todo.status?.icon }}
+                </mat-icon>
+                <span>{{ todo.status?.name }}</span>
+              </div>
+            </div>
+
+            <div class="cardButtonContainer">
+              <button class="cardButton" (click)="onEdit(todo.id)">
+                <mat-icon class="cardButtonIcon">edit</mat-icon>
+              </button>
+
+              <button
+                class="cardButton"
+                (click)="onDelete(todo.id, todo.title)"
+              >
+                <mat-icon class="cardButtonIcon">delete</mat-icon>
+              </button>
             </div>
           </div>
-
-          <button class="cardButton" (click)="onEdit(todo.id)">
-            <mat-icon class="cardButtonIcon">edit</mat-icon>
-          </button>
-
-          <button class="cardButton" (click)="onDelete(todo.id, todo.title)">
-            <mat-icon class="cardButtonIcon">delete</mat-icon>
-          </button>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-<!--div>
-  <img
-    [src]="
-      (getFullImageUrl(todo.imageUrl) | protectedImage | async) ||
-      'assets/images/nophoto.jpg'
-    "
-    alt="{{ todo.name }}"
-    class="listImg"
-    (click)="openImageDialog(todo.imageUrl, 'todos/image')"
-  />
-</div>
-
-<div class="listBody">
-  <h5 class="listTitle">{{ todo.name }}</h5>
-  <p class="listText"><b>Sku:</b> 000000000</p>
-</div>
-
-<div class="listBody">
-  <div>{{ todo.categoryDto.name }}</div>
-</div>
-
-<div class="cardButtonContainer">
-  <button
-    class="cardButton"
-    matTooltipPosition="above"
-    matTooltipShowDelay="100"
-    matTooltipHideDelay="100"
-    matTooltip="Detail"
-    (click)="openDialog(todo.id)"
-  >
-    <mat-icon class="viewButton">article</mat-icon>
-  </button>
-
- 
-
-
-
-  <button
-    class="cardButton"
-    (click)="onPhotoTodo(todo.id)"
-    matTooltipPosition="above"
-    matTooltipShowDelay="100"
-    matTooltipHideDelay="100"
-    matTooltip="Photo"
-  >
-    <mat-icon class="editButton">photo_camera</mat-icon>
-  </button>
-
-  <button
-    class="cardButton"
-    (click)="onGalleryTodo(todo.id)"
-    matTooltipPosition="above"
-    matTooltipShowDelay="100"
-    matTooltipHideDelay="100"
-    matTooltip="Gallery"
-  >
-    <mat-icon class="editButton">photo_library</mat-icon>
-  </button>
-
-  <button
-    class="cardButton cardButtonDelete"
-    (click)="onDelete(todo.id, todo.name)"
-    matTooltipPosition="above"
-    matTooltipShowDelay="100"
-    matTooltipHideDelay="100"
-    matTooltip="Delete"
-  >
-    <mat-icon>delete</mat-icon>
-  </button>
-</div-->
