@@ -9,8 +9,8 @@ import {
 } from '../../components/confirm-dialog/confirm-dialog.component';
 import { Todo } from '../../model/todo.model';
 import { TodoService } from '../../services/todo.service';
-import { ListCardComponent } from '../list-card/list-card.component';
 import { TodosModule } from '../todos.module';
+import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-card',
   standalone: true,
@@ -26,15 +26,19 @@ export class CardComponent implements OnInit {
   constructor(
     private todoService: TodoService,
     private router: Router,
-    private listCardComponent: ListCardComponent,
     public dialog: MatDialog,
+    private datePipe: DatePipe,
   ) {}
-
 
   ngOnInit(): void {}
 
   onSelected() {
     this.router.navigate(['/todos', this.todo.id]);
+  }
+
+  formatDate(date: Date | string): string | null {
+    if (!date) return null;
+    return this.datePipe.transform(date, 'dd/MM/yyyy');
   }
 
   private fetchTodos() {
@@ -78,7 +82,7 @@ export class CardComponent implements OnInit {
           .pipe(
             catchError((error) => {
               if (error.error.message.includes('Demo')) {
-                this.listCardComponent.openDemoDialog();
+               // this.listCardComponent.openDemoDialog();
               }
               console.error('Error deleting todo', error);
               throw error;

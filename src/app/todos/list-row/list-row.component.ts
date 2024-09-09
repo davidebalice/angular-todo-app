@@ -7,18 +7,20 @@ import { DemoDialogComponent } from '../../components/demo-dialog/demo-dialog.co
 import { Todo } from '../../model/todo.model';
 import { TodoService } from '../../services/todo.service';
 import { RowComponent } from '../row/row.component';
+import { CardComponent } from '../card/card.component';
 import { TodosModule } from '../todos.module';
 @Component({
   selector: 'app-list-row',
   standalone: true,
   templateUrl: './list-row.component.html',
   styleUrl: './list-row.component.scss',
-  imports: [TodosModule, RowComponent, MatPaginator],
+  imports: [TodosModule, RowComponent, MatPaginator, CardComponent],
 })
 export class ListRowComponent {
   @Input() selectedCategory!: number;
   @Input() selectedTag!: number;
   @Input() selectedStatus!: number;
+  @Input() visualization!: string;
 
   subscription: Subscription | undefined;
   loadedTodos: Todo[] = [];
@@ -36,7 +38,7 @@ export class ListRowComponent {
   constructor(
     private todoService: TodoService,
     private route: ActivatedRoute,
-    public demoDialog: MatDialog,
+    public demoDialog: MatDialog
   ) {}
 
   openDemoDialog() {

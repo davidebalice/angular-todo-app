@@ -290,6 +290,7 @@ a {
 
 .content__todo__sidebar {
   width: 270px !important;
+  min-width: 270px !important;
 }
 
 @media (max-width: 1200px) {

@@ -1,77 +1,69 @@
-<div class="cardImgContainer" *ngIf="todo">
+<div class="card-item">
+  <div class="card-body">
+    <span class="content__todo__list__single__subtitle">{{
+      formatDate(todo.date)
+    }}</span>
+    <p class="content__todo__list__single__title">
+      {{ todo.title }}
+    </p>
+    <p class="content__todo__list__single__subtitle">
+      {{ todo.description }}
+    </p>
+  </div>
 
-</div>
-<div class="cardBody">
-  <h5 class="cardTitle">{{ todo.title }}</h5>
-  <p class="cardText"><b>Sku:</b> 00000</p>
+  <div class="button-container">
+    <div>
+      <div class="container-card-tag">
+        <div
+          class="container-todo-tag-item"
+          [ngStyle]="{
+          'background-color': todo.tag?.color,
+        }"
+          *ngIf="todo.tag?.name"
+        >
+          <mat-icon *ngIf="todo.tag?.icon" class="container-todo-tag-icon">
+            {{ todo.tag?.icon }}
+          </mat-icon>
+          <span>{{ todo.tag?.name }}</span>
+        </div>
 
-  <!--div>{{ todo.categoryDto.name }}</div-->
-</div>
+        <div
+          href="javascript:void(0);"
+          class="container-todo-tag-item"
+          [ngStyle]="{
+        'background-color': todo.status?.color,
+      }"
+          *ngIf="todo.status?.name"
+        >
+          <mat-icon *ngIf="todo.status?.icon" class="container-todo-tag-icon">
+            {{ todo.status?.icon }}
+          </mat-icon>
+          <span>{{ todo.status?.name }}</span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <button
+        class="cardButton"
+        (click)="onEditTodo(todo.id)"
+        matTooltipPosition="above"
+        matTooltipShowDelay="100"
+        matTooltipHideDelay="100"
+        matTooltip="Edit"
+      >
+        <mat-icon class="editButton">edit</mat-icon>
+      </button>
 
-<div class="buttonContainer">
-  <button
-    class="cardButton"
-    matTooltipPosition="above"
-    matTooltipShowDelay="100"
-    matTooltipHideDelay="100"
-    matTooltip="Detail"
-  
-  >
-    <mat-icon class="viewButton">article</mat-icon>
-  </button>
-
-  <button
-    class="cardButton"
-    (click)="onEditTodo(todo.id)"
-    matTooltipPosition="above"
-    matTooltipShowDelay="100"
-    matTooltipHideDelay="100"
-    matTooltip="Edit"
-  >
-    <mat-icon class="editButton">edit</mat-icon>
-  </button>
-
-  <button
-    class="cardButton"
-    (click)="onAttributeTodo(todo.id)"
-    matTooltipPosition="above"
-    matTooltipShowDelay="100"
-    matTooltipHideDelay="100"
-    matTooltip="Attributes"
-  >
-    <mat-icon class="editButton">sell</mat-icon>
-  </button>
-
-  <button
-    class="cardButton"
-    (click)="onPhotoTodo(todo.id)"
-    matTooltipPosition="above"
-    matTooltipShowDelay="100"
-    matTooltipHideDelay="100"
-    matTooltip="Photo"
-  >
-    <mat-icon class="editButton">photo_camera</mat-icon>
-  </button>
-
-  <button
-    class="cardButton"
-    (click)="onGalleryTodo(todo.id)"
-    matTooltipPosition="above"
-    matTooltipShowDelay="100"
-    matTooltipHideDelay="100"
-    matTooltip="Gallery"
-  >
-    <mat-icon class="editButton">photo_library</mat-icon>
-  </button>
-
-  <button
-    class="cardButton cardButtonDelete"
-    (click)="onDelete(todo.id, todo.title)"
-    matTooltipPosition="above"
-    matTooltipShowDelay="100"
-    matTooltipHideDelay="100"
-    matTooltip="Delete"
-  >
-    <mat-icon>delete</mat-icon>
-  </button>
+      <button
+        class="cardButton cardButtonDelete"
+        (click)="onDelete(todo.id, todo.title)"
+        matTooltipPosition="above"
+        matTooltipShowDelay="100"
+        matTooltipHideDelay="100"
+        matTooltip="Delete"
+      >
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </div>
 </div>

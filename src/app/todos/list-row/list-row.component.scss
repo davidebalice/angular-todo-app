@@ -4,7 +4,7 @@
 
 .rowTitle > div:nth-child(1) {
   width: 10%;
-  max-width:150px;
+  max-width: 150px;
 }
 
 .rowTitle > div:nth-child(2) {
@@ -26,8 +26,56 @@
   text-align: end;
 }
 
-.loadingContainer{
+.loadingContainer {
   text-align: center;
   width: 100%;
-  margin-top:100px
+  margin-top: 100px;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 1%;
+  flex-wrap: wrap;
+}
+
+.card-item {
+  background: #fff;
+  width: 24%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+@media only screen and (max-width: 786px) {
+  .card-item {
+    width: 100%;
+    height: 180px;
+  }
+}
+
+@media only screen and (min-width: 787px) {
+  .card-item {
+    width: 48%;
+    height: 180px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .card-item {
+    width: 32%;
+    height: 180px;
+  }
+}
+
+@media only screen and (min-width: 1600px) {
+  .card-item {
+    width: 24%;
+    height: 200px;
+  }
 }

@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { Calendar } from './calendar/calendar.component';
 import { ReloadComponent } from './components/reload/reload.component';
+import { Info } from './info/info.component';
 import { LayoutComponent } from './layouts/layout/layout.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './services/auth.guard';
@@ -34,6 +35,18 @@ export const routes: Routes = [
           title: 'Calendar',
           breadcrumb: {
             label: 'Calendar',
+            des: '',
+          },
+        },
+      },
+      {
+        path: 'info',
+        component: Info,
+        canActivate: [AuthGuard],
+        data: {
+          title: 'Info',
+          breadcrumb: {
+            label: 'Info',
             des: '',
           },
         },

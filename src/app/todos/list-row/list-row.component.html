@@ -9,7 +9,14 @@
     <ng-template #loadedContent>
       <ng-container *ngIf="loadedTodos && loadedTodos.length > 0; else noTodos">
         <div class="col-12" *ngFor="let todo of loadedTodos">
-          <app-row [todo]="todo"></app-row>
+          <app-row [todo]="todo" *ngIf="visualization === 'row'"></app-row>
+        </div>
+        <div class="card-container" *ngIf="visualization === 'grid'">
+          <app-card
+            [todo]="todo"
+            class="card-item"
+            *ngFor="let todo of loadedTodos"
+          ></app-card>
         </div>
       </ng-container>
     </ng-template>

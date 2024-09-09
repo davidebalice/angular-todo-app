@@ -12,6 +12,41 @@
             class="content__todo__text_container"
             (click)="openTodoDialog(todo)"
           >
+            <div class="container-todo-tag">
+              <div
+                class="container-todo-tag-item"
+                [ngStyle]="{
+              'background-color': todo.tag?.color,
+            }"
+                *ngIf="todo.tag?.name"
+              >
+                <mat-icon
+                  *ngIf="todo.tag?.icon"
+                  class="container-todo-tag-icon"
+                >
+                  {{ todo.tag?.icon }}
+                </mat-icon>
+                <span>{{ todo.tag?.name }}</span>
+              </div>
+
+              <div
+                href="javascript:void(0);"
+                class="container-todo-tag-item"
+                [ngStyle]="{
+            'background-color': todo.status?.color,
+          }"
+                *ngIf="todo.status?.name"
+              >
+                <mat-icon
+                  *ngIf="todo.status?.icon"
+                  class="container-todo-tag-icon"
+                >
+                  {{ todo.status?.icon }}
+                </mat-icon>
+                <span>{{ todo.status?.name }}</span>
+              </div>
+            </div>
+
             <span class="content__todo__list__single__subtitle">{{
               formatDate(todo.date)
             }}</span>
@@ -24,38 +59,6 @@
           </div>
 
           <div>
-            <div class="containerTodoTag">
-              <div
-                class="containerTodoTagItem"
-                [ngStyle]="{
-                'background-color': todo.tag?.color,
-              }"
-                *ngIf="todo.tag?.name"
-              >
-                <mat-icon *ngIf="todo.tag?.icon" class="containerTodoTagIcon">
-                  {{ todo.tag?.icon }}
-                </mat-icon>
-                <span>{{ todo.tag?.name }}</span>
-              </div>
-
-              <div
-                href="javascript:void(0);"
-                class="containerTodoTagItem"
-                [ngStyle]="{
-              'background-color': todo.status?.color,
-            }"
-                *ngIf="todo.status?.name"
-              >
-                <mat-icon
-                  *ngIf="todo.status?.icon"
-                  class="containerTodoTagIcon"
-                >
-                  {{ todo.status?.icon }}
-                </mat-icon>
-                <span>{{ todo.status?.name }}</span>
-              </div>
-            </div>
-
             <div class="cardButtonContainer">
               <button class="cardButton" (click)="onEdit(todo.id)">
                 <mat-icon class="cardButtonIcon">edit</mat-icon>

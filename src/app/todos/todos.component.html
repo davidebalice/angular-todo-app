@@ -1,191 +1,183 @@
+<button class="btn btn__toggle-task"><i class="uil-bars"></i> Task List</button>
+<div class="content__todo__row">
+  <div class="content__todo__sidebar">
+    <div class="content__todo__sidebar__label">
+      <button (click)="onNewTodo()" class="fc-button fc-button-primary">
+        <mat-icon>add_circle</mat-icon>
+        New todo
+      </button>
 
-    <button class="btn btn__toggle-task">
-      <i class="uil-bars"></i> Task List
-    </button>
-    <div class="content__todo__row">
-      <div class="content__todo__sidebar">
-        <div class="content__todo__sidebar__label">
-          <button (click)="onNewTodo()" class="fc-button fc-button-primary">
-            <mat-icon>add_circle</mat-icon>
-            New todo
-          </button>
+      <button (click)="onReset()" class="fc-button reset-button">
+        <mat-icon>restart_alt</mat-icon>
+        Reset filter
+      </button>
 
-          <button (click)="onReset()" class="fc-button reset-button">
-            <mat-icon>restart_alt</mat-icon>
-            Reset filter
-          </button>
+      <div class="sideTagsTitle mt-2">
+        <span>Categories</span>
+        <span (click)="navigateToCategories()">
+          <mat-icon>edit</mat-icon>
+        </span>
+      </div>
 
-          <div class="sideTagsTitle mt-2">
-            <span>Categories</span>
-            <span (click)="navigateToCategories()">
-              <mat-icon>edit</mat-icon>
-            </span>
-          </div>
-
-          <div class="content__todo__sidebar__label">
-            <ul
-              class="nav nav-tabs content__todo__sidebar__tab mb-4"
-              id="todo-task-label"
-              role="tablist"
-              *ngIf="categories && categories.length > 0"
+      <div class="content__todo__sidebar__label">
+        <ul
+          class="nav nav-tabs content__todo__sidebar__tab mb-4"
+          id="todo-task-label"
+          role="tablist"
+          *ngIf="categories && categories.length > 0"
+        >
+          <li class="nav-item" *ngFor="let category of categories">
+            <button
+              class="nav-link primary side-link"
+              id="team-task-tab"
+              type="button"
+              role="tab"
+              [ngClass]="{ active: category.id === selectedCategory }"
+              aria-controls="team-task-content"
+              aria-selected="true"
+              (click)="selectCategory(category.id)"
             >
-              <li class="nav-item" *ngFor="let category of categories">
-                <button
-                  class="nav-link primary side-link"
-                  id="team-task-tab"
-                  type="button"
-                  role="tab"
-                  [ngClass]="{ active: category.id === selectedCategory }"
-                  aria-controls="team-task-content"
-                  aria-selected="true"
-                  (click)="selectCategory(category.id)"
-                >
-                  <mat-icon
-                    *ngIf="category.icon"
-                    [ngStyle]="{ color: category.color }"
-                  >
-                    {{ category.icon }}
-                  </mat-icon>
-                  <span>{{ category.name }}</span>
-                </button>
-              </li>
-            </ul>
-
-            <div *ngIf="tags.length === 0">
-              <p>No Categoriesavailable.</p>
-            </div>
-          </div>
-
-          <div class="sideTagsTitle">
-            <span>Status</span>
-            <span (click)="navigateToStatus()">
-              <mat-icon>edit</mat-icon>
-            </span>
-          </div>
-          <ul
-            class="nav nav-tabs content__todo__sidebar__tab mb-4"
-            id="todo-task-tab"
-            role="tablist"
-            *ngIf="status && status.length > 0"
-          >
-            <li class="nav-item" *ngFor="let item of status">
-              <button
-                class="nav-link side-link"
-                id="todo-task-tab-important"
-                [ngClass]="{ active: item.id === selectedStatus }"
-                type="button"
-                role="tab"
-                aria-controls="todo-task-content-important"
-                aria-selected="true"
-                (click)="selectStatus(item.id)"
+              <mat-icon
+                *ngIf="category.icon"
+                [ngStyle]="{ color: category.color }"
               >
-                <mat-icon *ngIf="item.icon" [ngStyle]="{ color: item.color }">
-                  {{ item.icon }}
-                </mat-icon>
+                {{ category.icon }}
+              </mat-icon>
+              <span>{{ category.name }}</span>
+            </button>
+          </li>
+        </ul>
 
-                <span>{{ item.name }}</span>
-              </button>
-            </li>
-          </ul>
-          <div *ngIf="status.length === 0">
-            <p>No status available.</p>
-          </div>
-          <div class="sideTagsTitle">
-            <span>Tags</span>
-            <span (click)="navigateToTags()">
-              <mat-icon>edit</mat-icon>
-            </span>
-          </div>
-        </div>
-
-        <div class="content__todo__sidebar__label">
-          <ul
-            class="nav nav-tabs content__todo__sidebar__tab"
-            id="todo-task-label"
-            role="tablist"
-            *ngIf="tags && tags.length > 0"
-          >
-            <li class="nav-item" *ngFor="let tag of tags">
-              <button
-                class="nav-link primary side-link"
-                id="team-task-tab"
-                data-bs-toggle="tab"
-                data-bs-target="#team-task-content"
-                [ngClass]="{ active: tag.id === selectedTag }"
-                type="button"
-                role="tab"
-                aria-controls="team-task-content"
-                aria-selected="true"
-                (click)="selectTag(tag.id)"
-              >
-                <mat-icon *ngIf="tag.icon" [ngStyle]="{ color: tag.color }">
-                  {{ tag.icon }}
-                </mat-icon>
-                <span>{{ tag.name }}</span>
-              </button>
-            </li>
-          </ul>
-
-          <div *ngIf="tags.length === 0">
-            <p>No tags available.</p>
-          </div>
+        <div *ngIf="tags.length === 0">
+          <p>No Categoriesavailable.</p>
         </div>
       </div>
 
-      <div class="main-todo-container">
-        <div class="buttonContainer">
-          <div class="buttonContainer2">
-            <div class="viewContainer">
-              <div>View</div>
-              <mat-icon
-                (click)="onChangeView('row')"
-                class="buttonBase buttonView"
-                [ngClass]="{
-                  notSelected: visualization === 'grid',
-                  buttonBase: true,
-                  buttonView: true
-                }"
-                matTooltipPosition="above"
-                matTooltipShowDelay="100"
-                matTooltipHideDelay="100"
-                matTooltip="Row"
-                >view_list</mat-icon
-              >
+      <div class="sideTagsTitle">
+        <span>Status</span>
+        <span (click)="navigateToStatus()">
+          <mat-icon>edit</mat-icon>
+        </span>
+      </div>
+      <ul
+        class="nav nav-tabs content__todo__sidebar__tab mb-4"
+        id="todo-task-tab"
+        role="tablist"
+        *ngIf="status && status.length > 0"
+      >
+        <li class="nav-item" *ngFor="let item of status">
+          <button
+            class="nav-link side-link"
+            id="todo-task-tab-important"
+            [ngClass]="{ active: item.id === selectedStatus }"
+            type="button"
+            role="tab"
+            aria-controls="todo-task-content-important"
+            aria-selected="true"
+            (click)="selectStatus(item.id)"
+          >
+            <mat-icon *ngIf="item.icon" [ngStyle]="{ color: item.color }">
+              {{ item.icon }}
+            </mat-icon>
 
-              <mat-icon
-                (click)="onChangeView('grid')"
-                class="buttonBase buttonView"
-                [ngClass]="{
-                  notSelected: visualization === 'row',
-                  buttonBase: true,
-                  buttonView: true
-                }"
-                matTooltipPosition="above"
-                matTooltipShowDelay="100"
-                matTooltipHideDelay="100"
-                matTooltip="Grid"
-                >grid_view</mat-icon
-              >
-            </div>
-
-            <app-search></app-search>
-          </div>
-        </div>
-
-        <hr />
-
-        <app-list-row
-          [pagination]="pagination"
-          [limit]="9"
-          *ngIf="visualization === 'row'"
-          [selectedCategory]="selectedCategory"
-          [selectedTag]="selectedTag"
-          [selectedStatus]="selectedStatus"
-        ></app-list-row>
-        <app-list-card
-          [pagination]="pagination"
-          [limit]="9"
-          *ngIf="visualization === 'grid'"
-        ></app-list-card>
+            <span>{{ item.name }}</span>
+          </button>
+        </li>
+      </ul>
+      <div *ngIf="status.length === 0">
+        <p>No status available.</p>
+      </div>
+      <div class="sideTagsTitle">
+        <span>Tags</span>
+        <span (click)="navigateToTags()">
+          <mat-icon>edit</mat-icon>
+        </span>
       </div>
     </div>
+
+    <div class="content__todo__sidebar__label">
+      <ul
+        class="nav nav-tabs content__todo__sidebar__tab"
+        id="todo-task-label"
+        role="tablist"
+        *ngIf="tags && tags.length > 0"
+      >
+        <li class="nav-item" *ngFor="let tag of tags">
+          <button
+            class="nav-link primary side-link"
+            id="team-task-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#team-task-content"
+            [ngClass]="{ active: tag.id === selectedTag }"
+            type="button"
+            role="tab"
+            aria-controls="team-task-content"
+            aria-selected="true"
+            (click)="selectTag(tag.id)"
+          >
+            <mat-icon *ngIf="tag.icon" [ngStyle]="{ color: tag.color }">
+              {{ tag.icon }}
+            </mat-icon>
+            <span>{{ tag.name }}</span>
+          </button>
+        </li>
+      </ul>
+
+      <div *ngIf="tags.length === 0">
+        <p>No tags available.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-todo-container">
+    <div class="buttonContainer">
+      <div class="buttonContainer2">
+        <div class="viewContainer">
+          <div>View</div>
+          <mat-icon
+            (click)="onChangeView('row')"
+            class="buttonBase buttonView"
+            [ngClass]="{
+              notSelected: visualization === 'grid',
+              buttonBase: true,
+              buttonView: true
+            }"
+            matTooltipPosition="above"
+            matTooltipShowDelay="100"
+            matTooltipHideDelay="100"
+            matTooltip="Row"
+            >view_list</mat-icon
+          >
+
+          <mat-icon
+            (click)="onChangeView('grid')"
+            class="buttonBase buttonView"
+            [ngClass]="{
+              notSelected: visualization === 'row',
+              buttonBase: true,
+              buttonView: true
+            }"
+            matTooltipPosition="above"
+            matTooltipShowDelay="100"
+            matTooltipHideDelay="100"
+            matTooltip="Grid"
+            >grid_view</mat-icon
+          >
+        </div>
+
+        <app-search></app-search>
+      </div>
+    </div>
+
+    <hr />
+
+    <app-list-row
+      [pagination]="pagination"
+      [visualization]="visualization"
+      [limit]="12"
+      [selectedCategory]="selectedCategory"
+      [selectedTag]="selectedTag"
+      [selectedStatus]="selectedStatus"
+    ></app-list-row>
+  </div>
+</div>

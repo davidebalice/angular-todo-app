@@ -12,16 +12,80 @@
   width: 100%;
 }
 
-.buttonContainer {
+.button-container {
   display: flex;
   flex-wrap: nowrap;
   width: 100% !important;
-  border-top:1px solid #ddd;
-  justify-content: start;
+  align-items: center;
+  border-top: 1px solid #ddd;
+  justify-content: space-between;
 }
 
-.buttonContainer button {
+.button-container button {
   background: none;
   border: none;
-  margin-top: 1px;
+  margin-top: 2px;
+}
+
+.card-body {
+  padding: 12px;
+  height: 200px;
+  overflow: hidden;
+}
+
+@media only screen and (max-width: 786px) {
+  .card-body {
+    height: 142px;
+  }
+}
+
+@media only screen and (min-width: 787px) {
+  .card-body {
+    height: 142px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .card-body {
+    height: 142px;
+  }
+}
+
+@media only screen and (min-width: 1600px) {
+  .card-body {
+    height: 162px;
+  }
+}
+
+.container-card-tag {
+  display: flex;
+  gap: 4px;
+  margin-left: 4px;
+}
+
+.container-todo-tag-item {
+  width: 100px !important;
+  border-radius: 4px;
+  font-size: 12px;
+  padding: 0px 6px;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  color: #fff;
+  margin-bottom: 2px;
+  margin-top: 3px;
+}
+
+.container-todo-tag-icon {
+  font-size: 14px;
+  margin-top: 8px;
+  max-width: 40px;
+}
+
+.container-todo-tag-item span {
+  font-size: 12px;
+}
+
+.container-todo-tag-item .mat-icon {
+  height:20px
 }

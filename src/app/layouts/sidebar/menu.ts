@@ -19,4 +19,10 @@ export const MENU: MenuItem[] = [
     icon: 'calendar_month',
     link: '/calendar',
   },
+  {
+    id: 4,
+    label: 'Info',
+    icon: 'info',
+    link: '/info',
+  },
 ];
