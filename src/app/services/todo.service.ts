@@ -17,8 +17,17 @@ export class TodoService implements OnInit, OnDestroy {
   csrfValue!: string;
   private todos!: Todo[];
   tokenValue!: string;
+  visualization: string = 'row';
 
   constructor(private http: HttpClient, private router: Router) {}
+
+  setVisualization(type: string) {
+    this.visualization = type;
+  }
+
+  getVisualization() {
+    return this.visualization;
+  }
 
   ngOnDestroy(): void {
     throw new Error('Method not implemented.');

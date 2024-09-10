@@ -1,5 +1,5 @@
 <div class="card-item">
-  <div class="card-body">
+  <div class="card-body content__todo__text_container" (click)="openTodoDialog(todo)">
     <span class="content__todo__list__single__subtitle">{{
       formatDate(todo.date)
     }}</span>
@@ -51,7 +51,7 @@
         matTooltipHideDelay="100"
         matTooltip="Edit"
       >
-        <mat-icon class="editButton">edit</mat-icon>
+        <mat-icon class="edit-button">edit</mat-icon>
       </button>
 
       <button
@@ -62,7 +62,7 @@
         matTooltipHideDelay="100"
         matTooltip="Delete"
       >
-        <mat-icon>delete</mat-icon>
+        <mat-icon class="delete-button">delete</mat-icon>
       </button>
     </div>
   </div>

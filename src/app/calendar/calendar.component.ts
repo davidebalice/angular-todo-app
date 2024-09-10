@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { CalendarOptions, EventInput } from '@fullcalendar/core';
@@ -15,7 +16,7 @@ import { StatusService } from '../services/status.service';
 import { TagService } from '../services/tag.service';
 import { TodoService } from '../services/todo.service';
 import { CalendarModule } from './calendar.module';
-
+import { TodoDialogComponent } from '../components/todo-dialog/todo-dialog.component';
 @Component({
   selector: 'app-calendar',
   standalone: true,
@@ -51,8 +52,20 @@ export class Calendar {
     private todoService: TodoService,
     private tagService: TagService,
     private statusService: StatusService,
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
+    public dialog: MatDialog,
+    public todoDialog: MatDialog
   ) {}
+
+  openTodoDialog(todo: Todo): void {
+    this.todoDialog.open(TodoDialogComponent, {
+      width: '90%',
+      maxWidth: '1000px',
+      height: '90%',
+      maxHeight: '450px',
+      data: todo,
+    });
+  }
 
   calendarOptions: CalendarOptions = {
     plugins: [interactionPlugin, dayGridPlugin, timeGridPlugin],
@@ -66,11 +79,18 @@ export class Calendar {
       week: 'Week',
       day: 'Day',
     },
+    eventClick: this.handleEventClick.bind(this),
     initialEvents: this.events,
   };
 
-  handleDateClick(arg: { dateStr: string }) {
-    alert('date click! ' + arg.dateStr);
+  handleEventClick(info: any) {
+    info.jsEvent.preventDefault();
+    const todoId = info.event.id;
+    const todo = this.loadedTodos.find((t) => t.id === parseInt(todoId));
+
+    if (todo) {
+      this.openTodoDialog(todo);
+    }
   }
 
   convertTodosToEvents() {
@@ -78,7 +98,7 @@ export class Calendar {
       id: String(todo.id),
       title: todo.title,
       date: todo.date,
-      className: 'primary-bg text-white p-2 border-0 rounded-4 px-3',
+      className: 'primary-bg text-white p-2 border-0 rounded-4 px-2 pointer',
     }));
 
     this.calendarOptions = {

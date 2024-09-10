@@ -10,6 +10,7 @@ import { TagService } from '../services/tag.service';
 import { ListRowComponent } from './list-row/list-row.component';
 import { SearchComponent } from './search/search.component';
 import { TodosModule } from './todos.module';
+import { TodoService } from '../services/todo.service';
 
 @Component({
   selector: 'app-todos',
@@ -24,7 +25,7 @@ export class TodosComponent {
   selectedTag!: number;
   selectedStatus!: number;
   pagination: boolean = true;
-  visualization: string = 'row';
+  
   tags: Tag[] = [];
   status: Status[] = [];
   categories: Category[] = [];
@@ -33,7 +34,8 @@ export class TodosComponent {
     private router: Router,
     private tagService: TagService,
     private statusService: StatusService,
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
+    private todoService: TodoService
   ) {}
 
   ngOnInit() {
@@ -88,7 +90,11 @@ export class TodosComponent {
   }
 
   onChangeView(type: string) {
-    this.visualization = type;
+    this.todoService.setVisualization(type);
+  }
+
+  getVisualization() {
+    return this.todoService.getVisualization();
   }
 
   navigateToCategories() {

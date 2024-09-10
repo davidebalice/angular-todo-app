@@ -49,11 +49,11 @@
         </ul>
 
         <div *ngIf="tags.length === 0">
-          <p>No Categoriesavailable.</p>
+          <p>No Categories available.</p>
         </div>
       </div>
 
-      <div class="sideTagsTitle">
+      <div class="sideTagsTitle mt-2">
         <span>Status</span>
         <span (click)="navigateToStatus()">
           <mat-icon>edit</mat-icon>
@@ -138,7 +138,7 @@
             (click)="onChangeView('row')"
             class="buttonBase buttonView"
             [ngClass]="{
-              notSelected: visualization === 'grid',
+              notSelected: getVisualization() === 'grid',
               buttonBase: true,
               buttonView: true
             }"
@@ -153,7 +153,7 @@
             (click)="onChangeView('grid')"
             class="buttonBase buttonView"
             [ngClass]="{
-              notSelected: visualization === 'row',
+              notSelected: getVisualization() === 'row',
               buttonBase: true,
               buttonView: true
             }"
@@ -173,7 +173,7 @@
 
     <app-list-row
       [pagination]="pagination"
-      [visualization]="visualization"
+      [visualization]="getVisualization()"
       [limit]="12"
       [selectedCategory]="selectedCategory"
       [selectedTag]="selectedTag"

@@ -3,6 +3,7 @@
   gap: 8px;
   justify-content: start;
   align-items: start;
+  width: 250px;
 }
 
 .heightButton {
@@ -30,7 +31,7 @@
 
 .searchButton mat-icon {
   color: #fff;
-  font-size:22px
+  font-size: 22px;
 }
 
 .searchButton:hover {
@@ -39,15 +40,11 @@
   color: #fff;
 }
 
-.searchField{
-  height:48px;
-  width:100%;
-  padding:5px;
-  border:1px solid #ddd;
-  border-radius:6px;
-  margin:0 !important
-}
-
-.searchContainer{
-  width:170px
+.searchField {
+  height: 48px;
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  margin: 0 !important;
 }

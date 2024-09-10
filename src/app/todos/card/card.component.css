@@ -87,5 +87,22 @@
 }
 
 .container-todo-tag-item .mat-icon {
-  height:20px
+  height: 20px;
+}
+
+.content__todo__text_container {
+  cursor: pointer;
+  width: 100%;
+}
+
+.content__todo__text_container:hover {
+  background: #f9f9f9;
+}
+
+.edit-button {
+  color: #3b9ae4;
+}
+
+.delete-button {
+  color: red;
 }

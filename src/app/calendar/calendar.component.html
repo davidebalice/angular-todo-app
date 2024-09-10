@@ -25,14 +25,14 @@
 
           <div class="content__todo__sidebar__label">
             <ul
-              class="nav nav-tabs content__todo__sidebar__tab"
+              class="nav nav-tabs content__todo__sidebar__tab mb-4"
               id="todo-task-label"
               role="tablist"
               *ngIf="categories && categories.length > 0"
             >
               <li class="nav-item" *ngFor="let category of categories">
                 <button
-                  class="nav-link primary"
+                  class="nav-link primary side-link"
                   id="team-task-tab"
                   type="button"
                   role="tab"
@@ -53,11 +53,11 @@
             </ul>
 
             <div *ngIf="tags.length === 0">
-              <p>No Categoriesavailable.</p>
+              <p>No Categories available.</p>
             </div>
           </div>
 
-          <div class="sideTagsTitle">
+          <div class="sideTagsTitle mt-2">
             <span>Status</span>
             <span (click)="navigateToStatus()">
               <mat-icon>edit</mat-icon>
@@ -71,7 +71,7 @@
           >
             <li class="nav-item" *ngFor="let item of status">
               <button
-                class="nav-link"
+                class="nav-link side-link"
                 id="todo-task-tab-important"
                 [ngClass]="{ active: item.id === selectedStatus }"
                 type="button"
@@ -107,7 +107,7 @@
           >
             <li class="nav-item" *ngFor="let tag of tags">
               <button
-                class="nav-link primary"
+                class="nav-link primary side-link"
                 id="team-task-tab"
                 data-bs-toggle="tab"
                 data-bs-target="#team-task-content"

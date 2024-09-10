@@ -38,7 +38,7 @@ export class RowComponent implements OnInit {
       width: '90%',
       maxWidth: '1000px',
       height: '90%',
-      maxHeight: '650px',
+      maxHeight: '450px',
       data:  todo ,
     });
   }

@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
@@ -7,10 +8,11 @@ import {
   ConfirmDialogComponent,
   ConfirmDialogData,
 } from '../../components/confirm-dialog/confirm-dialog.component';
+import { TodoDialogComponent } from '../../components/todo-dialog/todo-dialog.component';
 import { Todo } from '../../model/todo.model';
 import { TodoService } from '../../services/todo.service';
 import { TodosModule } from '../todos.module';
-import { DatePipe } from '@angular/common';
+
 @Component({
   selector: 'app-card',
   standalone: true,
@@ -28,9 +30,20 @@ export class CardComponent implements OnInit {
     private router: Router,
     public dialog: MatDialog,
     private datePipe: DatePipe,
+    public todoDialog: MatDialog
   ) {}
 
   ngOnInit(): void {}
+
+  openTodoDialog(todo: Todo): void {
+    this.todoDialog.open(TodoDialogComponent, {
+      width: '90%',
+      maxWidth: '1000px',
+      height: '90%',
+      maxHeight: '450px',
+      data: todo,
+    });
+  }
 
   onSelected() {
     this.router.navigate(['/todos', this.todo.id]);
@@ -82,7 +95,7 @@ export class CardComponent implements OnInit {
           .pipe(
             catchError((error) => {
               if (error.error.message.includes('Demo')) {
-               // this.listCardComponent.openDemoDialog();
+                // this.listCardComponent.openDemoDialog();
               }
               console.error('Error deleting todo', error);
               throw error;
@@ -137,6 +150,4 @@ export class CardComponent implements OnInit {
 
     return starsArray;
   }
-
-
 }

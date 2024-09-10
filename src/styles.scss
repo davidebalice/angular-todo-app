@@ -320,7 +320,11 @@ a {
 
 .side-link {
   padding: 8px 10px !important;
-  font-size:13px;
+  font-size: 13px;
   flex-direction: row !important;
   align-items: center !important;
+}
+
+.pointer {
+  cursor: pointer;
 }

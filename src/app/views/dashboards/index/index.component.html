@@ -7,7 +7,9 @@
             <div class="dashboard__body">
               <p class="mb-0 dashboard__title1">Todo App</p>
               <br />
-              <p class="mb-0 dashboard__title2">developed in Angular - Spring Boot</p>
+              <p class="mb-0 dashboard__title2">
+                developed in Angular - Spring Boot
+              </p>
               <br />
               <img
                 src="../../../../assets/img/angular-spring.png"
@@ -58,10 +60,7 @@
     <div class="content__section content__section--transparent content__review">
       <div class="content__section__header">
         <div class="content__section__header__title-part">
-          <h4 class="content__section__header__title">Last Todo</h4>
-          <p class="content__section__header__subtitle">
-            Eum fuga consequuntur ut et.
-          </p>
+          <h4 class="content__section__header__title">Last Todos</h4>
         </div>
         <div class="content__section__header__content-part">
           <div
@@ -77,59 +76,14 @@
         </div>
       </div>
 
-      <div class="content__section__content">
-        <div class="swiper-container" #userReview>
-          <div class="swiper-wrapper">
-            <div class="swiper-slide" *ngFor="let data of userReviewData">
-              <div class="content__review__single">
-                <div class="content__review__single__header">
-                  <div class="content__review__single__header__img">
-                    <img src="{{ data.img }}" alt="User" />
-                  </div>
-                  <div class="content__review__single__header__text">
-                    <h4 class="content__review__single__header__title">
-                      {{ data.author }}
-                    </h4>
-                    <p class="content__review__single__header__subtitle">
-                      {{ data.duration }}
-                    </p>
-                  </div>
-                </div>
-                <div class="content__review__single__content">
-                  <p class="content__review__single__content__text">
-                    {{ data.content }}
-                  </p>
-                </div>
-                <div
-                  class="content__review__single__bottom"
-                  *ngIf="!data.status"
-                >
-                  <a
-                    href="javascript:void(0);"
-                    class="content__review__single__btn danger-color"
-                    >Archive</a
-                  >
-                  <a
-                    href="javascript:void(0);"
-                    class="content__review__single__btn success-color"
-                    >Accept</a
-                  >
-                </div>
-                <div
-                  class="content__review__single__bottom"
-                  *ngIf="data.status"
-                >
-                  <a
-                    href="javascript:void(0);"
-                    class="content__review__single__btn success-color"
-                    >Publish <i class="uil-arrow-right"></i
-                  ></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <app-list-row
+        [pagination]="pagination"
+        [visualization]="'grid'"
+        [limit]="4"
+        [selectedCategory]="selectedCategory"
+        [selectedTag]="selectedTag"
+        [selectedStatus]="selectedStatus"
+      ></app-list-row>
     </div>
   </div>
 </div>
