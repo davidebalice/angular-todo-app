@@ -158,20 +158,12 @@ export class NewComponent implements OnInit {
   loadUser(): void {
     this.authService.getLoggedUser().subscribe((user) => {
       this.userId = user?.id;
-      console.log('this.userId');
-      console.log('this.userId');
-      console.log('this.userId');
-      console.log('this.userId');
-      console.log('this.userId');
-      console.log('this.userId');
-      console.log('this.userId');
-      console.log('this.userId');
-      console.log(this.userId);
       if (this.todoForm) {
         this.todoForm.patchValue({ userId: this.userId });
       }
     });
   }
+  
   loadCategories(): void {
     this.categoryService.fetchCategories();
     this.categories$ = this.categoryService.getCategories();

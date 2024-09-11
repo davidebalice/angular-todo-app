@@ -63,6 +63,7 @@ export class SidebarComponent {
 
   // Toggle Menu
   toggleItem(el: any) {
+    this.closeSidebar();
     let isCurrentMenuId = el.target.closest('a.sidebar__menu__link');
     let isMenu = isCurrentMenuId.nextElementSibling as any;
     if (isMenu.classList.contains('d-block')) {
@@ -89,7 +90,7 @@ export class SidebarComponent {
     }
   }
 
-  closeSidebar(element: any) {
+  closeSidebar() {
     document.querySelector('.sidebar')?.classList.remove('sidebar-mobile');
     document.querySelector('.dashboard')?.classList.remove('overlay_active');
   }

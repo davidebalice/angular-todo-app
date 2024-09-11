@@ -1,7 +1,13 @@
-.info{
-  width:100%;
+.info {
+  width: 100%;
   background: white;
-  padding:20px;
-  border-radius:24px;
+  padding: 30px;
+  border-radius: 24px;
   min-height: 450px;
+  font-size: 15px;
+  line-height: 25px;
+}
+
+.info a {
+  color: var(--primary-color);
 }

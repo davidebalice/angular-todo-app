@@ -1,0 +1,23 @@
+.hamburgher {
+  display: none;
+  font-weight: bold;
+  font-size: 40px;
+}
+
+@media (max-width: 1200px) {
+  .hamburgher {
+    display: block;
+  }
+}
+
+.content__header__action {
+  justify-content: space-between;
+  width:100%
+}
+
+.user-img{
+    border-radius:50%;
+    border:2px solid #ddd;
+    width:auto;
+    height:70px
+}

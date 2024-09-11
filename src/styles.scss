@@ -13,6 +13,12 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+@media (max-width: 1200px) {
+  body {
+    margin-left:10px
+  }
+}
+
 .flexRow {
   display: flex;
   align-items: center;
@@ -327,4 +333,8 @@ a {
 
 .pointer {
   cursor: pointer;
+}
+
+.content__header__title{
+  width:250px !important;
 }

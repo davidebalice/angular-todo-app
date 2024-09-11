@@ -9,6 +9,7 @@ import {
 } from '@ng-bootstrap/ng-bootstrap';
 // Components
 import { AuthService } from '../../services/auth.service';
+import { User } from '../../model/user.model';
 
 @Component({
   selector: 'app-topbar',
@@ -20,7 +21,7 @@ import { AuthService } from '../../services/auth.service';
 export class TopbarComponent {
   routeData: any | undefined;
   breadcrumbs: { label: string; url: string }[] = [];
-  mode?: string;
+  loggedUser: User | undefined;
   private offcanvasService = inject(NgbOffcanvas);
 
   constructor(
@@ -32,15 +33,21 @@ export class TopbarComponent {
   }
 
   ngOnInit() {
-    // Click Breadcrumb
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe(() => {
         this.generateBreadcrumb(this.route.root);
       });
+      this.loadUser();
   }
 
-  // Breadcrumb Generate
+  loadUser(): void {
+    this.authService.getLoggedUser().subscribe((user) => {
+      this.loggedUser = user;
+    });
+  }
+
+  // Breadcrumb generate
   private generateBreadcrumb(route: ActivatedRoute): void {
     const children: ActivatedRoute[] = route.children;
 
@@ -63,15 +70,6 @@ export class TopbarComponent {
     this.offcanvasService.open(content, { position: 'end' });
   }
 
-  // CHange Mode
-  changeLayout(mode: string) {
-    document.documentElement.setAttribute('dir', mode);
-  }
-
-  // Mode Type
-  changeMode(mode: string) {
-    document.documentElement.setAttribute('data-theme', mode);
-  }
 
   // Sidebar Toggle
   openSidebar() {
