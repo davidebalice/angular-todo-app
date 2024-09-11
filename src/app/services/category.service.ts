@@ -75,7 +75,10 @@ export class CategoryService {
           if (error.status === 401) {
             this.router.navigate(['/login']);
           }
-          return throwError(() => new Error('Error adding category.'));
+
+          return throwError(
+            () => new Error('Error adding category:' + error.error.message)
+          );
         })
       );
   }
@@ -96,7 +99,9 @@ export class CategoryService {
           if (error.status === 401) {
             this.router.navigate(['/login']);
           }
-          return throwError(() => new Error('Error adding category.'));
+          return throwError(
+            () => new Error('Error updating category:' + error.error)
+          );
         })
       );
   }

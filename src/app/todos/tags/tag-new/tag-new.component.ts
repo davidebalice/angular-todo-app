@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Subject, finalize, take, takeUntil } from 'rxjs';
+import { Subject, catchError, finalize, take, takeUntil } from 'rxjs';
 import { TagService } from '../../../services/tag.service';
 import { TodosModule } from '../../todos.module';
 import { iconsData } from '../../../shared/iconsData';
+import { DemoDialogComponent } from '../../../components/demo-dialog/demo-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-tag-new',
@@ -24,8 +26,13 @@ export class TagNewComponent {
     private route: ActivatedRoute,
     private tagService: TagService,
     private router: Router,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    public demoDialog: MatDialog
   ) {}
+
+  openDemoDialog() {
+    this.demoDialog.open(DemoDialogComponent);
+  }
 
   ngOnInit(): void {
     this.tagForm = this.formBuilder.group({
@@ -43,6 +50,13 @@ export class TagNewComponent {
         .addTag(this.tagForm.value)
         .pipe(
           take(1),
+          catchError((error) => {
+            if (error.message.includes('Demo')) {
+              this.openDemoDialog();
+            }
+            console.error('Error adding tag', error);
+            throw error;
+          }),
           finalize(() => {
             this.submitting = false;
             this.onCancel();

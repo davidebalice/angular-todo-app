@@ -76,7 +76,7 @@ export class UserService {
           if (error.status === 401) {
             this.router.navigate(['/login']);
           }
-          return throwError(() => new Error('Error adding user.'));
+          return throwError(() => new Error('Error adding user:' + error.error.message));
         })
       );
   }
@@ -97,7 +97,7 @@ export class UserService {
           if (error.status === 401) {
             this.router.navigate(['/login']);
           }
-          return throwError(() => new Error('Error adding categoty.'));
+          return throwError(() => new Error('Error updating user:' + error.error));
         })
       );
   }

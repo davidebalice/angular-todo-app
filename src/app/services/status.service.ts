@@ -76,7 +76,7 @@ import {
             if (error.status === 401) {
               this.router.navigate(['/login']);
             }
-            return throwError(() => new Error('Error adding status.'));
+            return throwError(() => new Error('Error adding status:' + error.error.message));
           })
         );
     }
@@ -97,7 +97,7 @@ import {
             if (error.status === 401) {
               this.router.navigate(['/login']);
             }
-            return throwError(() => new Error('Error adding status.'));
+            return throwError(() => new Error('Error updating status:' + error.error));
           })
         );
     }

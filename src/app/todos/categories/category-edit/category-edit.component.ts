@@ -5,8 +5,10 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Observable, Subject, finalize, map, take, takeUntil } from 'rxjs';
+import { DemoDialogComponent } from '../../../components/demo-dialog/demo-dialog.component';
 import { Category } from '../../../model/category.model';
 import { CategoryService } from '../../../services/category.service';
 import { iconsData } from '../../../shared/iconsData';
@@ -29,13 +31,17 @@ export class CategoryEditComponent implements OnInit, OnDestroy {
   categories$: Observable<any[]> | undefined;
   icons: string[] = iconsData;
 
-
   constructor(
     private route: ActivatedRoute,
     private categoryService: CategoryService,
     private router: Router,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    public demoDialog: MatDialog
   ) {}
+
+  openDemoDialog() {
+    this.demoDialog.open(DemoDialogComponent);
+  }
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
@@ -76,6 +82,9 @@ export class CategoryEditComponent implements OnInit, OnDestroy {
             console.log('Category updated successfully', response);
           },
           error: (error) => {
+            if (error.message.includes('Demo')) {
+              this.openDemoDialog();
+            }
             console.error('Error updating category', error);
           },
         });

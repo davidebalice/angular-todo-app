@@ -14,7 +14,7 @@
     <div class="buttonContainer">
       <button (click)="onNewStatus()" class="fc-button fc-button-primary">
         <mat-icon>add_circle</mat-icon>
-        New category
+        New status
       </button>
     </div>
 
@@ -29,16 +29,16 @@
 
       <ng-template #loadedContent>
         <ng-container *ngIf="status.length > 0; else noStatus">
-          <div class="listRow" *ngFor="let category of status">
+          <div class="listRow" *ngFor="let item of status">
             <div class="listBody">
-              <mat-icon *ngIf="category.icon" [style.color]="category.color">{{ category.icon }}</mat-icon>
-              <div class="listTitle">{{ category.name }}</div>
+              <mat-icon *ngIf="item.icon" [style.color]="item.color">{{ item.icon }}</mat-icon>
+              <div class="listTitle">{{ item.name }}</div>
             </div>
 
             <div class="cardButtonContainer">
               <button
                 class="fc-button fc-button-primary"
-                (click)="onEditStatus(category.id)"
+                (click)="onEditStatus(item.id)"
                 matTooltipPosition="above"
                 matTooltipShowDelay="100"
                 matTooltipHideDelay="100"
@@ -49,7 +49,7 @@
 
               <button
                 class="fc-button fc-button-primary"
-                (click)="onDelete(category.id, category.name)"
+                (click)="onDelete(item.id, item.name)"
                 matTooltipPosition="above"
                 matTooltipShowDelay="100"
                 matTooltipHideDelay="100"
@@ -63,7 +63,7 @@
       </ng-template>
 
       <ng-template #noStatus>
-        <div class="noData">No category available.</div>
+        <div class="noData">No status available.</div>
       </ng-template>
     </div>
   </mat-card-content>

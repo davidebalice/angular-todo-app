@@ -5,8 +5,10 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Observable, Subject, finalize, map, take, takeUntil } from 'rxjs';
+import { DemoDialogComponent } from '../../../components/demo-dialog/demo-dialog.component';
 import { Status } from '../../../model/status.model';
 import { StatusService } from '../../../services/status.service';
 import { iconsData } from '../../../shared/iconsData';
@@ -29,13 +31,17 @@ export class StatusEditComponent implements OnInit, OnDestroy {
   status$: Observable<any[]> | undefined;
   icons: string[] = iconsData;
 
-
   constructor(
     private route: ActivatedRoute,
     private statusService: StatusService,
     private router: Router,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    public demoDialog: MatDialog
   ) {}
+
+  openDemoDialog() {
+    this.demoDialog.open(DemoDialogComponent);
+  }
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
@@ -76,6 +82,9 @@ export class StatusEditComponent implements OnInit, OnDestroy {
             console.log('Status updated successfully', response);
           },
           error: (error) => {
+            if (error.message.includes('Demo')) {
+              this.openDemoDialog();
+            }
             console.error('Error updating status', error);
           },
         });

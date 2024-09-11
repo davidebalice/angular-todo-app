@@ -5,8 +5,10 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Observable, Subject, finalize, map, take, takeUntil } from 'rxjs';
+import { DemoDialogComponent } from '../../../components/demo-dialog/demo-dialog.component';
 import { Tag } from '../../../model/tag.model';
 import { TagService } from '../../../services/tag.service';
 import { iconsData } from '../../../shared/iconsData';
@@ -29,13 +31,17 @@ export class TagEditComponent implements OnInit, OnDestroy {
   tags$: Observable<any[]> | undefined;
   icons: string[] = iconsData;
 
-
   constructor(
     private route: ActivatedRoute,
     private tagService: TagService,
     private router: Router,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    public demoDialog: MatDialog
   ) {}
+
+  openDemoDialog() {
+    this.demoDialog.open(DemoDialogComponent);
+  }
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
@@ -76,7 +82,10 @@ export class TagEditComponent implements OnInit, OnDestroy {
             console.log('Tag updated successfully', response);
           },
           error: (error) => {
-            console.error('Error updating tag', error);
+            if (error.message.includes('Demo')) {
+              this.openDemoDialog();
+            }
+            console.error('Error updating category', error);
           },
         });
     }

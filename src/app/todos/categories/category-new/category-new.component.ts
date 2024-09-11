@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Subject, finalize, take, takeUntil } from 'rxjs';
+import { Subject, catchError, finalize, take, takeUntil } from 'rxjs';
+import { DemoDialogComponent } from '../../../components/demo-dialog/demo-dialog.component';
 import { CategoryService } from '../../../services/category.service';
-import { TodosModule } from '../../todos.module';
 import { iconsData } from '../../../shared/iconsData';
+import { TodosModule } from '../../todos.module';
 
 @Component({
   selector: 'app-category-new',
@@ -24,8 +26,13 @@ export class CategoryNewComponent {
     private route: ActivatedRoute,
     private categoryService: CategoryService,
     private router: Router,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    public demoDialog: MatDialog
   ) {}
+
+  openDemoDialog() {
+    this.demoDialog.open(DemoDialogComponent);
+  }
 
   ngOnInit(): void {
     this.categoryForm = this.formBuilder.group({
@@ -43,6 +50,13 @@ export class CategoryNewComponent {
         .addCategory(this.categoryForm.value)
         .pipe(
           take(1),
+          catchError((error) => {
+            if (error.message.includes('Demo')) {
+              this.openDemoDialog();
+            }
+            console.error('Error adding category', error);
+            throw error;
+          }),
           finalize(() => {
             this.submitting = false;
             this.onCancel();
@@ -54,7 +68,10 @@ export class CategoryNewComponent {
             console.log('Category added successfully', response);
           },
           error: (error) => {
-            //console.error('Error adding todo', error);
+            if (error.message.includes('Demo')) {
+              this.openDemoDialog();
+            }
+            console.error('Error adding category', error);
           },
         });
     }

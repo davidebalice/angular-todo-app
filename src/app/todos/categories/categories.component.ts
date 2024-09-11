@@ -10,6 +10,7 @@ import { Category } from '../../model/category.model';
 import { Todo } from '../../model/todo.model';
 import { CategoryService } from '../../services/category.service';
 import { TodosModule } from '../todos.module';
+import { DemoDialogComponent } from '../../components/demo-dialog/demo-dialog.component';
 
 @Component({
   selector: 'app-categories',
@@ -29,8 +30,13 @@ export class CategoriesComponent implements OnInit, OnDestroy {
   constructor(
     private categoryService: CategoryService,
     private router: Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    public demoDialog: MatDialog
   ) {}
+
+  openDemoDialog() {
+    this.demoDialog.open(DemoDialogComponent);
+  }
 
   ngOnInit(): void {
     this.categoryService.fetchCategories();
