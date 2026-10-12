@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Params, Router } from '@angular/router';
@@ -15,6 +15,7 @@ import { TodosModule } from '../todos.module';
   standalone: true,
   templateUrl: './edit.component.html',
   styleUrl: './edit.component.css',
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [TodosModule],
 })
 export class EditComponent implements OnInit {

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, ChangeDetectionStrategy } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AppConfig } from '../../app-config';
 import { TodosModule } from '../../todos/todos.module';
@@ -8,6 +8,7 @@ import { TodosModule } from '../../todos/todos.module';
   standalone: true,
   imports: [TodosModule, CommonModule],
   templateUrl: './image-dialog.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./image-dialog.component.scss'],
 })
 export class ImageDialogComponent {

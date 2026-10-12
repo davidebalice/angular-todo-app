@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject, catchError, finalize, take, takeUntil } from 'rxjs';
@@ -13,6 +13,7 @@ import { MatDialog } from '@angular/material/dialog';
   standalone: true,
   templateUrl: './status-new.component.html',
   styleUrl: './status-new.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [TodosModule],
 })
 export class StatusNewComponent {

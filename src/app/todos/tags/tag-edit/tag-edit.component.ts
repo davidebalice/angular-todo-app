@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -19,6 +19,7 @@ import { TodosModule } from '../../todos.module';
   standalone: true,
   templateUrl: './tag-edit.component.html',
   styleUrl: './tag-edit.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [TodosModule],
 })
 export class TagEditComponent implements OnInit, OnDestroy {

@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable, Subject, takeUntil } from 'rxjs';
@@ -10,6 +10,7 @@ import { TodosModule } from '../todos.module';
   standalone: true,
   templateUrl: './search.component.html',
   styleUrl: './search.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [TodosModule],
 })
 export class SearchComponent implements OnInit, OnDestroy {

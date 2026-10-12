@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -19,6 +19,7 @@ import { TodosModule } from '../../todos.module';
   standalone: true,
   templateUrl: './status-edit.component.html',
   styleUrl: './status-edit.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [TodosModule],
 })
 export class StatusEditComponent implements OnInit, OnDestroy {

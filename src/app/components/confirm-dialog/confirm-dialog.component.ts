@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, ChangeDetectionStrategy } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { TodosModule } from '../../todos/todos.module';
 
@@ -6,6 +6,7 @@ import { TodosModule } from '../../todos/todos.module';
   selector: 'app-confirm-dialog',
   standalone: true,
   imports: [TodosModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: `
     <h2 mat-dialog-title>{{ data.title }}</h2>
     <mat-dialog-content class="message"

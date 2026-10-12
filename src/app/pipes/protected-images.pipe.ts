@@ -5,6 +5,7 @@ import { catchError, map } from 'rxjs/operators';
 
 @Pipe({
   name: 'protectedImage',
+  standalone: false,
 })
 export class ProtectedImagePipe implements PipeTransform {
   constructor(private http: HttpClient) {}

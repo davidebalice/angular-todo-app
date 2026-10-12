@@ -1,4 +1,4 @@
-import { Component, inject, TemplateRef } from '@angular/core';
+import { Component, inject, TemplateRef, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
 // Bootstrap
@@ -16,6 +16,7 @@ import { User } from '../../model/user.model';
   standalone: true,
   imports: [NgbDropdownModule, NgbCollapseModule],
   templateUrl: './topbar.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './topbar.component.scss',
 })
 export class TopbarComponent {

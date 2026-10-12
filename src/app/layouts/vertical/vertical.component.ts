@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 // Components
 import { SidebarComponent } from '../sidebar/sidebar.component';
@@ -14,6 +14,7 @@ import { TopbarComponent } from '../topbar/topbar.component';
     TopbarComponent,
   ],
   templateUrl: './vertical.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './vertical.component.scss',
 })
 export class VerticalComponent {

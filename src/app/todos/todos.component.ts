@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Category } from '../model/category.model';
 import { Status } from '../model/status.model';
@@ -17,6 +17,7 @@ import { TodoService } from '../services/todo.service';
   standalone: true,
   templateUrl: './todos.component.html',
   styleUrls: ['./todos.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [TodosModule, SearchComponent, ListRowComponent],
 })
 export class TodosComponent {

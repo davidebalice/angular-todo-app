@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Subscription, catchError, take } from 'rxjs';
@@ -18,6 +18,7 @@ import { TodosModule } from '../todos.module';
   standalone: true,
   templateUrl: './card.component.html',
   styleUrl: './card.component.css',
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [TodosModule],
 })
 export class CardComponent implements OnInit {

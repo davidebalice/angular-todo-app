@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, ChangeDetectionStrategy } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Todo } from '../../model/todo.model';
 import { TodosModule } from '../../todos/todos.module';
@@ -9,6 +9,7 @@ import { TodosModule } from '../../todos/todos.module';
   standalone: true,
   styleUrl: 'todo-dialog.component.scss',
   imports: [TodosModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: `
     <div class="dialog-header">
       <div class="container-todo-tag">

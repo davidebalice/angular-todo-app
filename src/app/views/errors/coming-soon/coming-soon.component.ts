@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { map,interval } from 'rxjs';
 
 @Component({
@@ -6,6 +6,7 @@ import { map,interval } from 'rxjs';
   standalone: true,
   imports: [],
   templateUrl: './coming-soon.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './coming-soon.component.scss'
 })
 export class ComingSoonComponent {

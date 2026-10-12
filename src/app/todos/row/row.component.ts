@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Subscription, catchError, take } from 'rxjs';
@@ -18,6 +18,7 @@ import { TodoDialogComponent } from '../../components/todo-dialog/todo-dialog.co
   standalone: true,
   templateUrl: './row.component.html',
   styleUrl: './row.component.css',
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [TodosModule],
 })
 export class RowComponent implements OnInit {

@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 // components
 import { VerticalComponent } from '../vertical/vertical.component';
 // services
@@ -11,6 +11,7 @@ import { EventService } from './event.service';
   standalone: true,
   imports: [CommonModule, VerticalComponent, HttpClientModule],
   templateUrl: './layout.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './layout.component.scss',
 })
 export class LayoutComponent {

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FullCalendarModule } from '@fullcalendar/angular';
@@ -22,6 +22,7 @@ import { TodoDialogComponent } from '../components/todo-dialog/todo-dialog.compo
   standalone: true,
   imports: [CalendarModule, FullCalendarModule],
   templateUrl: './calendar.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './calendar.component.scss',
 })
 export class Calendar {

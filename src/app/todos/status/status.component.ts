@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -16,6 +16,7 @@ import { TodosModule } from '../todos.module';
   standalone: true,
   templateUrl: './status.component.html',
   styleUrls: ['./status.component.css'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [TodosModule],
 })
 export class StatusComponent implements OnInit, OnDestroy {

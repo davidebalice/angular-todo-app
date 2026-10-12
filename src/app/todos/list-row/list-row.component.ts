@@ -1,4 +1,4 @@
-import { Component, Input, SimpleChanges } from '@angular/core';
+import { Component, Input, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { ActivatedRoute } from '@angular/router';
@@ -14,6 +14,7 @@ import { TodosModule } from '../todos.module';
   standalone: true,
   templateUrl: './list-row.component.html',
   styleUrl: './list-row.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [TodosModule, RowComponent, MatPaginator, CardComponent],
 })
 export class ListRowComponent {

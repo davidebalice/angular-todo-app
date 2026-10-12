@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -17,6 +17,7 @@ import { DemoDialogComponent } from '../../components/demo-dialog/demo-dialog.co
   standalone: true,
   templateUrl: './categories.component.html',
   styleUrls: ['./categories.component.css'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [TodosModule],
 })
 export class CategoriesComponent implements OnInit, OnDestroy {
